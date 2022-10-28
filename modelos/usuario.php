@@ -95,8 +95,8 @@ class Usuario{
             $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadUsuario FROM usuario;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
-        }catch(Exception $e){
-            die($e->getMessage());
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }
 
@@ -105,8 +105,8 @@ class Usuario{
             $consulta = $this->pdo->prepare("SELECT SUM(precio) AS Total FROM videojuegos;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
-        }catch(Exception $e){
-            die($e->getMessage());
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }*/
 
@@ -115,8 +115,8 @@ class Usuario{
             $consulta = $this->pdo->prepare("SELECT * FROM usuario;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
-        }catch(Exception $e){
-            die($e->getMessage());
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }
 
@@ -124,44 +124,45 @@ class Usuario{
         try{
             $consulta = $this ->pdo ->prepare("SELECT * FROM usuario WHERE id=?;");
             $consulta->execute(array($nombre));
-            $r=$consulta->fetch(PDO::FETCH_OBJ);
-            $u=new Usuario();
+            $reUsuario=$consulta->fetch(PDO::FETCH_OBJ);
+            $usuarioSQL=new Usuario();
 
-            $u->setRfc($r->rfc);
-            $u->setNombre($r->nombre);
-            $u->setApellido($r->apellido);
-            $u->setTelefono($r->telefono);
-            $u->setEmail($r->email);
-            $u->setUser($r->user);
-            $u->setContrasenia($r->contrasenia);
-            $u->setPrivilegio($r->privilegio);
+            $usuarioSQL->setId($reUsuario->id);
+            $usuarioSQL->setRfc($reUsuario->rfc);
+            $usuarioSQL->setNombre($reUsuario->nombre);
+            $usuarioSQL->setApellido($reUsuario->apellido);
+            $usuarioSQL->setTelefono($reUsuario->telefono);
+            $usuarioSQL->setEmail($reUsuario->email);
+            $usuarioSQL->setUser($reUsuario->user);
+            $usuarioSQL->setContrasenia($reUsuario->contrasenia);
+            $usuarioSQL->setPrivilegio($reUsuario->privilegio);
 
-            return $u;
-        }catch(Exception $e){
-            die($e->getMessage());
+            return $usuarioSQL;
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }
 
-    public function Insertar(Usuario $u){
+    public function Insertar(Usuario $usuarioSQL){
         try{
             $consulta = "INSERT INTO usuario(rfc, nombre, apellido, telefono, email, user, contrasenia, privilegio) 
             VALUES (?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
-                $u->getRfc(),
-                $u->getNombre(),
-                $u->getApellido(),
-                $u->getTelefono(),
-                $u->getEmail(),
-                $u->getUser(),
-                $u->getContrasenia(),
-                $u->getPrivilegio()
+                $usuarioSQL->getRfc(),
+                $usuarioSQL->getNombre(),
+                $usuarioSQL->getApellido(),
+                $usuarioSQL->getTelefono(),
+                $usuarioSQL->getEmail(),
+                $usuarioSQL->getUser(),
+                $usuarioSQL->getContrasenia(),
+                $usuarioSQL->getPrivilegio()
             ));
-        }catch(Exception $e){
-            die($e->getMessage());
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }
 
-    public function Actualizar(Usuario $u){
+    public function Actualizar(Usuario $usuarioSQL){
         try{
             $consulta = "UPDATE usuario SET
             rfc=?,
@@ -174,18 +175,18 @@ class Usuario{
             privilegio=?
             WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
-                $u->getRfc(),
-                $u->getNombre(),
-                $u->getApellido(),
-                $u->getTelefono(),
-                $u->getEmail(),
-                $u->getUser(),
-                $u->getContrasenia(),
-                $u->getPrivilegio(),
-                $u->getId()
+                $usuarioSQL->getRfc(),
+                $usuarioSQL->getNombre(),
+                $usuarioSQL->getApellido(),
+                $usuarioSQL->getTelefono(),
+                $usuarioSQL->getEmail(),
+                $usuarioSQL->getUser(),
+                $usuarioSQL->getContrasenia(),
+                $usuarioSQL->getPrivilegio(),
+                $usuarioSQL->getId()
             ));
-        }catch(Exception $e){
-            die($e->getMessage());
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }
 
@@ -193,8 +194,8 @@ class Usuario{
         try{
             $consulta = "DELETE FROM usuario WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array($id));
-        }catch(Exception $e){
-            die($e->getMessage());
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
         }
     }
 }
