@@ -22,8 +22,12 @@
         <h1>Vali</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="index.php">
+        <form class="login-form" action="loguear.php" method="post">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+          <p>Usuario <input type="text" placeholder="ingrese su nombre" name="usuario"></p>
+          <p>Contraseña <input type="password" placeholder="ingrese su contraseña" name="contraseña"></p>
+          <input type="submit" value="Ingresar">
+          <!--
           <br><br><br>
           <div class="form-group">
             <label class="control-label">USERNAME</label>
@@ -37,6 +41,7 @@
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block">SIGN IN<i class="fa fa-sign-in fa-lg"></i></button>
           </div>
+          -->
         </form>
         
       </div>
