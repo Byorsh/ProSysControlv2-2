@@ -14,4 +14,9 @@ class InicioControlador{
         require_once "vistas/inicio/principal.php";
         require_once "vistas/pie.php";
     }
+
+    public function Salir(){
+        require_once "vistas/login/salir.php";
+        
+    }
 }

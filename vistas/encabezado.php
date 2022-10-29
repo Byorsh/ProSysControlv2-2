@@ -17,7 +17,7 @@
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.php">ProSysControl</a>
+      <header class="main-header hidden-print"><a class="logo" href="home.php">ProSysControl</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -41,7 +41,7 @@
                 <ul class="dropdown-menu settings-menu">
                   <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
                   <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                  <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                  <li><a href="?c=inicio&a=Salir"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                 </ul>
               </li>
             </ul>
@@ -60,7 +60,7 @@
           </div>
           <!-- Sidebar Menu-->
           <ul class="sidebar-menu">
-            <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+            <li class="active"><a href="home.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
 
             <li class="treeview"><a href="#"><i class="fa fa-user"></i><span>Cliente</span><i class="fa fa-angle-right"></i></a>
             <ul class="treeview-menu">

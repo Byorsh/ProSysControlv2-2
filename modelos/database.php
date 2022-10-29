@@ -1,5 +1,5 @@
 <?php
-
+$conexion=mysqli_connect("localhost", "root", "", "prosyscontrol");
 class Database{
     const servidor = "localhost";
     const usuariobd = "root";
