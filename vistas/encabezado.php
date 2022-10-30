@@ -64,8 +64,8 @@
 
             <li class="treeview"><a href="#"><i class="fa fa-user"></i><span>Cliente</span><i class="fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
-                <li><a href="?c=usuario&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar Cliente</a></li>
-                <li><a href="?c=usuario"><i class="fa fa-list"></i> Lista de Clientes</a></li>
+                <li><a href="?c=cliente&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar Cliente</a></li>
+                <li><a href="?c=cliente"><i class="fa fa-list"></i> Lista de Clientes</a></li>
               </ul>
             </li>
             <!--<li><a href="?c=usuario"><i class='bx bxs-user'></i><span>Usuario</span></a></li>-->

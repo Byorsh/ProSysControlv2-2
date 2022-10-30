@@ -9,7 +9,7 @@
             </ul>-->
           </div>
           <div>
-            <a class="btn btn-primary btn-flat" href="?c=usuario&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a>
+            <a class="btn btn-primary btn-flat" href="?c=cliente&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a>
 
             </div>
         </div>
@@ -23,28 +23,27 @@
                       <th>ID</th>
                       <th>RFC</th>
                       <th>Nombre</th>
-                      <th>Apellido</th>
+                      <th>Apellido Paterno</th>
+                      <th>Nombre de la Empresa</th>
                       <th>Telefono</th>
-                      <!--<th>Email</th>-->
-                      <th>Usuario</th>
-                      <!--<th>Contraseña</th>-->
-                      <th>Privilegio</th>
+                      <th>Email</th>
+                      <th>Domicilio</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach($this->modelo->Listar() as $u):?>
                     <tr>
-                      <td><?=$u->id?></td>
+                      <td><?=$u->idClientes?></td>
                       <td><?=$u->rfc?></td>
-                      <td><?=$u->nombre?></td>
-                      <td><?=$u->apellido?></td>
+                      <td><?=$u->nombreCliente?></td>
+                      <td><?=$u->apellidoP?></td>
+                      <td><?=$u->nombreEmpresa?></td>
                       <td><?=$u->telefono?></td>
-                      <!--<td><?=$u->email?></td>-->
-                      <td><?=$u->user?></td>
-                      <!--<td><?=$u->contrasenia?></td>-->
-                      <td><?=$u->privilegio?></td>
-                      <td><a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?=$u->id?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=usuario&a=Borrar&id=<?=$u->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                      <td><?=$u->email?></td>
+                      <td><?=$u->domicilio?></td>
+                      
+                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$u->id?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$u->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
                     </tr>
                     <?php endforeach;?>
                   </tbody>

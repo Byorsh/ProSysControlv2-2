@@ -6,13 +6,12 @@ class Cliente{
     private $id;
     private $rfc;
     private $nombre;
-    private $apellido;
+    private $apellidoP;
+    private $apellidoM;
+    private $nombreEmpresa;
     private $telefono;
     private $email;
-    private $user;
-    private $contrasenia;
-    private $privilegio;
-    
+    private $domicilio;    
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -42,12 +41,28 @@ class Cliente{
         $this->nombre = $nombre;
     }
 
-    public function getApellido() : ? string{
-        return $this->apellido;
+    public function getApellidoP() : ? string{
+        return $this->apellidoP;
     }
 
-    public function setApellido(string $apellido){
-        $this->apellido = $apellido;
+    public function setApellidoP(string $apellidoP){
+        $this->apellidoP = $apellidoP;
+    }
+
+    public function getApellidoM() : ? string{
+        return $this->apellidoM;
+    }
+
+    public function setApellidoM(string $apellidoM){
+        $this->apellidoM = $apellidoM;
+    }
+
+    public function getNombreEmpresa() : ? string{
+        return $this->nombreEmpresa;
+    }
+
+    public function setNombreEmpresa(string $nombreEmpresa){
+        $this->nombreEmpresa = $nombreEmpresa;
     }
 
     public function getTelefono() : ? string{
@@ -66,33 +81,18 @@ class Cliente{
         $this->email = $email;
     }
 
-    public function getUser() : ?string{
-        return $this->user;
+    public function getDomicilio() : ?string{
+        return $this->domicilio;
     }
 
-    public function setUser(string $user){
-        $this->user = $user;
+    public function setDomicilio(string $domicilio){
+        $this->domicilio = $domicilio;
     }
 
-    public function getContrasenia() : ?string{
-        return $this->contrasenia;
-    }
-
-    public function setContrasenia(string $contrasenia){
-        $this->contrasenia = $contrasenia;
-    }
-
-    public function getPrivilegio() : ?int{
-        return $this->privilegio;
-    }
-
-    public function setPrivilegio(int $privilegio){
-        $this->privilegio = $privilegio;
-    }
 
     public function Cantidad(){
         try{
-            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadUsuario FROM usuario;");
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadUsuario FROM clientes;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -112,7 +112,7 @@ class Cliente{
 
     public function Listar(){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM usuario;");
+            $consulta = $this->pdo->prepare("SELECT * FROM clientes;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -122,68 +122,68 @@ class Cliente{
 
     public function Obtener($nombre){
         try{
-            $consulta = $this ->pdo ->prepare("SELECT * FROM usuario WHERE id=?;");
+            $consulta = $this ->pdo ->prepare("SELECT * FROM clientes WHERE idClientes=?;");
             $consulta->execute(array($nombre));
-            $reUsuario=$consulta->fetch(PDO::FETCH_OBJ);
-            $usuarioSQL=new Usuario();
+            $reCliente=$consulta->fetch(PDO::FETCH_OBJ);
+            $clienteSQL=new Usuario();
 
-            $usuarioSQL->setId($reUsuario->id);
-            $usuarioSQL->setRfc($reUsuario->rfc);
-            $usuarioSQL->setNombre($reUsuario->nombre);
-            $usuarioSQL->setApellido($reUsuario->apellido);
-            $usuarioSQL->setTelefono($reUsuario->telefono);
-            $usuarioSQL->setEmail($reUsuario->email);
-            $usuarioSQL->setUser($reUsuario->user);
-            $usuarioSQL->setContrasenia($reUsuario->contrasenia);
-            $usuarioSQL->setPrivilegio($reUsuario->privilegio);
+            $clienteSQL->setId($reCliente->id);
+            $clienteSQL->setRfc($reCliente->rfc);
+            $clienteSQL->setNombre($reCliente->nombre);
+            $clienteSQL->setApellidoP($reCliente->apellidoP);
+            $clienteSQL->setApellidoM($reCliente->apellidoM);
+            $clienteSQL->setNombreEmpresa($reCliente->nombreEmpresa);
+            $clienteSQL->setTelefono($reCliente->telefono);
+            $clienteSQL->setEmail($reCliente->email);
+            $clienteSQL->setDomicilio($reCliente->domicilio);
 
-            return $usuarioSQL;
+            return $clienteSQL;
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
 
-    public function Insertar(Usuario $usuarioSQL){
+    public function Insertar(Cliente $clienteSQL){
         try{
-            $consulta = "INSERT INTO usuario(rfc, nombre, apellido, telefono, email, user, contrasenia, privilegio) 
+            $consulta = "INSERT INTO clientes(rfc, nombreCliente, apellidoP, apellidoM, nombreEmpresa, telefono, email, domicilio) 
             VALUES (?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
-                $usuarioSQL->getRfc(),
-                $usuarioSQL->getNombre(),
-                $usuarioSQL->getApellido(),
-                $usuarioSQL->getTelefono(),
-                $usuarioSQL->getEmail(),
-                $usuarioSQL->getUser(),
-                $usuarioSQL->getContrasenia(),
-                $usuarioSQL->getPrivilegio()
+                $clienteSQL->getRfc(),
+                $clienteSQL->getNombre(),
+                $clienteSQL->getApellidoP(),
+                $clienteSQL->getApellidoM(),
+                $clienteSQL->getNombreEmpresa(),
+                $clienteSQL->getTelefono(),
+                $clienteSQL->getEmail(),
+                $clienteSQL->getDomicilio()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
 
-    public function Actualizar(Usuario $usuarioSQL){
+    public function Actualizar(Cliente $clienteSQL){
         try{
-            $consulta = "UPDATE usuario SET
+            $consulta = "UPDATE clientes SET
             rfc=?,
-            nombre=?,
-            apellido=?,
+            nombreCliente=?,
+            apellidoP=?,
+            apellidoM=?,
+            nombreEmpresa=?,
             telefono=?,
             email=?,
-            user=?,
-            contrasenia=?,
-            privilegio=?
-            WHERE id=?;";
+            domicilio=?
+            WHERE idClientes=?;";
             $this->pdo->prepare($consulta)->execute(array(
-                $usuarioSQL->getRfc(),
-                $usuarioSQL->getNombre(),
-                $usuarioSQL->getApellido(),
-                $usuarioSQL->getTelefono(),
-                $usuarioSQL->getEmail(),
-                $usuarioSQL->getUser(),
-                $usuarioSQL->getContrasenia(),
-                $usuarioSQL->getPrivilegio(),
-                $usuarioSQL->getId()
+                $clienteSQL->getRfc(),
+                $clienteSQL->getNombre(),
+                $clienteSQL->getApellidoP(),
+                $clienteSQL->getApellidoM(),
+                $clienteSQL->getNombreEmpresa(),
+                $clienteSQL->getTelefono(),
+                $clienteSQL->getEmail(),
+                $clienteSQL->getDomicilio(),
+                $clienteSQL->getId()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
@@ -192,7 +192,7 @@ class Cliente{
 
     public function Eliminar($id){
         try{
-            $consulta = "DELETE FROM usuario WHERE id=?;";
+            $consulta = "DELETE FROM clientes WHERE idClientes=?;";
             $this->pdo->prepare($consulta)->execute(array($id));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());

@@ -18,9 +18,9 @@ class ClienteControlador{
 
     public function FormCrear(){
         $titulo="Registrar";
-        $u = new Cliente();
+        $clienteSQL = new Cliente();
         if(isset($_GET['id'])){
-            $u=$this->modelo->Obtener($_GET['id']);
+            $clienteSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
@@ -30,21 +30,21 @@ class ClienteControlador{
     }
 
     public function Guardar(){
-        $u = new Cliente();
+        $clienteSQL = new Cliente();
 
-        $u->setId(intval($_POST['id']));
-        $u->setRfc($_POST['rfc']);
-        $u->setNombre($_POST['nombre']);
-        $u->setApellido($_POST['apellido']);
-        $u->setTelefono($_POST['telefono']);
-        $u->setEmail($_POST['email']);
-        $u->setUser($_POST['user']);
-        $u->setContrasenia($_POST['contrasenia']);
-        $u->setPrivilegio(intval($_POST['privilegio']));
+        $clienteSQL->setId(intval($_POST['idClientes']));
+        $clienteSQL->setRfc($_POST['rfc']);
+        $clienteSQL->setNombre($_POST['nombreCliente']);
+        $clienteSQL->setApellidoP($_POST['apellidoP']);
+        $clienteSQL->setApellidoM($_POST['apellidoM']);
+        $clienteSQL->setNombreEmpresa($_POST['nombreEmpresa']);
+        $clienteSQL->setTelefono($_POST['telefono']);
+        $clienteSQL->setEmail($_POST['email']);
+        $clienteSQL->setDomicilio($_POST['domicilio']);
 
-        $u->getId() > 0 ?
-        $this->modelo->Actualizar($u) :
-        $this->modelo->Insertar($u);
+        $clienteSQL->getId() > 0 ?
+        $this->modelo->Actualizar($clienteSQL) :
+        $this->modelo->Insertar($clienteSQL);
         header("location:?c=cliente");
     }
     

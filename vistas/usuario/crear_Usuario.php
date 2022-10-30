@@ -23,42 +23,42 @@
                   <legend><?=$titulo?> Usuario</legend>
                     <div class="form-group">
                       <div class="col-lg-10">
-                        <input class="form-control" name="id" type="hidden" value="<?=$u->getId()?>">
+                        <input class="form-control" name="id" type="hidden" value="<?=$usuarioSQL->getId()?>">
                       </div>
 
                       <label class="col-md-3" for="Rfc">RFC</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="rfc" type="text" placeholder="RFC" value="<?=$u->getRfc()?>">
+                          <input class="form-control" name="rfc" type="text" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
                       
                       <label class="col-md-3 " for="Nombre">Nombre</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombre" type="text" placeholder="Nombre" value="<?=$u->getNombre()?>">
+                          <input class="form-control" name="nombre" type="text" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>">
                         </div>
 
                       <label class="col-md-3 " for="Apellido">Apellido</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="apellido" type="text" placeholder="Apellido" value="<?=$u->getApellido()?>">
+                          <input class="form-control" name="apellido" type="text" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>">
                         </div>
 
                       <label class="col-md-3 " for="Telefono"># de Telefono</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="telefono" type="text" placeholder="Telefono" value="<?=$u->getTelefono()?>">
+                          <input class="form-control" name="telefono" type="text" placeholder="Telefono" value="<?=$usuarioSQL->getTelefono()?>">
                         </div>
 
                       <label class="col-md-3" for="Email">Correo electronico</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="email" type="text" placeholder="email" value="<?=$u->getEmail()?>">
+                          <input class="form-control" name="email" type="text" placeholder="email" value="<?=$usuarioSQL->getEmail()?>">
                         </div>
 
                       <label class="col-md-3" for="User">Usuario</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="user" type="text" placeholder="Usuario" value="<?=$u->getUser()?>">
+                          <input class="form-control" name="user" type="text" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>">
                         </div>
 
                       <label class="col-md-3" for="Contrasenia">Contraseña</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="contrasenia" type="password" placeholder="Contraseña" value="<?=$u->getContrasenia()?>">
+                          <input class="form-control" name="contrasenia" type="password" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>">
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>

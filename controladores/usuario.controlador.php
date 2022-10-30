@@ -18,9 +18,9 @@ class UsuarioControlador{
 
     public function FormCrear(){
         $titulo="Registrar";
-        $u = new Usuario();
+        $usuarioSQL = new Usuario();
         if(isset($_GET['id'])){
-            $u=$this->modelo->Obtener($_GET['id']);
+            $usuarioSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
@@ -30,21 +30,21 @@ class UsuarioControlador{
     }
 
     public function Guardar(){
-        $u = new Usuario();
+        $usuarioSQL = new Usuario();
 
-        $u->setId(intval($_POST['id']));
-        $u->setRfc($_POST['rfc']);
-        $u->setNombre($_POST['nombre']);
-        $u->setApellido($_POST['apellido']);
-        $u->setTelefono($_POST['telefono']);
-        $u->setEmail($_POST['email']);
-        $u->setUser($_POST['user']);
-        $u->setContrasenia($_POST['contrasenia']);
-        $u->setPrivilegio(intval($_POST['privilegio']));
+        $usuarioSQL->setId(intval($_POST['id']));
+        $usuarioSQL->setRfc($_POST['rfc']);
+        $usuarioSQL->setNombre($_POST['nombre']);
+        $usuarioSQL->setApellido($_POST['apellido']);
+        $usuarioSQL->setTelefono($_POST['telefono']);
+        $usuarioSQL->setEmail($_POST['email']);
+        $usuarioSQL->setUser($_POST['user']);
+        $usuarioSQL->setContrasenia($_POST['contrasenia']);
+        $usuarioSQL->setPrivilegio(intval($_POST['privilegio']));
 
-        $u->getId() > 0 ?
-        $this->modelo->Actualizar($u) :
-        $this->modelo->Insertar($u);
+        $usuarioSQL->getId() > 0 ?
+        $this->modelo->Actualizar($usuarioSQL) :
+        $this->modelo->Insertar($usuarioSQL);
         header("location:?c=usuario");
     }
     
