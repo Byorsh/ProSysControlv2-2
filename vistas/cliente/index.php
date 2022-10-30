@@ -32,18 +32,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($this->modelo->Listar() as $u):?>
+                    <?php foreach($this->modelo->Listar() as $clienteSQL):?>
                     <tr>
-                      <td><?=$u->idClientes?></td>
-                      <td><?=$u->rfc?></td>
-                      <td><?=$u->nombreCliente?></td>
-                      <td><?=$u->apellidoP?></td>
-                      <td><?=$u->nombreEmpresa?></td>
-                      <td><?=$u->telefono?></td>
-                      <td><?=$u->email?></td>
-                      <td><?=$u->domicilio?></td>
+                      <td><?=$clienteSQL->idClientes?></td>
+                      <td><?=$clienteSQL->rfc?></td>
+                      <td><?=$clienteSQL->nombreCliente?></td>
+                      <td><?=$clienteSQL->apellidoP?></td>
+                      <td><?=$clienteSQL->nombreEmpresa?></td>
+                      <td><?=$clienteSQL->telefono?></td>
+                      <td><?=$clienteSQL->email?></td>
+                      <td><?=$clienteSQL->domicilio?></td>
                       
-                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$u->id?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$u->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash"></i></a></td>
                     </tr>
                     <?php endforeach;?>
                   </tbody>

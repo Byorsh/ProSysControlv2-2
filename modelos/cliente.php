@@ -125,11 +125,11 @@ class Cliente{
             $consulta = $this ->pdo ->prepare("SELECT * FROM clientes WHERE idClientes=?;");
             $consulta->execute(array($nombre));
             $reCliente=$consulta->fetch(PDO::FETCH_OBJ);
-            $clienteSQL=new Usuario();
+            $clienteSQL=new Cliente();
 
-            $clienteSQL->setId($reCliente->id);
+            $clienteSQL->setId($reCliente->idClientes);
             $clienteSQL->setRfc($reCliente->rfc);
-            $clienteSQL->setNombre($reCliente->nombre);
+            $clienteSQL->setNombre($reCliente->nombreCliente);
             $clienteSQL->setApellidoP($reCliente->apellidoP);
             $clienteSQL->setApellidoM($reCliente->apellidoM);
             $clienteSQL->setNombreEmpresa($reCliente->nombreEmpresa);
