@@ -7,17 +7,24 @@
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <?php
+    require_once "modelos/database.php";
+    session_start();
+    $usuario = $_SESSION['usuario'];
+    ?>
     <title>ProSysControl</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     -->
+    
+    
   </head>
   <body class="sidebar-mini fixed">
     <div class="wrapper">
       <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="home.php">ProSysControl</a>
+      <header class="main-header hidden-print"><a class="logo" href="home.php">ProSysControl </a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->
@@ -54,8 +61,8 @@
           <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="assets/css/usuario.png" alt="User Image"></div>
             <div class="pull-left info">
-              <p>John Doe</p>
-              <p class="designation">Frontend Developer</p>
+              <p><?php echo($_SESSION['usuario'])?></p>
+              <p class="designation"><?php echo($_SESSION['tipoUsuario'])?></p>
             </div>
           </div>
           <!-- Sidebar Menu-->

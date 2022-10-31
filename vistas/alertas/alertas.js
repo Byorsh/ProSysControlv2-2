@@ -27,21 +27,14 @@ function alertaLogin(tipoAlerta){
             dangerMode: true,
         })
     }
+    if(tipoAlerta=="Inicio de sesion error"){
+        swal({
+            title:"Atencion",
+            text:"Los datos no coinciden con ninguna cuenta",
+            icon:"warning",
+            buttons:false,
+            dangerMode: true,
+        })
+    }
     
-    /*swal({
-        title:"Atencion",
-        text:"Faltan campos por llenar",
-        icon:"warning",
-        buttons:false,
-        dangerMode: true,
-    })
-    .then((willDelete)=>{
-        if(willDelete){
-            swal("C mamut", {
-                icon: "success",
-            });
-        }else{
-            swal("c paput");
-        }
-    }); */
 }

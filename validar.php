@@ -2,9 +2,6 @@
 $usuario=$_POST['usuario'];
 $password=$_POST['contraseña'];
 
-session_start();
-$_SESSION['usuario'] = $usuario;
-
 include('modelos/database.php');
 include('modelos/regex.php');
 $regex = new Regex;
@@ -13,13 +10,29 @@ $password=$regex->limpiarCampo($password);
 
 $consulta = "SELECT * FROM usuario WHERE user = '$usuario' and contrasenia ='$password'";
 $resultado=mysqli_query($conexion, $consulta);
+$arr = mysqli_fetch_array($resultado);
 
 $filas=mysqli_num_rows($resultado);
 session_abort();
 session_start();
 $_SESSION['usuario']=$usuario;
 
+
+
 if($filas){
+    switch($arr[8]){
+        case 0:
+            $_SESSION['tipoUsuario']='Admin';
+            break;
+        case 1:
+            $_SESSION['tipoUsuario']='Secretario';
+            break;
+        case 2:
+            $_SESSION['tipoUsuario']='Tecnico';
+            break;
+
+    
+    }
     $_SESSION;    
     header("location:home.php");
 }
@@ -40,10 +53,9 @@ else{
         }
     }
     else{
-        ?>
-    <h1 class="bad">ERROR EN LA AUTENTIFICACION</h1>
-    <?php
-    include("index.php");
+        include("index.php");
+        $regex->sweet_alerts("Inicio de sesion error");
+        
     }
 }
 mysqli_free_result($resultado);

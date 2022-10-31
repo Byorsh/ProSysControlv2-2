@@ -42,43 +42,8 @@ class Regex{
             console.log('<?php echo($datos); ?>'+'a');
             console.log(x);
             alertaLogin('<?php echo($datos); ?>');
-            /*
-            function enviarAlerta(){
-                swal({
-                    title:"Atencion",
-                    text:"Faltan campos por llenar",
-                    icon:"warning",
-                    buttons:false,
-                    dangerMode: true,
-                })
-            }
-            enviarAlerta();
-            */
         </script>
-
         <?php
-        
-        /*if($datos['Alerta']=="simple"){
-            $alerta="
-                <script>
-                    swal(
-                        '".$datos['Titulo']."',
-                        '".$datos['Texto']."',
-                        '".$datos['Tipo']."'
-                    );
-                </script>
-            ";
-        }elseif($datos['Alert']=="recargar"){
-            $alerta="
-                <script>
-                    swal(
-                        '".$datos['Titulo']."',
-                        '".$datos['Texto']."',
-                        '".$datos['Tipo']."'
-                    );
-                </script>
-            ";
-        }*/
     }
 
 }
