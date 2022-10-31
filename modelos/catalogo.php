@@ -116,7 +116,7 @@ class Catalogo{
             $consulta = $this ->pdo ->prepare("SELECT * FROM catalogo WHERE idProducto=?;");
             $consulta->execute(array($nombre));
             $reCatalogo=$consulta->fetch(PDO::FETCH_OBJ);
-            $catalogoSQL=new Cliente();
+            $catalogoSQL=new Catalogo();
 
             $catalogoSQL->setId($reCatalogo->idProducto);
             $catalogoSQL->setDescripcion($reCatalogo->descripcion);
@@ -169,7 +169,8 @@ class Catalogo{
                 $catalogoSQL->getCantidad(),
                 $catalogoSQL->getPrecioCompra(),
                 $catalogoSQL->getPrecioVenta(),
-                $catalogoSQL->getIva()
+                $catalogoSQL->getIva(),
+                $catalogoSQL->getId()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());

@@ -7,7 +7,7 @@ class CatalogoControlador{
     private $modelo;
 
     public function __CONSTRUCT(){
-        $this->modelo = new catalogo;
+        $this->modelo = new Catalogo;
     }
 
     public function Inicio(){
@@ -18,9 +18,9 @@ class CatalogoControlador{
 
     public function FormCrear(){
         $titulo="Registrar";
-        $clienteSQL = new Cliente();
+        $catalogoSQL = new Catalogo();
         if(isset($_GET['id'])){
-            $clienteSQL=$this->modelo->Obtener($_GET['id']);
+            $catalogoSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
@@ -30,21 +30,20 @@ class CatalogoControlador{
     }
 
     public function Guardar(){
-        $clienteSQL = new Catalogo();
+        $catalogoSQL = new Catalogo();
 
-        $clienteSQL->setId(intval($_POST['idClientes']));
-        $clienteSQL->setRfc($_POST['rfc']);
-        $clienteSQL->setNombre($_POST['nombreCliente']);
-        $clienteSQL->setApellidoP($_POST['apellidoP']);
-        $clienteSQL->setApellidoM($_POST['apellidoM']);
-        $clienteSQL->setNombreEmpresa($_POST['nombreEmpresa']);
-        $clienteSQL->setTelefono($_POST['telefono']);
-        $clienteSQL->setEmail($_POST['email']);
-        $clienteSQL->setDomicilio($_POST['domicilio']);
+        $catalogoSQL->setId(intval($_POST['idProducto']));
+        $catalogoSQL->setDescripcion($_POST['descripcion']);
+        $catalogoSQL->setMarca($_POST['marca']);
+        $catalogoSQL->setModelo($_POST['modelo']);
+        $catalogoSQL->setCantidad(intval($_POST['cantidad']));
+        $catalogoSQL->setPrecioCompra(floatval($_POST['precioCompra']));
+        $catalogoSQL->setPrecioVenta(floatval($_POST['precioVenta']));
+        $catalogoSQL->setIva(intval($_POST['iva']));
 
-        $clienteSQL->getId() > 0 ?
-        $this->modelo->Actualizar($clienteSQL) :
-        $this->modelo->Insertar($clienteSQL);
+        $catalogoSQL->getId() > 0 ?
+        $this->modelo->Actualizar($catalogoSQL) :
+        $this->modelo->Insertar($catalogoSQL);
         header("location:?c=catalogo");
     }
     

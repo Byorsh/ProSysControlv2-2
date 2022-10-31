@@ -18,52 +18,47 @@
         <div class="row">
           
         <div class="well bs-component">
-            <form class="form-horizontal" method="POST" action="?c=cliente&a=Guardar">
+            <form class="form-horizontal" method="POST" action="?c=catalogo&a=Guardar">
             <fieldset>
-                <legend><?=$titulo?> Cliente</legend>
+                <legend><?=$titulo?> Articulo</legend>
                 <div class="form-group">
                     <div class="col-lg-10">
-                    <input class="form-control" name="idClientes" type="hidden" value="<?=$clienteSQL->getId()?>">
+                    <input class="form-control" name="idProducto" type="hidden" value="<?=$catalogoSQL->getId()?>">
                     </div>
 
-                    <label class="col-md-3" for="Rfc">RFC</label>
+                    <label class="col-md-3" for="Descripcion">Descripcion</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="rfc" type="text" placeholder="RFC" value="<?=$clienteSQL->getRfc()?>">
+                        <input class="form-control" name="descripcion" type="text" placeholder="Descripcion" value="<?=$catalogoSQL->getDescripcion()?>">
                     </div>
                     
-                    <label class="col-md-3 " for="NombreCliente">Nombre</label>
+                    <label class="col-md-3 " for="Marca">Marca</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="nombreCliente" type="text" placeholder="Nombre" value="<?=$clienteSQL->getNombre()?>">
+                        <input class="form-control" name="marca" type="text" placeholder="Marca" value="<?=$catalogoSQL->getMarca()?>">
                     </div>
 
-                    <label class="col-md-3 " for="ApellidoP">Apellido Paterno</label>
+                    <label class="col-md-3 " for="Modelo">Modelo</label>
                     <div class="col-lg-10">
-                    <input class="form-control" name="apellidoP" type="text" placeholder="Apellido" value="<?=$clienteSQL->getApellidoP()?>">
+                    <input class="form-control" name="modelo" type="text" placeholder="Modelo" value="<?=$catalogoSQL->getModelo()?>">
                     </div>
 
-                    <label class="col-md-3 " for="ApellidoM">Apellido Materno</label>
+                    <label class="col-md-3 " for="Cantidad">Cantidad</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="apellidoM" type="text" placeholder="Apellido" value="<?=$clienteSQL->getApellidoM()?>">
+                        <input class="form-control" name="cantidad" type="text" placeholder="Cantidad" value="<?=$catalogoSQL->getCantidad()?>">
                     </div>
 
-                    <label class="col-md-3 " for="NombreEmpresa">Nombre de la empresa</label>
+                    <label class="col-md-3 " for="PrecioCompra">Precio de compra</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="nombreEmpresa" type="text" placeholder="Telefono" value="<?=$clienteSQL->getNombreEmpresa()?>">
+                        <input class="form-control" name="precioCompra" type="text" placeholder="Precio de compra" value="<?=$catalogoSQL->getPrecioCompra()?>">
                     </div>
 
-                    <label class="col-md-3" for="Telefono">Telefono</label>
+                    <label class="col-md-3" for="PrecioVenta">Precio de venta</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="telefono" type="text" placeholder="email" value="<?=$clienteSQL->getTelefono()?>">
+                        <input class="form-control" name="precioVenta" type="text" placeholder="Precio de venta" value="<?=$catalogoSQL->getPrecioVenta()?>">
                     </div>
 
-                    <label class="col-md-3" for="Email">Email</label>
+                    <label class="col-md-3" for="Iva">Iva</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="email" type="text" placeholder="Usuario" value="<?=$clienteSQL->getEmail()?>">
-                    </div>
-
-                    <label class="col-md-3" for="Domicilio">Domicilio</label>
-                    <div class="col-lg-10">
-                    <input class="form-control" name="domicilio" type="text" placeholder="Usuario" value="<?=$clienteSQL->getDomicilio()?>">
+                        <input class="form-control" name="iva" type="text" placeholder="Iva" value="<?=$catalogoSQL->getIva()?>">
                     </div>
 
                     <div>
