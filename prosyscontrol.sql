@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2022 a las 01:56:16
+-- Tiempo de generación: 02-11-2022 a las 22:11:34
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -44,7 +44,8 @@ CREATE TABLE `catalogo` (
 
 INSERT INTO `catalogo` (`idProducto`, `descripcion`, `marca`, `modelo`, `cantidad`, `precioCompra`, `precioVenta`, `iva`) VALUES
 (2, 'pasta termica coolmaster', 'coolmaster', 'pasta1', 50, 120.00, 200.00, 16),
-(3, 'cable ethernet 5m', 'cisco', 'c001', 100, 150.00, 320.00, 16);
+(3, 'cable ethernet 5m', 'cisco', 'c001', 100, 150.00, 320.00, 16),
+(5, 'Aire comprimido chico', '', '', 15, 100.00, 180.00, 16);
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idClientes`, `rfc`, `nombreCliente`, `apellidoP`, `apellidoM`, `nombreEmpresa`, `telefono`, `email`, `domicilio`) VALUES
-(1, 'oinsopvdinop', 'nombrePrueba', 'aPrueba', 'aPrueba', 'nombreEmpresa prueba', '13612347', 'correoPrueba', 'domicilioPrueba');
+(1, 'oinsopvdinop', 'nombrePrueba', 'aPrueba', 'aPrueba', 'nombreEmpresa prueba', '13612347', 'correoPrueba', 'domicilioPrueba'),
+(3, '', 'Alfonso Prueba', 'Martilero', '', '', '6898976879', 'hola@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -129,9 +131,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `rfc`, `nombre`, `apellido`, `telefono`, `email`, `user`, `contrasenia`, `privilegio`) VALUES
-(1, 'rfcPrueba', 'Jorge Prueba', 'Barraza Prueba', '6331128767', 'correo@gmail.com', 'JurgeB', '12345', '1'),
-(3, '32829385', 'dvosihov', 'nvosijdvq', '432623652', 'baiuso9d@yopmail.com', 'Jorge2', 'DVSKBIVD', '0'),
-(4, 'OICY9909301892637891', 'Julian360Q@', 'Mesas', 'kjdklajsdklasjd', 'elchoskua@gmail.com', 'espantaviejas123', '12345h', '0');
+(1, '', 'Jorge Prueba', 'Barraza Prueba', '6331128767', 'correo@gmail.com', 'JorgeB', '1234567', '1'),
+(3, '', 'dvosihov', 'nvosijdvq', '6221238987', 'baiuso9d@yopmail.com', 'Jorge2', 'DVSKBIVD', '3'),
+(4, '', 'Julian', 'Mesas', '1234567890', 'elchoskua@gmail.com', 'Julian123', '1234567', '2');
 
 --
 -- Índices para tablas volcadas
@@ -175,13 +177,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `catalogo`
 --
 ALTER TABLE `catalogo`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idClientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idClientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

@@ -28,37 +28,37 @@
 
                       <label class="col-md-3" for="Rfc">RFC</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="rfc" type="text" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
+                          <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
                       
                       <label class="col-md-3 " for="Nombre">Nombre</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombre" type="text" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>">
+                          <input class="form-control" name="nombre" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>">
                         </div>
 
                       <label class="col-md-3 " for="Apellido">Apellido</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="apellido" type="text" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>">
+                          <input class="form-control" name="apellido" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>">
                         </div>
 
-                      <label class="col-md-3 " for="Telefono"># de Telefono</label>
+                      <label class="col-md-3 " for="Telefono">Telefono</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="telefono" type="text" placeholder="Telefono" value="<?=$usuarioSQL->getTelefono()?>">
+                          <input class="form-control" name="telefono" type="text" placeholder="Telefono" pattern="[0-9]{10,13}" value="<?=$usuarioSQL->getTelefono()?>">
                         </div>
 
                       <label class="col-md-3" for="Email">Correo electronico</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="email" type="text" placeholder="email" value="<?=$usuarioSQL->getEmail()?>">
+                          <input class="form-control" name="email" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$usuarioSQL->getEmail()?>">
                         </div>
 
                       <label class="col-md-3" for="User">Usuario</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="user" type="text" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>">
+                          <input class="form-control" name="user" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>">
                         </div>
 
                       <label class="col-md-3" for="Contrasenia">Contraseña</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="contrasenia" type="password" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>">
+                          <input class="form-control" name="contrasenia" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>">
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
@@ -69,11 +69,11 @@
                       
                       <label class="col-md-3" for="Privilegio">Nivel de privilegio</label>
                         <div class="col-lg-10">
-                          <select class="form-control" name="select">
+                          <select class="form-control" name="privilegio" required="">
                             <option value selected disabled>Seleccione una opcion</option>
-                            <option value="1">Control Total</option>
-                            <option value="2">Edicion</option>
-                            <option value="3">Registrar</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Tecnico</option>
+                            <option value="3">Secretaria</option>
                             
                           </select><br>
                           

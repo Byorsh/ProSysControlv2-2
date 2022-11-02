@@ -1,6 +1,7 @@
 <?php
 
 require_once "modelos/usuario.php";
+include('modelos/regex.php');
 
 class UsuarioControlador{
     
@@ -42,10 +43,26 @@ class UsuarioControlador{
         $usuarioSQL->setContrasenia($_POST['contrasenia']);
         $usuarioSQL->setPrivilegio(intval($_POST['privilegio']));
 
-        $usuarioSQL->getId() > 0 ?
-        $this->modelo->Actualizar($usuarioSQL) :
-        $this->modelo->Insertar($usuarioSQL);
-        header("location:?c=usuario");
+        if($usuarioSQL->verificarAtributos($usuarioSQL)){
+            $regex = new Regex;
+            
+            //include("../vistas/usuario/index.php");
+            //$direccion="./home.php?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();
+            $direccion="location:?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();
+            //include($direccion);
+            $regex->sweet_alerts("faltan campos");
+            header($direccion);
+            $regex->sweet_alerts("faltan campos");
+            //header("location:?c=usuario");
+
+        }
+        else{
+            $usuarioSQL->getId() > 0 ?
+            $this->modelo->Actualizar($usuarioSQL) :
+            $this->modelo->Insertar($usuarioSQL);
+            header("location:?c=usuario");
+        }
+
     }
     
     public function Borrar(){

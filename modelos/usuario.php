@@ -89,6 +89,10 @@ class Usuario{
     public function setPrivilegio(int $privilegio){
         $this->privilegio = $privilegio;
     }
+    public function verificarAtributos(Usuario $usuarioSQL){
+        if($usuarioSQL->getPrivilegio()==null){return true;}
+        if($usuarioSQL->getNombre()==null){return true;}
+    }
 
     public function Cantidad(){
         try{

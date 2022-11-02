@@ -28,42 +28,42 @@
 
                       <label class="col-md-3" for="Rfc">RFC</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="rfc" type="text" placeholder="RFC" value="<?=$clienteSQL->getRfc()?>">
+                          <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$clienteSQL->getRfc()?>">
                         </div>
                       
                       <label class="col-md-3 " for="NombreCliente">Nombre</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombreCliente" type="text" placeholder="Nombre" value="<?=$clienteSQL->getNombre()?>">
+                          <input class="form-control" name="nombreCliente" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$clienteSQL->getNombre()?>" required="">
                         </div>
 
                       <label class="col-md-3 " for="ApellidoP">Apellido Paterno</label>
                         <div class="col-lg-10">
-                        <input class="form-control" name="apellidoP" type="text" placeholder="Apellido" value="<?=$clienteSQL->getApellidoP()?>">
+                        <input class="form-control" name="apellidoP" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$clienteSQL->getApellidoP()?>" required="">
                         </div>
 
                         <label class="col-md-3 " for="ApellidoM">Apellido Materno</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="apellidoM" type="text" placeholder="Apellido" value="<?=$clienteSQL->getApellidoM()?>">
+                          <input class="form-control" name="apellidoM" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$clienteSQL->getApellidoM()?>" >
                         </div>
 
                       <label class="col-md-3 " for="NombreEmpresa">Nombre de la empresa</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombreEmpresa" type="text" placeholder="Telefono" value="<?=$clienteSQL->getNombreEmpresa()?>">
+                          <input class="form-control" name="nombreEmpresa" type="text" placeholder="NombreEmpresa" value="<?=$clienteSQL->getNombreEmpresa()?>" >
                         </div>
 
                       <label class="col-md-3" for="Telefono">Telefono</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="telefono" type="text" placeholder="email" value="<?=$clienteSQL->getTelefono()?>">
+                          <input class="form-control" name="telefono" type="text" pattern="[0-9]{10,13}" placeholder="Telefono" value="<?=$clienteSQL->getTelefono()?>" required="">
                         </div>
 
                       <label class="col-md-3" for="Email">Email</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="email" type="text" placeholder="Usuario" value="<?=$clienteSQL->getEmail()?>">
+                          <input class="form-control" name="email" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$clienteSQL->getEmail()?>" required="">
                         </div>
 
                       <label class="col-md-3" for="Domicilio">Domicilio</label>
                         <div class="col-lg-10">
-                        <input class="form-control" name="domicilio" type="text" placeholder="Usuario" value="<?=$clienteSQL->getDomicilio()?>">
+                        <input class="form-control" name="domicilio" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="Domicilio" value="<?=$clienteSQL->getDomicilio()?>">
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>

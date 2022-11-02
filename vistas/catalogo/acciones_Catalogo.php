@@ -28,38 +28,46 @@
 
                     <label class="col-md-3" for="Descripcion">Descripcion</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="descripcion" type="text" placeholder="Descripcion" value="<?=$catalogoSQL->getDescripcion()?>">
+                        <input class="form-control" name="descripcion"  type="text" placeholder="Descripcion" value="<?=$catalogoSQL->getDescripcion()?>" required="">
                     </div>
                     
                     <label class="col-md-3 " for="Marca">Marca</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="marca" type="text" placeholder="Marca" value="<?=$catalogoSQL->getMarca()?>">
+                        <input class="form-control" name="marca" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]" type="text" placeholder="Marca" value="<?=$catalogoSQL->getMarca()?>">
                     </div>
 
                     <label class="col-md-3 " for="Modelo">Modelo</label>
                     <div class="col-lg-10">
-                    <input class="form-control" name="modelo" type="text" placeholder="Modelo" value="<?=$catalogoSQL->getModelo()?>">
+                    <input class="form-control" name="modelo" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]" placeholder="Modelo" value="<?=$catalogoSQL->getModelo()?>">
                     </div>
 
                     <label class="col-md-3 " for="Cantidad">Cantidad</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="cantidad" type="text" placeholder="Cantidad" value="<?=$catalogoSQL->getCantidad()?>">
+                        <input class="form-control" name="cantidad" type="text" pattern="[0-9]{1,3}" placeholder="Cantidad" value="<?=$catalogoSQL->getCantidad()?>" required="">
                     </div>
 
                     <label class="col-md-3 " for="PrecioCompra">Precio de compra</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="precioCompra" type="text" placeholder="Precio de compra" value="<?=$catalogoSQL->getPrecioCompra()?>">
+                        <input class="form-control" name="precioCompra" type="text" pattern="[0-9.]{2,12}" placeholder="Precio de compra" value="<?=$catalogoSQL->getPrecioCompra()?>" required="">
                     </div>
 
                     <label class="col-md-3" for="PrecioVenta">Precio de venta</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="precioVenta" type="text" placeholder="Precio de venta" value="<?=$catalogoSQL->getPrecioVenta()?>">
+                        <input class="form-control" name="precioVenta" type="text" pattern="[0-9.]{2,12}" placeholder="Precio de venta" value="<?=$catalogoSQL->getPrecioVenta()?>" required="">
                     </div>
 
-                    <label class="col-md-3" for="Iva">Iva</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="iva" type="text" placeholder="Iva" value="<?=$catalogoSQL->getIva()?>">
-                    </div>
+                    <label class="col-md-3" for="Iva">IVA</label>
+                        <div class="col-lg-10">
+                          <select class="form-control" name="iva" required="">
+                            <option value selected disabled>Seleccione una opcion</option>
+                            <option value="16">16%</option>
+                            <option value="8">8%</option>
+                            <option value="0">0%</option>
+                            
+                          </select><br>
+                          
+                   
+                        </div>
 
                     <div>
                     <label class="col-md-3" for=""></label>

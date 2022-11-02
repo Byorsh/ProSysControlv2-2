@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <!--<div class="col-md-6">
             <div class="card">
               <h3 class="card-title">Getting Started</h3>
               <p>Vali is a free and responsive dashboard theme built with Bootstrap, Pug.js (templating) and SASS. It's fully customizable and modular. You don't need to add the code, you will not use.</p>
@@ -28,7 +28,7 @@
               <p>Go to <a href="http://pratikborsadiya.in/blog/vali-admin" target="_blank">documentation</a> for more details about integrating this theme with various frameworks.</p>
               <p>The source code is available on GitHub. If anything is missing or weird please report it as an issue on <a href="https://github.com/pratikborsadiya/vali-admin" target="_blank">GitHub</a>. If you want to contribute to this theme pull requests are always welcome.</p>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
