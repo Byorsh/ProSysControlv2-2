@@ -20,7 +20,7 @@
             <div class="well bs-component">
               <form class="form-horizontal" method="POST" action="?c=cliente&a=Guardar">
                 <fieldset>
-                  <legend><?=$titulo?> Cliente</legend>
+                <legend><?=$titulo?> Cliente</legend>
                     <div class="form-group">
                       <div class="col-lg-10">
                         <input class="form-control" name="idClientes" type="hidden" value="<?=$clienteSQL->getId()?>">
@@ -63,7 +63,7 @@
 
                       <label class="col-md-3" for="Domicilio">Domicilio</label>
                         <div class="col-lg-10">
-                        <input class="form-control" name="domicilio" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="Domicilio" value="<?=$clienteSQL->getDomicilio()?>">
+                        <input class="form-control" name="domicilio" type="text" pattern="{0,100}" placeholder="Domicilio" value="<?=$clienteSQL->getDomicilio()?>">
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
