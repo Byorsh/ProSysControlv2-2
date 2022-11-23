@@ -78,7 +78,7 @@
 
             <li class="treeview"><a href="#"><i class="fa fa-briefcase"></i><span>Taller</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-plus-square"></i> Agregar equipo al taller</a></li>
+                <li><a href="?c=taller&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar equipo al taller</a></li>
                 <li><a href="#"><i class="fa fa-plus-square"></i> Agregar servicio a domicilio</a></li>
                 <li><a href="#"><i class="fa fa-list"></i> Lista de equipos</a></li>
                 <li><a href="#"><i class="fa fa-list"></i> Lista de servicios</a></li>

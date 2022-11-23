@@ -1,16 +1,18 @@
 <?php
 
-class Catalogo{
+class Taller{
     private $udo;
 
     private $id;
-    private $descripcion;
+    private $idCliente;
+    private $ns;
     private $marca;
     private $modelo;
-    private $cantidad;
-    private $precioCompra;
-    private $precioVenta;
-    private $iva;  
+    private $observaciones;
+    private $accesorios;
+    private $fechaEntrada; 
+    private $horaEntrada; 
+    private $fechaPrometida;  
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -24,12 +26,20 @@ class Catalogo{
         $this->id = $id;
     }
 
-    public function getDescripcion() : ?string{
-        return $this->descripcion;
+    public function getIdCliente() : ?int{
+        return $this->idCliente;
     }
 
-    public function setDescripcion(string $descripcion){
-        $this->descripcion = $descripcion;
+    public function setIdCliente(int $idCliente){
+        $this->idCliente = $idCliente;
+    }
+
+    public function getNs() : ?string{
+        return $this->ns;
+    }
+
+    public function setNs(string $ns){
+        $this->ns = $ns;
     }
 
     public function getMarca() : ?string{
@@ -48,42 +58,50 @@ class Catalogo{
         $this->modelo = $modelo;
     }
 
-    public function getCantidad() : ?int{
-        return $this->cantidad;
+    public function getObservaciones() : ?string{
+        return $this->observaciones;
     }
 
-    public function setCantidad(int $cantidad){
-        $this->cantidad = $cantidad;
+    public function setObservaciones(string $observaciones){
+        $this->observaciones = $observaciones;
     }
 
-    public function getPrecioCompra() : ?float{
-        return $this->precioCompra;
+    public function getAccesorios() : ?string{
+        return $this->accesorios;
     }
 
-    public function setPrecioCompra(float $precioCompra){
-        $this->precioCompra = $precioCompra;
+    public function setAccesorios(string $accesorios){
+        $this->accesorios = $accesorios;
     }
 
-    public function getPrecioVenta() : ?float{
-        return $this->precioVenta;
+    public function getFechaEntrada() : ?string{
+        return $this->fechaEntrada;
     }
 
-    public function setPrecioVenta(float $precioVenta){
-        $this->precioVenta = $precioVenta;
+    public function setFechaEntrada(string $fechaEntrada){
+        $this->fechaEntrada = $fechaEntrada;
     }
 
-    public function getIva() : ?int{
-        return $this->iva;
+    public function getHoraEntrada() : ?string{
+        return $this->horaEntrada;
     }
 
-    public function setIva(int $iva){
-        $this->iva = $iva;
+    public function setHoraEntrada(string $horaEntrada){
+        $this->horaEntrada = $horaEntrada;
+    }
+
+    public function getFechaPrometida() : ?string{
+        return $this->fechaPrometida;
+    }
+
+    public function setFechaPrometida(string $fechaPrometida){
+        $this->fechaPrometida = $fechaPrometida;
     }
 
 
     public function Cantidad(){
         try{
-            $consulta = $this->pdo->prepare("SELECT SUM(cantidad) AS CantidadProductos FROM catalogo;");
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS Cantidad de Equipos en Taller FROM ordenreparacion;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -103,7 +121,7 @@ class Catalogo{
 
     public function Listar(){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM catalogo;");
+            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -113,64 +131,72 @@ class Catalogo{
 
     public function Obtener($nombre){
         try{
-            $consulta = $this ->pdo ->prepare("SELECT * FROM catalogo WHERE idProducto=?;");
+            $consulta = $this ->pdo ->prepare("SELECT * FROM ordenreparacion WHERE id=?;");
             $consulta->execute(array($nombre));
-            $reCatalogo=$consulta->fetch(PDO::FETCH_OBJ);
-            $catalogoSQL=new Catalogo();
+            $reTaller=$consulta->fetch(PDO::FETCH_OBJ);
+            $tallerSQL=new Taller();
 
-            $catalogoSQL->setId($reCatalogo->idProducto);
-            $catalogoSQL->setDescripcion($reCatalogo->descripcion);
-            $catalogoSQL->setMarca($reCatalogo->marca);
-            $catalogoSQL->setModelo($reCatalogo->modelo);
-            $catalogoSQL->setCantidad($reCatalogo->cantidad);
-            $catalogoSQL->setPrecioCompra($reCatalogo->precioCompra);
-            $catalogoSQL->setPrecioVenta($reCatalogo->precioVenta);
-            $catalogoSQL->setIva($reCatalogo->iva);
+            $tallerSQL->setId($reTaller->id);
+            $tallerSQL->setIdCliente($reTaller->idCliente);
+            $tallerSQL->setNs($reTaller->ns);
+            $tallerSQL->setMarca($reTaller->marca);
+            $tallerSQL->setModelo($reTaller->modelo);
+            $tallerSQL->setObservaciones($reTaller->observaciones);
+            $tallerSQL->setAccesorios($reTaller->accesorios);
+            $tallerSQL->setFechaEntrada($reTaller->fechaEntrada);
+            $tallerSQL->setHoraEntrada($reTaller->horaEntrada);
+            $tallerSQL->setFechaPrometida($reTaller->fechaPrometida);
 
-            return $catalogoSQL;
+            return $tallerSQL;
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
 
-    public function Insertar(Catalogo $catalogoSQL){
+    public function Insertar(Taller $tallerSQL){
         try{
-            $consulta = "INSERT INTO catalogo(descripcion, marca, modelo, cantidad, precioCompra, precioVenta, iva) 
-            VALUES (?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida) 
+            VALUES (?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
-                $catalogoSQL->getDescripcion(),
-                $catalogoSQL->getMarca(),
-                $catalogoSQL->getModelo(),
-                $catalogoSQL->getCantidad(),
-                $catalogoSQL->getPrecioCompra(),
-                $catalogoSQL->getPrecioVenta(),
-                $catalogoSQL->getIva()
+                $tallerSQL->getIdCliente(),
+                $tallerSQL->getNs(),
+                $tallerSQL->getMarca(),
+                $tallerSQL->getModelo(),
+                $tallerSQL->getObservaciones(),
+                $tallerSQL->getAccesorios(),
+                $tallerSQL->getFechaEntrada(),
+                $tallerSQL->getHoraEntrada(),
+                $tallerSQL->getFechaPrometida()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
 
-    public function Actualizar(Catalogo $catalogoSQL){
+    public function Actualizar(Taller $tallerSQL){
         try{
-            $consulta = "UPDATE catalogo SET
-            descripcion=?,
+            $consulta = "UPDATE ordenreparacion SET
+            idCliente=?,
+            ns=?,
             marca=?,
             modelo=?,
-            cantidad=?,
-            precioCompra=?,
-            precioVenta=?,
-            iva=?
-            WHERE idProducto=?;";
+            observaciones=?,
+            accesorios=?,
+            fechaEntrada=?,
+            horaEntrada=?,
+            fechaPrometida=?
+            WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
-                $catalogoSQL->getDescripcion(),
-                $catalogoSQL->getMarca(),
-                $catalogoSQL->getModelo(),
-                $catalogoSQL->getCantidad(),
-                $catalogoSQL->getPrecioCompra(),
-                $catalogoSQL->getPrecioVenta(),
-                $catalogoSQL->getIva(),
-                $catalogoSQL->getId()
+                $tallerSQL->getIdCliente(),
+                $tallerSQL->getNs(),
+                $tallerSQL->getMarca(),
+                $tallerSQL->getModelo(),
+                $tallerSQL->getObservaciones(),
+                $tallerSQL->getAccesorios(),
+                $tallerSQL->getFechaEntrada(),
+                $tallerSQL->getHoraEntrada(),
+                $tallerSQL->getFechaPrometida(),
+                $tallerSQL->getId()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
@@ -179,7 +205,7 @@ class Catalogo{
 
     public function Eliminar($id){
         try{
-            $consulta = "DELETE FROM catalogo WHERE idProducto=?;";
+            $consulta = "DELETE FROM ordenreparacion WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array($id));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());

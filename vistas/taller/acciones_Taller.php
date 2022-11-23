@@ -1,85 +1,150 @@
 <div class="content-wrapper">
-  <div class="page-title">
-    <div>
-      <h1><i class="fa fa-edit"></i><?=$titulo?> Articulo</h1>
-      <p>Modulo para <?=$titulo?> articulos</p>
-    </div>
-    <div>
-      <ul class="breadcrumb">
-        <li><i class="fa fa-home fa-lg"></i></li>
-        <li>Articulo</li>
-        <li><a href="#"><?=$titulo?> Articulo</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-edit"></i><?=$titulo?> Orden de Reparacion</h1>
+            <p>Modulo para <?=$titulo?> Orden de Reparacion<</p>
+          </div>
+          <div>
+            <ul class="breadcrumb">
+              <li><i class="fa fa-home fa-lg"></i></li>
+              <li>Orden de Reparacion</li>
+              <li><a href="#"><?=$titulo?> Orden de Reparacion</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="row">
-          
-        <div class="well bs-component">
-            <form class="form-horizontal" method="POST" action="?c=catalogo&a=Guardar">
-            <fieldset>
-                <legend><?=$titulo?> Articulo</legend>
-                <div class="form-group">
-                    <div class="col-lg-10">
-                    <input class="form-control" name="idProducto" type="hidden" value="<?=$catalogoSQL->getId()?>">
+          <div class="col-md-6">
+            <div class="card">
+              <h3 class="card-title">Datos del Cliente</h3>
+              <div class="card-body">
+                <form>
+                  <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input class="form-control" type="text" placeholder="Enter full name">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input class="form-control" type="email" placeholder="Enter email address">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Address</label>
+                    <textarea class="form-control" rows="4" placeholder="Enter your address"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Gender</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="gender">Male
+                      </label>
                     </div>
-
-                    <label class="col-md-3" for="Descripcion">Descripcion</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="descripcion"  type="text" pattern="{0,100}" placeholder="Descripcion" value="<?=$catalogoSQL->getDescripcion()?>" required="">
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="gender">Female
+                      </label>
                     </div>
-                    
-                    <label class="col-md-3 " for="Marca">Marca</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="marca"  type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" placeholder="Marca" value="<?=$catalogoSQL->getMarca()?>">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Identity Proof</label>
+                    <input class="form-control" type="file">
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">I accept the terms and conditions
+                      </label>
                     </div>
-
-                    <label class="col-md-3 " for="Modelo">Modelo</label>
-                    <div class="col-lg-10">
-                    <input class="form-control" name="modelo" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" placeholder="Modelo" value="<?=$catalogoSQL->getModelo()?>">
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-default icon-btn" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <h3 class="card-title">Datos del Equipo</h3>
+              <div class="card-body">
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Name</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="text" placeholder="Enter full name">
                     </div>
-
-                    <label class="col-md-3 " for="Cantidad">Cantidad</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="cantidad" type="text" pattern="[0-9]{1,6}" placeholder="Cantidad" value="<?=$catalogoSQL->getCantidad()?>" required="">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Email</label>
+                    <div class="col-md-8">
+                      <input class="form-control col-md-8" type="email" placeholder="Enter email address">
                     </div>
-
-                    <label class="col-md-3 " for="PrecioCompra">Precio de compra</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="precioCompra" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de compra" value="<?=$catalogoSQL->getPrecioCompra()?>" required="">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Address</label>
+                    <div class="col-md-8">
+                      <textarea class="form-control" rows="4" placeholder="Enter your address"></textarea>
                     </div>
-
-                    <label class="col-md-3" for="PrecioVenta">Precio de venta</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="precioVenta" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de venta" value="<?=$catalogoSQL->getPrecioVenta()?>" required="">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Gender</label>
+                    <div class="col-md-9">
+                      <div class="radio-inline">
+                        <label>
+                          <input type="radio" name="gender">Male
+                        </label>
+                      </div>
+                      <div class="radio-inline">
+                        <label>
+                          <input type="radio" name="gender">Female
+                        </label>
+                      </div>
                     </div>
-
-                    <label class="col-md-3" for="Iva">IVA</label>
-                        <div class="col-lg-10">
-                          <select class="form-control" name="iva" required="">
-                            <option value selected disabled>Seleccione una opcion</option>
-                            <option value="16">16%</option>
-                            <option value="8">8%</option>
-                            <option value="0">0%</option>
-                            
-                          </select><br>
-                          
-                   
-                        </div>
-
-                    <div>
-                    <label class="col-md-3" for=""></label>
-                    <label class="col-md-3" for=""></label>
-                    <label class="col-md-3" for=""></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Identity Proof</label>
+                    <div class="col-md-8">
+                      <input class="form-control" type="file">
                     </div>
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default" type="reset">Limpiar</button>
-                        <button class="btn btn-primary" type="submit">Enviar</button>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-8 col-md-offset-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox">I accept the terms and conditions
+                        </label>
+                      </div>
                     </div>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-3">
+                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-default icon-btn" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearix"></div>
+          <div class="col-md-12">
+            <div class="card">
+              <h3 class="card-title">Subscribe</h3>
+              <div class="card-body3">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input class="form-control" type="text" placeholder="Enter your name">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input class="form-control" type="text" placeholder="Enter your email">
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>

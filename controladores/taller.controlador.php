@@ -1,31 +1,31 @@
 <?php
 
-require_once "modelos/catalogo.php";
+require_once "modelos/taller.php";
 
-class CatalogoControlador{
+class TallerControlador{
     
     private $modelo;
 
     public function __CONSTRUCT(){
-        $this->modelo = new Catalogo;
+        $this->modelo = new Taller;
     }
 
     public function Inicio(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/catalogo/index.php";
+        require_once "vistas/taller/index.php";
         require_once "vistas/pie.php";
     }
 
     public function FormCrear(){
         $titulo="Registrar";
-        $catalogoSQL = new Catalogo();
+        $catalogoSQL = new Taller();
         if(isset($_GET['id'])){
             $catalogoSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
         require_once "vistas/encabezado.php";
-        require_once "vistas/catalogo/acciones_Catalogo.php";
+        require_once "vistas/catalogo/acciones_Taller.php";
         require_once "vistas/pie.php";
     }
 

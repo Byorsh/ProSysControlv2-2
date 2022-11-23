@@ -53,12 +53,12 @@
 
                       <label class="col-md-3" for="User">Usuario</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="user" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>">
+                          <input class="form-control" name="user" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" required="">
                         </div>
 
                       <label class="col-md-3" for="Contrasenia">Contraseña</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="contrasenia" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>">
+                          <input class="form-control" name="contrasenia" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" required="">
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
