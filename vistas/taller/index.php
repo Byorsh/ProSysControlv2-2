@@ -1,17 +1,14 @@
 <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1>Lista de Clientes</h1>
+            <h1>Lista de Equipos en Taller</h1>
             <!--<ul class="breadcrumb side">
               <li><i class="fa fa-home fa-lg"></i></li>
               <li>Tables</li>
               <li class="active"><a href="#">Data Table</a></li>
             </ul>-->
           </div>
-          <div>
-            <a class="btn btn-primary btn-flat" href="?c=cliente&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a>
-
-            </div>
+          <div><a class="btn btn-primary btn-flat" href="?c=taller&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a></div>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -21,31 +18,33 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>RFC</th>
-                      <th>Nombre</th>
-                      <th>Apellido Paterno</th>
-                      <th>Nombre de la Empresa</th>
-                      <th>Telefono</th>
-                      <th>Email</th>
-                      <th>Domicilio</th>
-                      <th>Acciones</th>
+                      <th>Id del Cliente</th>
+                      <th>Numero de serie</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Observaciones</th>
+                      <th>Accesorios</th>
+                      <th>Fecha de Entrada</th>
+                      
+                      <th>Fecha Prometida</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($this->modelo->Listar() as $clienteSQL):?>
-                    <tr>
-                      <td><?=$clienteSQL->idClientes?></td>
-                      <td><?=$clienteSQL->rfc?></td>
-                      <td><?=$clienteSQL->nombreCliente?></td>
-                      <td><?=$clienteSQL->apellidoP?></td>
-                      <td><?=$clienteSQL->nombreEmpresa?></td>
-                      <td><?=$clienteSQL->telefono?></td>
-                      <td><?=$clienteSQL->email?></td>
-                      <td><?=$clienteSQL->domicilio?></td>
-                      
-                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash"></i></a></td>
-                    </tr>
-                    <?php endforeach;?>
+                    <?php foreach($this->modelo->Listar() as $tallerSQL):?>
+                      <tr>
+                        <td><?=$tallerSQL->id?></td>
+                        <td><?=$tallerSQL->idCliente?></td>
+                        <td><?=$tallerSQL->ns?></td>
+                        <td><?=$tallerSQL->marca?></td>
+                        <td><?=$tallerSQL->modelo?></td>
+                        <td><?=$tallerSQL->observaciones?></td>
+                        <td><?=$tallerSQL->accesorios?></td>
+                        <td><?=$tallerSQL->fechaEntrada?></td>
+                        <td><?=$tallerSQL->fechaPrometida?></td>
+
+                        <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormCrear&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=taller&a=Borrar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                      </tr>
+                      <?php endforeach;?>
                   </tbody>
                 </table>
               </div>
@@ -53,4 +52,3 @@
           </div>
         </div>
       </div>
-    </div>

@@ -18,38 +18,40 @@ class TallerControlador{
 
     public function FormCrear(){
         $titulo="Registrar";
-        $catalogoSQL = new Taller();
+        $tallerSQL = new Taller();
         if(isset($_GET['id'])){
-            $catalogoSQL=$this->modelo->Obtener($_GET['id']);
+            $tallerSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
         require_once "vistas/encabezado.php";
-        require_once "vistas/catalogo/acciones_Taller.php";
+        require_once "vistas/taller/acciones_Taller.php";
         require_once "vistas/pie.php";
     }
 
     public function Guardar(){
-        $catalogoSQL = new Catalogo();
+        $tallerSQL = new Taller();
 
-        $catalogoSQL->setId(intval($_POST['idProducto']));
-        $catalogoSQL->setDescripcion($_POST['descripcion']);
-        $catalogoSQL->setMarca($_POST['marca']);
-        $catalogoSQL->setModelo($_POST['modelo']);
-        $catalogoSQL->setCantidad(intval($_POST['cantidad']));
-        $catalogoSQL->setPrecioCompra(floatval($_POST['precioCompra']));
-        $catalogoSQL->setPrecioVenta(floatval($_POST['precioVenta']));
-        $catalogoSQL->setIva(intval($_POST['iva']));
+        $tallerSQL->setId(intval($_POST['id']));
+        $tallerSQL->setIdCliente(intval($_POST['idCliente']));
+        $tallerSQL->setNs($_POST['ns']);
+        $tallerSQL->setMarca($_POST['marca']);
+        $tallerSQL->setModelo($_POST['modelo']);
+        $tallerSQL->setObservaciones($_POST['observaciones']);
+        $tallerSQL->setAccesorios($_POST['accesorios']);
+        $tallerSQL->setFechaEntrada($_POST['fechaEntrada']);
+        $tallerSQL->setHoraEntrada($_POST['horaEntrada']);
+        $tallerSQL->setFechaPrometida($_POST['fechaPrometida']);
 
-        $catalogoSQL->getId() > 0 ?
-        $this->modelo->Actualizar($catalogoSQL) :
-        $this->modelo->Insertar($catalogoSQL);
+        $tallerSQL->getId() > 0 ?
+        $this->modelo->Actualizar($tallerSQL) :
+        $this->modelo->Insertar($tallerSQL);
         header("location:?c=catalogo");
     }
     
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
-        header("location:?c=catalogo");
+        header("location:?c=taller");
     }
 
 }

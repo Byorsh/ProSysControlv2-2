@@ -19,45 +19,26 @@
               <div class="card-body">
                 <form>
                   <div class="form-group">
-                    <label class="control-label">Name</label>
-                    <input class="form-control" type="text" placeholder="Enter full name">
+                    <label class="control-label">ID del Cliente</label>
+                    <input class="form-control" type="text" placeholder="Introduce el id del cliente">
                   </div>
                   <div class="form-group">
-                    <label class="control-label">Email</label>
+                    <label class="control-label">Nombre del Cliente</label>
                     <input class="form-control" type="email" placeholder="Enter email address">
                   </div>
                   <div class="form-group">
-                    <label class="control-label">Address</label>
-                    <textarea class="form-control" rows="4" placeholder="Enter your address"></textarea>
+                    <label class="control-label">Telefono del Cliente</label>
+                    <input class="form-control" type="email" placeholder="Enter email address">
                   </div>
                   <div class="form-group">
-                    <label class="control-label">Gender</label>
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="gender">Male
-                      </label>
-                    </div>
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="gender">Female
-                      </label>
-                    </div>
+                    <label class="control-label">Correo del Cliente</label>
+                    <input class="form-control" type="email" placeholder="Enter email address">
                   </div>
-                  <div class="form-group">
-                    <label class="control-label">Identity Proof</label>
-                    <input class="form-control" type="file">
-                  </div>
-                  <div class="form-group">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox">I accept the terms and conditions
-                      </label>
-                    </div>
-                  </div>
+                  
                 </form>
               </div>
               <div class="card-footer">
-                <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-default icon-btn" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;
               </div>
             </div>
           </div>
@@ -141,6 +122,8 @@
                   </div>
                   <div class="form-group">
                     <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Subscribe</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-default icon-btn" href="?c=taller"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                   </div>
                 </form>
               </div>
