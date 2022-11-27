@@ -8,11 +8,14 @@ class Taller{
     private $ns;
     private $marca;
     private $modelo;
+    private $tipoEquipo;
     private $observaciones;
     private $accesorios;
     private $fechaEntrada; 
     private $horaEntrada; 
     private $fechaPrometida;  
+    private $tecnicoAsignado;
+    private $estadoEquipo;
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -40,6 +43,14 @@ class Taller{
 
     public function setNs(string $ns){
         $this->ns = $ns;
+    }
+
+    public function gettipoEquipo() : ?string{
+        return $this->tipoEquipo;
+    }
+
+    public function settipoEquipo(string $tipoEquipo){
+        $this->tipoEquipo = $tipoEquipo;
     }
 
     public function getMarca() : ?string{
@@ -98,6 +109,21 @@ class Taller{
         $this->fechaPrometida = $fechaPrometida;
     }
 
+    public function gettecnicoAsignado() : ?int{
+        return $this->tecnicoAsignado;
+    }
+
+    public function settecnicoAsignado(int $tecnicoAsignado){
+        $this->tecnicoAsignado = $tecnicoAsignado;
+    }
+
+    public function getestadoEquipo() : ?string{
+        return $this->estadoEquipo;
+    }
+
+    public function setestadoEquipo(string $estadoEquipo){
+        $this->estadoEquipo = $estadoEquipo;
+    }
 
     public function Cantidad(){
         try{
@@ -141,11 +167,14 @@ class Taller{
             $tallerSQL->setNs($reTaller->ns);
             $tallerSQL->setMarca($reTaller->marca);
             $tallerSQL->setModelo($reTaller->modelo);
+            $tallerSQL->settipoEquipo($reTaller->tipoEquipo);
             $tallerSQL->setObservaciones($reTaller->observaciones);
             $tallerSQL->setAccesorios($reTaller->accesorios);
             $tallerSQL->setFechaEntrada($reTaller->fechaEntrada);
             $tallerSQL->setHoraEntrada($reTaller->horaEntrada);
             $tallerSQL->setFechaPrometida($reTaller->fechaPrometida);
+            $tallerSQL->settecnicoAsignado($reTaller->tecnicoAsignado);
+            $tallerSQL->setestadoEquipo($reTaller->estadoEquipo);
 
             return $tallerSQL;
         }catch(Exception $excepcion){
@@ -153,20 +182,24 @@ class Taller{
         }
     }
 
+
     public function Insertar(Taller $tallerSQL){
         try{
-            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida) 
+            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
             VALUES (?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 $tallerSQL->getIdCliente(),
                 $tallerSQL->getNs(),
                 $tallerSQL->getMarca(),
                 $tallerSQL->getModelo(),
+                $tallerSQL->gettipoEquipo(),
                 $tallerSQL->getObservaciones(),
                 $tallerSQL->getAccesorios(),
                 $tallerSQL->getFechaEntrada(),
                 $tallerSQL->getHoraEntrada(),
-                $tallerSQL->getFechaPrometida()
+                $tallerSQL->getFechaPrometida(),
+                $tallerSQL->gettecnicoAsignado(),
+                $tallerSQL->getestadoEquipo()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
@@ -180,22 +213,28 @@ class Taller{
             ns=?,
             marca=?,
             modelo=?,
+            tipoEquipo=?,
             observaciones=?,
             accesorios=?,
             fechaEntrada=?,
             horaEntrada=?,
-            fechaPrometida=?
+            fechaPrometida=?,
+            tecnicoAsignado=?,
+            estadoEquipo=?
             WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
                 $tallerSQL->getIdCliente(),
                 $tallerSQL->getNs(),
                 $tallerSQL->getMarca(),
                 $tallerSQL->getModelo(),
+                $tallerSQL->gettipoEquipo(),
                 $tallerSQL->getObservaciones(),
                 $tallerSQL->getAccesorios(),
                 $tallerSQL->getFechaEntrada(),
                 $tallerSQL->getHoraEntrada(),
                 $tallerSQL->getFechaPrometida(),
+                $tallerSQL->gettecnicoAsignado(),
+                $tallerSQL->getestadoEquipo(),
                 $tallerSQL->getId()
             ));
         }catch(Exception $excepcion){
