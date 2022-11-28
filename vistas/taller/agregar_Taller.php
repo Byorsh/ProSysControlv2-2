@@ -112,15 +112,20 @@
                     </div>
 
                     <div class="form-group">
-                        
+                       <!--AQUI ES DONDE SE ASIGNAN LOS VALORES DE LA FECHA Y HORA ACTUALES -->
+                        <?php
+                        date_default_timezone_set('America/Mazatlan');
+                        $fecha_actual=date("Y-m-d");
+                        $hora_actual=date("H:i:S");
+                        ?>
                         <div class="col-md-8">
-                            <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida">
+                            <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fecha_actual?>">
                         </div>
                     </div>
                     <div class="form-group">
                         
                         <div class="col-md-8">
-                            <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida">
+                            <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual?>">
                         </div>
                     </div>
 

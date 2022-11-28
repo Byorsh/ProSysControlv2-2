@@ -185,9 +185,10 @@ class Taller{
 
     public function Insertar(Taller $tallerSQL){
         try{
-            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
-            VALUES (?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO ordenreparacion(id,idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
+                $tallerSQL->NULL,
                 $tallerSQL->getIdCliente(),
                 $tallerSQL->getNs(),
                 $tallerSQL->getMarca(),
