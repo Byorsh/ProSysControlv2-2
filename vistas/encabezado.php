@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <?php
     require_once "modelos/database.php";
-    session_start();
+    //session_start();
     $usuario = $_SESSION['usuario'];
     ?>
     <title>ProSysControl</title>
@@ -71,7 +71,9 @@
 
             <li class="treeview"><a href="#"><i class="fa fa-user"></i><span>Cliente</span><i class="fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
+              
                 <li><a href="?c=cliente&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar Cliente</a></li>
+
                 <li><a href="?c=cliente"><i class="fa fa-list"></i> Lista de Clientes</a></li>
               </ul>
             </li>
@@ -79,11 +81,14 @@
             <li class="treeview"><a href="#"><i class="fa fa-briefcase"></i><span>Taller</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="?c=taller&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar equipo al taller</a></li>
+                
                 <li><a href="#"><i class="fa fa-plus-square"></i> Agregar servicio a domicilio</a></li>
                 <li><a href="?c=taller"><i class="fa fa-list"></i> Lista de equipos</a></li>
                 <li><a href="#"><i class="fa fa-list"></i> Lista de servicios</a></li>
               </ul>
             </li>
+            <!--condicion para ocultar si es tecnico-->
+            <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
             <li><a href="#"><i class="fa fa-shopping-cart"></i><span>Punto de venta</span></a></li>
             
             <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Catalogo</span><i class="fa fa-angle-right"></i></a>
@@ -92,12 +97,19 @@
                 <li><a href="?c=catalogo"><i class="fa fa-list"></i> Lista de Articulos</a></li>
               </ul>
             </li>
+            <?php }?>
+            <!--condicion para ocultar si es tecnico-->
+            <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
             <li class="treeview"><a href="#"><i class="fa fa-user-secret"></i><span>Usuario</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
+                <!--condicion para ocultar si es secretario-->
+                <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
                 <li><a href="?c=usuario&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar Usuario</a></li>
+                <?php }?>
                 <li><a href="?c=usuario"><i class="fa fa-list"></i> Lista de Usuarios</a></li>
               </ul>
             </li>
+            <?php }?>
             <!--<li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Level One</a></li>

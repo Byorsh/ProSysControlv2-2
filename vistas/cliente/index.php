@@ -1,3 +1,6 @@
+<?php
+require_once "modelos/database.php";
+?>
 <div class="content-wrapper">
         <div class="page-title">
           <div>
@@ -28,7 +31,10 @@
                       <th>Telefono</th>
                       <th>Email</th>
                       <th>Domicilio</th>
+                      <!--condicion para ocultar si es tecnico-->
+                      <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
                       <th>Acciones</th>
+                      <?php }?>
                     </tr>
                   </thead>
                   <tbody>
@@ -42,8 +48,10 @@
                       <td><?=$clienteSQL->telefono?></td>
                       <td><?=$clienteSQL->email?></td>
                       <td><?=$clienteSQL->domicilio?></td>
-                      
-                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                      <!--condicion para ocultar si es tecnico-->
+                      <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
+                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a></td>
+                      <?php }?>
                     </tr>
                     <?php endforeach;?>
                   </tbody>

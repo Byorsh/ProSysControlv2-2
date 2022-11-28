@@ -18,6 +18,9 @@ else{
 
 }*/
 require_once "modelos/database.php";
+session_start();
+$usuario = $_SESSION['usuario'];
+
 
 
 if(!isset($_GET['c'])){

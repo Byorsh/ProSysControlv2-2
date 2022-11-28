@@ -31,32 +31,32 @@
                           <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
                       
-                      <label class="col-md-3 " for="Nombre">Nombre</label>
+                      <label class="col-md-3 " for="Nombre">Nombre *</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="nombre" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>">
                         </div>
 
-                      <label class="col-md-3 " for="Apellido">Apellido</label>
+                      <label class="col-md-3 " for="Apellido">Apellido *</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="apellido" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>">
                         </div>
 
-                      <label class="col-md-3 " for="Telefono">Telefono</label>
+                      <label class="col-md-3 " for="Telefono">Telefono *</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="telefono" type="text" placeholder="Telefono" pattern="[0-9]{10,13}" value="<?=$usuarioSQL->getTelefono()?>">
                         </div>
 
-                      <label class="col-md-3" for="Email">Correo electronico</label>
+                      <label class="col-md-3" for="Email">Correo electronico *</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="email" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$usuarioSQL->getEmail()?>">
                         </div>
 
-                      <label class="col-md-3" for="User">Usuario</label>
+                      <label class="col-md-3" for="User">Usuario *</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="user" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" required="">
                         </div>
 
-                      <label class="col-md-3" for="Contrasenia">Contraseña</label>
+                      <label class="col-md-3" for="Contrasenia">Contraseña *</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="contrasenia" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" required="">
                         </div>

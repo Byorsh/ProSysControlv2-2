@@ -41,8 +41,11 @@
                         <td><?=$tallerSQL->accesorios?></td>
                         <td><?=$tallerSQL->fechaEntrada?></td>
                         <td><?=$tallerSQL->fechaPrometida?></td>
-
-                        <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormCrear&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=taller&a=Borrar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                        <!--condicion para ocultar si es secretario-->
+                        <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
+                        <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormCrear&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a>
+                            <a class="btn btn-warning btn-flat" href="?c=taller&a=Borrar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                        <?php }?>
                       </tr>
                       <?php endforeach;?>
                   </tbody>
