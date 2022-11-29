@@ -36,5 +36,14 @@ function alertaLogin(tipoAlerta){
             dangerMode: true,
         })
     }
+    if(tipoAlerta=="Sesion no iniciada"){
+        swal({
+            title:"ERROR",
+            text:"Necesitas iniciar sesion para poder usar el sitio o no tienes acceso a la direccion url ingresada",
+            icon:"warning",
+            buttons:false,
+            dangerMode: true,
+        })
+    }
     
 }

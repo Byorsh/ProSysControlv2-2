@@ -90,8 +90,18 @@ class Usuario{
         $this->privilegio = $privilegio;
     }
     public function verificarAtributos(Usuario $usuarioSQL){
+        /*Como estaba
         if($usuarioSQL->getPrivilegio()==null){return true;}
-        if($usuarioSQL->getNombre()==null){return true;}
+        if($usuarioSQL->getNombre()==null){return true;}*/
+        //$valorBoleano = false;
+
+        //if($usuarioSQL->getPrivilegio()==null){return true;}
+        if($usuarioSQL->getNombre()==null||$usuarioSQL->getPrivilegio()==null||
+        $usuarioSQL->getApellido()==null||$usuarioSQL->getTelefono()==null||
+        $usuarioSQL->getContrasenia()==null||$usuarioSQL->getUser()==null||
+        $usuarioSQL->getEmail()==null
+        ){return true;}
+        //return $valorBoleano
     }
 
     public function Cantidad(){

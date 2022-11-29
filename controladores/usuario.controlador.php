@@ -1,7 +1,8 @@
 <?php
 
 require_once "modelos/usuario.php";
-include('modelos/regex.php');
+require_once 'modelos/regex.php';
+//include('modelos/regex.php');
 
 class UsuarioControlador{
     
@@ -44,7 +45,7 @@ class UsuarioControlador{
         $usuarioSQL->setPrivilegio(intval($_POST['privilegio']));
 
         if($usuarioSQL->verificarAtributos($usuarioSQL)){
-            $regex = new Regex;
+            $regex =  new Regex;
             
             //include("../vistas/usuario/index.php");
             //$direccion="./home.php?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();
@@ -56,7 +57,7 @@ class UsuarioControlador{
             //header("location:?c=usuario");
 
         }
-        else{
+        else if(!($usuarioSQL->verificarAtributos($usuarioSQL))){
             $usuarioSQL->getId() > 0 ?
             $this->modelo->Actualizar($usuarioSQL) :
             $this->modelo->Insertar($usuarioSQL);

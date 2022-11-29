@@ -31,6 +31,14 @@ class Regex{
         return $campo;
 
     }
+    public function validarLetras($campo){
+        limpiarCampo($campo);
+        if(ctype_digit($campo)){
+
+        }else{
+            
+        }
+    }
     public function sweet_alerts($datos){
         echo($datos);
         $var = json_encode($datos);

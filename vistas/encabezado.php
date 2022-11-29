@@ -9,8 +9,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <?php
     require_once "modelos/database.php";
-    //session_start();
     $usuario = $_SESSION['usuario'];
+
+
     ?>
     <title>ProSysControl</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
@@ -61,7 +62,7 @@
           <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="assets/css/usuario.png" alt="User Image"></div>
             <div class="pull-left info">
-              <p><?php echo($_SESSION['usuario'])?></p>
+              <p><?php echo($usuario)?></p>
               <p class="designation"><?php echo($_SESSION['tipoUsuario'])?></p>
             </div>
           </div>

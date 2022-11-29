@@ -18,6 +18,9 @@
         <div class="row">
           
             <div class="well bs-component">
+              <?php
+              $camposporllenar=true;
+              ?>
               <form class="form-horizontal" method="POST" action="?c=usuario&a=Guardar">
                 <fieldset>
                 <legend><?=$titulo?> Usuario</legend>
@@ -26,7 +29,7 @@
                         <input class="form-control" name="id" type="hidden" value="<?=$usuarioSQL->getId()?>">
                       </div>
 
-                      <label class="col-md-3" for="Rfc">RFC</label>
+                      <label class="col-md-3" for="Rfc">RFC <?php if($camposporllenar){echo("Faltan campos");}?></label>
                         <div class="col-lg-10">
                           <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
