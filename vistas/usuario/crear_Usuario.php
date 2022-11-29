@@ -1,3 +1,28 @@
+<!-- script que hace que los campos se validen que esten llenos-->
+                        <script>
+                            function toggleButton()
+                            {
+                                var nombre = document.getElementById('nombre').value;
+                                var apellido = document.getElementById('apellido').value;
+                                var telefono = document.getElementById('telefono').value;
+                                var correo = document.getElementById('correo').value;
+                                var usuariou = document.getElementById('usuariou').value;
+                                var contraseña = document.getElementById('contraseña').value;
+                                var nivelprivilegio = document.getElementById('nivelprivilegio').value;
+                
+                                if (nombre && apellido && telefono && correo && usuariou && contraseña ) {
+                                    document.getElementById('submitButton').disabled = false;
+                                    document.getElementById('advertencia').className = "hidden";
+                                    //agregar un handler al boton de enviar que faltan campos o colocar como visible
+                                    <?php $camposporllenar = true?>
+                                } else {
+                                    document.getElementById('submitButton').disabled = true;
+                                    document.getElementById('advertencia').className = "col-md-3";
+                                    <?php $camposporllenar = false?>
+                                }
+                            }
+                        </script>
+                        
 <div class="content-wrapper">
   <div class="page-title">
     <div>
@@ -19,8 +44,11 @@
           
             <div class="well bs-component">
               <?php
-              $camposporllenar=true;
+              require_once 'modelos/regex.php';
+              $regex = new Regex;
+              $camposporllenar = true;
               ?>
+              <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" action="?c=usuario&a=Guardar">
                 <fieldset>
                 <legend><?=$titulo?> Usuario</legend>
@@ -29,39 +57,39 @@
                         <input class="form-control" name="id" type="hidden" value="<?=$usuarioSQL->getId()?>">
                       </div>
 
-                      <label class="col-md-3" for="Rfc">RFC <?php if($camposporllenar){echo("Faltan campos");}?></label>
+                      <label class="col-md-3" for="Rfc">RFC</label>
                         <div class="col-lg-10">
                           <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
                       
                       <label class="col-md-3 " for="Nombre">Nombre *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombre" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>">
+                          <input class="form-control" name="nombre" id="nombre" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>" onchange="toggleButton()">
                         </div>
 
                       <label class="col-md-3 " for="Apellido">Apellido *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="apellido" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>">
+                          <input class="form-control" name="apellido" id="apellido" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>" onchange="toggleButton()">
                         </div>
 
                       <label class="col-md-3 " for="Telefono">Telefono *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="telefono" type="text" placeholder="Telefono" pattern="[0-9]{10,13}" value="<?=$usuarioSQL->getTelefono()?>">
+                          <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" pattern="[0-9]{10,13}" value="<?=$usuarioSQL->getTelefono()?>" onchange="toggleButton()">
                         </div>
 
                       <label class="col-md-3" for="Email">Correo electronico *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="email" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$usuarioSQL->getEmail()?>">
+                          <input class="form-control" name="email" id="correo" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$usuarioSQL->getEmail()?>" onchange="toggleButton()">
                         </div>
 
                       <label class="col-md-3" for="User">Usuario *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="user" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" required="">
+                          <input class="form-control" name="user" id="usuariou" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" required="" onchange="toggleButton()">
                         </div>
 
                       <label class="col-md-3" for="Contrasenia">Contraseña *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="contrasenia" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" required="">
+                          <input class="form-control" name="contrasenia" id="contraseña" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" required="" onchange="toggleButton()" >
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
@@ -69,10 +97,10 @@
                           <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
                         </div>-->
 
-                      
+                        
                       <label class="col-md-3" for="Privilegio">Nivel de privilegio</label>
                         <div class="col-lg-10">
-                          <select class="form-control" name="privilegio" required="">
+                          <select class="form-control" name="privilegio" id="nivelprivilegio" required="" onchange="toggleButton()">
                             <option value selected disabled>Seleccione una opcion</option>
                             <option value="1">Administrador</option>
                             <option value="2">Tecnico</option>
@@ -82,11 +110,15 @@
                           
                    
                         </div>
+                        <!--Se muestra si faltan campos-->
+                        <label class="col-md-3" id="advertencia" ><?php if($camposporllenar){echo("Faltan campos por llenar");}?></label>
 
                         <div class="col-lg-10 col-lg-offset-2">
                           <button class="btn btn-default" type="reset">Limpiar</button>
-                          <button class="btn btn-primary" type="submit">Enviar</button>
+                          <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                          
                         </div>
+                        
                     </div>
                   
                   <!--<div class="form-group">

@@ -49,7 +49,9 @@ class UsuarioControlador{
             
             //include("../vistas/usuario/index.php");
             //$direccion="./home.php?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();
-            $direccion="location:?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();
+            $direccion="http://localhost/ProSysControlv2-2/home.php?c=usuario&a=FormCrear";
+            if(($usuarioSQL->getId()>0)){$direccion="location:?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();}
+            
             //include($direccion);
             $regex->sweet_alerts("faltan campos");
             header($direccion);
@@ -57,10 +59,13 @@ class UsuarioControlador{
             //header("location:?c=usuario");
 
         }
-        else if(!($usuarioSQL->verificarAtributos($usuarioSQL))){
-            $usuarioSQL->getId() > 0 ?
-            $this->modelo->Actualizar($usuarioSQL) :
-            $this->modelo->Insertar($usuarioSQL);
+        else {
+            if($usuarioSQL->getId() > 0){
+                $this->modelo->Actualizar($usuarioSQL);
+            }
+            else{$this->modelo->Insertar($usuarioSQL);}
+            //$usuarioSQL->getId() > 0 ?
+            
             header("location:?c=usuario");
         }
 
