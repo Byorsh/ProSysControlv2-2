@@ -24,6 +24,7 @@
                       <th>Modelo</th>
                       <th>Observaciones</th>
                       <th>Accesorios</th>
+                      <th>Estado</th>
                       <th>Fecha de Entrada</th>
                       
                       <th>Fecha Prometida</th>
@@ -40,6 +41,7 @@
                         <td><?=$tallerSQL->modelo?></td>
                         <td><?=$tallerSQL->observaciones?></td>
                         <td><?=$tallerSQL->accesorios?></td>
+                        <td><?=$tallerSQL->estadoEquipo?></td>
                         <td><?=$tallerSQL->fechaEntrada?></td>
                         <td><?=$tallerSQL->fechaPrometida?></td>
                         <!--condicion para ocultar si es secretario-->

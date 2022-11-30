@@ -1,14 +1,14 @@
 <div class="content-wrapper">
   <div class="page-title">
     <div>
-      <h1><i class="fa fa-edit"></i><?=$titulo?> Equipo al Taller</h1>
-      <p>Modulo para <?=$titulo?> Equipo al Taller</p>
+      <h1><i class="fa fa-edit"></i><?=$titulo?> Equipo en Taller</h1>
+      <p>Modulo para <?=$titulo?> Equipo en Taller</p>
     </div>
     <div>
       <ul class="breadcrumb">
         <li><i class="fa fa-home fa-lg"></i></li>
         <li>Taller</li>
-        <li><a href="#"><?=$titulo?> Equipo al Taller</a></li>
+        <li><a href="#"><?=$titulo?> Equipo en Taller</a></li>
       </ul>
     </div>
   </div>
@@ -20,7 +20,7 @@
             <div class="well bs-component">
                 <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
                 <fieldset>
-                <legend>Registro del Equipo en Taller</legend>
+                <legend>Equipo en Taller</legend>
                     <div class="col-lg-10">
                         <h4>Datos del Cliente</h4>
                     </div>
@@ -33,7 +33,7 @@
                         <input class="form-control" name="id" type="hidden" value="<?=$tallerSQL->getId()?>">
                       </div>
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="IdCliente">ID del Cliente</label>
+                        
                         <div class="col-md-8">
                             <input class="form-control" name="idCliente" type="hidden" placeholder="Introduce el id del cliente" value="<?=$tallerSQL->getIdCliente()?>">
                         </div>
@@ -86,19 +86,19 @@
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Observaciones">Problematica del equipo</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Problema del equipo" value="<?=$tallerSQL->getObservaciones()?>"></textarea>
+                      <textarea class="form-control" name="observaciones" type="text" rows="4" placeholder="Problema del equipo"><?=$tallerSQL->getObservaciones()?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Accesorios">Accesorios</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo" value="<?=$tallerSQL->getAccesorios()?>"></textarea>
+                      <textarea class="form-control" name="accesorios" type="text" rows="4" placeholder="Accesorios del equipo"><?=$tallerSQL->getAccesorios()?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="EstadoEquipo">Estado del equipo</label>
                         <div class="col-md-8">
-                          <select class="form-control" name="estadoEquipo" id="estadoEquipo" required="" onchange="toggleButton()" value="<?=$tallerSQL->getestadoEquipo()?>">
+                          <select class="form-control" name="estadoEquipo" id="estadoEquipo" required="" onchange="toggleButton()" value selected="<?=$tallerSQL->getestadoEquipo()?>">
                             <option value disabled>Seleccione una opcion</option>
                             <option value="1">Recien entrante</option>
                             <option value="2">En diagnostico</option>
