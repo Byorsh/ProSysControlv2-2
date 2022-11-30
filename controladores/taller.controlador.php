@@ -24,6 +24,18 @@ class TallerControlador{
         require_once "vistas/pie.php";
     }
 
+    public function FormModificar(){
+        $tallerSQL = new Taller();
+        if(isset($_GET['id'])){
+            $tallerSQL=$this->modelo->Obtener($_GET['id']);
+            $titulo = "Modificar";
+        }
+        
+        require_once "vistas/encabezado.php";
+        require_once "vistas/taller/modificar_Taller.php";
+        require_once "vistas/pie.php";
+    }
+
     public function Guardar(){
         $tallerSQL = new Taller();
 
