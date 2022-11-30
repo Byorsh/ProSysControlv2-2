@@ -12,6 +12,15 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-md-3">
+            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4>Usuarios</h4>
+                <p><b><?php $usuario=$this->modeloUsuario->Cantidad()?>
+                <?=$usuario->CantidadUsuario?></b></p>
+              </div>
+            </div>
+          </div>
           <!--<div class="col-md-6">
             <div class="card">
               <h3 class="card-title">Getting Started</h3>

@@ -3,10 +3,10 @@
 require_once "modelos/usuario.php";
 
 class InicioControlador{
-    private $modelo;
+    private $modeloUsuario;
 
     public function __CONSTRUCT(){
-        $this->modelo = new Usuario();
+        $this->modeloUsuario = new Usuario();
     }
 
     public function Inicio(){

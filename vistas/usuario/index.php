@@ -38,7 +38,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($this->modelo->Listar() as $u):?>
+                    <?php foreach($this->modeloUsuario->Listar() as $u):?>
                     <tr>
                       <td><?=$u->id?></td>
                       <td><?=$u->rfc?></td>

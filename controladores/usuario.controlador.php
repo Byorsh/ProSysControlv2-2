@@ -2,14 +2,14 @@
 
 require_once "modelos/usuario.php";
 require_once 'modelos/regex.php';
-//include('modelos/regex.php');
+//include('modeloUsuarios/regex.php');
 
 class UsuarioControlador{
     
-    private $modelo;
+    private $modeloUsuario;
 
     public function __CONSTRUCT(){
-        $this->modelo = new Usuario;
+        $this->modeloUsuario = new Usuario;
     }
 
     public function Inicio(){
@@ -22,7 +22,7 @@ class UsuarioControlador{
         $titulo="Registrar";
         $usuarioSQL = new Usuario();
         if(isset($_GET['id'])){
-            $usuarioSQL=$this->modelo->Obtener($_GET['id']);
+            $usuarioSQL=$this->modeloUsuario->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
@@ -61,9 +61,9 @@ class UsuarioControlador{
         }
         else {
             if($usuarioSQL->getId() > 0){
-                $this->modelo->Actualizar($usuarioSQL);
+                $this->modeloUsuario->Actualizar($usuarioSQL);
             }
-            else{$this->modelo->Insertar($usuarioSQL);}
+            else{$this->modeloUsuario->Insertar($usuarioSQL);}
             //$usuarioSQL->getId() > 0 ?
             
             header("location:?c=usuario");
@@ -72,7 +72,7 @@ class UsuarioControlador{
     }
     
     public function Borrar(){
-        $this->modelo->Eliminar($_GET["id"]);
+        $this->modeloUsuario->Eliminar($_GET["id"]);
         header("location:?c=usuario");
     }
 
