@@ -18,7 +18,7 @@
         <div class="row">
           
             <div class="well bs-component">
-                <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
+                <form class="form-horizontal" method="POST" action="?c=domicilio&a=Guardar">
                 <fieldset>
                 <legend>Servicio a domicilio</legend>
                     <div class="col-lg-10">
@@ -87,26 +87,21 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="control-label col-md-3" for="Observaciones">Problematica del equipo</label>
+                    <label class="control-label col-md-3" for="Problematica">Problematica para el servicio</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Problema del equipo"></textarea>
+                      <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio"></textarea>
                     </div>
                   </div>
+                  
                   <div class="form-group">
-                        <label class="control-label col-md-3">observaciones</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Observaciones" disabled>
-                        </div>
-                    </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3" for="Accesorios">Accesorios</label>
+                    <label class="control-label col-md-3" for="Observaciones">Observaciones</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo"></textarea>
+                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Observaciones"></textarea>
                     </div>
                   </div>
 
                     <div class="col-lg-10">
-                        <h4>Registrar Orden</h4>
+                        <h4>Registrar Servicio</h4>
                     </div>
                   
                     <div class="form-group">

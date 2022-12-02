@@ -83,9 +83,9 @@
               <ul class="treeview-menu">
                 <li><a href="?c=taller&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar equipo al taller</a></li>
                 
-                <li><a href="#"><i class="fa fa-plus-square"></i> Agregar servicio a domicilio</a></li>
+                <li><a href="?c=domicilio&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar servicio a domicilio</a></li>
                 <li><a href="?c=taller"><i class="fa fa-list"></i> Lista de equipos</a></li>
-                <li><a href="#"><i class="fa fa-list"></i> Lista de servicios</a></li>
+                <li><a href="?c=domicilio"><i class="fa fa-list"></i> Lista de servicios</a></li>
               </ul>
             </li>
             <!--condicion para ocultar si es tecnico-->
