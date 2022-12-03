@@ -41,17 +41,18 @@ class DomicilioControlador{
 
         $domicilioSQL->setId(intval($_POST['id']));
         $domicilioSQL->setIdCliente(intval($_POST['idCliente']));
+        $domicilioSQL->setProblematica($_POST['problematica']);
+        $domicilioSQL->setObservaciones($_POST['observaciones']);
         $domicilioSQL->setNs($_POST['ns']);
         $domicilioSQL->setMarca($_POST['marca']);
         $domicilioSQL->setModelo($_POST['modelo']);
         $domicilioSQL->settipoEquipo($_POST['tipoEquipo']);
-        $domicilioSQL->setObservaciones($_POST['observaciones']);
-        $domicilioSQL->setAccesorios($_POST['accesorios']);
-        $domicilioSQL->setFechaEntrada($_POST['fechaEntrada']);
-        $domicilioSQL->setHoraEntrada($_POST['horaEntrada']);
         $domicilioSQL->setFechaPrometida($_POST['fechaPrometida']);
-        $domicilioSQL->settecnicoAsignado(intval($_POST['tecnicoAsignado']));
-        $domicilioSQL->setestadoEquipo($_POST['estadoEquipo']);
+        $domicilioSQL->setPresupuesto(floatval($_POST['presupuesto']));
+        $domicilioSQL->setCostoTotal(floatval($_POST['costoTotal']));
+        $domicilioSQL->setHoraInicio($_POST['horaInicio']);
+        $domicilioSQL->setHoraFinal($_POST['horaFinal']);
+        $domicilioSQL->setTotalHoras(intval($_POST['horasRealizadas']));
 
 
         $domicilioSQL->getId() > 0 ?

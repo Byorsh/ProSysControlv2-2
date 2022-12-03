@@ -5,17 +5,18 @@ class Domicilio{
 
     private $id;
     private $idCliente;
+    private $problematica;
+    private $observaciones;
     private $ns;
     private $marca;
     private $modelo;
     private $tipoEquipo;
-    private $observaciones;
-    private $accesorios;
-    private $fechaEntrada; 
-    private $horaEntrada; 
-    private $fechaPrometida;  
-    private $tecnicoAsignado;
-    private $estadoEquipo;
+    private $fechaProgramada; 
+    private $presupuesto; 
+    private $costoTotal;  
+    private $horaInicio;
+    private $horaFinal;
+    private $totalHoras;
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -37,6 +38,22 @@ class Domicilio{
         $this->idCliente = $idCliente;
     }
 
+    public function getProblematica() : ?string{
+        return $this->problematica;
+    }
+
+    public function setProblematica(string $problematica){
+        $this->problematica = $problematica;
+    }
+
+    public function getObservaciones() : ?string{
+        return $this->observaciones;
+    }
+
+    public function setObservaciones(string $observaciones){
+        $this->observaciones = $observaciones;
+    }
+
     public function getNs() : ?string{
         return $this->ns;
     }
@@ -45,11 +62,11 @@ class Domicilio{
         $this->ns = $ns;
     }
 
-    public function gettipoEquipo() : ?string{
+    public function getTipoEquipo() : ?string{
         return $this->tipoEquipo;
     }
 
-    public function settipoEquipo(string $tipoEquipo){
+    public function setTipoEquipo(string $tipoEquipo){
         $this->tipoEquipo = $tipoEquipo;
     }
 
@@ -69,65 +86,57 @@ class Domicilio{
         $this->modelo = $modelo;
     }
 
-    public function getObservaciones() : ?string{
-        return $this->observaciones;
+    public function getFechaProgramada() : ?string{
+        return $this->fechaProgramada;
     }
 
-    public function setObservaciones(string $observaciones){
-        $this->observaciones = $observaciones;
+    public function setFechaProgramada(string $fechaProgramada){
+        $this->fechaProgramada = $fechaProgramada;
     }
 
-    public function getAccesorios() : ?string{
-        return $this->accesorios;
+    public function getPresupuesto() : ?float{
+        return $this->presupuesto;
     }
 
-    public function setAccesorios(string $accesorios){
-        $this->accesorios = $accesorios;
+    public function setPresupuesto(float $presupuesto){
+        $this->presupuesto = $presupuesto;
     }
 
-    public function getFechaEntrada() : ?string{
-        return $this->fechaEntrada;
+    public function getCostoTotal() : ?float{
+        return $this->costoTotal;
     }
 
-    public function setFechaEntrada(string $fechaEntrada){
-        $this->fechaEntrada = $fechaEntrada;
+    public function setCostoTotal(float $costoTotal){
+        $this->costoTotal = $costoTotal;
     }
 
-    public function getHoraEntrada() : ?string{
-        return $this->horaEntrada;
+    public function getHoraInicio() : ?string{
+        return $this->horaInicio;
     }
 
-    public function setHoraEntrada(string $horaEntrada){
-        $this->horaEntrada = $horaEntrada;
+    public function setHoraInicio(string $horaInicio){
+        $this->horaInicio = $horaInicio;
     }
 
-    public function getFechaPrometida() : ?string{
-        return $this->fechaPrometida;
+    public function getHoraFinal() : ?string{
+        return $this->horaFinal;
     }
 
-    public function setFechaPrometida(string $fechaPrometida){
-        $this->fechaPrometida = $fechaPrometida;
+    public function setHoraFinal(string $horaFinal){
+        $this->horaFinal = $horaFinal;
     }
 
-    public function gettecnicoAsignado() : ?int{
-        return $this->tecnicoAsignado;
+    public function getTotalHoras() : ?int{
+        return $this->totalHoras;
     }
 
-    public function settecnicoAsignado(int $tecnicoAsignado){
-        $this->tecnicoAsignado = $tecnicoAsignado;
-    }
-
-    public function getestadoEquipo() : ?string{
-        return $this->estadoEquipo;
-    }
-
-    public function setestadoEquipo(string $estadoEquipo){
-        $this->estadoEquipo = $estadoEquipo;
+    public function setTotalHoras(int $totalHoras){
+        $this->totalHoras = $totalHoras;
     }
 
     public function Cantidad(){
         try{
-            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS Cantidad de Equipos en Taller FROM ordenreparacion;");
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS Cantidad de Servicios a Domicilio FROM domicilio;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -147,7 +156,7 @@ class Domicilio{
 
     public function Listar(){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion;");
+            $consulta = $this->pdo->prepare("SELECT * FROM domicilio;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -157,24 +166,25 @@ class Domicilio{
 
     public function Obtener($nombre){
         try{
-            $consulta = $this ->pdo ->prepare("SELECT * FROM ordenreparacion WHERE id=?;");
+            $consulta = $this ->pdo ->prepare("SELECT * FROM domicilio WHERE id=?;");
             $consulta->execute(array($nombre));
             $reDomicilio=$consulta->fetch(PDO::FETCH_OBJ);
-            $domicilioSQL=new Taller();
+            $domicilioSQL=new Domicilio();
 
             $domicilioSQL->setId($reDomicilio->id);
             $domicilioSQL->setIdCliente($reDomicilio->idCliente);
+            $domicilioSQL->setProblematica($reDomicilio->problematica);
+            $domicilioSQL->setObservaciones($reDomicilio->observaciones);
             $domicilioSQL->setNs($reDomicilio->ns);
             $domicilioSQL->setMarca($reDomicilio->marca);
             $domicilioSQL->setModelo($reDomicilio->modelo);
             $domicilioSQL->settipoEquipo($reDomicilio->tipoEquipo);
-            $domicilioSQL->setObservaciones($reDomicilio->observaciones);
-            $domicilioSQL->setAccesorios($reDomicilio->accesorios);
-            $domicilioSQL->setFechaEntrada($reDomicilio->fechaEntrada);
-            $domicilioSQL->setHoraEntrada($reDomicilio->horaEntrada);
-            $domicilioSQL->setFechaPrometida($reDomicilio->fechaPrometida);
-            $domicilioSQL->settecnicoAsignado($reDomicilio->tecnicoAsignado);
-            $domicilioSQL->setestadoEquipo($reDomicilio->estadoEquipo);
+            $domicilioSQL->setFechaProgramada($reDomicilio->fechaProgramada);
+            $domicilioSQL->setPresupuesto($reDomicilio->presupuesto);
+            $domicilioSQL->setCostoTotal($reDomicilio->costoTotal);
+            $domicilioSQL->setHoraInicio($reDomicilio->horaInicio);
+            $domicilioSQL->setHoraFinal($reDomicilio->horaFinal);
+            $domicilioSQL->setTotalHoras($reDomicilio->totalHoras);
 
             return $domicilioSQL;
         }catch(Exception $excepcion){
@@ -183,59 +193,62 @@ class Domicilio{
     }
 
 
-    public function Insertar(Taller $domicilioSQL){
+    public function Insertar(Domicilio $domicilioSQL){
         try{
-            $consulta = "INSERT INTO ordenreparacion(id,idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO domicilio(id,id_Cliente, problematica, observaciones, ns, marca, modelo, tipoEquipo, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 $domicilioSQL->NULL,
                 $domicilioSQL->getIdCliente(),
+                $domicilioSQL->getProblematica(),
+                $domicilioSQL->getObservaciones(),
                 $domicilioSQL->getNs(),
                 $domicilioSQL->getMarca(),
                 $domicilioSQL->getModelo(),
                 $domicilioSQL->gettipoEquipo(),
-                $domicilioSQL->getObservaciones(),
-                $domicilioSQL->getAccesorios(),
-                $domicilioSQL->getFechaEntrada(),
-                $domicilioSQL->getHoraEntrada(),
-                $domicilioSQL->getFechaPrometida(),
-                $domicilioSQL->gettecnicoAsignado(),
-                $domicilioSQL->getestadoEquipo()
+                $domicilioSQL->getFechaProgramada(),
+                $domicilioSQL->getPresupuesto(),
+                $domicilioSQL->getCostoTotal(),
+                $domicilioSQL->getHoraInicio(),
+                $domicilioSQL->getHoraFinal(),
+                $domicilioSQL->getTotalHoras()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
 
-    public function Actualizar(Taller $domicilioSQL){
+    public function Actualizar(Domicilio $domicilioSQL){
         try{
-            $consulta = "UPDATE ordenreparacion SET
+            $consulta = "UPDATE domicilio SET
             idCliente=?,
+            problematica=?,
+            observaciones=?,
             ns=?,
             marca=?,
             modelo=?,
             tipoEquipo=?,
-            observaciones=?,
-            accesorios=?,
-            fechaEntrada=?,
-            horaEntrada=?,
-            fechaPrometida=?,
-            tecnicoAsignado=?,
-            estadoEquipo=?
+            fechaProgramada=?,
+            presupuesto=?,
+            costoTotal=?,
+            horaInicio=?,
+            horaFinal=?,
+            horasRealizadas=?
             WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
                 $domicilioSQL->getIdCliente(),
+                $domicilioSQL->getProblematica(),
+                $domicilioSQL->getObservaciones(),
                 $domicilioSQL->getNs(),
                 $domicilioSQL->getMarca(),
                 $domicilioSQL->getModelo(),
                 $domicilioSQL->gettipoEquipo(),
-                $domicilioSQL->getObservaciones(),
-                $domicilioSQL->getAccesorios(),
-                $domicilioSQL->getFechaEntrada(),
-                $domicilioSQL->getHoraEntrada(),
-                $domicilioSQL->getFechaPrometida(),
-                $domicilioSQL->gettecnicoAsignado(),
-                $domicilioSQL->getestadoEquipo(),
+                $domicilioSQL->getFechaProgramada(),
+                $domicilioSQL->getPresupuesto(),
+                $domicilioSQL->getCostoTotal(),
+                $domicilioSQL->getHoraInicio(),
+                $domicilioSQL->getHoraFinal(),
+                $domicilioSQL->getTotalHoras(),
                 $domicilioSQL->getId()
             ));
         }catch(Exception $excepcion){
@@ -245,7 +258,7 @@ class Domicilio{
 
     public function Eliminar($id){
         try{
-            $consulta = "DELETE FROM ordenreparacion WHERE id=?;";
+            $consulta = "DELETE FROM domicilio WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array($id));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
