@@ -50,7 +50,8 @@ require_once "modelos/database.php";
                       <td><?=$clienteSQL->domicilio?></td>
                       <!--condicion para ocultar si es tecnico-->
                       <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
-                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> <a class="btn btn-warning btn-flat" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a></td>
+                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> 
+                      <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a></td>
                       <?php }?>
                     </tr>
                     <?php endforeach;?>

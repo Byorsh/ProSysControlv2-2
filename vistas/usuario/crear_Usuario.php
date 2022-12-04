@@ -47,6 +47,10 @@
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
+              if($_SESSION['tipoUsuario']!='Admin'){
+                $regex->sweet_alerts("Modulo no permitido");
+              }
+              else{
               ?>
               <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" action="?c=usuario&a=Guardar">
@@ -120,6 +124,7 @@
                         </div>
                         
                     </div>
+                    <?php } ?>
                   
                   <!--<div class="form-group">
                     <label class="control-label" for="inputDefault">RFC</label>
