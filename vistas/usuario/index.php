@@ -9,6 +9,10 @@
             </ul>-->
           </div>
           <div>
+          <?php
+              require_once 'modelos/regex.php';
+              $regex = new Regex;
+              ?>
             <!--condicion para ocultar si es secretario-->
             <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
             <a class="btn btn-primary btn-flat" href="?c=usuario&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a>
@@ -52,7 +56,7 @@
                       <!--condicion para ocultar si es secretario-->
                       <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
                       <td><a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?=$u->id?>"><i class="fa fa-lg fa-refresh"></i></a> 
-                          <a class="btn btn-warning btn-flat" href="?c=usuario&a=Borrar&id=<?=$u->id?>"><i class="fa fa-lg fa-trash"></i></a>
+                          <a class="btn btn-warning btn-flat"   onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=usuario&a=Borrar&id=<?=$u->id?>" ><i class="fa fa-lg fa-trash"></i></a>
                       </td>
                       <?php }?>
                     </tr>
@@ -65,3 +69,9 @@
         </div>
       </div>
     </div>
+    <script>
+                            function toggleButtonagregarTaller()
+                            {
+                                
+                            }
+                        </script> 

@@ -17,7 +17,7 @@ else{
 
 
 }*/
-include('modelos/regex.php');
+require_once('modelos/regex.php');
 require_once "modelos/database.php";
 session_start();
 $camposporllenar=true;
@@ -38,7 +38,7 @@ if(isset($_SESSION['usuario'])){
         call_user_func(array($controlador, $accion));
     }
 }
-else{ include("index.php");$regex->sweet_alerts("Sesion no iniciada");}
+else{ include("index.php");$this->sweet_alerts("Sesion no iniciada");}
 
 
 

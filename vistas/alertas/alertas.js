@@ -45,5 +45,14 @@ function alertaLogin(tipoAlerta){
             dangerMode: true,
         })
     }
+    if(tipoAlerta=="Modulo no permitido"){
+        swal({
+            title:"ERROR",
+            text:"Esta seccion no esta permitida",
+            icon:"warning",
+            buttons:false,
+            dangerMode: true,
+        })
+    }
     
 }

@@ -28,7 +28,7 @@
                       <th>Fecha de Entrada</th>
                       
                       <th>Fecha Prometida</th>
-                      <th>Acciones</th>
+                      <?php if($_SESSION['tipoUsuario']!='Secretario'){?> <th>Acciones</th> <?php } ?>
                     </tr>
                   </thead>
                   <tbody>
@@ -47,8 +47,8 @@
                         <!--condicion para ocultar si es secretario-->
                         <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
                         <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a>
-                            <a class="btn btn-warning btn-flat" href="?c=taller&a=Borrar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
-                        <?php }?>
+                            <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                        <?php } ?>
                       </tr>
                       <?php endforeach;?>
                   </tbody>

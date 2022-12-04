@@ -40,15 +40,12 @@ class Regex{
         }
     }
     public function sweet_alerts($datos){
-        echo($datos);
         $var = json_encode($datos);
         ?>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="vistas/alertas/alertas.js"></script>
         <script>
-            var x='<?php echo json_encode($datos); ?>';
-            console.log('<?php echo($datos); ?>'+'a');
-            console.log(x);
+
             alertaLogin('<?php echo($datos); ?>');
         </script>
         <?php
