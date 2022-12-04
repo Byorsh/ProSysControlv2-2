@@ -60,31 +60,100 @@
                         </div>
                     </div>                    
                     <div class="col-lg-10">
-                        <h4>Informacion del servicio</h4>
+                        <h4>Datos del Equipo</h4>
                     </div>
                     <div class="form-group">
-                    
+                    <label class="control-label col-md-3" for="Ns">Numero de Serie</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="ns" type="text" placeholder="Introduce el numero de serie del equipo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="Marca">Marca</label>
+                    <div class="col-md-8">
+                      <input class="form-control col-md-8" name="marca" type="text" placeholder="Marca del equipo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="Modelo">Modelo</label>
+                    <div class="col-md-8">
+                    <input class="form-control col-md-8" name="modelo" type="text" placeholder="Modelo del equipo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="TipoEquipo">Tipo de Equipo</label>
+                    <div class="col-md-8">
+                      <input class="form-control col-md-8" name="tipoEquipo" type="text" placeholder="Tipo de equipo">
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Problematica">Problematica para el servicio</label>
                     <div class="col-md-8">
                       <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio"></textarea>
                     </div>
                   </div>
-
-                  <div class="form-group">
-                        <div class="col-lg-10">
-                        <input class="form-control" name="observaciones" type="hidden">
-                      </div>
-                    </div>
                   
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="Observaciones">Observaciones</label>
+                    <div class="col-md-8">
+                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Observaciones"></textarea>
+                    </div>
+                  </div>
+
+                    <div class="col-lg-10">
+                        <h4>Registrar Servicio</h4>
+                    </div>
                   
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="FechaPrometida">Fecha solicitud de servicio</label>
+                        <label class="control-label col-md-3" for="Fecha solicitud de servicio">Fecha solicitud de servicio</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="fechaPrometida" type="text" placeholder="Fecha de solicitud de servicio">
+                            <input class="form-control" name="fecha solicitud de servicio" type="text" placeholder="Fecha de solicitud de servicio">
                         </div>
                     </div>
-                    
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="Fecha de realizacion">Fecha de realizacion</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="fecha de realizacion" type="text" placeholder="Fecha de realizacion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="Presupuesto">Presupuesto</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="presupuesto" type="text" placeholder="Presupuesto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="Costo total">Costo total</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Costo total" type="text" placeholder="Costo total">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                       <!--AQUI ES DONDE SE ASIGNAN LOS VALORES DE LA FECHA Y HORA ACTUALES -->
+                        <?php
+                        date_default_timezone_set('America/Mazatlan');
+                        $fecha_actual=date("Y-m-d");
+                        $hora_actual=date("H:i:S");
+                        ?>
+                        <div class="col-md-8">
+                            <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fecha_actual?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        
+                        <div class="col-md-8">
+                            <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        
+                        <div class="col-md-8">
+                            <input class="form-control" name="estadoEquipo" type="hidden" value="1">
+                        </div>
+                    </div>
+
                         <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
                         <div class="col-lg-10">
                             <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">

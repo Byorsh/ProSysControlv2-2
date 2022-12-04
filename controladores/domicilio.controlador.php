@@ -43,10 +43,6 @@ class DomicilioControlador{
         $domicilioSQL->setIdCliente(intval($_POST['idCliente']));
         $domicilioSQL->setProblematica($_POST['problematica']);
         $domicilioSQL->setObservaciones($_POST['observaciones']);
-        $domicilioSQL->setNs($_POST['ns']);
-        $domicilioSQL->setMarca($_POST['marca']);
-        $domicilioSQL->setModelo($_POST['modelo']);
-        $domicilioSQL->settipoEquipo($_POST['tipoEquipo']);
         $domicilioSQL->setFechaPrometida($_POST['fechaPrometida']);
         $domicilioSQL->setPresupuesto(floatval($_POST['presupuesto']));
         $domicilioSQL->setCostoTotal(floatval($_POST['costoTotal']));

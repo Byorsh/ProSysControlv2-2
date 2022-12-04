@@ -19,15 +19,9 @@
                     <tr>
                       <th>ID</th>
                       <th>Id del Cliente</th>
-                      <th>Numero de serie</th>
-                      <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>Observaciones</th>
-                      <th>Accesorios</th>
-                      <th>Estado</th>
-                      <th>Fecha de Entrada</th>
+                      <th>Problematica</th>
+                      <th>Fecha Programada</th>
                       
-                      <th>Fecha Prometida</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -36,14 +30,8 @@
                       <tr>
                         <td><?=$domicilioSQL->id?></td>
                         <td><?=$domicilioSQL->idCliente?></td>
-                        <td><?=$domicilioSQL->ns?></td>
-                        <td><?=$domicilioSQL->marca?></td>
-                        <td><?=$domicilioSQL->modelo?></td>
-                        <td><?=$domicilioSQL->observaciones?></td>
-                        <td><?=$domicilioSQL->accesorios?></td>
-                        <td><?=$domicilioSQL->estadoEquipo?></td>
-                        <td><?=$domicilioSQL->fechaEntrada?></td>
-                        <td><?=$domicilioSQL->fechaPrometida?></td>
+                        <td><?=$domicilioSQL->problematica?></td>
+                        <td><?=$domicilioSQL->fechaProgramada?></td>
                         <!--condicion para ocultar si es secretario-->
                         <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
                         <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a>
