@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="IdCliente">ID del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="idCliente" type="text" placeholder="Introduce el id del cliente">
+                            <input class="form-control" name="id_Cliente" type="text" placeholder="Introduce el id del cliente">
                         </div>
                     </div>
                     <div class="form-group">
@@ -76,12 +76,41 @@
                         <input class="form-control" name="observaciones" type="hidden">
                       </div>
                     </div>
-                  
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                        <input class="form-control" name="presupuesto" type="hidden">
+                      </div>
+                    </div>
                   
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="FechaPrometida">Fecha solicitud de servicio</label>
+                        <div class="col-lg-10">
+                        <input class="form-control" name="costoTotal" type="hidden">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                        <input class="form-control" name="horaInicio" type="hidden">
+                      </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                        <input class="form-control" name="horaFinal" type="hidden">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                        <input class="form-control" name="horasRealizadas" type="hidden">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="fechaPrometida" type="text" placeholder="Fecha de solicitud de servicio">
+                            <input class="form-control" name="fechaProgramada" type="text" placeholder="Fecha de solicitud de servicio">
                         </div>
                     </div>
                     
@@ -90,11 +119,6 @@
                             <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
                         </div>-->
 
-                        <div>
-                        <label class="col-md-3" for=""></label>
-                        <label class="col-md-3" for=""></label>
-                        <label class="col-md-3" for=""></label>
-                        </div>
                         <div class="col-lg-10 col-lg-offset-2">
                             <button class="btn btn-default" type="reset">Limpiar</button>
                             <button class="btn btn-primary" type="submit">Enviar</button>

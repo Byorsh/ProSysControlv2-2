@@ -4,7 +4,7 @@ class Domicilio{
     private $udo;
 
     private $id;
-    private $idCliente;
+    private $id_Cliente;
     private $problematica;
     private $observaciones;
     private $fechaProgramada; 
@@ -12,7 +12,7 @@ class Domicilio{
     private $costoTotal;  
     private $horaInicio;
     private $horaFinal;
-    private $totalHoras;
+    private $horasRealizadas;
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -27,11 +27,11 @@ class Domicilio{
     }
 
     public function getIdCliente() : ?int{
-        return $this->idCliente;
+        return $this->id_Cliente;
     }
 
-    public function setIdCliente(int $idCliente){
-        $this->idCliente = $idCliente;
+    public function setIdCliente(int $id_Cliente){
+        $this->id_Cliente = $id_Cliente;
     }
 
     public function getProblematica() : ?string{
@@ -91,11 +91,11 @@ class Domicilio{
     }
 
     public function getTotalHoras() : ?int{
-        return $this->totalHoras;
+        return $this->horasRealizadas;
     }
 
-    public function setTotalHoras(int $totalHoras){
-        $this->totalHoras = $totalHoras;
+    public function setTotalHoras(int $horasRealizadas){
+        $this->horasRealizadas = $horasRealizadas;
     }
 
     public function Cantidad(){
@@ -136,7 +136,7 @@ class Domicilio{
             $domicilioSQL=new Domicilio();
 
             $domicilioSQL->setId($reDomicilio->id);
-            $domicilioSQL->setIdCliente($reDomicilio->idCliente);
+            $domicilioSQL->setIdCliente($reDomicilio->id_Cliente);
             $domicilioSQL->setProblematica($reDomicilio->problematica);
             $domicilioSQL->setObservaciones($reDomicilio->observaciones);
             $domicilioSQL->setFechaProgramada($reDomicilio->fechaProgramada);
@@ -144,7 +144,7 @@ class Domicilio{
             $domicilioSQL->setCostoTotal($reDomicilio->costoTotal);
             $domicilioSQL->setHoraInicio($reDomicilio->horaInicio);
             $domicilioSQL->setHoraFinal($reDomicilio->horaFinal);
-            $domicilioSQL->setTotalHoras($reDomicilio->totalHoras);
+            $domicilioSQL->setTotalHoras($reDomicilio->horasRealizadas);
 
             return $domicilioSQL;
         }catch(Exception $excepcion){
@@ -177,7 +177,7 @@ class Domicilio{
     public function Actualizar(Domicilio $domicilioSQL){
         try{
             $consulta = "UPDATE domicilio SET
-            idCliente=?,
+            id_Cliente=?,
             problematica=?,
             observaciones=?,
             fechaProgramada=?,

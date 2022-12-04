@@ -26,13 +26,13 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10">
-                        <input class="form-control" name="id" type="hidden">
+                        <input class="form-control" name="id" type="hidden" value="<?=$domicilioSQL->getId()?>">
                       </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3" for="IdCliente">ID del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="idCliente" type="text" placeholder="Introduce el id del cliente">
+                            <input class="form-control" name="id_Cliente" type="text" placeholder="Introduce el id del cliente" value="<?=$domicilioSQL->getIdCliente()?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,77 +60,66 @@
                         </div>
                     </div>                    
                     <div class="col-lg-10">
-                        <h4>Datos del Equipo</h4>
-                    </div>
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="Ns">Numero de Serie</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="ns" type="text" placeholder="Introduce el numero de serie del equipo">
-                    </div>
-                  </div>
+                        <h4>Informacion del Servicio</h4>
+                    </div>                
                   <div class="form-group">
-                    <label class="control-label col-md-3" for="Marca">Marca</label>
+                    <label class="control-label col-md-3" for="Problematica">Problematica del servicio</label>
                     <div class="col-md-8">
-                      <input class="form-control col-md-8" name="marca" type="text" placeholder="Marca del equipo">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3" for="Modelo">Modelo</label>
-                    <div class="col-md-8">
-                    <input class="form-control col-md-8" name="modelo" type="text" placeholder="Modelo del equipo">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3" for="TipoEquipo">Tipo de Equipo</label>
-                    <div class="col-md-8">
-                      <input class="form-control col-md-8" name="tipoEquipo" type="text" placeholder="Tipo de equipo">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3" for="Problematica">Problematica para el servicio</label>
-                    <div class="col-md-8">
-                      <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio"></textarea>
+                      <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio"><?=$domicilioSQL->getProblematica()?></textarea>
                     </div>
                   </div>
                   
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Observaciones">Observaciones</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Observaciones"></textarea>
+                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Observaciones"><?=$domicilioSQL->getObservaciones()?></textarea>
                     </div>
                   </div>
 
-                    <div class="col-lg-10">
-                        <h4>Registrar Servicio</h4>
-                    </div>
-                  
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="Fecha solicitud de servicio">Fecha solicitud de servicio</label>
+                        <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="fecha solicitud de servicio" type="text" placeholder="Fecha de solicitud de servicio">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="Fecha de realizacion">Fecha de realizacion</label>
-                        <div class="col-md-8">
-                            <input class="form-control" name="fecha de realizacion" type="text" placeholder="Fecha de realizacion">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="Presupuesto">Presupuesto</label>
-                        <div class="col-md-8">
-                            <input class="form-control" name="presupuesto" type="text" placeholder="Presupuesto">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="Costo total">Costo total</label>
-                        <div class="col-md-8">
-                            <input class="form-control" name="Costo total" type="text" placeholder="Costo total">
+                            <input class="form-control" name="fechaProgramada" type="text" placeholder="Fecha de solicitud de servicio" value="<?=$domicilioSQL->getFechaProgramada()?>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                       <!--AQUI ES DONDE SE ASIGNAN LOS VALORES DE LA FECHA Y HORA ACTUALES -->
+                        <label class="control-label col-md-3" for="Presupuesto">Presupuesto</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="presupuesto" type="text" placeholder="Presupuesto" value="<?=$domicilioSQL->getPresupuesto()?>">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="HoraInicio">Hora de Inicio</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="horaInicio" type="text" placeholder="Hora de inicio del servicio" value="<?=$domicilioSQL->getHoraInicio()?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="HoraFinal">Hora de Finalizacion</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="horaFinal" type="text" placeholder="Hora de terminacion del servicio" value="<?=$domicilioSQL->getHoraFinal()?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="HorasRealizadas">Horas Realizadas</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="horasRealizadas" type="text" placeholder="Hora realizadas en el servicio" value="<?=$domicilioSQL->getTotalHoras()?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="CostoTotal">Costo total</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="costoTotal" type="text" placeholder="Costo total" value="<?=$domicilioSQL->getCostoTotal()?>">
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group">
+                       <!AQUI ES DONDE SE ASIGNAN LOS VALORES DE LA FECHA Y HORA ACTUALES 
                         <?php
                         date_default_timezone_set('America/Mazatlan');
                         $fecha_actual=date("Y-m-d");
@@ -145,20 +134,7 @@
                         <div class="col-md-8">
                             <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual?>">
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        
-                        <div class="col-md-8">
-                            <input class="form-control" name="estadoEquipo" type="hidden" value="1">
-                        </div>
-                    </div>
-
-                        <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
-                        </div>-->
-
+                    </div>-->
                         <div>
                         <label class="col-md-3" for=""></label>
                         <label class="col-md-3" for=""></label>

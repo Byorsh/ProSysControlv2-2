@@ -22,7 +22,6 @@
                       <th>Problematica</th>
                       <th>Fecha Programada</th>
                       
-                      <th>Fecha Prometida</th>
                       <?php if($_SESSION['tipoUsuario']!='Secretario'){?> <th>Acciones</th> <?php } ?>
                     </tr>
                   </thead>
@@ -30,13 +29,13 @@
                     <?php foreach($this->modelo->Listar() as $domicilioSQL):?>
                       <tr>
                         <td><?=$domicilioSQL->id?></td>
-                        <td><?=$domicilioSQL->idCliente?></td>
+                        <td><?=$domicilioSQL->id_Cliente?></td>
                         <td><?=$domicilioSQL->problematica?></td>
                         <td><?=$domicilioSQL->fechaProgramada?></td>
                         <!--condicion para ocultar si es secretario-->
                         <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
-                        <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a>
-                            <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                        <td><a class="btn btn-info btn-flat" href="?c=domicilio&a=FormModificar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a>
+                            <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=domicilio&a=Borrar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
                         <?php }?>
                       </tr>
                       <?php endforeach;?>
