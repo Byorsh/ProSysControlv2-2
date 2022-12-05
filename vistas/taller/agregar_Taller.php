@@ -22,6 +22,7 @@
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
+              $testo = 0;
               ?>
                 <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
                 <fieldset>
@@ -35,27 +36,34 @@
                       </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-md-3" for="IdCliente" >Nombre del Cliente *</label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
+                              required="" onchange="toggleButtonagregarTaller()">
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarClientes() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->nombreCliente," ",$tallerSQL->apellidoP." ",$tallerSQL->apellidoM?></option>
+                            <?php endforeach; ?>
+                            </select><br>
+                        </div>
+                    </div>
+                    
+                    <!--<div class="form-group">
                         <label class="control-label col-md-3" for="IdCliente" >ID del Cliente *</label>
                         <div class="col-md-8">
                             <input class="form-control"  id="idc" name="idCliente" type="text" placeholder="Introduce el id del cliente" pattern="[0-9]{1,3}" required="" onchange="toggleButtonagregarTaller()">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3">Nombre del Cliente</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Nombre del cliente" disabled>
-                        </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Telefono del cliente" disabled>
+                            <input class="form-control" id="telefonoC" name="telefonoC"  type="text" placeholder="Telefono del cliente"  disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Correo del cliente" disabled>
+                            <input class="form-control" id="correoC" name="correoC"  type="text" placeholder="Correo del cliente"  disabled>
                         </div>
                     </div>
                     <div class="col-lg-10">
@@ -106,9 +114,23 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="TecnicoAsignado" >Tecnico Asignado *</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="idtec" name="tecnicoAsignado" type="text" placeholder="Id del Tecnico asignado" pattern="[0-9]{1,3}" required="" onchange="toggleButtonagregarTaller()">
+                            <select class="form-control" id="idtec" name="tecnicoAsignado" type="text" placeholder="Id del Tecnico asignado" pattern="[0-9]{1,3}" required="" onchange="toggleButtonagregarTaller()">
+                            <option value disabled >Seleccione un técnico o administrador</option>
+                            <optgroup label="Tecnicos">
+                            <?php 
+                            foreach($this->modelo->ListarTecnicos() as $tallerSQL):?>
+                            <option value="<?=$tallerSQL->id?>"><?= $tallerSQL->nombre," ",$tallerSQL->apellido?></option>
+                            <?php endforeach; ?>
+                            <optgroup label="Admnistradores">
+                            <?php 
+                            foreach($this->modelo->ListarAdministradores() as $tallerSQL):?>
+                            <option value="<?=$tallerSQL->id?>"><?= $tallerSQL->nombre," ",$tallerSQL->apellido?></option>
+                            <?php endforeach; ?>
+
+                            </select><br>
                         </div>
                     </div>
+                    
                     
                     <div class="form-group">
                         <label class="control-label col-md-3" for="FechaPrometida" >Fecha Prometida *</label>
@@ -177,7 +199,7 @@
                                 var ns = document.getElementById('ns').value;
                                 var marca = document.getElementById('marca').value;
                                 var modelo = document.getElementById('modelo').value;
-                                var obs = document.getElementById('obs').value;
+                                var obs = document.getElementById('obs').value; 
                                 var fecha = document.getElementById('fecha').value;
                 
                                 if (ns && marca && modelo && obs && idtec && fecha && idc ) {
@@ -194,5 +216,5 @@
                                     
                                 }
                             }
-                        </script> 
+                        </script>
   

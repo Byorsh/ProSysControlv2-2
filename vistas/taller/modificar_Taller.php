@@ -190,9 +190,10 @@
                                 var marca = document.getElementById('marca').value;
                                 var modelo = document.getElementById('modelo').value;
                                 var obs = document.getElementById('obs').value;
+                                var idtec = document.getElementById('idtec').value;
                                 var fecha = document.getElementById('fecha').value;
                 
-                                if (ns && marca && modelo && obs && idtec && fecha &&  ) {
+                                if (ns && marca && modelo && obs && idtec && fecha  ) {
                                     document.getElementById('submitButton').disabled = false;
                                     document.getElementById('advertencia').className = "hidden";
                                     

@@ -154,6 +154,43 @@ class Taller{
             die($excepcion->getMessage());
         }
     }
+    //
+    public function ListarTecnicos(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT id,nombre,apellido,user FROM `usuario` WHERE privilegio = 2;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function ListarAdministradores(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT id,nombre,apellido,user FROM `usuario` WHERE privilegio = 1;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function ListarClientes(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT idClientes,nombreCliente,apellidoP,apellidoM FROM `clientes`;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function ListarTelefonoYCorreo(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT idClientes,telefono,email FROM `clientes`;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
 
     public function Obtener($nombre){
         try{
