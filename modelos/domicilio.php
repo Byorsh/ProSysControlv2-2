@@ -127,6 +127,15 @@ class Domicilio{
             die($excepcion->getMessage());
         }
     }
+    public function ListarClientes(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT idClientes,nombreCliente,apellidoP,apellidoM FROM `clientes`;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
 
     public function Obtener($nombre){
         try{

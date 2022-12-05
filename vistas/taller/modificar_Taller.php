@@ -130,7 +130,20 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="TecnicoAsignado" >Tecnico Asignado *</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="idtec" name="tecnicoAsignado" type="text" placeholder="Id del Tecnico asignado" pattern="[0-9]{1,3}" required="" onchange="toggleButtonagregarTaller()">
+                            <select class="form-control" id="idtec" name="tecnicoAsignado" type="text" placeholder="Id del Tecnico asignado" pattern="[0-9]{1,3}" required="" onchange="toggleButtonagregarTaller()">
+                            <option value disabled >Seleccione un técnico o administrador</option>
+                            <optgroup label="Tecnicos">
+                            <?php 
+                            foreach($this->modelo->ListarTecnicos() as $tallerSQL):?>
+                            <option value="<?=$tallerSQL->id?>"><?= $tallerSQL->nombre," ",$tallerSQL->apellido?></option>
+                            <?php endforeach; ?>
+                            <optgroup label="Admnistradores">
+                            <?php 
+                            foreach($this->modelo->ListarAdministradores() as $tallerSQL):?>
+                            <option value="<?=$tallerSQL->id?>"><?= $tallerSQL->nombre," ",$tallerSQL->apellido?></option>
+                            <?php endforeach; ?>
+
+                            </select><br>
                         </div>
                     </div>
                     

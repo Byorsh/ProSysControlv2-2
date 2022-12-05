@@ -47,7 +47,9 @@
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
-              if($_SESSION['tipoUsuario']!='Admin'){
+              if($_SESSION['tipoUsuario']!='Admin' || !isset($_SESSION['tipoUsuario'])){
+                include("page-error.php");
+
                 $regex->sweet_alerts("Modulo no permitido");
               }
               else{

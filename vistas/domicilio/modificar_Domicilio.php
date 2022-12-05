@@ -30,9 +30,15 @@
                       </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="IdCliente">ID del Cliente</label>
+                        <label class="control-label col-md-3" for="IdCliente" >Nombre del Cliente *</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="id_Cliente" type="text" placeholder="Introduce el id del cliente" value="<?=$domicilioSQL->getIdCliente()?>">
+                            <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
+                              required="" >
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarClientes() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->nombreCliente," ",$tallerSQL->apellidoP." ",$tallerSQL->apellidoM?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,16 +69,16 @@
                         <h4>Informacion del Servicio</h4>
                     </div>                
                   <div class="form-group">
-                    <label class="control-label col-md-3" for="Problematica">Problematica del servicio</label>
+                    <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio"><?=$domicilioSQL->getProblematica()?></textarea>
+                      <textarea class="form-control" name="problematica" rows="4" required="" placeholder="Problematica para el servicio"><?=$domicilioSQL->getProblematica()?></textarea>
                     </div>
                   </div>
                   
                   <div class="form-group">
-                    <label class="control-label col-md-3" for="Observaciones">Observaciones</label>
+                    <label class="control-label col-md-3" for="Observaciones">Observaciones *</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="observaciones" rows="4" placeholder="Observaciones"><?=$domicilioSQL->getObservaciones()?></textarea>
+                      <textarea class="form-control" name="observaciones" rows="4" required="" placeholder="Observaciones"><?=$domicilioSQL->getObservaciones()?></textarea>
                     </div>
                   </div>
 

@@ -30,9 +30,15 @@
                       </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="IdCliente">ID del Cliente</label>
+                        <label class="control-label col-md-3" for="IdCliente" >Nombre del Cliente *</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="id_Cliente" type="text" placeholder="Introduce el id del cliente">
+                            <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
+                              required="" >
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarClientes() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->nombreCliente," ",$tallerSQL->apellidoP." ",$tallerSQL->apellidoM?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                         </div>
                     </div>
                     <div class="form-group">
@@ -67,7 +73,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Problematica">Problematica para el servicio</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio"></textarea>
+                      <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio" required=""></textarea>
                     </div>
                   </div>
 
@@ -110,7 +116,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="fechaProgramada" type="text" placeholder="Fecha de solicitud de servicio">
+                            <input class="form-control" name="fechaProgramada" type="text" placeholder="Fecha de solicitud de servicio" required="">
                         </div>
                     </div>
                     
