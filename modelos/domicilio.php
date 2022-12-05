@@ -4,19 +4,15 @@ class Domicilio{
     private $udo;
 
     private $id;
-    private $idCliente;
+    private $id_Cliente;
     private $problematica;
     private $observaciones;
-    private $ns;
-    private $marca;
-    private $modelo;
-    private $tipoEquipo;
     private $fechaProgramada; 
     private $presupuesto; 
     private $costoTotal;  
     private $horaInicio;
     private $horaFinal;
-    private $totalHoras;
+    private $horasRealizadas;
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -31,11 +27,11 @@ class Domicilio{
     }
 
     public function getIdCliente() : ?int{
-        return $this->idCliente;
+        return $this->id_Cliente;
     }
 
-    public function setIdCliente(int $idCliente){
-        $this->idCliente = $idCliente;
+    public function setIdCliente(int $id_Cliente){
+        $this->id_Cliente = $id_Cliente;
     }
 
     public function getProblematica() : ?string{
@@ -52,38 +48,6 @@ class Domicilio{
 
     public function setObservaciones(string $observaciones){
         $this->observaciones = $observaciones;
-    }
-
-    public function getNs() : ?string{
-        return $this->ns;
-    }
-
-    public function setNs(string $ns){
-        $this->ns = $ns;
-    }
-
-    public function getTipoEquipo() : ?string{
-        return $this->tipoEquipo;
-    }
-
-    public function setTipoEquipo(string $tipoEquipo){
-        $this->tipoEquipo = $tipoEquipo;
-    }
-
-    public function getMarca() : ?string{
-        return $this->marca;
-    }
-
-    public function setMarca(string $marca){
-        $this->marca = $marca;
-    }
-
-    public function getModelo() : ?string{
-        return $this->modelo;
-    }
-
-    public function setModelo(string $modelo){
-        $this->modelo = $modelo;
     }
 
     public function getFechaProgramada() : ?string{
@@ -127,11 +91,11 @@ class Domicilio{
     }
 
     public function getTotalHoras() : ?int{
-        return $this->totalHoras;
+        return $this->horasRealizadas;
     }
 
-    public function setTotalHoras(int $totalHoras){
-        $this->totalHoras = $totalHoras;
+    public function setTotalHoras(int $horasRealizadas){
+        $this->horasRealizadas = $horasRealizadas;
     }
 
     public function Cantidad(){
@@ -172,19 +136,15 @@ class Domicilio{
             $domicilioSQL=new Domicilio();
 
             $domicilioSQL->setId($reDomicilio->id);
-            $domicilioSQL->setIdCliente($reDomicilio->idCliente);
+            $domicilioSQL->setIdCliente($reDomicilio->id_Cliente);
             $domicilioSQL->setProblematica($reDomicilio->problematica);
             $domicilioSQL->setObservaciones($reDomicilio->observaciones);
-            $domicilioSQL->setNs($reDomicilio->ns);
-            $domicilioSQL->setMarca($reDomicilio->marca);
-            $domicilioSQL->setModelo($reDomicilio->modelo);
-            $domicilioSQL->settipoEquipo($reDomicilio->tipoEquipo);
             $domicilioSQL->setFechaProgramada($reDomicilio->fechaProgramada);
             $domicilioSQL->setPresupuesto($reDomicilio->presupuesto);
             $domicilioSQL->setCostoTotal($reDomicilio->costoTotal);
             $domicilioSQL->setHoraInicio($reDomicilio->horaInicio);
             $domicilioSQL->setHoraFinal($reDomicilio->horaFinal);
-            $domicilioSQL->setTotalHoras($reDomicilio->totalHoras);
+            $domicilioSQL->setTotalHoras($reDomicilio->horasRealizadas);
 
             return $domicilioSQL;
         }catch(Exception $excepcion){
@@ -195,17 +155,13 @@ class Domicilio{
 
     public function Insertar(Domicilio $domicilioSQL){
         try{
-            $consulta = "INSERT INTO domicilio(id,id_Cliente, problematica, observaciones, ns, marca, modelo, tipoEquipo, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO domicilio(id,id_Cliente, problematica, observaciones, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas) 
+            VALUES (?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 $domicilioSQL->NULL,
                 $domicilioSQL->getIdCliente(),
                 $domicilioSQL->getProblematica(),
                 $domicilioSQL->getObservaciones(),
-                $domicilioSQL->getNs(),
-                $domicilioSQL->getMarca(),
-                $domicilioSQL->getModelo(),
-                $domicilioSQL->gettipoEquipo(),
                 $domicilioSQL->getFechaProgramada(),
                 $domicilioSQL->getPresupuesto(),
                 $domicilioSQL->getCostoTotal(),
@@ -221,13 +177,9 @@ class Domicilio{
     public function Actualizar(Domicilio $domicilioSQL){
         try{
             $consulta = "UPDATE domicilio SET
-            idCliente=?,
+            id_Cliente=?,
             problematica=?,
             observaciones=?,
-            ns=?,
-            marca=?,
-            modelo=?,
-            tipoEquipo=?,
             fechaProgramada=?,
             presupuesto=?,
             costoTotal=?,
@@ -239,10 +191,6 @@ class Domicilio{
                 $domicilioSQL->getIdCliente(),
                 $domicilioSQL->getProblematica(),
                 $domicilioSQL->getObservaciones(),
-                $domicilioSQL->getNs(),
-                $domicilioSQL->getMarca(),
-                $domicilioSQL->getModelo(),
-                $domicilioSQL->gettipoEquipo(),
                 $domicilioSQL->getFechaProgramada(),
                 $domicilioSQL->getPresupuesto(),
                 $domicilioSQL->getCostoTotal(),

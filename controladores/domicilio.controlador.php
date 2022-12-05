@@ -40,14 +40,10 @@ class DomicilioControlador{
         $domicilioSQL = new Domicilio();
 
         $domicilioSQL->setId(intval($_POST['id']));
-        $domicilioSQL->setIdCliente(intval($_POST['idCliente']));
+        $domicilioSQL->setIdCliente(intval($_POST['id_Cliente']));
         $domicilioSQL->setProblematica($_POST['problematica']);
         $domicilioSQL->setObservaciones($_POST['observaciones']);
-        $domicilioSQL->setNs($_POST['ns']);
-        $domicilioSQL->setMarca($_POST['marca']);
-        $domicilioSQL->setModelo($_POST['modelo']);
-        $domicilioSQL->settipoEquipo($_POST['tipoEquipo']);
-        $domicilioSQL->setFechaPrometida($_POST['fechaPrometida']);
+        $domicilioSQL->setFechaProgramada($_POST['fechaProgramada']);
         $domicilioSQL->setPresupuesto(floatval($_POST['presupuesto']));
         $domicilioSQL->setCostoTotal(floatval($_POST['costoTotal']));
         $domicilioSQL->setHoraInicio($_POST['horaInicio']);
