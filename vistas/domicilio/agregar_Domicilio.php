@@ -126,11 +126,28 @@
                             value="" required="" >
                         </div>
                     </div>
-                    
+                    <div class="col-md-8">
+                            <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $fecha_actual?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        
+                        <div class="col-md-8">
+                            <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $hora_actual?>">
+                        </div>
+                    </div>
                         <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
                         <div class="col-lg-10">
                             <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
                         </div>-->
+                        <label class="col-md-3" id="advertencia" >Faltan campos por llenar</label>
+
+                    <div class="form-group">
+                        
+                        <div class="col-md-8">
+                            <input class="form-control" name="estadoEquipo" type="hidden" value="1">
+                        </div>
+                    </div>
 
                         <div class="col-lg-10 col-lg-offset-2">
                             <button class="btn btn-default" type="reset">Limpiar</button>
