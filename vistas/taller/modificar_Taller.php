@@ -67,38 +67,38 @@
                     <div class="form-group">
                     <label class="control-label col-md-3" for="Ns" >Numero de Serie *</label>
                     <div class="col-md-8">
-                      <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{6,30}" required="" onchange="toggleButtonagregarTaller()">
+                      <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{6,30}" required="" onchange="toggleButtonagregarTaller()" value="<?=$tallerSQL->getNs()?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Marca" >Marca *</label>
                     <div class="col-md-8">
-                      <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo"  pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" required="" onchange="toggleButtonagregarTaller()">
+                      <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo"  pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" required="" onchange="toggleButtonagregarTaller()" value="<?=$tallerSQL->getMarca()?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Modelo" >Modelo *</label>
                     <div class="col-md-8">
-                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" required="" onchange="toggleButtonagregarTaller()">
+                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" required="" onchange="toggleButtonagregarTaller()" value="<?=$tallerSQL->getModelo()?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="TipoEquipo" >Tipo de Equipo</label>
                     <div class="col-md-8">
-                      <input class="form-control col-md-8"  name="tipoEquipo" type="text" placeholder="Tipo de equipo">
+                      <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" value="<?=$tallerSQL->gettipoEquipo()?>">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Observaciones" >Problematica del equipo *</label>
                     <div class="col-md-8">
                       <!--Por alguna razon no agarra la validacion para el minimo de caracteres-->
-                      <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}" required="" onchange="toggleButtonagregarTaller()"></textarea>
+                      <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}" required="" onchange="toggleButtonagregarTaller()"><?=$tallerSQL->getObservaciones()?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Accesorios">Accesorios</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo"></textarea>
+                      <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo"><?=$tallerSQL->getAccesorios()?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
@@ -150,7 +150,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="FechaPrometida" >Fecha Prometida *</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="fecha" name="fechaPrometida" type="text" placeholder="Fecha prometida"
+                            <input class="form-control" id="fechaPrometida" name="fechaPrometida" type="text" placeholder="Fecha prometida" value="<?=$tallerSQL->getFechaPrometida()?>"
                             pattern="(19|20)(((([02468][048])|([13579][26]))-02-29)|(\d{2})-((02-((0[1-9])|1\d|2[0-8]))|((((0[13456789])|1[012]))-((0[1-9])|((1|2)\d)|30))|(((0[13578])|(1[02]))-31)))" required="" onchange="toggleButtonagregarTaller()">
                         </div>
                         
