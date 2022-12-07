@@ -24,7 +24,7 @@
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
-              $this->modelo->Obtener('7');
+              $this->modelo->Obtener($tallerSQL->getId());
               $var = $tallerSQL->gettipoEquipo();
               $fechaprom = $tallerSQL->getFechaPrometida();
               $tecnicoasignadoOriginal = $tallerSQL->gettecnicoAsignado();
