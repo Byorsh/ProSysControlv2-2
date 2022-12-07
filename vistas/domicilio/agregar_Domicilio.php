@@ -46,16 +46,11 @@
                             </select><br>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3">Nombre del Cliente</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Nombre del cliente" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,15}" value="<?$tallerSQL->nombreCliente?>" disabled>
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Telefono del cliente" pattern="[0-9]{10,13}" value="<?$tallerSQL->telefono?>" disabled>
+                            <input class="form-control" type="text" placeholder="Telefono del cliente" pattern="[0-9]{10,13}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
