@@ -44,25 +44,26 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Nombre del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Nombre del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Nombre del cliente" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,15}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Telefono del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Telefono del cliente" pattern="[0-9]{10,13}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Correo del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Correo del cliente" 
+                            pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Direccion del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Direccion del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Direccion del cliente" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{15,30}" disabled>
                         </div>
                     </div>                    
                     <div class="col-lg-10">
@@ -71,7 +72,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="problematica" rows="4" required="" placeholder="Problematica para el servicio"><?=$domicilioSQL->getProblematica()?></textarea>
+                      <textarea class="form-control" name="problematica" rows="4" required="" placeholder="Problematica para el servicio">  <?=$domicilioSQL->getProblematica()?></textarea>
                     </div>
                   </div>
                   
