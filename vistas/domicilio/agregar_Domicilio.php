@@ -18,6 +18,11 @@
         <div class="row">
           
             <div class="well bs-component">
+              <?php
+                date_default_timezone_set('America/Mazatlan');
+                $fechadiadeHOY=date("Y-m-d");
+                
+              ?>
                 <form class="form-horizontal" method="POST" action="?c=domicilio&a=Guardar">
                 <fieldset>
                 <legend>Servicio a domicilio</legend>
@@ -116,7 +121,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="fechaProgramada" type="text" placeholder="Fecha de solicitud de servicio" required="">
+                            <input class="form-control" name="fechaProgramada" type="date" min="<?=$fechadiadeHOY?>" max="2030-01-01" placeholder="Fecha de solicitud de servicio" required="">
                         </div>
                     </div>
                     

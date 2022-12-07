@@ -19,10 +19,11 @@
           
             <div class="well bs-component">
             <?php
+            date_default_timezone_set('America/Mazatlan');
+              $fechadiadeHOY=date("Y-m-d");
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
-              $testo = 0;
               ?>
                 <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
                 <fieldset>
@@ -135,7 +136,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="FechaPrometida" >Fecha Prometida *</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="fecha" name="fechaPrometida" type="text" placeholder="Fecha prometida"
+                            <input class="form-control" type="date" min="<?=$fechadiadeHOY?>" max="2030-01-01" id="fecha" name="fechaPrometida" placeholder="Fecha prometida"
                             pattern="(19|20)(((([02468][048])|([13579][26]))-02-29)|(\d{2})-((02-((0[1-9])|1\d|2[0-8]))|((((0[13456789])|1[012]))-((0[1-9])|((1|2)\d)|30))|(((0[13578])|(1[02]))-31)))" required="" onchange="toggleButtonagregarTaller()">
                         </div>
                         

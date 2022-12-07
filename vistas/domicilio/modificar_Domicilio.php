@@ -85,7 +85,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="fechaProgramada" type="text" placeholder="Fecha de solicitud de servicio" value="<?=$domicilioSQL->getFechaProgramada()?>">
+                            <input class="form-control" name="fechaProgramada"  type="date" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="<?=$domicilioSQL->getFechaProgramada()?>">
                         </div>
                     </div>
 
