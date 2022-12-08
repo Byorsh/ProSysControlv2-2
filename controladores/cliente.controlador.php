@@ -29,6 +29,18 @@ class ClienteControlador{
         require_once "vistas/pie.php";
     }
 
+    public function FormConsultar(){
+        $titulo="Consultar";
+        $clienteSQL = new Cliente();
+        if(isset($_GET['id'])){
+            $clienteSQL=$this->modelo->Obtener($_GET['id']);
+        }
+
+        require_once "vistas/encabezado.php";
+        require_once "vistas/cliente/consulta_Cliente.php";
+        require_once "vistas/pie.php";
+    }
+
     public function Guardar(){
         $clienteSQL = new Cliente();
 

@@ -49,10 +49,14 @@ require_once "modelos/database.php";
                       <td><?=$clienteSQL->email?></td>
                       <td><?=$clienteSQL->domicilio?></td>
                       <!--condicion para ocultar si es tecnico-->
+                      <td>
                       <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
-                      <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> 
-                      <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a></td>
+                      <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> 
+                      <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a>
                       <?php }?>
+                      <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-eye"></i></a></td>
+                      
+                      
                     </tr>
                     <?php endforeach;?>
                   </tbody>

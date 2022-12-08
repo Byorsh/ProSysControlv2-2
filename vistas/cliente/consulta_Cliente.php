@@ -5,11 +5,8 @@
       <p>Modulo para <?=$titulo?> clientes</p>
     </div>
     <div>
-      <ul class="breadcrumb">
-        <li><i class="fa fa-home fa-lg"></i></li>
-        <li>Cliente</li>
-        <li><a href="#"><?=$titulo?> Cliente</a></li>
-      </ul>
+    <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
+        <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a>
     </div>
   </div>
   <div class="row">
@@ -28,42 +25,42 @@
 
                       <label class="col-md-3" for="Rfc">RFC</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$clienteSQL->getRfc()?>">
+                          <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$clienteSQL->getRfc()?>" disabled>
                         </div>
                       
                       <label class="col-md-3 " for="NombreCliente">Nombre *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombreCliente" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$clienteSQL->getNombre()?>" required="">
+                          <input class="form-control" name="nombreCliente" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$clienteSQL->getNombre()?>" required="" disabled>
                         </div>
 
                       <label class="col-md-3 " for="ApellidoP">Apellido Paterno *</label>
                         <div class="col-lg-10">
-                        <input class="form-control" name="apellidoP" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$clienteSQL->getApellidoP()?>" required="">
+                        <input class="form-control" name="apellidoP" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$clienteSQL->getApellidoP()?>" required="" disabled>
                         </div>
 
                         <label class="col-md-3 " for="ApellidoM">Apellido Materno *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="apellidoM" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$clienteSQL->getApellidoM()?>" >
+                          <input class="form-control" name="apellidoM" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$clienteSQL->getApellidoM()?>" disabled>
                         </div>
 
                       <label class="col-md-3 " for="NombreEmpresa">Nombre de la empresa</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="nombreEmpresa" type="text" placeholder="NombreEmpresa" value="<?=$clienteSQL->getNombreEmpresa()?>" >
+                          <input class="form-control" name="nombreEmpresa" type="text" placeholder="NombreEmpresa" value="<?=$clienteSQL->getNombreEmpresa()?>" disabled>
                         </div>
 
                       <label class="col-md-3" for="Telefono">Telefono *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="telefono" type="text" pattern="[0-9]{10,13}" placeholder="Telefono" value="<?=$clienteSQL->getTelefono()?>" required="">
+                          <input class="form-control" name="telefono" type="text" pattern="[0-9]{10,13}" placeholder="Telefono" value="<?=$clienteSQL->getTelefono()?>" required="" disabled>
                         </div>
 
                       <label class="col-md-3" for="Email">Email *</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="email" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$clienteSQL->getEmail()?>" required="">
+                          <input class="form-control" name="email" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$clienteSQL->getEmail()?>" required="" disabled>
                         </div>
 
                       <label class="col-md-3" for="Domicilio">Domicilio</label>
                         <div class="col-lg-10">
-                        <input class="form-control" name="domicilio" type="text" pattern="{0,100}" placeholder="Domicilio" value="<?=$clienteSQL->getDomicilio()?>">
+                        <input class="form-control" name="domicilio" type="text" pattern="{0,100}" placeholder="Domicilio" value="<?=$clienteSQL->getDomicilio()?>" disabled>
                         </div>
 
                       <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
@@ -76,10 +73,7 @@
                         <label class="col-md-3" for=""></label>
                         <label class="col-md-3" for=""></label>
                       </div>
-                        <div class="col-lg-10 col-lg-offset-2">
-                          <button class="btn btn-default" type="reset">Limpiar</button>
-                          <button class="btn btn-primary" type="submit">Enviar</button>
-                        </div>
+                        
                     </div>
                   
                   

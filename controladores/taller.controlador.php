@@ -59,6 +59,10 @@ class TallerControlador{
         $this->modelo->Insertar($tallerSQL);
         header("location:?c=taller");
     }
+
+    public function Cancelar(){
+        header("location:?c=taller");
+    }
     
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
