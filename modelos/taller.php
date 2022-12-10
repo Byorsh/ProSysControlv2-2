@@ -191,6 +191,15 @@ class Taller{
             die($excepcion->getMessage());
         }
     }
+    public function buscarCliente($nombre){
+        try{
+            $consulta = $this->pdo->prepare("SELECT nombreCliente,apellidoP,apellidoM,telefono,email,domicilio FROM `clientes`WHERE idClientes =?;");
+            $consulta->execute(array($nombre));
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
 
     public function Obtener($nombre){
         try{

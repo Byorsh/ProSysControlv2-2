@@ -24,15 +24,17 @@
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
-              $this->modelo->Obtener($tallerSQL->getId());
+              $this->modelo->Obtener($tallerSQL->getId());              
               $var = $tallerSQL->gettipoEquipo();
               $fechaprom = $tallerSQL->getFechaPrometida();
               $tecnicoasignadoOriginal = $tallerSQL->gettecnicoAsignado();
+              $idclient = $tallerSQL->getIdCliente();
+              $datoscliente = $tallerSQL ->buscarCliente($idclient);
 
               ?>
                 <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
                 <fieldset>
-                <legend>Equipo en Taller <?php echo($tecnicoasignadoOriginal); ?></legend>
+                <legend>Equipo en Taller</legend>
                     <div class="col-lg-10">
                         <h4>Datos del Cliente</h4>
                     </div>
@@ -47,27 +49,36 @@
                     <div class="form-group">
                         
                         <div class="col-md-8">
-                            <input class="form-control" name="idCliente" type="hidden" placeholder="Introduce el id del cliente" value="<?=$tallerSQL->getIdCliente()?>">
+                            <input class="form-control" name="idCliente" type="hidden" placeholder="Introduce el id del cliente" value="<?=$idclient?>">
                         </div>
                     </div>
+                    <?php foreach($datoscliente as $campo): ?>                     
                     <div class="form-group">
                         <label class="control-label col-md-3">Nombre del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Nombre del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Nombre del cliente" value="<?=$campo->nombreCliente," ",$campo->apellidoP," ",$campo->apellidoM?>"
+                             disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Telefono del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Telefono del cliente" value="<?=$campo->telefono?>" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Correo del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Correo del cliente" value="<?=$campo->email?>" disabled>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Domicilio</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" placeholder="Domicilio del cliente" value="<?=$campo->domicilio?>" disabled>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
                     <div class="col-lg-10">
                         <h4>Datos del Equipo</h4>
                     </div>
@@ -138,7 +149,7 @@
                         <label class="control-label col-md-3" for="TecnicoAsignado" >Tecnico Asignado *</label>
                         <div class="col-md-8">
                             <select class="form-control" id="idtec" name="tecnicoAsignado" type="text" placeholder="Id del Tecnico asignado" pattern="[0-9]{1,3}"
-                            value="hatapu" required="" onchange="toggleButtonagregarTaller()">mama mi let mi go
+                            value="hatapu" required="" onchange="toggleButtonagregarTaller()">
                             <option value disabled >Seleccione un técnico o administrador</option>
                             <optgroup label="Tecnicos">
                             <?php 
@@ -185,10 +196,6 @@
                             <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual?>">
                         </div>
                     </div>
-                        <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
-                        </div>-->
                         <label class="col-md-3" id="advertencia" >Faltan campos por llenar</label>
 
                         <div>
@@ -197,12 +204,14 @@
                         <label class="col-md-3" for=""></label>
                         </div>
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default" type="menu" href="?c=taller">Cancelar</button>
+                            <!--CAMBIOS EN BOTONES PARA QUE SI REDIRECCIONE-->
+                            <button class="btn btn-default" type="button" onclick="cancelarTaller()">Cancelar</button>
                             <button class="btn btn-default" type="reset">Limpiar</button>
                             <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
                         </div>
                     </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -229,5 +238,11 @@
 
                                     
                                 }
+                            }
+                            //funcion para regresar en cancelar------------------------------
+                            function cancelarTaller()         
+                            {
+                              //aqui la direccion a cambiar----------------------------------
+                              window.location.href ='?c=taller';
                             }
                         </script> 

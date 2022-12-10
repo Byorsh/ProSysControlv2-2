@@ -8,7 +8,7 @@
       <ul class="breadcrumb">
         <li><i class="fa fa-home fa-lg"></i></li>
         <li>Taller</li>
-        <li><a href="#"><?=$titulo?> Equipo al Taller</a></li>
+        <li><a href="#"><?=$titulo?> Equipo al Tallera</a></li>
       </ul>
     </div>
   </div>
@@ -40,7 +40,7 @@
                         <label class="control-label col-md-3" for="IdCliente" >Nombre del Cliente *</label>
                         <div class="col-md-8">
                             <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
-                              required="" onchange="toggleButtonagregarTaller()">
+                              required="" onchange="toggleButtonagregarTaller();toggleListadeclientes()">
                             <option  value disabled>Seleccione un cliente</option>
                             <?php foreach($this->modelo->ListarClientes() as $tallerSQL): ?>
                             <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->nombreCliente," ",$tallerSQL->apellidoP." ",$tallerSQL->apellidoM?></option>
@@ -58,14 +58,25 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="telefonoC" name="telefonoC"  type="text" placeholder="Telefono del cliente"  disabled>
+                        <select class="form-control" id="listaTc" name="idCliente" method="post" type="text"
+                        disabled>
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarTelefonoYCorreo() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->telefono?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="correoC" name="correoC"  type="text" placeholder="Correo del cliente"  disabled>
-                        </div>
+                        <select class="form-control" id="listaCc" name="idCliente" method="post" type="text"
+                        disabled>
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarTelefonoYCorreo() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->email?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                     </div>
                     <div class="col-lg-10">
                         <h4>Datos del Equipo</h4>
@@ -185,16 +196,21 @@
                         </div>
                         
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default" type="menu" href="?c=taller">Cancelar</button>
+                        <button class="btn btn-default" type="button" onclick="cancelarTaller()">Cancelar</button>
                             <button class="btn btn-default" type="reset">Limpiar</button>
                             <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
                         </div>
-                        
                     </div>
         </div>
       </div>
     </div>
   </div>
+  <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
+    <fieldset>
+    
+    <fieldset>
+  </form>
+ 
   <script>
                             function toggleButtonagregarTaller()
                             {
@@ -218,6 +234,20 @@
 
                                     
                                 }
+                            }
+                        </script>
+  <script>
+                            function toggleListadeclientes()         
+                            {
+                              //String sql = "SELECT idClientes,telefono,email FROM `clientes` WHERE ;"
+                              console.log(document.getElementById('idc').value);
+                              document.getElementById('listaTc').value=document.getElementById('idc').value;
+                              document.getElementById('listaCc').value=document.getElementById('idc').value;
+                              console.log("telefonmo"+document.getElementById('listaTc').value);
+                            }
+                            function cancelarTaller()         
+                            {
+                              window.location.href ='?c=taller';
                             }
                         </script>
   
