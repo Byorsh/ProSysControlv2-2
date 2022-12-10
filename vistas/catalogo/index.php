@@ -42,7 +42,8 @@
                       <td><?=$catalogoSQL->precioVenta?></td>
                       
                       <td><a class="btn btn-info btn-flat" href="?c=catalogo&a=FormCrear&id=<?=$catalogoSQL->idProducto?>"><i class="fa fa-lg fa-refresh"></i></a> 
-                          <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=catalogo&a=Borrar&id=<?=$catalogoSQL->idProducto?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                          <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=catalogo&a=Borrar&id=<?=$catalogoSQL->idProducto?>"><i class="fa fa-lg fa-trash"></i></a>
+                          <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$catalogoSQL->idProducto?>"><i class="fa fa-lg fa-eye"></i></a></td>
                     </tr>
                     <?php endforeach;?>
                   </tbody>
