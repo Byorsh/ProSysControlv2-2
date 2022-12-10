@@ -77,6 +77,7 @@
                         <label class="col-md-3" for=""></label>
                       </div>
                         <div class="col-lg-10 col-lg-offset-2">
+                          <button class="btn btn-default" type="button" onclick="cancelarCliente()">Cancelar</button>
                           <button class="btn btn-default" type="reset">Limpiar</button>
                           <button class="btn btn-primary" type="submit">Enviar</button>
                         </div>

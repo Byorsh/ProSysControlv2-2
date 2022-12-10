@@ -150,8 +150,10 @@
                     </div>
 
                         <div class="col-lg-10 col-lg-offset-2">
+                            <button class="btn btn-default" type="button" onclick="cancelarDomicilio()">Cancelar</button>
                             <button class="btn btn-default" type="reset">Limpiar</button>
                             <button class="btn btn-primary" type="submit">Enviar</button>
+                            
                         </div>
                     </div>
         </div>

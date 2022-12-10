@@ -35,8 +35,10 @@
                         <!--condicion para ocultar si es secretario-->
                         <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
                         <td><a class="btn btn-info btn-flat" href="?c=domicilio&a=FormModificar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-refresh"></i></a>
-                            <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=domicilio&a=Borrar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-trash"></i></a></td>
+                            <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=domicilio&a=Borrar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-trash"></i></a>
+                            
                         <?php }?>
+                            <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$domicilioSQL->id?>"><i class="fa fa-lg fa-eye"></i></a></td>
                       </tr>
                       <?php endforeach;?>
                   </tbody>
