@@ -77,6 +77,7 @@
                     <div class="col-lg-10 col-lg-offset-2">
                         <button class="btn btn-default" type="reset">Limpiar</button>
                         <button class="btn btn-primary" type="submit">Enviar</button>
+                        <button class="btn btn-primary" type="submit">sample text</button>
                     </div>
                 </div>
         </div>
