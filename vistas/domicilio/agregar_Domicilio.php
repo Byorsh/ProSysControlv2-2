@@ -206,6 +206,11 @@
                             }
                             function cancelarDomicilio()         
                             {
-                              //window.location.href ='?c=taller';
+                              var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
+                              if (result == true) {
+                                window.location.href ='?c=domicilio';
+                              } else {
+                                  
+                              }
                             }
                         </script>

@@ -78,10 +78,22 @@
                         <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
                         <button class="btn btn-default" type="reset">Limpiar</button>
                         <button class="btn btn-primary" type="submit">Enviar</button>
-                        <button class="btn btn-primary" type="submit">sample text</button>
                     </div>
                 </div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+                            //funcion para regresar en cancelar------------------------------
+                            function cancelarCatalogo()         
+                            {
+                              //aqui la direccion a cambiar----------------------------------
+                              var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
+                              if (result == true) {
+                                window.location.href ='?c=catalogo';
+                              } else {
+                                  
+                              }
+                            }
+                        </script> 

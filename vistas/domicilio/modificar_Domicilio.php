@@ -149,6 +149,7 @@
                         <label class="col-md-3" for=""></label>
                         </div>
                         <div class="col-lg-10 col-lg-offset-2">
+                            <button class="btn btn-default" type="button" onclick="cancelarModificarDomicilio()">Cancelar</button>
                             <button class="btn btn-default" type="reset">Limpiar</button>
                             <button class="btn btn-primary" type="submit">Enviar</button>
                         </div>
@@ -185,8 +186,13 @@
                               document.getElementById('listaDc').value=document.getElementById('idc').value;
                               console.log("telefonmo"+document.getElementById('idc').value);
                             }
-                            function cancelarDomicilio()         
+                            function cancelarModificarDomicilio()         
                             {
-                              //window.location.href ='?c=taller';
+                                var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
+                              if (result == true) {
+                                window.location.href ='?c=domicilio';
+                              } else {
+                                  
+                              }
                             }
                         </script>
