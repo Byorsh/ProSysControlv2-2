@@ -5,13 +5,26 @@
       <p>Modulo para <?=$titulo?> Servicio a domicilio</p>
     </div>
     <div>
-    <a class="btn btn-info btn-flat" href="?c=domicilio&a=FormCrear&id=<?=$domicilioSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
+    <a class="btn btn-info btn-flat" href="?c=domicilio&a=FormModificar&id=<?=$domicilioSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
+    <a class="btn btn-warning btn-flat" href="?c=domicilio"><i class="fa fa-lg fa-reply"></i></a> 
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="row">
+
+        <?php
+              date_default_timezone_set('America/Mazatlan');
+              $fechadiadeHOY=date("Y-m-d");
+              require_once 'modelos/regex.php';
+              $regex = new Regex;
+              $camposporllenar = true;
+              $this->modelo->Obtener($domicilioSQL->getId());              
+              $idclient = $domicilioSQL->getIdCliente();
+              $datoscliente = $domicilioSQL ->buscarCliente($idclient);
+
+              ?>
           
             <div class="well bs-component">
                 <form class="form-horizontal" method="POST" action="?c=domicilio&a=Guardar">
