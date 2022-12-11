@@ -38,13 +38,13 @@ class DomicilioControlador{
 
     public function FormConsultar(){
         $titulo="Consultar";
-        $clienteSQL = new Cliente();
+        $domicilioSQL = new Domicilio();
         if(isset($_GET['id'])){
             $clienteSQL=$this->modelo->Obtener($_GET['id']);
         }
 
         require_once "vistas/encabezado.php";
-        require_once "vistas/cliente/consulta_Domicilio.php";
+        require_once "vistas/domicilio/consulta_Domicilio.php";
         require_once "vistas/pie.php";
     }
 

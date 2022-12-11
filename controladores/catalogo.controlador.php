@@ -29,6 +29,18 @@ class CatalogoControlador{
         require_once "vistas/pie.php";
     }
 
+    public function FormConsultar(){
+        $titulo="Consultar";
+        $catalogoSQL = new Catalogo();
+        if(isset($_GET['id'])){
+            $catalogoSQL=$this->modelo->Obtener($_GET['id']);
+        }
+
+        require_once "vistas/encabezado.php";
+        require_once "vistas/catalogo/consulta_Catalogo.php";
+        require_once "vistas/pie.php";
+    }
+
     public function Guardar(){
         $catalogoSQL = new Catalogo();
 

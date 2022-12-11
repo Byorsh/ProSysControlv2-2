@@ -5,11 +5,7 @@
       <p>Modulo para <?=$titulo?> Equipo en Taller</p>
     </div>
     <div>
-      <ul class="breadcrumb">
-        <li><i class="fa fa-home fa-lg"></i></li>
-        <li>Taller</li>
-        <li><a href="#"><?=$titulo?> Equipo en Taller</a></li>
-      </ul>
+        <a class="btn btn-info btn-flat" href="?c=taller&a=FormCrear&id=<?=$tallerSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
     </div>
   </div>
   <div class="row">
@@ -24,10 +20,12 @@
               require_once 'modelos/regex.php';
               $regex = new Regex;
               $camposporllenar = true;
-              $this->modelo->Obtener($tallerSQL->getId());
+              $this->modelo->Obtener($tallerSQL->getId());              
               $var = $tallerSQL->gettipoEquipo();
               $fechaprom = $tallerSQL->getFechaPrometida();
               $tecnicoasignadoOriginal = $tallerSQL->gettecnicoAsignado();
+              $idclient = $tallerSQL->getIdCliente();
+              $datoscliente = $tallerSQL ->buscarCliente($idclient);
 
               ?>
                 <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
@@ -99,13 +97,13 @@
                     <label class="control-label col-md-3" for="Observaciones" >Problematica del equipo *</label>
                     <div class="col-md-8">
                       <!--Por alguna razon no agarra la validacion para el minimo de caracteres-->
-                      <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}" required="" onchange="toggleButtonagregarTaller()"><?=$tallerSQL->getObservaciones()?></textarea disabled>
+                      <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}" required="" onchange="toggleButtonagregarTaller()" disabled><?=$tallerSQL->getObservaciones()?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Accesorios">Accesorios</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo"><?=$tallerSQL->getAccesorios()?></textarea disabled>
+                      <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo" disabled><?=$tallerSQL->getAccesorios()?></textarea >
                     </div>
                   </div>
                   <div class="form-group">
@@ -189,25 +187,13 @@
                         <div class="col-lg-10">
                             <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
                         </div>-->
-                        <label class="col-md-3" id="advertencia" >Faltan campos por llenar</label>
-
-                        <div>
-                        <label class="col-md-3" for=""></label>
-                        <label class="col-md-3" for=""></label>
-                        <label class="col-md-3" for=""></label>
-                        </div>
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default" type="reset">Limpiar</button>
-                            <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
-                            <button class="btn btn-default" type="reset">Sample text</button>
-                            
-                        </div>
+                        
                     </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
                             function toggleButtonagregarTaller()
                             {                                
                                 var ns = document.getElementById('ns').value;

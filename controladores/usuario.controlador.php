@@ -31,6 +31,18 @@ class UsuarioControlador{
         require_once "vistas/pie.php";
     }
 
+    public function FormConsultar(){
+        $titulo="Consultar";
+        $usuarioSQL = new Usuario();
+        if(isset($_GET['id'])){
+            $usuarioSQL=$this->modeloUsuario->Obtener($_GET['id']);
+        }
+
+        require_once "vistas/encabezado.php";
+        require_once "vistas/usuario/consultar_Usuario.php";
+        require_once "vistas/pie.php";
+    }
+
     public function Guardar(){
         $usuarioSQL = new Usuario();
 

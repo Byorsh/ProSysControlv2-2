@@ -5,11 +5,7 @@
       <p>Modulo para <?=$titulo?> Servicio a domicilio</p>
     </div>
     <div>
-      <ul class="breadcrumb">
-        <li><i class="fa fa-home fa-lg"></i></li>
-        <li>Domicilio</li>
-        <li><a href="#"><?=$titulo?> Servicio a domicilio</a></li>
-      </ul>
+    <a class="btn btn-info btn-flat" href="?c=domicilio&a=FormCrear&id=<?=$domicilioSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
     </div>
   </div>
   <div class="row">
@@ -33,7 +29,7 @@
                         <label class="control-label col-md-3" for="IdCliente" >Nombre del Cliente *</label>
                         <div class="col-md-8">
                             <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
-                              required="" >
+                              required="" disabled>
                             <option  value disabled>Seleccione un cliente</option>
                             <?php foreach($this->modelo->ListarClientes() as $tallerSQL): ?>
                             <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->nombreCliente," ",$tallerSQL->apellidoP." ",$tallerSQL->apellidoM?></option>
@@ -72,14 +68,14 @@
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="problematica" rows="4" required="" placeholder="Problematica para el servicio">  <?=$domicilioSQL->getProblematica()?></textarea disabled>
+                      <textarea class="form-control" name="problematica" rows="4" required="" placeholder="Problematica para el servicio" disabled><?=$domicilioSQL->getProblematica()?></textarea>
                     </div>
                   </div>
                   
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Observaciones">Observaciones *</label>
                     <div class="col-md-8">
-                      <textarea class="form-control" name="observaciones" rows="4" required="" placeholder="Observaciones"><?=$domicilioSQL->getObservaciones()?></textarea disabled>
+                      <textarea class="form-control" name="observaciones" rows="4" required="" placeholder="Observaciones" disabled><?=$domicilioSQL->getObservaciones()?></textarea>
                     </div>
                   </div>
 
@@ -147,11 +143,7 @@
                         <label class="col-md-3" for=""></label>
                         <label class="col-md-3" for=""></label>
                         </div>
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default" type="reset">Limpiar</button>
-                            <button class="btn btn-primary" type="submit">Enviar</button>
-                            <button class="btn btn-default" type="reset">Sample text</button>
-                        </div>
+                        
                     </div>
         </div>
       </div>
