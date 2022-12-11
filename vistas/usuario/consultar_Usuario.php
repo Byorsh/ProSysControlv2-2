@@ -31,6 +31,7 @@
     </div>
     <div>
     <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?=$usuarioSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
+    <a class="btn btn-warning btn-flat" href="?c=usuario"><i class="fa fa-lg fa-reply"></i></a>
     </div>
   </div>
   <div class="row">

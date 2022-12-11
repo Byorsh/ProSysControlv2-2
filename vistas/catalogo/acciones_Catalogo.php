@@ -78,7 +78,6 @@
                         <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
                         <button class="btn btn-default" type="reset">Limpiar</button>
                         <button class="btn btn-primary" type="submit">Enviar</button>
-                        <button class="btn btn-primary" type="submit">sample text</button>
                     </div>
                 </div>
         </div>

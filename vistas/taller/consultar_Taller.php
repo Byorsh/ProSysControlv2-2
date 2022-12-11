@@ -6,6 +6,7 @@
     </div>
     <div>
         <a class="btn btn-info btn-flat" href="?c=taller&a=FormCrear&id=<?=$tallerSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
+        <a class="btn btn-warning btn-flat" href="?c=taller"><i class="fa fa-lg fa-reply"></i></a>
     </div>
   </div>
   <div class="row">

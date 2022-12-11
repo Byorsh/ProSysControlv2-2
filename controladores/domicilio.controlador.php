@@ -26,6 +26,7 @@ class DomicilioControlador{
 
     public function FormModificar(){
         $domicilioSQL = new Domicilio();
+        $titulo = "Modificar";
         if(isset($_GET['id'])){
             $domicilioSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
@@ -40,7 +41,7 @@ class DomicilioControlador{
         $titulo="Consultar";
         $domicilioSQL = new Domicilio();
         if(isset($_GET['id'])){
-            $clienteSQL=$this->modelo->Obtener($_GET['id']);
+            $domicilioSQL=$this->modelo->Obtener($_GET['id']);
         }
 
         require_once "vistas/encabezado.php";
