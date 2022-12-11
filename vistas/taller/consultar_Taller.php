@@ -48,24 +48,33 @@
                             <input class="form-control" name="idCliente" type="hidden" placeholder="Introduce el id del cliente" value="<?=$tallerSQL->getIdCliente()?>" disabled>
                         </div>
                     </div>
+                    <?php foreach($datoscliente as $campo): ?>                     
                     <div class="form-group">
                         <label class="control-label col-md-3">Nombre del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Nombre del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Nombre del cliente" value="<?=$campo->nombreCliente," ",$campo->apellidoP," ",$campo->apellidoM?>"
+                             disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Telefono del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Telefono del cliente" value="<?=$campo->telefono?>" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Correo del cliente" disabled>
+                            <input class="form-control" type="text" placeholder="Correo del cliente" value="<?=$campo->email?>" disabled>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Domicilio</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" placeholder="Domicilio del cliente" value="<?=$campo->domicilio?>" disabled>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
                     <div class="col-lg-10">
                         <h4>Datos del Equipo</h4>
                     </div>
