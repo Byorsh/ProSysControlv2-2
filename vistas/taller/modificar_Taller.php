@@ -205,7 +205,7 @@
                         </div>
                         <div class="col-lg-10 col-lg-offset-2">
                             <!--CAMBIOS EN BOTONES PARA QUE SI REDIRECCIONE-->
-                            <button class="btn btn-default" type="button" onclick="cancelarTaller()">Cancelar</button>
+                            <button class="btn btn-default" type="button" onclick="cancelarModificarTaller()">Cancelar</button>
                             <button class="btn btn-default" type="reset">Limpiar</button>
                             <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
                         </div>
@@ -240,9 +240,14 @@
                                 }
                             }
                             //funcion para regresar en cancelar------------------------------
-                            function cancelarTaller()         
+                            function cancelarModificarTaller()         
                             {
                               //aqui la direccion a cambiar----------------------------------
-                              window.location.href ='?c=taller';
+                              var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
+                              if (result == true) {
+                                window.location.href ='?c=taller';
+                              } else {
+                                  
+                              }
                             }
                         </script> 

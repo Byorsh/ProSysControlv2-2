@@ -84,3 +84,16 @@
       </div>
     </div>
   </div>
+  <script>
+                            //funcion para regresar en cancelar------------------------------
+                            function cancelarCatalogo()         
+                            {
+                              //aqui la direccion a cambiar----------------------------------
+                              var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
+                              if (result == true) {
+                                window.location.href ='?c=catalogo';
+                              } else {
+                                  
+                              }
+                            }
+                        </script> 
