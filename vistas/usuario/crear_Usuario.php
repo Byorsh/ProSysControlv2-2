@@ -53,6 +53,7 @@
                 $regex->sweet_alerts("Modulo no permitido");
               }
               else{
+                $tipoUsuarioDefecto = $usuarioSQL->getPrivilegio();
               ?>
               <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" action="?c=usuario&a=Guardar">
@@ -108,9 +109,9 @@
                         <div class="col-lg-10">
                           <select class="form-control" name="privilegio" id="nivelprivilegio" required="" onchange="toggleButton()">
                             <option value selected disabled>Seleccione una opcion</option>
-                            <option value="1">Administrador</option>
-                            <option value="2">Tecnico</option>
-                            <option value="3">Secretaria</option>
+                            <option value="1" <?php if($tipoUsuarioDefecto=="1"){ ?> selected="true" <?php } ?>>Administrador</option>
+                            <option value="2" <?php if($tipoUsuarioDefecto=="2"){ ?> selected="true" <?php } ?>>Tecnico</option>
+                            <option value="3" <?php if($tipoUsuarioDefecto=="3"){ ?> selected="true" <?php } ?>>Secretaria</option>
                             
                           </select><br>
                           
