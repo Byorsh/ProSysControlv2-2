@@ -6,7 +6,6 @@
     </div>
     <div>
     <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
-        <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a>
     </div>
   </div>
   <div class="row">

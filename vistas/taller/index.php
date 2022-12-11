@@ -50,7 +50,7 @@
                             <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-trash"></i></a>
                             
                         <?php } ?>
-                            <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-eye"></i></a></td>
+                            <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?=$tallerSQL->id?>"><i class="fa fa-lg fa-eye"></i></a></td>
                       </tr>
                       <?php endforeach;?>
                   </tbody>
