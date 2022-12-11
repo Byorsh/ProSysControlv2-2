@@ -136,6 +136,33 @@ class Domicilio{
             die($excepcion->getMessage());
         }
     }
+    public function ListarTelefonoYCorreo(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT idClientes,telefono,email FROM `clientes`;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function ListarDomicilios(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT idClientes,domicilio FROM `clientes`;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function buscarCliente($nombre){
+        try{
+            $consulta = $this->pdo->prepare("SELECT nombreCliente,apellidoP,apellidoM,telefono,email,domicilio FROM `clientes`WHERE idClientes =?;");
+            $consulta->execute(array($nombre));
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
 
     public function Obtener($nombre){
         try{

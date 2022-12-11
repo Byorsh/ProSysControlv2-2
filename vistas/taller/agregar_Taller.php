@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                        <select class="form-control" id="listaTc" name="idCliente" method="post" type="text"
+                        <select class="form-control" id="listaTc" name="telefonoCliente" method="post" type="text"
                         disabled>
                             <option  value disabled>Seleccione un cliente</option>
                             <?php foreach($this->modelo->ListarTelefonoYCorreo() as $tallerSQL): ?>
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                        <select class="form-control" id="listaCc" name="idCliente" method="post" type="text"
+                        <select class="form-control" id="listaCc" name="correoCliente" method="post" type="text"
                         disabled>
                             <option  value disabled>Seleccione un cliente</option>
                             <?php foreach($this->modelo->ListarTelefonoYCorreo() as $tallerSQL): ?>

@@ -35,10 +35,10 @@
                       </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="IdCliente" >Nombre del Cliente *</label>
+                        <label class="control-label col-md-3" for="id_Cliente" >Nombre del Cliente *</label>
                         <div class="col-md-8">
-                            <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
-                              required="" >
+                            <select class="form-control" id="idc" name="id_Cliente" method="post" type="text" placeholder="Selecciona el nombre del cliente"
+                              required="" onchange=";toggleListadeclientes()">
                             <option  value disabled>Seleccione un cliente</option>
                             <?php foreach($this->modelo->ListarClientes() as $tallerSQL): ?>
                             <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->nombreCliente," ",$tallerSQL->apellidoP." ",$tallerSQL->apellidoM?></option>
@@ -50,20 +50,36 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Telefono del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Telefono del cliente" pattern="[0-9]{10,13}" disabled>
+                        <select class="form-control" id="listaTc" name="relefonoCliente" method="post" type="text"
+                        disabled>
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarTelefonoYCorreo() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->telefono?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Correo del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" 
-                            pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="Correo del cliente" disabled>
-                        </div>
+                        <select class="form-control" id="listaCc" name="correoCliente" method="post" type="text"
+                        disabled>
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarTelefonoYCorreo() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->email?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Direccion del Cliente</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" placeholder="Direccion del cliente" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{15,30}" disabled>
+                        <select class="form-control" id="listaDc" name="direccionCliente" method="post" type="text"
+                        disabled>
+                            <option  value disabled>Seleccione un cliente</option>
+                            <?php foreach($this->modelo->ListarDomicilios() as $tallerSQL): ?>
+                            <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->domicilio?></option>
+                            <?php endforeach; ?>
+                            </select><br>
                         </div>
                     </div>                    
                     <div class="col-lg-10">
@@ -160,3 +176,36 @@
       </div>
     </div>
   </div>
+  <script>
+                            function toggleButtonagregarDomicilio()
+                            {
+                                var idc = document.getElementById('idc').value;
+                                var obs = document.getElementById('obs').value; 
+                                var fecha = document.getElementById('fecha').value;
+                
+                                if (obs && fecha && idc ) {
+                                    document.getElementById('submitButton').disabled = false;
+                                    document.getElementById('advertencia').className = "hidden";
+                                    
+                                    //agregar un handler al boton de enviar que faltan campos o colocar como visible
+                                    
+                                } else {
+                                    document.getElementById('submitButton').disabled = true;
+                                    document.getElementById('advertencia').className = "col-md-3";
+                                    $camposporllenar = true;
+                                }
+                            }
+                        </script>
+  <script>
+                            function toggleListadeclientes()         
+                            {
+                              document.getElementById('listaTc').value=document.getElementById('idc').value;
+                              document.getElementById('listaCc').value=document.getElementById('idc').value;
+                              document.getElementById('listaDc').value=document.getElementById('idc').value;
+                              console.log("telefonmo"+document.getElementById('idc').value);
+                            }
+                            function cancelarDomicilio()         
+                            {
+                              //window.location.href ='?c=taller';
+                            }
+                        </script>
