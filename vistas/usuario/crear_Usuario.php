@@ -66,7 +66,7 @@
 
                       <label class="col-md-3" for="Rfc">RFC</label>
                         <div class="col-lg-10">
-                          <input class="form-control" name="rfc" type="text" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
+                          <input class="form-control" name="rfc" type="text" pattern="^([a-zA-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([a-zA-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
                       
                       <label class="col-md-3 " for="Nombre">Nombre *</label>

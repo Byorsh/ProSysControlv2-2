@@ -119,7 +119,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3" for="EstadoEquipo">Estado del equipo</label>
                         <div class="col-md-8">
-                          <select class="form-control" name="estadoEquipo" id="estadoEquipo" required="" onchange="toggleButton()" value selected="<?=$tallerSQL->getestadoEquipo()?>" disabled>
+                          <select class="form-control" name="estadoEquipo" id="estadoEquipo" required="" onchange="toggleButton()" value="<?=$tallerSQL->getestadoEquipo()?>" disabled>
                             <option value disabled>Seleccione una opcion</option>
                             <option value="1">Recien entrante</option>
                             <option value="2">En diagnostico</option>
