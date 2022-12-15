@@ -48,19 +48,23 @@
 
                     <label class="col-md-3 " for="PrecioCompra">Precio de compra *</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="precioCompra" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de compra" value="<?=$catalogoSQL->getPrecioCompra()?>" required="">
+                        <input class="form-control" id="preciocompratxt" name="precioCompra" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de compra" 
+                        value="<?=$catalogoSQL->getPrecioCompra()?>" required="" onchange="validarPrecioVenta()">
                     </div>
 
                     <label class="col-md-3" for="PrecioVenta">Precio de venta *</label>
                     <div class="col-lg-10">
-                        <input class="form-control" name="precioVenta" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de venta" value="<?=$catalogoSQL->getPrecioVenta()?>" required="">
+                        <input class="form-control" id="precioventatxt" name="precioVenta" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de venta" 
+                        value="<?=$catalogoSQL->getPrecioVenta()?>" required=""  onchange="validarPrecioVenta()">
                     </div>
-
+                    <div class="col-lg-10">
+                      <label class="col-md-3" for="PrecioVenta" visible="true" id="sugerencia">Precio de venta sugerido </label>
+                    </div>
                     <label class="col-md-3" for="Iva">IVA</label>
                         <div class="col-lg-10">
-                          <select class="form-control" name="iva" required="">
+                          <select class="form-control" id="impuestolista" name="iva" required="" onchange="validarPrecioVenta()">
                             <option value selected disabled>Seleccione una opcion</option>
-                            <option value="16">16%</option>
+                            <option value="16" selected="true">16%</option>
                             <option value="8">8%</option>
                             <option value="0">0%</option>
                             
@@ -77,7 +81,7 @@
                     <div class="col-lg-10 col-lg-offset-2">
                         <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
                         <button class="btn btn-default" type="reset">Limpiar</button>
-                        <button class="btn btn-primary" type="submit">Enviar</button>
+                        <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
                     </div>
                 </div>
         </div>
@@ -96,4 +100,25 @@
                                   
                               }
                             }
+                            function validarPrecioVenta(){
+                              var preciodCompra = document.getElementById('preciocompratxt').value;
+                              var preciodVenta = document.getElementById('precioventatxt').value;
+                              var impuesto = document.getElementById('impuestolista').value;
+                              var costoventa = 1.3*(preciodCompra*(1+((impuesto)/100)));
+                              document.getElementById('sugerencia').textContent = "Precio de venta sugerido "+costoventa;
+                              if(preciodVenta>(costoventa)){
+                                console.log("precio de venta correcto");
+                                document.getElementById('sugerencia').className = "visible";
+                                document.getElementById('submitButton').disabled = false;
+                              }
+                              else{
+                                document.getElementById('submitButton').disabled = true;
+                              }
+                              console.log(preciodCompra);
+                              console.log(preciodVenta);
+                              console.log(costoventa);
+                              //Precio de venta sugerido 
+
+                            }
+                            
                         </script> 
