@@ -1,5 +1,5 @@
 
-function alertaLogin(tipoAlerta){
+function alertaLogin(tipoAlerta){//son iguales solo cambia segun el tipo de error
     if(tipoAlerta=="faltan campos"){
         swal({
             title:"Atencion",

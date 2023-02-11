@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Parte de las barras laterales-->
 <html>
   <head>
     <meta charset="utf-8">
@@ -57,6 +58,7 @@
         </nav>
       </header>
       <!-- Side-Nav-->
+      <!-- Donde se muestra la sesion del usuario-->
       <aside class="main-sidebar hidden-print">
         <section class="sidebar">
           <div class="user-panel">

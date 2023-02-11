@@ -11,6 +11,7 @@
             </ul>
           </div>
         </div>
+        <!-- En esta parte irian los reportes-->
         <div class="row">
           <div class="col-md-3">
             <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>

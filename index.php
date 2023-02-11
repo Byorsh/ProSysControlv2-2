@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- LOGIN-->
 <html>
   <head>
       <link rel="stylesheet" type="text/css" href="css/site.css" />
@@ -27,7 +28,7 @@
         <h1>ProSysControl</h1>
       </div>
       <div class="login-box">
-        <!-- <form class="login-form" action="validar.php" method="post"> -->
+        <!-- Redirecciona a la validacion del login validar.php -->
         <form class="login-form" action="validar.php" method="post">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Inicio de sesion</h3>
           <p>Usuario <input type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Ingrese el usuario" name="usuario" > * </p>

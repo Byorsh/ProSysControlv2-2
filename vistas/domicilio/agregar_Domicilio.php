@@ -177,6 +177,7 @@
     </div>
   </div>
   <script>
+                            //este creo q no se usa
                             function toggleButtonagregarDomicilio()
                             {
                                 var idc = document.getElementById('idc').value;
@@ -197,6 +198,7 @@
                             }
                         </script>
   <script>
+                            //Funcion para poner en automatico los datos del cliente seleccionandolo de la lista
                             function toggleListadeclientes()         
                             {
                               document.getElementById('listaTc').value=document.getElementById('idc').value;

@@ -10,7 +10,7 @@ $password=$regex->limpiarCampo($password);
 
 $consulta = "SELECT * FROM usuario WHERE user = '$usuario' and contrasenia ='$password'";
 $resultado=mysqli_query($conexion, $consulta);
-$arr = mysqli_fetch_array($resultado);
+$arr = mysqli_fetch_array($resultado);//arreglo de los atributos del usuario
 
 $filas=mysqli_num_rows($resultado);
 session_abort();
@@ -19,10 +19,10 @@ $_SESSION['usuario']=$usuario;
 
 
 
-if($filas){
+if($filas){//verdadero si los datos coinciden
     switch($arr[8]){
         case 1:
-            $_SESSION['tipoUsuario']='Admin';
+            $_SESSION['tipoUsuario']='Admin';//se guarda en el valor de la sesion
             break;
         case 3:
             $_SESSION['tipoUsuario']='Secretario';
@@ -36,6 +36,7 @@ if($filas){
     $_SESSION;    
     header("location:home.php");
 }
+//en el caso que no encuentra
 else{
     if($usuario==null || $password==null){
         

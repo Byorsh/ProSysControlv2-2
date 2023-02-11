@@ -1,22 +1,5 @@
 <?php 
-//aqui se intenta guardar los datos del usuario esta bien porque no da error
-//pero sale mocho en la esquinita XD
-
-/*
-session_start();
-$usuario = $_SESSION['usuario'];
-
-if(!isset($usuario))
-    location("location: vistas/login/login.php");
-    
-else{
-    echo"<div>
-    <h1>BIENVENIDO $usuario </h1>
-    <h1><a href='vistas/login/salir.php'>SALIR</a><h1>
-    </div>";
-
-
-}*/
+//En esta parte se inician los modelos
 require_once('modelos/regex.php');
 require_once "modelos/database.php";
 session_start();
