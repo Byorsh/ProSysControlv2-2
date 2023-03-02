@@ -78,6 +78,7 @@
                             <?php endforeach; ?>
                             </select><br>
                     </div>
+                            </div>
                     <div class="col-lg-10">
                         <h4>Datos del Equipo</h4>
                     </div>
