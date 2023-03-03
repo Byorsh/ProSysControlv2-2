@@ -1,6 +1,127 @@
 <div class="content-wrapper">
   <div class="page-title">
     <div>
+    <h1><i class="fa fa-edit"></i><?=$titulo?> Articulo</h1>
+      <p>Modulo para <?=$titulo?> articulos</p>
+    </div>
+    <div>
+      <ul class="breadcrumb">
+        <li><i class="fa fa-home fa-lg"></i></li>
+        <li>Articulo</li>
+        <li><a href="#"><?=$titulo?> Articulo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="row">
+          
+            <div class="well bs-component">
+                <form class="form-horizontal" method="POST" action="?c=catalogo&a=Guardar">
+                <fieldset>
+                <legend>Registrar Articulo</legend>
+                    
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                        <input class="form-control" name="idProducto" type="hidden" value="<?=$catalogoSQL->getId()?>">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="Descripcion" >Descripcion *</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?=$catalogoSQL->getDescripcion()?>" required="">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="Marca">Marca</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?=$catalogoSQL->getMarca()?>">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="Modelo">Modelo</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?=$catalogoSQL->getModelo()?>">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="Cantidad">Cantidad *</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" pattern="[0-9]{1,6}" value="<?=$catalogoSQL->getCantidad()?>" required="">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="PrecioCompra">Precio de compra *</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" pattern="[0-9.]{1,12}" value="<?=$catalogoSQL->getPrecioCompra()?>" required="">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="precioCompra" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" pattern="[0-9.]{1,12}" value="<?=$catalogoSQL->getPrecioVenta()?>" required="">
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3" for="Iva">IVA</label>
+                    <div class="col-md-8">
+                    <select class="form-control" id="impuestolista" name="iva" required="" onchange="validarPrecioVenta()">
+                            <option value selected disabled>Seleccione una opcion</option>
+                            <option value="16" selected="true">16%</option>
+                            <option value="8">8%</option>
+                            <option value="0">0%</option>
+                            
+                          </select><br>
+                    </div>
+                    </div>
+                  
+                    <div>
+                      <label class="col-md-3" for=""></label>
+                      <label class="col-md-3" for=""></label>
+                      <label class="col-md-3" for=""></label>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
+                        <button class="btn btn-default" type="reset">Limpiar</button>
+                        <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
+                    </div>
+                    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
+    <fieldset>
+    
+    <fieldset>
+  </form>
+ 
+  <script>
+    //funcion para regresar en cancelar------------------------------
+    function cancelarCliente()         
+    {
+      //aqui la direccion a cambiar----------------------------------
+      var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
+      if (result == true) {
+        window.location.href ='?c=cliente';
+      } else {
+          
+      }
+    }
+  </script>  
+
+
+<!--<div class="content-wrapper">
+  <div class="page-title">
+    <div>
       <h1><i class="fa fa-edit"></i><?=$titulo?> Articulo</h1>
       <p>Modulo para <?=$titulo?> articulos</p>
     </div>
@@ -121,4 +242,4 @@
 
                             }
                             
-                        </script> 
+                        </script> -->
