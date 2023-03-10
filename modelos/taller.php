@@ -154,16 +154,35 @@ class Taller{
             die($excepcion->getMessage());
         }
     }
-    //
-    public function ListarTecnicos(){
+
+
+    public function Paginar($limite){
         try{
-            $consulta = $this->pdo->prepare("SELECT id,nombre,apellido,user FROM `usuario` WHERE privilegio = 2;");
+            $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` LIMIT $limite,10;");
+            echo($limite);
             $consulta->execute();
+            
+
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
+
+    //
+    public function ListarTecnicos(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT id,nombre,apellido,user FROM `usuario` WHERE privilegio = 2;");
+            $consulta->execute();
+
+
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+
+
     public function ListarAdministradores(){
         try{
             $consulta = $this->pdo->prepare("SELECT id,nombre,apellido,user FROM `usuario` WHERE privilegio = 1;");

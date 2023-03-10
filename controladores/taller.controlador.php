@@ -48,6 +48,12 @@ class TallerControlador{
         require_once "vistas/pie.php";
     }
 
+    public function PaginarN(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/taller/index.php";
+        require_once "vistas/pie.php";
+    }
+
     public function Guardar(){
         $tallerSQL = new Taller();
 
