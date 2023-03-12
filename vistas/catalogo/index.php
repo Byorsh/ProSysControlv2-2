@@ -17,7 +17,8 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <div class="table-responsive">
+                <table class="table table-hover table-bordered" role="grid" id="sampleTable">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -48,6 +49,7 @@
                     <?php endforeach;?>
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
           </div>
