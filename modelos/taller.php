@@ -156,10 +156,9 @@ class Taller{
     }
 
 
-    public function Paginar($limite){
+    public function Paginar($limite,$numerodeRegistros){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` LIMIT $limite,10;");
-            echo($limite);
+            $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` LIMIT $limite,$numerodeRegistros;");
             $consulta->execute();
             
 
@@ -213,6 +212,15 @@ class Taller{
     public function buscarCliente($nombre){
         try{
             $consulta = $this->pdo->prepare("SELECT nombreCliente,apellidoP,apellidoM,telefono,email,domicilio FROM `clientes`WHERE idClientes =?;");
+            $consulta->execute(array($nombre));
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function buscarTecnicoAsignado($nombre){
+        try{
+            $consulta = $this->pdo->prepare("SELECT nombre,apellido FROM `usuario`WHERE id =?;");
             $consulta->execute(array($nombre));
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
