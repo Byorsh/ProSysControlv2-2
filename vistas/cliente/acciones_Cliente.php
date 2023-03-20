@@ -33,8 +33,10 @@
                     <div class="col-md-8">
                       <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" pattern="^([a-zA-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([a-zA-Z\d]{3})?$" value="<?=$clienteSQL->getRfc()?>">
                     </div>
+                    </br>
                     </div>
 
+                 
                     <div class="form-group">
                     <label class="control-label col-md-3" for="NombreCliente">Nombre *</label>
                     <div class="col-md-8">
