@@ -8,6 +8,7 @@
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php
     require_once "modelos/database.php";
     $usuario = $_SESSION['usuario'];
