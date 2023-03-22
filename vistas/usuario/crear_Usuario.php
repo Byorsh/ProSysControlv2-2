@@ -60,66 +60,74 @@
                 <fieldset>
                 <legend><?=$titulo?> Usuario</legend>
                     <div class="form-group">
-                      <div class="col-lg-10">
+                      <div class="col-md-8">
                         <input class="form-control" name="id" type="hidden" value="<?=$usuarioSQL->getId()?>">
                       </div>
-
-                      <label class="col-md-3" for="Rfc">RFC</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Rfc">RFC</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="rfc" type="text" pattern="^([a-zA-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([a-zA-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
                         </div>
-                        </br>
-                      
-                      <label class="col-md-3 " for="Nombre">Nombre *</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Nombre">Nombre *</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="nombre" id="nombre" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>" onchange="toggleButton()">
                         </div>
-
-                      <label class="col-md-3 " for="Apellido">Apellido *</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Apellido">Apellido *</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="apellido" id="apellido" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>" onchange="toggleButton()">
                         </div>
-
-                      <label class="col-md-3 " for="Telefono">Telefono *</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Telefono">Telefono *</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" pattern="[0-9]{10,13}" value="<?=$usuarioSQL->getTelefono()?>" onchange="toggleButton()">
                         </div>
-
-                      <label class="col-md-3" for="Email">Correo electronico *</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Email">Correo electronico *</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="email" id="correo" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$usuarioSQL->getEmail()?>" onchange="toggleButton()">
                         </div>
-
-                      <label class="col-md-3" for="User">Usuario *</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="User">Usuario *</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="user" id="usuariou" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" required="" onchange="toggleButton()">
                         </div>
-
-                      <label class="col-md-3" for="Contrasenia">Contraseña *</label>
-                        <div class="col-lg-10">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="contrasenia" id="contraseña" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" required="" onchange="toggleButton()" >
                         </div>
-
-                      <!--<label class="col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
-                        <div class="col-lg-10">
+                    </div>
+                      <!--<label class="control-label col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
+                        <div class="col-md-8">
                           <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
                         </div>-->
 
-                        
-                      <label class="col-md-3" for="Privilegio">Nivel de privilegio</label>
-                        <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio</label>
+                        <div class="col-md-8">
                           <select class="form-control" name="privilegio" id="nivelprivilegio" required="" onchange="toggleButton()">
                             <option value selected disabled>Seleccione una opcion</option>
                             <option value="1" <?php if($tipoUsuarioDefecto=="1"){ ?> selected="true" <?php } ?>>Administrador</option>
                             <option value="2" <?php if($tipoUsuarioDefecto=="2"){ ?> selected="true" <?php } ?>>Tecnico</option>
                             <option value="3" <?php if($tipoUsuarioDefecto=="3"){ ?> selected="true" <?php } ?>>Secretaria</option>
                             
-                          </select><br>
+                          </select>
+                          <br>
                           
                    
                         </div>
+                    </div>
                         <!--Se muestra si faltan campos-->
-                        <label class="col-md-3" id="advertencia" ><?php if($camposporllenar){echo("Faltan campos por llenar");}?></label>
+                        <label class="control-label col-md-3" id="advertencia" ><?php if($camposporllenar){echo("Faltan campos por llenar");}?></label>
 
                         <div class="col-lg-10 col-lg-offset-2">
                           <button class="btn btn-default" type="button" onclick="cancelarUsuario()">Cancelar</button>
@@ -128,7 +136,7 @@
                           
                         </div>
                         
-                    </div>
+                    
                     <?php } ?>
                   
                   <!--<div class="form-group">
@@ -137,13 +145,13 @@
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputEmail">Email</label>
-                    <div class="col-lg-10">
+                    <div class="col-md-8">
                       <input class="form-control" id="inputEmail" type="text" placeholder="Email">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="inputPassword">Password</label>
-                    <div class="col-lg-10">
+                    <div class="col-md-8">
                       <input class="form-control" id="inputPassword" type="password" placeholder="Password">
                       <div class="checkbox">
                         <label>
@@ -154,13 +162,13 @@
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="textArea">Textarea</label>
-                    <div class="col-lg-10">
+                    <div class="col-md-8">
                       <textarea class="form-control" id="textArea" rows="3"></textarea><span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label">Radios</label>
-                    <div class="col-lg-10">
+                    <div class="col-md-8">
                       <div class="radio">
                         <label>
                           <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">Option one is this
@@ -175,7 +183,7 @@
                   </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label" for="select">Selects</label>
-                    <div class="col-lg-10">
+                    <div class="col-md-8">
                       <select class="form-control" id="select">
                         <option>1</option>
                         <option>2</option>
