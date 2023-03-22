@@ -23,7 +23,7 @@
                 <legend>Registrar Articulo</legend>
                     
                     <div class="form-group">
-                        <div class="col-lg-10">
+                      <div class="col-lg-10">
                         <input class="form-control" name="idProducto" type="hidden" value="<?=$catalogoSQL->getId()?>">
                       </div>
                     </div>
@@ -83,15 +83,10 @@
                     </div>
                     </div>
                   
-                    <div>
-                      <label class="col-md-3" for=""></label>
-                      <label class="col-md-3" for=""></label>
-                      <label class="col-md-3" for=""></label>
-                    </div>
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
-                        <button class="btn btn-default" type="reset">Limpiar</button>
-                        <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
+                      <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
+                      <button class="btn btn-default" type="reset">Limpiar</button>
+                      <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
                     </div>
                     </div>
         </div>
