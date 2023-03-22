@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <title>Login</title>
     <script src="vistas/alertas/alertas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
