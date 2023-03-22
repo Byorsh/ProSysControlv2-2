@@ -14,6 +14,7 @@ class Correo{
     private $txt_message;
     private $mail_subject;
     private $template;
+    private $mail_user;
 
     public function getMailUsername() : ?string{
         return $this->mail_username;
@@ -21,6 +22,14 @@ class Correo{
 
     public function setMailUsername(string $mail_username){
         $this->mail_username = $mail_username;
+    }
+
+    public function getMailUser() : ?string{
+        return $this->mail_user;
+    }
+
+    public function setMailUser(string $mail_user){
+        $this->mail_user = $mail_user;
     }
 
     public function getMailUserpassword() : ?string{
@@ -93,15 +102,22 @@ class Correo{
             $mail->SMTPAuth = true; 
             $mail->Username = $correo->getMailUsername();
             $mail->Password = $correo->getMailUserpassword();
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->SMTPSecure ="tls";
             $mail->Port = 587;
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+                );
+            
 
             //Datos del correo
 
-            $mail->setFrom($correo->getMailUsername(), 'Jorge Barraza');
+            $mail->setFrom($correo->getMailUsername(), $correo->getMailUser());
             $mail->addAddress($correo->getFromEmail(), $correo->getFromName());
-            $mail->addReplyTo($correo->getMailUsername(), 'Jorge Barraza');
+            $mail->addReplyTo($correo->getMailUsername(), $correo->getMailUser());
 
             //Contenido del correo
 

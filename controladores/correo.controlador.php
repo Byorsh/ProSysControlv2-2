@@ -24,6 +24,7 @@ class CorreoControlador
         $correo->setMailSubject($_POST['subject']);
         $correo->setMessage($_POST['message']);
         $correo->setMailUsername("gion340@gmail.com");
+        $correo->setMailUser("Jorge B");
         $correo->setMailUserpassword("kxgoxrrwwzimxxui");
         $correo->setAddaddress($_POST['customer_email']);
         $correo->setTemplate("email_template.html");

@@ -275,8 +275,39 @@ class Taller{
                 $tallerSQL->gettecnicoAsignado(),
                 $tallerSQL->getestadoEquipo()
             ));
+
+
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
+        }
+    }
+
+    function EnviarCorreos(Taller $tallerSQL){
+        $idtecnico = $tallerSQL-> gettecnicoAsignado()
+        $idcliente = $tallerSQL-> getIdCliente()
+        require "modelos/correo.php"
+
+        try{
+            $consulta = "SELECT nombre, email FROM usuario WHERE id=?"
+            $consulta->execute(array($idtecnico));
+            $reTec=$consulta->fetch(PDO::FETCH_OBJ);
+
+            $correo = new Correo();
+
+            $correo->setFromEmail($reTec->email);
+            $correo->setFromName($reTec->nombre);
+            $correo->setMailSubject("Orden de reparacion de prueba");
+            $correo->setMessage("Esta es la orden de reparacion de prueba");
+            $correo->setMailUsername("gion340@gmail.com");
+            $correo->setMailUser("Jorge B");
+            $correo->setMailUserpassword("kxgoxrrwwzimxxui");
+            $correo->setAddaddress($_POST['customer_email']);
+            $correo->setTemplate("email_template.html");
+
+            
+            $this->modelo->sendemail($correo);
+        }catch (Exception $e){
+            echo "Ha ocurrido un error al enviar el mensaje: {$mail->ErrorInfo}";
         }
     }
 
