@@ -126,14 +126,10 @@
                    
                         </div>
                     </div>
-                        <!--Se muestra si faltan campos-->
-                        <label class="control-label col-md-3" id="advertencia" ><?php if($camposporllenar){echo("Faltan campos por llenar");}?></label>
-
                         <div class="col-lg-10 col-lg-offset-2">
-                          <button class="btn btn-default" type="button" onclick="cancelarUsuario()">Cancelar</button>
-                          <button class="btn btn-default" type="reset">Limpiar</button>
                           <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
-                          
+                          <button class="btn btn-default" type="reset">Limpiar</button>
+                          <button class="btn btn-default" type="button" onclick="cancelarUsuario()">Cancelar</button>                          
                         </div>
                         
                     
