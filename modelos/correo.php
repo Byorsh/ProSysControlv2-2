@@ -89,9 +89,9 @@ class Correo{
     }
 
     public function sendemail(Correo $correo){
-        require 'assets/PHPMailer/PHPMailer.php';
-        require 'assets/PHPMailer/Exception.php';
-        require 'assets/PHPMailer/SMTP.php';
+        require_once 'assets/PHPMailer/PHPMailer.php';
+        require_once 'assets/PHPMailer/Exception.php';
+        require_once 'assets/PHPMailer/SMTP.php';
         
         $mail = new PHPMailer(true);
 
@@ -111,8 +111,6 @@ class Correo{
                     'allow_self_signed' => true
                 )
                 );
-            
-
             //Datos del correo
 
             $mail->setFrom($correo->getMailUsername(), $correo->getMailUser());
@@ -126,13 +124,13 @@ class Correo{
             $mail->Body = $correo->getMessage();
             $mail->AltBody = $correo->getMessage();
 
+            echo "<script>console.log('Enviando el correo'); </script>";
             $mail->send();
-            echo 'El mensaje se ha enviado correctamente';
+            echo "<script>console.log('El mensaje se ha enviado correctamente'); </script>";
 
         } catch (Exception $e){
             echo "Ha ocurrido un error al enviar el mensaje: {$mail->ErrorInfo}";
         }
-        
         
     }
 }
