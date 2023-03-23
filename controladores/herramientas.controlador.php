@@ -1,6 +1,6 @@
 <?php
 
-require_once "modelos/correo.php";
+require_once "modelos/herramientas.php";
 
 class CorreoControlador
 {
@@ -12,7 +12,7 @@ class CorreoControlador
 
     public function Inicio(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/correo/index.php";
+        require_once "vistas/herramientas/index.php";
         require_once "vistas/pie.php";
     }
 

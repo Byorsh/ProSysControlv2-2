@@ -12,7 +12,7 @@
         <div class="row">
           
             <div class="well bs-component">
-                <form class="form-horizontal" method="POST" action="?c=correo&a=Guardar">
+                <form class="form-horizontal" method="POST" action="?c=herramientas&a=Guardar">
                 <fieldset>
                 <legend>Tu email</legend>
 
@@ -60,11 +60,6 @@
       </div>
     </div>
   </div>
-  <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
-    <fieldset>
-    
-    <fieldset>
-  </form>
  
   <script>
     //funcion para regresar en cancelar------------------------------

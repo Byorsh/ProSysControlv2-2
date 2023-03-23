@@ -289,7 +289,7 @@ class Taller{
             $consulta = $this->pdo->prepare("SELECT nombre, email FROM usuario WHERE id=?;");
             $consulta->execute(array($idTecnico));
             $reTec=$consulta->fetch(PDO::FETCH_OBJ);
-            require_once "modelos/correo.php";
+            require_once "modelos/herramientas.php";
             $correo = new Correo();
 
             $correo->setFromEmail($reTec->email);
