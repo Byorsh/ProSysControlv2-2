@@ -101,6 +101,9 @@ class Usuario{
         $usuarioSQL->getContrasenia()!=null||$usuarioSQL->getUser()!=null||
         $usuarioSQL->getEmail()!=null
         ){return true;}
+        else{
+            return false;
+        }
         //return $valorBoleano
     }
 
