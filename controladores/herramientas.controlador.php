@@ -2,7 +2,7 @@
 
 require_once "modelos/herramientas.php";
 
-class CorreoControlador
+class HerramientasControlador
 {
     private $modelo;
 

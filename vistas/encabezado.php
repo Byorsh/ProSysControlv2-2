@@ -112,7 +112,7 @@
                 <li><a href="?c=usuario"><i class="fa fa-list"></i> Lista de Usuarios</a></li>
               </ul>
             </li>
-            <li><a href="?c=correo"><i class="fa fa-shopping-cart"></i><span>Correos</span></a></li>
+            <li><a href="?c=herramientas"><i class="fa fa-shopping-cart"></i><span>Correos</span></a></li>
             <?php }?>
             <!--<li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
