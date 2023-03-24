@@ -2,7 +2,7 @@
 
 
 class Taller{
-    private $udo;
+    private $pdo;
 
     private $id;
     private $idCliente;
@@ -312,7 +312,7 @@ class Taller{
             $consulta = $this->pdo->prepare("SELECT nombreCliente, email FROM clientes WHERE idClientes=?;");
             $consulta->execute(array($idCliente));
             $reCli=$consulta->fetch(PDO::FETCH_OBJ);
-            require_once "modelos/correo.php";
+            require_once "modelos/herramientas.php";
             $correo = new Correo();
 
             $correo->setFromEmail($reCli->email);
