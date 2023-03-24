@@ -16,6 +16,12 @@ class ClienteControlador{
         require_once "vistas/pie.php";
     }
 
+    public function PaginarN(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/cliente/index.php";
+        require_once "vistas/pie.php";
+    }
+
     public function FormCrear(){
         $titulo="Registrar";
         $clienteSQL = new Cliente();
