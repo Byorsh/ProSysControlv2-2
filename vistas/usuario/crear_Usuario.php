@@ -1,25 +1,78 @@
 <!-- script que hace que los campos se validen que esten llenos-->
                         <script>
+                            let patrones = {
+                              rfc: /^[A-ZÑ&]{4}\d{6}[A-Z0-9]{3}$/,
+                              nombre: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ. $]{3,20}/,
+                              apellido: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}/,
+                              telefono: /[0-9]{10,13}/,
+                              correo: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                              usuario: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}/,
+                              password: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}/
+                            }
+
+
                             function toggleButton()
                             {
-                                var nombre = document.getElementById('nombre').value;
-                                var apellido = document.getElementById('apellido').value;
-                                var telefono = document.getElementById('telefono').value;
-                                var correo = document.getElementById('correo').value;
-                                var usuariou = document.getElementById('usuariou').value;
-                                var contraseña = document.getElementById('contraseña').value;
-                                var nivelprivilegio = document.getElementById('nivelprivilegio').value;
-                
-                                if (nombre && apellido && telefono && correo && usuariou && contraseña ) {
-                                    document.getElementById('submitButton').disabled = false;
-                                    document.getElementById('advertencia').className = "hidden";
-                                    //agregar un handler al boton de enviar que faltan campos o colocar como visible
-                                    <?php $camposporllenar = true?>
-                                } else {
-                                    document.getElementById('submitButton').disabled = true;
-                                    document.getElementById('advertencia').className = "col-md-3";
-                                    <?php $camposporllenar = false?>
-                                }
+                              //validar datos ingresados
+                              let rfc = patrones.rfc.test(document.getElementById('rfc'));
+                              let nombre = patrones.nombre.test(document.getElementById('nombre').value);
+                              let apellido = patrones.apellido.test(document.getElementById('apellido').value);
+                              let telefono = patrones.telefono.test(document.getElementById('telefono').value);
+                              let correo = patrones.correo.test(document.getElementById('correo').value);
+                              let usuario = patrones.usuario.test(document.getElementById('usuario').value);
+                              let password = patrones.password.test(document.getElementById('contraseña').value);
+                              let nivelprivilegio = document.getElementById('nivelprivilegio').value;
+                              
+                              //Se valida que los campos no esten vacios y con su correspondiente formato
+                              //RFC no acepta ninguna entrada
+                              if (document.getElementById('rfc').value != "") {
+                                rfc ? 
+                                  document.getElementById('advertencia-rfc').hidden = true :
+                                  document.getElementById('advertencia-rfc').hidden = false;
+                              }
+
+                              if (document.getElementById('nombre').value != "") {
+                                nombre ? 
+                                  document.getElementById('advertencia-nombre').hidden = true :
+                                  document.getElementById('advertencia-nombre').hidden = false;  
+                              }
+                              
+                              if (document.getElementById('apellido').value != "") {
+                                apellido ? 
+                                  document.getElementById('advertencia-apellido').hidden = true :
+                                  document.getElementById('advertencia-apellido').hidden = false; 
+                              }
+                              
+                              if (document.getElementById('telefono').value != "") {
+                                telefono ? 
+                                  document.getElementById('advertencia-telefono').hidden = true :
+                                  document.getElementById('advertencia-telefono').hidden = false; 
+                              }
+                                
+                              if (document.getElementById('correo').value != "") {
+                                correo ? 
+                                  document.getElementById('advertencia-correo').hidden = true :
+                                  document.getElementById('advertencia-correo').hidden = false; 
+                              }
+                              
+                              if (document.getElementById('usuario').value != "") {
+                                usuario ? 
+                                  document.getElementById('advertencia-usuario').hidden = true :
+                                  document.getElementById('advertencia-usuario').hidden = false; 
+                              }
+
+                              if (document.getElementById('contraseña').value != "") {
+                                password ? 
+                                  document.getElementById('advertencia-contraseña').hidden = true :
+                                  document.getElementById('advertencia-contraseña').hidden = false; 
+                              }
+
+                              //Si el formulario fue llenado correctamente se activa el boton enviar
+                              if ((nombre && apellido && telefono && correo && usuario && contraseña && nivelprivilegio) ) {
+                                document.getElementById('submitButton').disabled = false;
+                              } else {
+                                document.getElementById('submitButton').disabled = true;         
+                              }
                             }
                         </script>
                         
@@ -46,7 +99,6 @@
               <?php
               require_once 'modelos/regex.php';
               $regex = new Regex;
-              $camposporllenar = true;
               if($_SESSION['tipoUsuario']!='Admin' || !isset($_SESSION['tipoUsuario'])){
                 include("page-error.php");
 
@@ -65,45 +117,66 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Rfc">RFC</label>
+                      <label class="control-label col-md-3" for="Rfc" id="rfc">RFC</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="rfc" type="text" pattern="^([a-zA-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([a-zA-Z\d]{3})?$" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>">
+                          <input class="form-control" name="rfc" type="text" placeholder="RFC" value="<?=$usuarioSQL->getRfc()?>" onkeyup="toggleButton()">
+                          <div class="alert alert-danger" role="alert" id="advertencia-rfc" hidden>
+                            EL RFC no cumple con un formato valido
+                          </div>
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Nombre">Nombre *</label>
+                      <label class="control-label col-md-3" for="Nombre">Nombre</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="nombre" id="nombre" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>" onchange="toggleButton()">
+                          <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>" onkeyup="toggleButton()">
+                          <div class="alert alert-danger" role="alert" id="advertencia-nombre" hidden>
+                            El nombre solo debe contener letras y espacio
+                          </div>  
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Apellido">Apellido *</label>
+                      <label class="control-label col-md-3" for="Apellido">Apellido</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="apellido" id="apellido" type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>" onchange="toggleButton()">
+                          <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>" onkeyup="toggleButton()">
+                          <div class="alert alert-danger" role="alert" id="advertencia-apellido" hidden>
+                            El usuario unicamente puede contener letras y espacios
+                          </div>
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Telefono">Telefono *</label>
+                      <label class="control-label col-md-3" for="Telefono">Telefono</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" pattern="[0-9]{10,13}" value="<?=$usuarioSQL->getTelefono()?>" onchange="toggleButton()">
+                          <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?=$usuarioSQL->getTelefono()?>" onkeyup="toggleButton()">
+                          <div class="alert alert-danger" role="alert" id="advertencia-telefono" hidden>
+                            Numero de telefono no valido
+                          </div>
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Email">Correo electronico *</label>
+                      <label class="control-label col-md-3" for="Email">Correo electronico</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="email" id="correo" type="text" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" placeholder="email" value="<?=$usuarioSQL->getEmail()?>" onchange="toggleButton()">
+                          <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?=$usuarioSQL->getEmail()?>" onkeyup="toggleButton()">
+                          <div class="alert alert-danger" role="alert" id="advertencia-correo" hidden>
+                            Formato de correo electronico no valido <strong>ejemplo@ejemplo.com</strong>
+                          </div>
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="User">Usuario *</label>
+                      <label class="control-label col-md-3" for="User">Usuario</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="user" id="usuariou" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" required="" onchange="toggleButton()">
+                          <input class="form-control" name="user" id="usuario" type="text" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" onkeyup="toggleButton()">
+                          <div class="alert alert-danger" role="alert" id="advertencia-usuario" hidden>
+                            El usuario unicamente puede contener letras y espacios
+                          </div>
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
+                      <label class="control-label col-md-3" for="Contrasenia">Contraseña</label>
                         <div class="col-md-8">
-                          <input class="form-control" name="contrasenia" id="contraseña" type="password" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" required="" onchange="toggleButton()" >
+                          <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" onkeyup="toggleButton()" >
+                          <div class="alert alert-danger" role="alert" id="advertencia-contraseña" hidden>
+                            Contraseña muy corta
+                          </div>
                         </div>
                     </div>
                       <!--<label class="control-label col-md-3" for="Contrasenia2">Confirma tu Contraseña</label>
@@ -114,7 +187,7 @@
                     <div class="form-group">
                       <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio</label>
                         <div class="col-md-8">
-                          <select class="form-control" name="privilegio" id="nivelprivilegio" required="" onchange="toggleButton()">
+                          <select class="form-control" name="privilegio" id="nivelprivilegio" onchange="toggleButton()">
                             <option value selected disabled>Seleccione una opcion</option>
                             <option value="1" <?php if($tipoUsuarioDefecto=="1"){ ?> selected="true" <?php } ?>>Administrador</option>
                             <option value="2" <?php if($tipoUsuarioDefecto=="2"){ ?> selected="true" <?php } ?>>Tecnico</option>
@@ -128,7 +201,7 @@
                     </div>
                         <div class="col-lg-10 col-lg-offset-2">
                           <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
-                          <button class="btn btn-default" type="reset">Limpiar</button>
+                          <button class="btn btn-default" onclick="toggleButton()">Limpiar</button>
                           <button class="btn btn-default" type="button" onclick="cancelarUsuario()">Cancelar</button>                          
                         </div>
                         
@@ -261,13 +334,14 @@
                             //funcion para regresar en cancelar------------------------------
                             function cancelarUsuario()         
                             {
-                              //aqui la direccion a cambiar----------------------------------
-                              var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
-                              if (result == true) {
-                                window.location.href ='?c=usuario';
-                              } else {
-                                  
-                              }
-                              
+                              Swal.fire({
+                                title: '¿Deseas regresar a la lista y deshacer el registro?',
+                                showCancelButton: true,
+                                confirmButtonText: 'Confirmar',
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  window.location.href ='?c=usuario';
+                                }
+                              }) 
                             }
                         </script> 
