@@ -1,14 +1,14 @@
 <div class="content-wrapper">
   <div class="page-title">
     <div>
-    <h1><i class="fa fa-edit"></i><?=$titulo?> Articulo</h1>
-      <p>Modulo para <?=$titulo?> articulos</p>
+      <h1><i class="fa fa-edit"></i><?= $titulo ?> Articulo</h1>
+      <p>Modulo para <?= $titulo ?> articulos</p>
     </div>
     <div>
       <ul class="breadcrumb">
         <li><i class="fa fa-home fa-lg"></i></li>
         <li>Articulo</li>
-        <li><a href="#"><?=$titulo?> Articulo</a></li>
+        <li><a href="#"><?= $titulo ?> Articulo</a></li>
       </ul>
     </div>
   </div>
@@ -16,225 +16,159 @@
     <div class="col-md-12">
       <div class="card">
         <div class="row">
-          
-            <div class="well bs-component">
-                <form class="form-horizontal" method="POST" action="?c=catalogo&a=Guardar">
-                <fieldset>
+
+          <div class="well bs-component">
+            <form class="form-horizontal" method="POST" onsubmit="toggleButton()" action="?c=catalogo&a=Guardar">
+              <fieldset>
                 <legend>Registrar Articulo</legend>
-                    
-                    <div class="form-group">
-                      <div class="col-lg-10">
-                        <input class="form-control" name="idProducto" type="hidden" value="<?=$catalogoSQL->getId()?>">
-                      </div>
-                    </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="Descripcion" >Descripcion *</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?=$catalogoSQL->getDescripcion()?>" required="">
-                    </div>
-                    </div>
+                <div class="form-group">
+                  <div class="col-lg-10">
+                    <input class="form-control" name="idProducto" type="hidden" value="<?= $catalogoSQL->getId() ?>">
+                  </div>
+                </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="Marca">Marca</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?=$catalogoSQL->getMarca()?>">
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="Descripcion">Descripcion *</label>
+                  <div class="col-md-8">
+                    <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" onkeyup="toggleButton()">
+                    <div class="alert alert-danger" role="alert" id="advertencia-descripcion" hidden>
+                      Campo obligatorio
                     </div>
-                    </div>
+                  </div>
+                </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="Modelo">Modelo</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?=$catalogoSQL->getModelo()?>">
-                    </div>
-                    </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="Marca">Marca</label>
+                  <div class="col-md-8">
+                    <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?= $catalogoSQL->getMarca() ?>">
+                  </div>
+                </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="Cantidad">Cantidad *</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" pattern="[0-9]{1,6}" value="<?=$catalogoSQL->getCantidad()?>" required="">
-                    </div>
-                    </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="Modelo">Modelo</label>
+                  <div class="col-md-8">
+                    <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?= $catalogoSQL->getModelo() ?>">
+                  </div>
+                </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="PrecioCompra">Precio de compra *</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" pattern="[0-9.]{1,12}" value="<?=$catalogoSQL->getPrecioCompra()?>" required="">
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="Cantidad">Cantidad *</label>
+                  <div class="col-md-8">
+                    <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" value="<?= $catalogoSQL->getCantidad() ?>" onkeyup="toggleButton()">
+                    <div class="alert alert-danger" role="alert" id="advertencia-cantidad" hidden>
+                      Campo obligatorio, unicamente acepta numeros
                     </div>
-                    </div>
+                  </div>
+                </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
-                    <div class="col-md-8">
-                      <input class="form-control" name="precioCompra" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" pattern="[0-9.]{1,12}" value="<?=$catalogoSQL->getPrecioVenta()?>" required="">
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="PrecioCompra">Precio de compra *</label>
+                  <div class="col-md-8">
+                    <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" value="<?= $catalogoSQL->getPrecioCompra() ?>" onkeyup="toggleButton()">
+                    <div class="alert alert-danger" role="alert" id="advertencia-precioDeCompa" hidden>
+                      Campo obligatorio, unicamente acepta numeros
                     </div>
-                    </div>
+                  </div>
+                </div>
 
-                    <div class="form-group">
-                    <label class="control-label col-md-3" for="Iva">IVA</label>
-                    <div class="col-md-8">
-                    <select class="form-control" id="impuestolista" name="iva" required="" onchange="validarPrecioVenta()">
-                            <option value selected disabled>Seleccione una opcion</option>
-                            <option value="16" selected="true">16%</option>
-                            <option value="8">8%</option>
-                            <option value="0">0%</option>
-                            
-                          </select><br>
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
+                  <div class="col-md-8">
+                    <input class="form-control" name="precioCompra" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" onkeyup="toggleButton()">
+                    <div class="alert alert-danger" role="alert" id="advertencia-precioDeVenta" hidden>
+                      Campo obligatorio, unicamente acepta numeros
                     </div>
-                    </div>
-                  
-                    <div class="col-lg-10 col-lg-offset-2">
-                      <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
-                      <button class="btn btn-default" type="reset">Limpiar</button>
-                      <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
-                    </div>
-                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-3" for="Iva">IVA</label>
+                  <div class="col-md-8">
+                    <select class="form-control" id="impuestolista" name="iva" onchange="validarPrecioVenta()">
+                      <option value selected disabled>Seleccione una opcion</option>
+                      <option value="16" selected="true">16%</option>
+                      <option value="8">8%</option>
+                      <option value="0">0%</option>
+
+                    </select><br>
+                  </div>
+                </div>
+
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                  <button class="btn btn-default" type="reset" onclick="bloquearBotonEnviar()">Limpiar</button>
+                  <button class="btn btn-default" type="button" onclick="cancelarRegistro()">Cancelar</button>
+                </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
     <fieldset>
-    
-    <fieldset>
+
+      <fieldset>
   </form>
- 
+
   <script>
-    //funcion para regresar en cancelar------------------------------
-    function cancelarCliente()         
-    {
-      //aqui la direccion a cambiar----------------------------------
-      var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
-      if (result == true) {
-        window.location.href ='?c=cliente';
-      } else {
-          
-      }
+    let patrones = {
+      cantidad: /[0-9]{1,6}/,
+      precioDeCompra: /[0-9.]{1,12}/,
+      precioDeVenta: /[0-9.]{1,12}/
     }
-  </script>  
 
+    function toggleButton() {
+      //validar datos ingresados
+      let descripcion = document.getElementById('descripcion').value;
+      let cantidad = patrones.cantidad.test(document.getElementById('cantidad').value);
+      let precioDeCompra = patrones.precioDeCompra.test(document.getElementById('preciocompratxt').value);
+      let precioDeVenta = patrones.precioDeVenta.test(document.getElementById('precioventatxt').value);
 
-<!--<div class="content-wrapper">
-  <div class="page-title">
-    <div>
-      <h1><i class="fa fa-edit"></i><?=$titulo?> Articulo</h1>
-      <p>Modulo para <?=$titulo?> articulos</p>
-    </div>
-    <div>
-      <ul class="breadcrumb">
-        <li><i class="fa fa-home fa-lg"></i></li>
-        <li>Articulo</li>
-        <li><a href="#"><?=$titulo?> Articulo</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="row">
-          
-        <div class="well bs-component">
-            <form class="form-horizontal" method="POST" action="?c=catalogo&a=Guardar">
-            <fieldset>
-                <legend><?=$titulo?> Articulo</legend>
-                <div class="form-group">
-                    <div class="col-lg-10">
-                    <input class="form-control" name="idProducto" type="hidden" value="<?=$catalogoSQL->getId()?>">
-                    </div>
+      //Se valida que los campos no esten vacios y con su correspondiente formato
+      //RFC no acepta ninguna entrada
+      descripcion != "" ?
+        document.getElementById('advertencia-descripcion').hidden = true :
+        document.getElementById('advertencia-descripcion').hidden = false;
 
-                    <label class="col-md-3" for="Descripcion">Descripcion *</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="descripcion"  type="text" pattern="{0,100}" placeholder="Descripcion" value="<?=$catalogoSQL->getDescripcion()?>" required="">
-                    </div>
-                    
-                    <label class="col-md-3 " for="Marca">Marca</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="marca"  type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" placeholder="Marca" value="<?=$catalogoSQL->getMarca()?>">
-                    </div>
+      if (document.getElementById('advertencia-cantidad').value != "") {
+        cantidad ?
+          document.getElementById('advertencia-cantidad').hidden = true :
+          document.getElementById('advertencia-cantidad').hidden = false;
+      }
 
-                    <label class="col-md-3 " for="Modelo">Modelo</label>
-                    <div class="col-lg-10">
-                    <input class="form-control" name="modelo" type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}" placeholder="Modelo" value="<?=$catalogoSQL->getModelo()?>">
-                    </div>
+      if (document.getElementById('preciocompratxt').value != "") {
+        precioDeCompra ?
+          document.getElementById('advertencia-precioDeCompa').hidden = true :
+          document.getElementById('advertencia-precioDeCompa').hidden = false;
+      }
 
-                    <label class="col-md-3 " for="Cantidad">Cantidad *</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" name="cantidad" type="text" pattern="[0-9]{1,6}" placeholder="Cantidad" value="<?=$catalogoSQL->getCantidad()?>" required="">
-                    </div>
+      if (document.getElementById('precioventatxt').value != "") {
+        precioDeVenta ?
+          document.getElementById('advertencia-precioDeVenta').hidden = true :
+          document.getElementById('advertencia-precioDeVenta').hidden = false;
+      }
 
-                    <label class="col-md-3 " for="PrecioCompra">Precio de compra *</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" id="preciocompratxt" name="precioCompra" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de compra" 
-                        value="<?=$catalogoSQL->getPrecioCompra()?>" required="" onchange="validarPrecioVenta()">
-                    </div>
+      //Si el formulario fue llenado correctamente se activa el boton enviar
+      (descripcion && cantidad && precioDeCompra && precioDeVenta) ?
+      document.getElementById('submitButton').disabled = false:
+        bloquearBotonEnviar();
+    }
 
-                    <label class="col-md-3" for="PrecioVenta">Precio de venta *</label>
-                    <div class="col-lg-10">
-                        <input class="form-control" id="precioventatxt" name="precioVenta" type="text" pattern="[0-9.]{1,12}" placeholder="Precio de venta" 
-                        value="<?=$catalogoSQL->getPrecioVenta()?>" required=""  onchange="validarPrecioVenta()">
-                    </div>
-                    <div class="col-lg-10">
-                      <label class="col-md-3" for="PrecioVenta" visible="true" id="sugerencia">Precio de venta sugerido </label>
-                    </div>
-                    <label class="col-md-3" for="Iva">IVA</label>
-                        <div class="col-lg-10">
-                          <select class="form-control" id="impuestolista" name="iva" required="" onchange="validarPrecioVenta()">
-                            <option value selected disabled>Seleccione una opcion</option>
-                            <option value="16" selected="true">16%</option>
-                            <option value="8">8%</option>
-                            <option value="0">0%</option>
-                            
-                          </select><br>
-                          
-                   
-                        </div>
+    function bloquearBotonEnviar() {
+      document.getElementById('submitButton').disabled = true;
+    }
 
-                    <div>
-                    <label class="col-md-3" for=""></label>
-                    <label class="col-md-3" for=""></label>
-                    <label class="col-md-3" for=""></label>
-                    </div>
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default" type="button" onclick="cancelarCatalogo()">Cancelar</button>
-                        <button class="btn btn-default" type="reset">Limpiar</button>
-                        <button class="btn btn-primary" type="submit" id="submitButton">Enviar</button>
-                    </div>
-                </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-                            //funcion para regresar en cancelar------------------------------
-                            function cancelarCatalogo()         
-                            {
-                              //aqui la direccion a cambiar----------------------------------
-                              var result = confirm("¿Deseas regresar a la lista y deshacer el registro?");
-                              if (result == true) {
-                                window.location.href ='?c=catalogo';
-                              } else {
-                                  
-                              }
-                            }
-                            function validarPrecioVenta(){
-                              var preciodCompra = document.getElementById('preciocompratxt').value;
-                              var preciodVenta = document.getElementById('precioventatxt').value;
-                              var impuesto = document.getElementById('impuestolista').value;
-                              var costoventa = 1.3*(preciodCompra*(1+((impuesto)/100)));
-                              document.getElementById('sugerencia').textContent = "Precio de venta sugerido "+costoventa;
-                              if(preciodVenta>(costoventa)){
-                                console.log("precio de venta correcto");
-                                document.getElementById('sugerencia').className = "visible";
-                                document.getElementById('submitButton').disabled = false;
-                              }
-                              else{
-                                document.getElementById('submitButton').disabled = true;
-                              }
-                              console.log(preciodCompra);
-                              console.log(preciodVenta);
-                              console.log(costoventa);
-                              //Precio de venta sugerido 
-
-                            }
-                            
-                        </script> -->
+    function cancelarRegistro() {
+      Swal.fire({
+        title: '¿Deseas regresar a la lista y deshacer el registro?',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = '?c=usuario';
+        }
+      })
+    }
+  </script>
