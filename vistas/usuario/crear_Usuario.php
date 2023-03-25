@@ -4,12 +4,11 @@
                               rfc: /^[A-ZÑ&]{4}\d{6}[A-Z0-9]{3}$/,
                               nombre: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ. $]{3,20}/,
                               apellido: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{3,20}/,
-                              telefono: /[0-9]{10,13}/,
-                              correo: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                              telefono: /\+?\(?\d{2,4}\)?[\d\s-]{9,14}/,
+                              correo: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
                               usuario: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}/,
                               password: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}/
                             }
-
 
                             function toggleButton()
                             {
@@ -22,7 +21,7 @@
                               let usuario = patrones.usuario.test(document.getElementById('usuario').value);
                               let password = patrones.password.test(document.getElementById('contraseña').value);
                               let nivelprivilegio = document.getElementById('nivelprivilegio').value;
-                              
+
                               //Se valida que los campos no esten vacios y con su correspondiente formato
                               //RFC no acepta ninguna entrada
                               if (document.getElementById('rfc').value != "") {
@@ -31,7 +30,7 @@
                                   document.getElementById('advertencia-rfc').hidden = false;
                               }
 
-                              if (document.getElementById('nombre').value != "") {
+                              if (document.getElementById('advertencia-nombre').value != "") {
                                 nombre ? 
                                   document.getElementById('advertencia-nombre').hidden = true :
                                   document.getElementById('advertencia-nombre').hidden = false;  
@@ -73,6 +72,20 @@
                               } else {
                                 document.getElementById('submitButton').disabled = true;         
                               }
+                            }
+
+                            function cancelarUsuario()         
+                            {
+                              Swal.fire({
+                                title: '¿Deseas regresar a la lista y deshacer el registro?',
+                                showCancelButton: true,
+                                confirmButtonText: 'Confirmar',
+                                cancelButtonText: 'Cancelar'
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  window.location.href ='?c=usuario';
+                                }
+                              }) 
                             }
                         </script>
                         
@@ -126,7 +139,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Nombre">Nombre</label>
+                      <label class="control-label col-md-3" for="Nombre">Nombre *</label>
                         <div class="col-md-8">
                           <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?=$usuarioSQL->getNombre()?>" onkeyup="toggleButton()">
                           <div class="alert alert-danger" role="alert" id="advertencia-nombre" hidden>
@@ -135,7 +148,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Apellido">Apellido</label>
+                      <label class="control-label col-md-3" for="Apellido">Apellido *</label>
                         <div class="col-md-8">
                           <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?=$usuarioSQL->getApellido()?>" onkeyup="toggleButton()">
                           <div class="alert alert-danger" role="alert" id="advertencia-apellido" hidden>
@@ -144,7 +157,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Telefono">Telefono</label>
+                      <label class="control-label col-md-3" for="Telefono">Telefono *</label>
                         <div class="col-md-8">
                           <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?=$usuarioSQL->getTelefono()?>" onkeyup="toggleButton()">
                           <div class="alert alert-danger" role="alert" id="advertencia-telefono" hidden>
@@ -153,7 +166,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Email">Correo electronico</label>
+                      <label class="control-label col-md-3" for="Email">Correo electronico *</label>
                         <div class="col-md-8">
                           <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?=$usuarioSQL->getEmail()?>" onkeyup="toggleButton()">
                           <div class="alert alert-danger" role="alert" id="advertencia-correo" hidden>
@@ -162,7 +175,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="User">Usuario</label>
+                      <label class="control-label col-md-3" for="User">Usuario *</label>
                         <div class="col-md-8">
                           <input class="form-control" name="user" id="usuario" type="text" placeholder="Usuario" value="<?=$usuarioSQL->getUser()?>" onkeyup="toggleButton()">
                           <div class="alert alert-danger" role="alert" id="advertencia-usuario" hidden>
@@ -171,7 +184,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Contrasenia">Contraseña</label>
+                      <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
                         <div class="col-md-8">
                           <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" value="<?=$usuarioSQL->getContrasenia()?>" onkeyup="toggleButton()" >
                           <div class="alert alert-danger" role="alert" id="advertencia-contraseña" hidden>
@@ -185,7 +198,7 @@
                         </div>-->
 
                     <div class="form-group">
-                      <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio</label>
+                      <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio *</label>
                         <div class="col-md-8">
                           <select class="form-control" name="privilegio" id="nivelprivilegio" onchange="toggleButton()">
                             <option value selected disabled>Seleccione una opcion</option>
@@ -201,7 +214,7 @@
                     </div>
                         <div class="col-lg-10 col-lg-offset-2">
                           <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
-                          <button class="btn btn-default" onclick="toggleButton()">Limpiar</button>
+                          <button class="btn btn-default" type="reset">Limpiar</button>
                           <button class="btn btn-default" type="button" onclick="cancelarUsuario()">Cancelar</button>                          
                         </div>
                         
@@ -330,18 +343,4 @@
       </div>
     </div>
   </div>
-  <script>
-                            //funcion para regresar en cancelar------------------------------
-                            function cancelarUsuario()         
-                            {
-                              Swal.fire({
-                                title: '¿Deseas regresar a la lista y deshacer el registro?',
-                                showCancelButton: true,
-                                confirmButtonText: 'Confirmar',
-                              }).then((result) => {
-                                if (result.isConfirmed) {
-                                  window.location.href ='?c=usuario';
-                                }
-                              }) 
-                            }
-                        </script> 
+ 
