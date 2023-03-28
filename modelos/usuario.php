@@ -1,7 +1,7 @@
 <?php
 
 class Usuario{
-    private $udo;
+    private $pdo;
 
     private $id;
     private $rfc;
@@ -96,11 +96,14 @@ class Usuario{
         //$valorBoleano = false;
 
         //if($usuarioSQL->getPrivilegio()==null){return true;}
-        if($usuarioSQL->getNombre()==null||$usuarioSQL->getPrivilegio()==null||
-        $usuarioSQL->getApellido()==null||$usuarioSQL->getTelefono()==null||
-        $usuarioSQL->getContrasenia()==null||$usuarioSQL->getUser()==null||
-        $usuarioSQL->getEmail()==null
+        if($usuarioSQL->getNombre()!=null||$usuarioSQL->getPrivilegio()!=null||
+        $usuarioSQL->getApellido()!=null||$usuarioSQL->getTelefono()!=null||
+        $usuarioSQL->getContrasenia()!=null||$usuarioSQL->getUser()!=null||
+        $usuarioSQL->getEmail()!=null
         ){return true;}
+        else{
+            return false;
+        }
         //return $valorBoleano
     }
 

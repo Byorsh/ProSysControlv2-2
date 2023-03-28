@@ -69,6 +69,7 @@
                             <option id="<?=$tallerSQL->idClientes?>" value="<?=$tallerSQL->idClientes?>"><?= $tallerSQL->email?></option>
                             <?php endforeach; ?>
                             </select><br>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3">Direccion del Cliente</label>
@@ -85,7 +86,7 @@
                     <div class="col-lg-10">
                         <h4>Informacion del servicio</h4>
                     </div>
-                    <div class="form-group">
+
                     
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Problematica">Problematica para el servicio</label>
@@ -93,7 +94,7 @@
                       <textarea class="form-control" name="problematica" rows="4" placeholder="Problematica para el servicio" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}" required=""></textarea>
                     </div>
                   </div>
-
+                                <!-- Todo esto es necesario? -->
                   <div class="form-group">
                         <div class="col-lg-10">
                         <input class="form-control" name="observaciones" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}" type="hidden">
@@ -166,10 +167,9 @@
                     </div>
 
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default" type="button" onclick="cancelarDomicilio()">Cancelar</button>
-                            <button class="btn btn-default" type="reset">Limpiar</button>
-                            <button class="btn btn-primary" type="submit">Enviar</button>
-                            
+                          <button class="btn btn-primary" type="submit">Enviar</button>
+                          <button class="btn btn-default" type="reset">Limpiar</button>
+                          <button class="btn btn-default" type="button" onclick="cancelarDomicilio()">Cancelar</button>
                         </div>
                     </div>
         </div>

@@ -1,7 +1,7 @@
 <?php
 
 class Catalogo{
-    private $udo;
+    private $pdo;
 
     private $id;
     private $descripcion;

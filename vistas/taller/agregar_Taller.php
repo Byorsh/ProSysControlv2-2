@@ -188,13 +188,6 @@
                         <div class="col-lg-10">
                             <input class="form-control" name="contrasenia2" type="password" placeholder="Contraseña">
                         </div>-->
-
-                        <div>
-
-                        <label class="col-md-3" for=""></label>
-                        <label class="col-md-3" for=""></label>
-                        <label class="col-md-3" for=""></label>
-                        </div>
                         
                         <div class="col-lg-10 col-lg-offset-2">
                         <button class="btn btn-default" type="button" onclick="cancelarTaller()">Cancelar</button>
