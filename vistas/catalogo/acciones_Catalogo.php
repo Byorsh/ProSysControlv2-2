@@ -75,7 +75,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="precioCompra" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" onkeyup="toggleButton()">
+                    <input class="form-control" name="precioVenta" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" onkeyup="toggleButton()">
                     <div class="alert alert-danger" role="alert" id="advertencia-precioDeVenta" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>
