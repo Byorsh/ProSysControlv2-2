@@ -1,7 +1,8 @@
 <?php
 
+
 class Taller{
-    private $udo;
+    private $pdo;
 
     private $id;
     private $idCliente;
@@ -258,10 +259,10 @@ class Taller{
 
     public function Insertar(Taller $tallerSQL){
         try{
-            $consulta = "INSERT INTO ordenreparacion(id,idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
-                $tallerSQL->NULL,
+                //$tallerSQL->NULL,
                 $tallerSQL->getIdCliente(),
                 $tallerSQL->getNs(),
                 $tallerSQL->getMarca(),
@@ -275,8 +276,59 @@ class Taller{
                 $tallerSQL->gettecnicoAsignado(),
                 $tallerSQL->getestadoEquipo()
             ));
+            $tallerSQL->EnviarCorreos($tallerSQL->gettecnicoAsignado(), $tallerSQL->getIdCliente());
+
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
+        }
+    }
+
+    public function EnviarCorreos(int $idTecnico, int $idCliente){
+        
+        try{
+            $consulta = $this->pdo->prepare("SELECT nombre, email FROM usuario WHERE id=?;");
+            $consulta->execute(array($idTecnico));
+            $reTec=$consulta->fetch(PDO::FETCH_OBJ);
+            require_once "modelos/herramientas.php";
+            $correo = new Correo();
+
+            $correo->setFromEmail($reTec->email);
+            $correo->setFromName($reTec->nombre);
+            $correo->setMailSubject("Orden de reparacion de prueba");
+            $correo->setMessage("Esta es la orden de reparacion de prueba Vers. Tecnico");
+            $correo->setMailUsername("gion340@gmail.com");
+            $correo->setMailUser("Jorge B");
+            $correo->setMailUserpassword("kxgoxrrwwzimxxui");
+            $correo->setAddaddress($reTec->email);
+            $correo->setTemplate("email_template.html");
+           
+            $this->model = new Correo;
+            $this->model->sendemail($correo);
+        }catch (Exception $e){
+            echo "Ha ocurrido un error al enviar el mensaje: {$mail->ErrorInfo}";
+        }
+
+        try{
+            $consulta = $this->pdo->prepare("SELECT nombreCliente, email FROM clientes WHERE idClientes=?;");
+            $consulta->execute(array($idCliente));
+            $reCli=$consulta->fetch(PDO::FETCH_OBJ);
+            require_once "modelos/herramientas.php";
+            $correo = new Correo();
+
+            $correo->setFromEmail($reCli->email);
+            $correo->setFromName($reCli->nombreCliente);
+            $correo->setMailSubject("Orden de reparacion de prueba");
+            $correo->setMessage("Esta es la orden de reparacion de prueba Vers. Cliente");
+            $correo->setMailUsername("gion340@gmail.com");
+            $correo->setMailUser("Jorge B");
+            $correo->setMailUserpassword("kxgoxrrwwzimxxui");
+            $correo->setAddaddress($reCli->email);
+            $correo->setTemplate("email_template.html");
+      
+            $this->model = new Correo;
+            $this->model->sendemail($correo);
+        }catch (Exception $e){
+            echo "Ha ocurrido un error al enviar el mensaje: {$mail->ErrorInfo}";
         }
     }
 

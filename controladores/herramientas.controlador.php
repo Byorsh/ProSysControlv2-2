@@ -1,8 +1,8 @@
 <?php
 
-require_once "modelos/correo.php";
+require_once "modelos/herramientas.php";
 
-class CorreoControlador
+class HerramientasControlador
 {
     private $modelo;
 
@@ -12,7 +12,7 @@ class CorreoControlador
 
     public function Inicio(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/correo/index.php";
+        require_once "vistas/herramientas/index.php";
         require_once "vistas/pie.php";
     }
 
@@ -24,6 +24,7 @@ class CorreoControlador
         $correo->setMailSubject($_POST['subject']);
         $correo->setMessage($_POST['message']);
         $correo->setMailUsername("gion340@gmail.com");
+        $correo->setMailUser("Jorge B");
         $correo->setMailUserpassword("kxgoxrrwwzimxxui");
         $correo->setAddaddress($_POST['customer_email']);
         $correo->setTemplate("email_template.html");

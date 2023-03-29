@@ -12,7 +12,7 @@
         <div class="row">
           
             <div class="well bs-component">
-                <form class="form-horizontal" method="POST" action="?c=correo&a=Guardar">
+                <form class="form-horizontal" method="POST" action="?c=herramientas&a=Guardar">
                 <fieldset>
                 <legend>Tu email</legend>
 
@@ -51,7 +51,7 @@
                         <label class="col-md-3" for=""></label>
                       </div>
                         <div class="col-lg-10 col-lg-offset-2">
-                          <button class="btn btn-default" type="button" onclick="cancelarCliente()">Cancelar</button>
+                          <button class="btn btn-default" type="button" onclick="cancelar()">Cancelar</button>
                           <button class="btn btn-default" type="reset">Limpiar</button>
                           <button class="btn btn-primary" type="submit">Enviar</button>
                         </div>
@@ -60,15 +60,10 @@
       </div>
     </div>
   </div>
-  <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
-    <fieldset>
-    
-    <fieldset>
-  </form>
  
   <script>
     //funcion para regresar en cancelar------------------------------
-    function cancelarCliente()         
+    function cancelar()         
     {
         window.location.href ='home.php';
     }
