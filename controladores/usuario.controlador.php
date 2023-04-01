@@ -57,21 +57,7 @@ class UsuarioControlador{
         $usuarioSQL->setPrivilegio(intval($_POST['privilegio']));
 
         if($usuarioSQL->verificarAtributos($usuarioSQL)){
-            $regex =  new Regex;
             
-            //include("../vistas/usuario/index.php");
-            //$direccion="./home.php?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();
-            $direccion="http://localhost/ProSysControlv2-2/home.php?c=usuario&a=FormCrear";
-            if(($usuarioSQL->getId()>0)){$direccion="location:?c=usuario&a=FormCrear&id=".$usuarioSQL->getId();}
-            
-            //include($direccion);
-            $regex->sweet_alerts("faltan campos");
-            header($direccion);
-            $regex->sweet_alerts("faltan campos");
-            //header("location:?c=usuario");
-
-        }
-        else {
             if($usuarioSQL->getId() > 0){
                 $this->modeloUsuario->Actualizar($usuarioSQL);
             }
@@ -79,6 +65,10 @@ class UsuarioControlador{
             //$usuarioSQL->getId() > 0 ?
             
             header("location:?c=usuario");
+
+        }
+        else {
+            header("location:?c=usuario&a=FormCrear");
         }
 
     }
