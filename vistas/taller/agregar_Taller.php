@@ -39,7 +39,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="IdCliente">Nombre del Cliente *</label>
                   <div class="col-md-8">
-                    <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente" onkeydown="toggleButtonagregarTaller()">
+                    <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente" onmouseup="toggleButtonagregarTaller(); toggleListadeclientes()">
                       <option value disabled>Seleccione un cliente</option>
                       <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidoP . " ", $tallerSQL->apellidoM ?></option>
@@ -81,7 +81,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeydown="toggleButtonagregarTaller()" />
                     <div class="alert alert-danger" role="alert" id="advertencia-serie" hidden>
-                        No se aceptan caracteres especiales
+                      No se aceptan caracteres especiales
                     </div>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                   <div class="col-md-8">
                     <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" onkeydown="toggleButtonagregarTaller()" />
                     <div class="alert alert-danger" role="alert" id="advertencia-marca" hidden>
-                        No se aceptan caracteres especiales
+                      No se aceptan caracteres especiales
                     </div>
                   </div>
                 </div>
@@ -99,14 +99,14 @@
                   <div class="col-md-8">
                     <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" onkeydown="toggleButtonagregarTaller()" />
                     <div class="alert alert-danger" role="alert" id="advertencia-modelo" hidden>
-                        No se aceptan caracteres especiales
+                      No se aceptan caracteres especiales
                     </div>
                   </div>
-                </div> 
+                </div>
                 <div class="form-group">
                   <label class="control-label col-md-3" for="TipoEquipo">Tipo de Equipo</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" name="tipoEquipo" type="text" placeholder="Tipo de equipo" />
+                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -208,26 +208,26 @@
       var fecha = document.getElementById('fecha').value;
 
       if (document.getElementById('ns').value != "") {
-        ns ? 
-          document.getElementById('advertencia-serie').hidden = true : 
+        ns ?
+          document.getElementById('advertencia-serie').hidden = true :
           document.getElementById('advertencia-serie').hidden = false;
       }
 
       if (document.getElementById('marca').value != "") {
-        marca ? 
-          document.getElementById('advertencia-marca').hidden = true : 
-          document.getElementById('advertencia-marca').hidden = false; 
+        marca ?
+          document.getElementById('advertencia-marca').hidden = true :
+          document.getElementById('advertencia-marca').hidden = false;
       }
 
       if (document.getElementById('modelo').value != "") {
-        modelo ? 
-        document.getElementById('advertencia-modelo').hidden = true : 
-        document.getElementById('advertencia-modelo').hidden = false;
+        modelo ?
+          document.getElementById('advertencia-modelo').hidden = true :
+          document.getElementById('advertencia-modelo').hidden = false;
       }
 
       if (document.getElementById('obs').value != "") {
         observaciones ?
-          document.getElementById('advertencia-observaciones').hidden = true : 
+          document.getElementById('advertencia-observaciones').hidden = true :
           document.getElementById('advertencia-observaciones').hidden = false;
       }
       console.log(`Numero de serie : ${ns}`);
@@ -238,12 +238,16 @@
 
       //Si el formulario fue llenado correctamente se activa el boton enviar
       (ns && marca && modelo && observaciones && (tecnicoAsignado.value >= 0) && (fecha != "")) ?
-        document.getElementById('submitButton').disabled = false :
+      document.getElementById('submitButton').disabled = false:
         bloquearBotonEnviar();
 
 
     }
 
+    function toggleListadeclientes() {
+      document.getElementById('listaTc').value = document.getElementById('idc').value;
+      document.getElementById('listaCc').value = document.getElementById('idc').value;
+    }
 
 
     function bloquearBotonEnviar() {
