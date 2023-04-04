@@ -137,7 +137,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" id="fecha" name="fechaProgramada" type="date" min="<?= $fechadiadeHOY ?>" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="" onmouseleave="toggleButtonagregarDomicilio()">
+                    <input class="form-control" id="fecha" name="fechaProgramada" type="date" min="<?= $fechadiadeHOY ?>" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="" onchange="toggleButtonagregarDomicilio()">
                   </div>
                 </div>
                 <div>
