@@ -4,7 +4,7 @@ require_once "modelos/database.php";
 <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1>Lista de Clientes</h1>
+            <h1>Lista de Clientesaaa</h1>
             <!--<ul class="breadcrumb side">
               <li><i class="fa fa-home fa-lg"></i></li>
               <li>Tables</li>
@@ -39,27 +39,79 @@ require_once "modelos/database.php";
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach($this->modelo->Listar() as $clienteSQL):?>
-                      <tr>
-                        <td><?=$clienteSQL->idClientes?></td>
-                        <td><?=$clienteSQL->rfc?></td>
-                        <td><?=$clienteSQL->nombreCliente?></td>
-                        <td><?=$clienteSQL->apellidoP?></td>
-                        <td><?=$clienteSQL->nombreEmpresa?></td>
-                        <td><?=$clienteSQL->telefono?></td>
-                        <td><?=$clienteSQL->email?></td>
-                        <td><?=$clienteSQL->domicilio?></td>
+                    <?php
+                      $registros_por_pagina = 5;
+                      $porfavor2 = count($this->modelo->Listar());
+                      //echo $porfavor2;
+                      $total_registros = $porfavor2;//$this->modelo->Paginar(1);
+                      //echo $total_registros;
+
+                      // Obtener el número de página actual
+                      if (isset($_GET['pagina'])) {
+                          $pagina_actual = $_GET['pagina'];
+                          foreach($this->modelo->Paginar(($_GET['pagina']-1)*$registros_por_pagina, $registros_por_pagina) as $clienteSQL):?>
+                            <tr>
+                                <td><?=$clienteSQL->idClientes?></td>
+                                <td><?=$clienteSQL->rfc?></td>
+                                <td><?=$clienteSQL->nombreCliente?></td>
+                                <td><?=$clienteSQL->apellidoP?></td>
+                                <td><?=$clienteSQL->nombreEmpresa?></td>
+                                <td><?=$clienteSQL->telefono?></td>
+                                <td><?=$clienteSQL->email?></td>
+                                <td><?=$clienteSQL->domicilio?></td>
+                        
+                              <!--condicion para ocultar si es secretario-->
+                              <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
+                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormModificar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-refresh"></i></a>
+                                  <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-trash"></i></a>
+                                  
+                              <?php } ?>
+                                  <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-eye"></i></a></td>
+                            </tr>
+                            <?php endforeach;
+                      } else {
+                          $pagina_actual = 1;
+                          foreach($this->modelo->Paginar(0,$registros_por_pagina) as $clienteSQL):?>
+                           <tr>
+                              <td><?=$clienteSQL->idClientes?></td>
+                              <td><?=$clienteSQL->rfc?></td>
+                              <td><?=$clienteSQL->nombreCliente?></td>
+                              <td><?=$clienteSQL->apellidoP?></td>
+                              <td><?=$clienteSQL->nombreEmpresa?></td>
+                              <td><?=$clienteSQL->telefono?></td>
+                              <td><?=$clienteSQL->email?></td>
+                              <td><?=$clienteSQL->domicilio?></td>
                         <!--condicion para ocultar si es tecnico-->
-                        <td>
-                        <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
-                        <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-refresh"></i></a> 
-                        <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-trash" ></i></a>
-                        <?php }?>
-                        <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$clienteSQL->idClientes?>"><i class="fa fa-lg fa-eye"></i></a></td>
                         
-                        
-                      </tr>
-                      <?php endforeach;?>
+
+                              <!--condicion para ocultar si es secretario-->
+                              <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
+                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormModificar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-refresh"></i></a>
+                                  <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-trash"></i></a>
+                                  
+                              <?php } ?>
+                                  <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-eye"></i></a></td>
+                            </tr>
+                            <?php endforeach;
+                      }
+
+                      // Calcular el offset
+                      $offset = ($pagina_actual - 1) * $registros_por_pagina;
+                      ?>
+
+
+                      
+                    </tbody>
+                  </table>
+                </div>
+                <?php
+                $num_paginas = ceil($total_registros / $registros_por_pagina);
+                //$num_paginas = 3;
+                for ($i=1; $i<=$num_paginas; $i++) {
+                    //echo "<a href='?pagina=$i'>$i</a> ";
+                    echo "<a href='?c=cliente&a=PaginarN&pagina=$i'>$i</a> ";
+                }
+                ?>
                     </tbody>
                   </table>
                 </div>

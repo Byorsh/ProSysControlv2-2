@@ -1,7 +1,7 @@
 <?php
 
 class Cliente{
-    private $udo;
+    private $pdo;
 
     private $id;
     private $rfc;
@@ -120,6 +120,18 @@ class Cliente{
         }
     }
 
+    public function Paginar($limite,$numerodeRegistros){
+        try{
+            $consulta = $this->pdo->prepare("SELECT * FROM `clientes` LIMIT $limite,$numerodeRegistros;");
+            $consulta->execute();
+            
+
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+
     public function Obtener($nombre){
         try{
             $consulta = $this ->pdo ->prepare("SELECT * FROM clientes WHERE idClientes=?;");
@@ -185,6 +197,16 @@ class Cliente{
                 $clienteSQL->getDomicilio(),
                 $clienteSQL->getId()
             ));
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    
+    public function buscarTecnicoAsignado($nombre){
+        try{
+            $consulta = $this->pdo->prepare("SELECT nombre,apellido FROM `usuario`WHERE id =?;");
+            $consulta->execute(array($nombre));
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
