@@ -19,7 +19,7 @@ function handleSubmit() {
 
     (obs && (fecha != "") && ((idc && telefonoCliente && correoCliente && direccionCliente) >= 0)) ?
         document.getElementById('submitButton').disabled = false :
-        bloquearBotonEnviar();
+        handleBloquearSubmit();
 }
 
 //Funcion para poner en automatico los datos del cliente seleccionandolo de la lista

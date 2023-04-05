@@ -143,29 +143,27 @@
                 <div>
                   <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $fecha_actual ?>">
                 </div>
-          </div>
-          <div class="form-group">
+                <div class="form-group">
+                  <div>
+                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $hora_actual ?>">
+                  </div>
+                </div>
 
-            <div>
-              <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $hora_actual ?>">
-            </div>
-          </div>
+                <div class="form-group">
+                  <div class="col-md-8">
+                    <input class="form-control" name="estadoEquipo" type="hidden" value="1">
+                  </div>
+                </div>
 
-          <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                  <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
+                  <button class="btn btn-default" type="button" onclick="handleCancelar()">Cancelar</button>
+                </div>
 
-            <div class="col-md-8">
-              <input class="form-control" name="estadoEquipo" type="hidden" value="1">
-            </div>
-          </div>
-
-          <div class="col-lg-10 col-lg-offset-2">
-            <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
-            <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
-            <button class="btn btn-default" type="button" onclick="handleCancelar()">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<script src="vistas/domicilio/agregar_Domicilio.js"></script>
+  <script src="vistas/domicilio/agregar_Domicilio.js"></script>
