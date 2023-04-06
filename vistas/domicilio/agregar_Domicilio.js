@@ -4,9 +4,9 @@ let patrones = {
 
 //este creo q no se usa
 function handleSubmit() {
-    var idc = document.getElementById('idc').value;
-    var obs = patrones.problematica.test(document.getElementById('obs').value);
-    var fecha = document.getElementById('fecha').value;
+    let idc = document.getElementById('idc').value;
+    let obs = patrones.problematica.test(document.getElementById('obs').value);
+    let fecha = document.getElementById('fecha').value;
     let telefonoCliente = document.getElementById('listaTc').value;
     let correoCliente = document.getElementById('listaCc').value;
     let direccionCliente = document.getElementById('listaDc').value;
@@ -15,6 +15,8 @@ function handleSubmit() {
         obs ?
             document.getElementById('advertenciaProblematica').hidden = true :
             document.getElementById('advertenciaProblematica').hidden = false
+    } else {
+        document.getElementById('advertenciaProblematica').hidden = true;
     }
 
     (obs && (fecha != "") && ((idc && telefonoCliente && correoCliente && direccionCliente) >= 0)) ?

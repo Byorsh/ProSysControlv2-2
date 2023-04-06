@@ -17,36 +17,45 @@ function handleSubmit() {
         nombre ?
             document.getElementById('advertenciaCliente').hidden = true :
             document.getElementById('advertenciaCliente').hidden = false;
+    } else {
+        document.getElementById('advertenciaCliente').hidden = true;
     }
 
     if (document.getElementById('apellidoPaterno').value != "") {
         apellidoPaterno ?
             document.getElementById('advertenciaApellidoPaterno').hidden = true :
             document.getElementById('advertenciaApellidoPaterno').hidden = false;
+    } else {
+        document.getElementById('advertenciaApellidoPaterno').hidden = true;
     }
 
     if (document.getElementById('apellidoMaterno').value != "") {
         apellidoMaterno ?
             document.getElementById('advertenciaApellidoMaterno').hidden = true :
             document.getElementById('advertenciaApellidoMaterno').hidden = false;
+    } else {
+        document.getElementById('advertenciaApellidoMaterno').hidden = true;
     }
 
     if (document.getElementById('telefono').value != "") {
         telefono ?
             document.getElementById('advertenciaTelefono').hidden = true :
             document.getElementById('advertenciaTelefono').hidden = false;
+    } else {
+        document.getElementById('advertenciaTelefono').hidden = true;
     }
 
     if (document.getElementById('email').value != "") {
         correo ?
             document.getElementById('advertenciaEmail').hidden = true :
             document.getElementById('advertenciaEmail').hidden = false;
+    } else {
+        document.getElementById('advertenciaEmail').hidden = true;
     }
 
     (nombre && apellidoMaterno && apellidoPaterno && telefono && telefono && correo) ?
         document.getElementById('submitButton').disabled = false :
         handleBloquearSubmit();
-
 }
 
 function handleBloquearSubmit() {

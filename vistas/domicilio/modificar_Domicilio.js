@@ -10,12 +10,16 @@ function handleSubmit() {
         problematica ?
             document.getElementById('advertenciaProblematica').hidden = true :
             document.getElementById('advertenciaProblematica').hidden = false;
+    } else {
+        document.getElementById('advertenciaProblematica').hidden = true;
     }
 
     if (document.getElementById("observaciones").value != "") {
         observaciones ?
             document.getElementById('advertenciaObservaciones').hidden = true :
             document.getElementById('advertenciaObservaciones').hidden = false
+    } else {
+        document.getElementById('advertenciaObservaciones').hidden = true;
     }
 
     (observaciones && problematica) ?

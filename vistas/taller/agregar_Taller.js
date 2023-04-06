@@ -6,43 +6,49 @@ let patrones = {
 }
 
 function handleSubmit() {
-    var ns = patrones.ns.test(document.getElementById('ns').value);
-    var marca = patrones.marca.test(document.getElementById('marca').value);
-    var modelo = patrones.modelo.test(document.getElementById('modelo').value);
-    var observaciones = patrones.observaciones.test(document.getElementById('obs').value);
+    let ns = patrones.ns.test(document.getElementById('ns').value);
+    let marca = patrones.marca.test(document.getElementById('marca').value);
+    let modelo = patrones.modelo.test(document.getElementById('modelo').value);
+    let observaciones = patrones.observaciones.test(document.getElementById('obs').value);
     let tecnicoAsignado = document.getElementById('idtec');
-    var fecha = document.getElementById('fecha').value;
+    let fecha = document.getElementById('fecha').value;
 
     if (document.getElementById('ns').value != "") {
         ns ?
             document.getElementById('advertenciaSerie').hidden = true :
             document.getElementById('advertenciaSerie').hidden = false;
+    } else {
+        document.getElementById('advertenciaSerie').hidden = true;
     }
 
     if (document.getElementById('marca').value != "") {
         marca ?
             document.getElementById('advertenciaMarca').hidden = true :
             document.getElementById('advertenciaMarca').hidden = false;
+    } else {
+        document.getElementById('advertenciaMarca').hidden = true;
     }
 
     if (document.getElementById('modelo').value != "") {
         modelo ?
             document.getElementById('advertenciaModelo').hidden = true :
             document.getElementById('advertenciaModelo').hidden = false;
+    } else {
+        document.getElementById('advertenciaModelo').hidden = true;
     }
 
     if (document.getElementById('obs').value != "") {
         observaciones ?
             document.getElementById('advertenciaObservaciones').hidden = true :
             document.getElementById('advertenciaObservaciones').hidden = false;
+    } else {
+        document.getElementById('advertenciaObservaciones').hidden = true;
     }
 
     //Si el formulario fue llenado correctamente se activa el boton enviar
     (ns && marca && modelo && observaciones && (tecnicoAsignado.value >= 0) && (fecha != "")) ?
         document.getElementById('submitButton').disabled = false :
         handleBloquearSubmit();
-
-
 }
 
 function toggleListadeclientes() {

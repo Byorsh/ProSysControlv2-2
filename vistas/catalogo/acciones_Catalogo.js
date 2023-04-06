@@ -16,24 +16,32 @@ function handleSubmit() {
         descripcion != "" ?
             document.getElementById('advertenciaDescripcion').hidden = true :
             document.getElementById('advertenciaDescripcion').hidden = false;
+    } else {
+        document.getElementById('advertenciaDescripcion').hidden = true;
     }
 
     if (document.getElementById('cantidad').value != "") {
         cantidad ?
             document.getElementById('advertenciaCantidad').hidden = true :
             document.getElementById('advertenciaCantidad').hidden = false;
+    } else {
+        document.getElementById('advertenciaCantidad').hidden = true;
     }
 
     if (document.getElementById('preciocompratxt').value != "") {
         precioDeCompra ?
             document.getElementById('advertenciaPrecioCompra').hidden = true :
             document.getElementById('advertenciaPrecioCompra').hidden = false;
+    } else {
+        document.getElementById('advertenciaPrecioCompra').hidden = true;
     }
 
     if (document.getElementById('precioventatxt').value != "") {
         precioDeVenta ?
             document.getElementById('advertenciaPrecioVenta').hidden = true :
             document.getElementById('advertenciaPrecioVenta').hidden = false;
+    } else {
+        document.getElementById('advertenciaPrecioVenta').hidden = true;
     }
 
     //Si el formulario fue llenado correctamente se activa el boton enviar

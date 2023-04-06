@@ -22,7 +22,7 @@ function handleSubmit() {
         nombre ?
             document.getElementById('advertenciaNombre').hidden = true :
             document.getElementById('advertenciaNombre').hidden = false;
-    }else {
+    } else {
         document.getElementById('advertenciaNombre').hidden = true;
     }
 
@@ -30,7 +30,7 @@ function handleSubmit() {
         apellido ?
             document.getElementById('advertenciaApellido').hidden = true :
             document.getElementById('advertenciaApellido').hidden = false;
-    }else {
+    } else {
         document.getElementById('advertenciaApellido').hidden = true;
     }
 
@@ -38,7 +38,7 @@ function handleSubmit() {
         telefono ?
             document.getElementById('advertenciaTelefono').hidden = true :
             document.getElementById('advertenciaTelefono').hidden = false;
-    }else {
+    } else {
         document.getElementById('advertenciaTelefono').hidden = true;
     }
 
@@ -46,7 +46,7 @@ function handleSubmit() {
         correo ?
             document.getElementById('advertenciaCorreo').hidden = true :
             document.getElementById('advertenciaCorreo').hidden = false;
-    }else {
+    } else {
         document.getElementById('advertenciaCorreo').hidden = true;
     }
 
@@ -54,7 +54,7 @@ function handleSubmit() {
         usuario ?
             document.getElementById('advertenciaUsuario').hidden = true :
             document.getElementById('advertenciaUsuario').hidden = false;
-    }else {
+    } else {
         document.getElementById('advertenciaUsuario').hidden = true;
     }
 
@@ -62,7 +62,7 @@ function handleSubmit() {
         password ?
             document.getElementById('advertenciaContraseña').hidden = true :
             document.getElementById('advertenciaContraseña').hidden = false;
-    }else {
+    } else {
         document.getElementById('advertenciaContraseña').hidden = true;
     }
 
