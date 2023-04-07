@@ -31,7 +31,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Rfc">RFC </label>
                   <div class="col-md-8">
-                    <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" value="<?= $clienteSQL->getRfc() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" value="<?= $clienteSQL->getRfc() ?>" 
+                      onkeyup="handleSubmit(); mayus(this);" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))">
                   </div>
                 </div>
 
@@ -39,7 +40,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreCliente">Nombre *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
                     <div class="alert alert-danger" role="alert" id="advertenciaCliente" hidden>
                       El nombre solo debe contener letras y espacio
                     </div>
@@ -49,7 +51,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="ApellidoP">Apellido Paterno *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="apellidoP" id="apellidoPaterno" type="text" placeholder="Apellido Paterno" value="<?= $clienteSQL->getApellidoP() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="apellidoP" id="apellidoPaterno" type="text" placeholder="Apellido Paterno" value="<?= $clienteSQL->getApellidoP() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
                     <div class="alert alert-danger" role="alert" id="advertenciaApellidoPaterno" hidden>
                       El usuario unicamente puede contener letras y espacios
                     </div>
@@ -59,7 +62,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="ApellidoM">Apellido Materno *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="apellidoM" id="apellidoMaterno" type="text" placeholder="Apellido Materno" value="<?= $clienteSQL->getApellidoM() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="apellidoM" id="apellidoMaterno" type="text" placeholder="Apellido Materno" value="<?= $clienteSQL->getApellidoM() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
                     <div class="alert alert-danger" role="alert" id="advertenciaApellidoMaterno" hidden>
                       El usuario unicamente puede contener letras y espacios
                     </div>
@@ -69,14 +73,16 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Nombre de la empresa</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombreEmpresa" id="nombreEmpresa" type="text" placeholder="Nombre de la Empresa" value="<?= $clienteSQL->getNombreEmpresa() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="nombreEmpresa" id="nombreEmpresa" type="text" placeholder="Nombre de la Empresa" value="<?= $clienteSQL->getNombreEmpresa() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 32 && event.charCode <= 46) )">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Telefono">Telefono *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?= $clienteSQL->getTelefono() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?= $clienteSQL->getTelefono() ?>" 
+                      onkeyup="handleSubmit()" maxlength="10" min="1" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
                     <div class="alert alert-danger" role="alert" id="advertenciaTelefono" hidden>
                       Numero de telefono invalido
                     </div>
@@ -96,7 +102,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Domicilio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="domicilio" id="domicilio" type="text" placeholder="Domicilio" value="<?= $clienteSQL->getDomicilio() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="domicilio" id="domicilio" type="text" placeholder="Domicilio" value="<?= $clienteSQL->getDomicilio() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 32 && event.charCode <= 47))">
                   </div>
                 </div>
 

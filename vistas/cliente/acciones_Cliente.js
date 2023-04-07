@@ -1,8 +1,8 @@
 let patrones = {
-    nombre: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,20}/,
-    apellidoPaterno: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,20}/,
-    apellidoMaterno: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,20}/,
-    telefono: /\+?\(?\d{2,4}\)?[\d\s-]{8,14}/,
+    nombre: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
+    apellidoPaterno: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
+    apellidoMaterno: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
+    telefono: /\+?\(?\d{2,4}\)?[\d\s-]{8,10}/,
     correo: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
 }
 
@@ -73,4 +73,8 @@ function handleCancelar() {
             window.location.href = '?c=cliente';
         }
     })
+}
+
+function mayus(e) {
+    e.value = e.value.toUpperCase();
 }
