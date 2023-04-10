@@ -31,7 +31,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Descripcion">Descripcion *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" 
+                      onkeyup="handleSubmit()" maxlength="100" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaDescripcion" hidden>
                       Campo obligatorio
                     </div>
@@ -41,21 +42,24 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Marca">Marca</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?= $catalogoSQL->getMarca() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?= $catalogoSQL->getMarca() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Modelo">Modelo</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?= $catalogoSQL->getModelo() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?= $catalogoSQL->getModelo() ?>" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Cantidad">Cantidad *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" value="<?= $catalogoSQL->getCantidad() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" value="<?= $catalogoSQL->getCantidad() ?>" 
+                      onkeyup="handleSubmit()" maxlength="6" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaCantidad" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>
@@ -65,7 +69,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="PrecioCompra">Precio de compra *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" value="<?= $catalogoSQL->getPrecioCompra() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" value="<?= $catalogoSQL->getPrecioCompra() ?>" 
+                      onkeyup="handleSubmit()" maxlength="12" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaPrecioCompra" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>
@@ -75,7 +80,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="precioVenta" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="precioVenta" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" 
+                      onkeyup="handleSubmit()" maxlength="12" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaPrecioVenta" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>

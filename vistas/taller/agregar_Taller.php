@@ -79,7 +79,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                     <div class="alert alert-danger" role="alert" id="advertenciaSerie" hidden>
                       No se aceptan caracteres especiales
                     </div>
@@ -88,7 +89,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Marca">Marca *</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" onkeyup="handleSubmit()" />
+                    <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" 
+                      onkeyup="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                     <div class="alert alert-danger" role="alert" id="advertenciaMarca" hidden>
                       No se aceptan caracteres especiales
                     </div>
@@ -97,7 +99,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Modelo">Modelo *</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" onkeyup="handleSubmit()" />
+                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" 
+                      onkeyup="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                     <div class="alert alert-danger" role="alert" id="advertenciaModelo" hidden>
                       No se aceptan caracteres especiales
                     </div>
@@ -106,7 +109,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="TipoEquipo">Tipo de Equipo</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" onkeyup="handleSubmit()" />
+                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
                 <div class="form-group">
@@ -154,7 +158,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="FechaPrometida">Fecha Prometida *</label>
                   <div class="col-md-8">
-                    <input class="form-control" type="date" min="<?= $fechadiadeHOY ?>" max="2030-01-01" id="fecha" name="fechaPrometida" placeholder="Fecha prometida" onmouseleave="handleSubmit()">
+                    <input class="form-control" type="date" min="<?= $fechadiadeHOY ?>" max="2030-01-01" id="fecha" name="fechaPrometida" placeholder="Fecha prometida" onchange="handleSubmit()">
                   </div>
 
                 </div>

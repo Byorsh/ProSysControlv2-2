@@ -32,7 +32,7 @@
                   <label class="control-label col-md-3" for="Rfc">RFC </label>
                   <div class="col-md-8">
                     <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" value="<?= $clienteSQL->getRfc() ?>" 
-                      onkeyup="handleSubmit(); mayus(this);" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))">
+                      onkeyup="handleSubmit(); mayus(this);" maxlength="15" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))">
                   </div>
                 </div>
 

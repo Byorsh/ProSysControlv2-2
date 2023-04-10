@@ -92,7 +92,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeyup="handleSubmit()" value="<?= $tallerSQL->getNs() ?>">
+                    <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" 
+                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getNs() ?>">
                     <div class="alert alert-danger" role="alert" id="advertenciaNumeroSerie" hidden>
                       Campo obligatorio
                     </div>
@@ -102,7 +103,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Marca">Marca *</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" onkeyup="handleSubmit()" value="<?= $tallerSQL->getMarca() ?>">
+                    <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" 
+                      onkeyup="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getMarca() ?>">
                     <div class="alert alert-danger" role="alert" id="advertenciaMarca" hidden>
                       Campo obligatorio
                     </div>
@@ -112,7 +114,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Modelo">Modelo *</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" onkeyup="handleSubmit()" value="<?= $tallerSQL->getModelo() ?>">
+                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" 
+                      onkeyup="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getModelo() ?>">
                     <div class="alert alert-danger" role="alert" id="advertenciaModelo" hidden>
                       Campo obligatorio
                     </div>
@@ -211,6 +214,12 @@
                 <div class="form-group">
                   <div class="col-md-8">
                     <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual ?>">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-8">
+                    <input class="form-control" name="estadoEquipo" type="hidden" value="1">
                   </div>
                 </div>
 
