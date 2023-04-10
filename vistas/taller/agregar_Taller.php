@@ -79,7 +79,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeyup="handleSubmit()" />
+                    <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaSerie" hidden>
                       No se aceptan caracteres especiales
                     </div>
@@ -177,6 +177,12 @@
 
                   <div class="col-md-8">
                     <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual ?>">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-8">
+                    <input class="form-control" name="estadoEquipo" type="hidden" value="1">
                   </div>
                 </div>
 
