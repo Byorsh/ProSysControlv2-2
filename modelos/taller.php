@@ -368,6 +368,33 @@ class Taller{
         }
     }
 
+    public function BuscarEnTabla($busqueda){
+        try{
+            
+            $columnas = ['id','idCliente','ns','marca','modelo','tipoEquipo','observaciones','accesorios','fechaEntrada','horaEntrada','fechaPrometida','tecnicoAsignado','estadoEquipo'];
+            if ($busqueda != null) {
+                $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $busqueda . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion ".$where.";");
+            
+
+            //$consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `marca` LIKE '$busqueda';");
+            echo("SELECT * FROM ordenreparacion ".$where.";");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+
+    }
+
     public function Eliminar($id){
         try{
             $consulta = "DELETE FROM ordenreparacion WHERE id=?;";

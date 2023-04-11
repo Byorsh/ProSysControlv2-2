@@ -16,6 +16,12 @@ class TallerControlador{
         require_once "vistas/pie.php";
     }
 
+    public function Mostrar(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/taller/mostrar_Taller.php";
+        require_once "vistas/pie.php";
+    }
+
     public function FormCrear(){
         $titulo="Registrar";
         
@@ -85,6 +91,11 @@ class TallerControlador{
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
         header("location:?c=taller");
+    }
+    public function Buscar(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/taller/index.php";
+        require_once "vistas/pie.php";
     }
 
 }
