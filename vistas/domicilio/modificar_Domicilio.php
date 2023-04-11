@@ -79,7 +79,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onkeyup="handleSubmit()">  <?= $domicilioSQL->getProblematica() ?></textarea>
+                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onchange="handleSubmit()">  <?= $domicilioSQL->getProblematica() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio
                     </div>
@@ -89,7 +89,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Observaciones">Observaciones *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" onkeyup="handleSubmit()"><?= $domicilioSQL->getObservaciones() ?></textarea>
+                    <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" onchange="handleSubmit()"><?= $domicilioSQL->getObservaciones() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaObservaciones" hidden>
                       Campo obligatorio
                     </div>
@@ -106,35 +106,35 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Presupuesto">Presupuesto</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="presupuesto" type="text" placeholder="Presupuesto" value="<?= $domicilioSQL->getPresupuesto() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="presupuesto" type="text" placeholder="Presupuesto" value="<?= $domicilioSQL->getPresupuesto() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraInicio">Hora de Inicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaInicio" type="text" placeholder="Hora de inicio del servicio" value="<?= $domicilioSQL->getHoraInicio() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="horaInicio" type="text" placeholder="Hora de inicio del servicio" value="<?= $domicilioSQL->getHoraInicio() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraFinal">Hora de Finalizacion</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaFinal" type="text" placeholder="Hora de terminacion del servicio" value="<?= $domicilioSQL->getHoraFinal() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="horaFinal" type="text" placeholder="Hora de terminacion del servicio" value="<?= $domicilioSQL->getHoraFinal() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HorasRealizadas">Horas Realizadas</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horasRealizadas" type="text" placeholder="Hora realizadas en el servicio" value="<?= $domicilioSQL->getTotalHoras() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="horasRealizadas" type="text" placeholder="Hora realizadas en el servicio" value="<?= $domicilioSQL->getTotalHoras() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="CostoTotal">Costo total</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="costoTotal" type="text" placeholder="Costo total" value="<?= $domicilioSQL->getCostoTotal() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="costoTotal" type="text" placeholder="Costo total" value="<?= $domicilioSQL->getCostoTotal() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 

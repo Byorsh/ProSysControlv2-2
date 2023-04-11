@@ -87,7 +87,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica para el servicio *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" id="obs" name="problematica" rows="4" placeholder="Problematica para el servicio" onkeyup="handleSubmit()"></textarea>
+                    <textarea class="form-control" id="obs" name="problematica" rows="4" placeholder="Problematica para el servicio" onchange="handleSubmit()"></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio
                     </div>

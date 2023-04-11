@@ -93,7 +93,7 @@
                   <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
                   <div class="col-md-8">
                     <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" 
-                      onkeyup="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getNs() ?>">
+                      onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getNs() ?>">
                     <div class="alert alert-danger" role="alert" id="advertenciaNumeroSerie" hidden>
                       Campo obligatorio
                     </div>
@@ -104,7 +104,7 @@
                   <label class="control-label col-md-3" for="Marca">Marca *</label>
                   <div class="col-md-8">
                     <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" 
-                      onkeyup="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getMarca() ?>">
+                      onchange="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getMarca() ?>">
                     <div class="alert alert-danger" role="alert" id="advertenciaMarca" hidden>
                       Campo obligatorio
                     </div>
@@ -115,7 +115,7 @@
                   <label class="control-label col-md-3" for="Modelo">Modelo *</label>
                   <div class="col-md-8">
                     <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" 
-                      onkeyup="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getModelo() ?>">
+                      onchange="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" value="<?= $tallerSQL->getModelo() ?>">
                     <div class="alert alert-danger" role="alert" id="advertenciaModelo" hidden>
                       Campo obligatorio
                     </div>
@@ -125,7 +125,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="TipoEquipo">Tipo de Equipo</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" onkeyup="handleSubmit()" value="<?= $tallerSQL->gettipoEquipo() ?>">
+                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" onchange="handleSubmit()" value="<?= $tallerSQL->gettipoEquipo() ?>">
                   </div>
                 </div>
 
@@ -133,7 +133,7 @@
                   <label class="control-label col-md-3" for="Observaciones">Problematica del equipo *</label>
                   <div class="col-md-8">
                     <!--Por alguna razon no agarra la validacion para el minimo de caracteres-->
-                    <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" onkeyup="handleSubmit()"><?= $tallerSQL->getObservaciones() ?></textarea>
+                    <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" onchange="handleSubmit()"><?= $tallerSQL->getObservaciones() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio
                     </div>
@@ -143,7 +143,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Accesorios">Accesorios</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="accesorios" id="accesorios" rows="4" placeholder="Accesorios del equipo" onkeyup="handleSubmit()"><?= $tallerSQL->getAccesorios() ?></textarea>
+                    <textarea class="form-control" name="accesorios" id="accesorios" rows="4" placeholder="Accesorios del equipo" onchange="handleSubmit()"><?= $tallerSQL->getAccesorios() ?></textarea>
                   </div>
                 </div>
 
