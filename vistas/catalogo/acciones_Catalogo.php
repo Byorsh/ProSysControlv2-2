@@ -18,7 +18,7 @@
         <div class="row">
 
           <div class="well bs-component">
-            <form class="form-horizontal" method="POST" onsubmit="toggleButton()" action="?c=catalogo&a=Guardar">
+            <form class="form-horizontal" method="POST" onsubmit="handleSubmit()" action="?c=catalogo&a=Guardar">
               <fieldset>
                 <legend>Registrar Articulo</legend>
 
@@ -31,8 +31,9 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Descripcion">Descripcion *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" onkeyup="toggleButton()">
-                    <div class="alert alert-danger" role="alert" id="advertencia-descripcion" hidden>
+                    <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" 
+                      onchange="handleSubmit()" maxlength="100" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <div class="alert alert-danger" role="alert" id="advertenciaDescripcion" hidden>
                       Campo obligatorio
                     </div>
                   </div>
@@ -41,22 +42,25 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Marca">Marca</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?= $catalogoSQL->getMarca() ?>">
+                    <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?= $catalogoSQL->getMarca() ?>" 
+                      onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Modelo">Modelo</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?= $catalogoSQL->getModelo() ?>">
+                    <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?= $catalogoSQL->getModelo() ?>" 
+                      onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Cantidad">Cantidad *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" value="<?= $catalogoSQL->getCantidad() ?>" onkeyup="toggleButton()">
-                    <div class="alert alert-danger" role="alert" id="advertencia-cantidad" hidden>
+                    <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" value="<?= $catalogoSQL->getCantidad() ?>" 
+                      onchange="handleSubmit()" maxlength="6" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
+                    <div class="alert alert-danger" role="alert" id="advertenciaCantidad" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>
                   </div>
@@ -65,8 +69,9 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="PrecioCompra">Precio de compra *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" value="<?= $catalogoSQL->getPrecioCompra() ?>" onkeyup="toggleButton()">
-                    <div class="alert alert-danger" role="alert" id="advertencia-precioDeCompa" hidden>
+                    <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" value="<?= $catalogoSQL->getPrecioCompra() ?>" 
+                      onchange="handleSubmit()" maxlength="12" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
+                    <div class="alert alert-danger" role="alert" id="advertenciaPrecioCompra" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>
                   </div>
@@ -75,8 +80,9 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="precioCompra" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" onkeyup="toggleButton()">
-                    <div class="alert alert-danger" role="alert" id="advertencia-precioDeVenta" hidden>
+                    <input class="form-control" name="precioVenta" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" 
+                      onchange="handleSubmit()" maxlength="12" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
+                    <div class="alert alert-danger" role="alert" id="advertenciaPrecioVenta" hidden>
                       Campo obligatorio, unicamente acepta numeros
                     </div>
                   </div>
@@ -85,7 +91,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Iva">IVA</label>
                   <div class="col-md-8">
-                    <select class="form-control" id="impuestolista" name="iva" onchange="validarPrecioVenta()">
+                    <select class="form-control" id="impuestolista" name="iva" onchange="handleSubmit()">
                       <option value selected disabled>Seleccione una opcion</option>
                       <option value="16" selected="true">16%</option>
                       <option value="8">8%</option>
@@ -97,78 +103,12 @@
 
                 <div class="col-lg-10 col-lg-offset-2">
                   <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
-                  <button class="btn btn-default" type="reset" onclick="bloquearBotonEnviar()">Limpiar</button>
-                  <button class="btn btn-default" type="button" onclick="cancelarRegistro()">Cancelar</button>
+                  <button class="btn btn-default" type="reset" onclick="handleSubmit()">Limpiar</button>
+                  <button class="btn btn-default" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
-    <fieldset>
-
-      <fieldset>
-  </form>
-
-  <script>
-    let patrones = {
-      cantidad: /[0-9]{1,6}/,
-      precioDeCompra: /[0-9.]{1,12}/,
-      precioDeVenta: /[0-9.]{1,12}/
-    }
-
-    function toggleButton() {
-      //validar datos ingresados
-      let descripcion = document.getElementById('descripcion').value;
-      let cantidad = patrones.cantidad.test(document.getElementById('cantidad').value);
-      let precioDeCompra = patrones.precioDeCompra.test(document.getElementById('preciocompratxt').value);
-      let precioDeVenta = patrones.precioDeVenta.test(document.getElementById('precioventatxt').value);
-
-      //Se valida que los campos no esten vacios y con su correspondiente formato
-      //RFC no acepta ninguna entrada
-      descripcion != "" ?
-        document.getElementById('advertencia-descripcion').hidden = true :
-        document.getElementById('advertencia-descripcion').hidden = false;
-
-      if (document.getElementById('advertencia-cantidad').value != "") {
-        cantidad ?
-          document.getElementById('advertencia-cantidad').hidden = true :
-          document.getElementById('advertencia-cantidad').hidden = false;
-      }
-
-      if (document.getElementById('preciocompratxt').value != "") {
-        precioDeCompra ?
-          document.getElementById('advertencia-precioDeCompa').hidden = true :
-          document.getElementById('advertencia-precioDeCompa').hidden = false;
-      }
-
-      if (document.getElementById('precioventatxt').value != "") {
-        precioDeVenta ?
-          document.getElementById('advertencia-precioDeVenta').hidden = true :
-          document.getElementById('advertencia-precioDeVenta').hidden = false;
-      }
-
-      //Si el formulario fue llenado correctamente se activa el boton enviar
-      (descripcion && cantidad && precioDeCompra && precioDeVenta) ?
-      document.getElementById('submitButton').disabled = false:
-        bloquearBotonEnviar();
-    }
-
-    function bloquearBotonEnviar() {
-      document.getElementById('submitButton').disabled = true;
-    }
-
-    function cancelarRegistro() {
-      Swal.fire({
-        title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showCancelButton: true,
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = '?c=usuario';
-        }
-      })
-    }
-  </script>
+  <script src="vistas/catalogo/acciones_Catalogo.js"></script>
