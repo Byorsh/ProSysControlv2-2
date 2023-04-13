@@ -59,14 +59,15 @@ require_once "modelos/database.php";
                                 <td><?=$clienteSQL->telefono?></td>
                                 <td><?=$clienteSQL->email?></td>
                                 <td><?=$clienteSQL->domicilio?></td>
+                                <?php $idc = $clienteSQL->idClientes ?>
                         
                               <!--condicion para ocultar si es secretario-->
                               <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
-                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormModificar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-refresh"></i></a>
-                                  <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-trash"></i></a>
+                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$idc?>"><i class="fa fa-lg fa-refresh"></i></a>
+                                  <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idc?>"><i class="fa fa-lg fa-trash"></i></a>
                                   
                               <?php } ?>
-                                  <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-eye"></i></a></td>
+                                  <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$idc?>"><i class="fa fa-lg fa-eye"></i></a></td>
                             </tr>
                             <?php endforeach;
                       } else {
@@ -81,16 +82,17 @@ require_once "modelos/database.php";
                               <td><?=$clienteSQL->telefono?></td>
                               <td><?=$clienteSQL->email?></td>
                               <td><?=$clienteSQL->domicilio?></td>
+                              <?php $idc = $clienteSQL->idClientes ?>
                         <!--condicion para ocultar si es tecnico-->
                         
 
                               <!--condicion para ocultar si es secretario-->
                               <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
-                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormModificar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-refresh"></i></a>
-                                  <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-trash"></i></a>
+                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$idc?>"><i class="fa fa-lg fa-refresh"></i></a>
+                                  <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idc?>"><i class="fa fa-lg fa-trash"></i></a>
                                   
                               <?php } ?>
-                                  <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$idreparacion?>"><i class="fa fa-lg fa-eye"></i></a></td>
+                                  <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?=$idc?>"><i class="fa fa-lg fa-eye"></i></a></td>
                             </tr>
                             <?php endforeach;
                       }
