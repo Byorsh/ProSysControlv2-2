@@ -14,17 +14,31 @@
 
     
     <!--aaaaaaaaa -->
+    <form class="form-horizontal" method="POST"
+    <?php
+                      if(isset($_GET['pagina'])){
+                        echo "action='?c=taller&a=BuscaryPaginar&pagina=",$_GET['pagina'],"'";
+                      }
+                      else{
+                        
+                        echo "action='?c=taller&a=Buscar'";
+                      }
+                      ?>
+
+    
+    >
     <div class="form-group">
                     <label class="control-label col-md-3" for="campo" >Buscar</label>
                     
                     <div class="col-md-8">
-                      <input class="form-control" name="campo" id="campo" type="text">
-                      <a href='?c=taller&a=Buscar&q=ASUS'>buscar</a>
+                      <input class="form-control" name="campo" id="campo" type="text" required>
+                      <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
                     </div>
                   </div>
                   
 
     <div>
+</form>
 
     
   </div>
@@ -80,7 +94,6 @@
                       <?php endforeach; ?>
                       <!--condicion para ocultar si es secretario-->
                       <?php
-                      echo("entro");
                       if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
                         <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
                           <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>

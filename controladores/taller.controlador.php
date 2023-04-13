@@ -93,9 +93,22 @@ class TallerControlador{
         header("location:?c=taller");
     }
     public function Buscar(){
+
         require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
         require_once "vistas/taller/index.php";
         require_once "vistas/pie.php";
+
+        
+    }
+    public function BuscaryPaginar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/taller/index.php";
+        require_once "vistas/pie.php";
+
+        
     }
 
 }

@@ -384,9 +384,7 @@ class Taller{
             }
             $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion ".$where.";");
             
-
-            //$consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `marca` LIKE '$busqueda';");
-            echo("SELECT * FROM ordenreparacion ".$where.";");
+            //PARA VER COMO SALE LA CONSULTA DESCOMENTAR ESTA LINEA echo("SELECT * FROM ordenreparacion ".$where.";");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
