@@ -4,7 +4,7 @@ require_once "modelos/database.php";
 <div class="content-wrapper">
         <div class="page-title">
           <div>
-            <h1>Lista de Clientesaaa</h1>
+            <h1>Lista de Clientes</h1>
             <!--<ul class="breadcrumb side">
               <li><i class="fa fa-home fa-lg"></i></li>
               <li>Tables</li>

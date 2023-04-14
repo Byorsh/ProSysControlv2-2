@@ -62,7 +62,7 @@ function handleCancelar() {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '?c=usuario';
+            window.location.href = '?c=catalogo';
         }
     })
 }

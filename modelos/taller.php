@@ -312,21 +312,23 @@ class Taller{
             $consulta = $this->pdo->prepare("SELECT nombreCliente, email FROM clientes WHERE idClientes=?;");
             $consulta->execute(array($idCliente));
             $reCli=$consulta->fetch(PDO::FETCH_OBJ);
-            require_once "modelos/herramientas.php";
-            $correo = new Correo();
+            if($reCli->email != null){
+                require_once "modelos/herramientas.php";
+                $correo = new Correo();
 
-            $correo->setFromEmail($reCli->email);
-            $correo->setFromName($reCli->nombreCliente);
-            $correo->setMailSubject("Orden de reparacion de prueba");
-            $correo->setMessage("Esta es la orden de reparacion de prueba Vers. Cliente");
-            $correo->setMailUsername("gion340@gmail.com");
-            $correo->setMailUser("Jorge B");
-            $correo->setMailUserpassword("kxgoxrrwwzimxxui");
-            $correo->setAddaddress($reCli->email);
-            $correo->setTemplate("email_template.html");
-      
-            $this->model = new Correo;
-            $this->model->sendemail($correo);
+                $correo->setFromEmail($reCli->email);
+                $correo->setFromName($reCli->nombreCliente);
+                $correo->setMailSubject("Orden de reparacion de prueba");
+                $correo->setMessage("Esta es la orden de reparacion de prueba Vers. Cliente");
+                $correo->setMailUsername("gion340@gmail.com");
+                $correo->setMailUser("Jorge B");
+                $correo->setMailUserpassword("kxgoxrrwwzimxxui");
+                $correo->setAddaddress($reCli->email);
+                $correo->setTemplate("email_template.html");
+        
+                $this->model = new Correo;
+                $this->model->sendemail($correo);
+            }
         }catch (Exception $e){
             echo "Ha ocurrido un error al enviar el mensaje: {$mail->ErrorInfo}";
         }
