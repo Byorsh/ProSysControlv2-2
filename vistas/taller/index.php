@@ -31,8 +31,17 @@
                     <label class="control-label col-md-3" for="campo" >Buscar</label>
                     
                     <div class="col-md-8">
-                      <input class="form-control" name="campo" id="campo" type="text" required>
+                    <?php if(isset($_GET['q'])){
+                         ?><input class="form-control" name="campo" id="campo" type="text" required value="<?=$_GET['q']?>"><?php
+                      }
+                      else{
+                        ?>
+                        <input class="form-control" name="campo" id="campo" type="text" required>
+                        <?php
+                      }?>
+                      
                       <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
+                      <button class="btn btn-warning btn-flat" type="submit" id="borrarBusButton">Borrar busqueda</button>
                     </div>
                   </div>
                   
@@ -104,66 +113,68 @@
                     </tr>
                   <?php endforeach;
                 }
-                if (isset($_GET['pagina'])) {
-                  $pagina_actual = $_GET['pagina'];
-                  foreach ($this->modelo->Paginar(($_GET['pagina'] - 1) * $registros_por_pagina, $registros_por_pagina) as $tallerSQL) : ?>
-                    <tr>
-                      <td><?= $tallerSQL->id ?></td>
-                      <td><?= $tallerSQL->idCliente ?></td>
-                      <td><?= $tallerSQL->ns ?></td>
-                      <td><?= $tallerSQL->marca ?></td>
-                      <td><?= $tallerSQL->modelo ?></td>
-                      <td><?= $tallerSQL->observaciones ?></td>
-                      <td><?= $tallerSQL->accesorios ?></td>
-                      <td><?= $tallerSQL->estadoEquipo ?></td>
-                      <td><?= $tallerSQL->fechaEntrada ?></td>
-                      <td><?= $tallerSQL->fechaPrometida ?></td>
-                      <?php $idreparacion = $tallerSQL->id;
-                      foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
-                        <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
-                      <?php endforeach; ?>
-                      <!--condicion para ocultar si es secretario-->
-                      <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                        <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
-
-                        <?php } ?>
-                        <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-eye"></i></a>
-                        </td>
-                    </tr>
+                else{
+                  if (isset($_GET['pagina'])) {
+                    $pagina_actual = $_GET['pagina'];
+                    foreach ($this->modelo->Paginar(($_GET['pagina'] - 1) * $registros_por_pagina, $registros_por_pagina) as $tallerSQL) : ?>
+                      <tr>
+                        <td><?= $tallerSQL->id ?></td>
+                        <td><?= $tallerSQL->idCliente ?></td>
+                        <td><?= $tallerSQL->ns ?></td>
+                        <td><?= $tallerSQL->marca ?></td>
+                        <td><?= $tallerSQL->modelo ?></td>
+                        <td><?= $tallerSQL->observaciones ?></td>
+                        <td><?= $tallerSQL->accesorios ?></td>
+                        <td><?= $tallerSQL->estadoEquipo ?></td>
+                        <td><?= $tallerSQL->fechaEntrada ?></td>
+                        <td><?= $tallerSQL->fechaPrometida ?></td>
+                        <?php $idreparacion = $tallerSQL->id;
+                        foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
+                          <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
+                        <?php endforeach; ?>
+                        <!--condicion para ocultar si es secretario-->
+                        <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
+                          <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                            <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
+  
+                          <?php } ?>
+                          <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-eye"></i></a>
+                          </td>
+                      </tr>
+                    <?php endforeach;
+                  } else {
+                    $pagina_actual = 1;
+                    foreach ($this->modelo->Paginar(0, $registros_por_pagina) as $tallerSQL) : ?>
+                      <tr>
+                        <td><?= $tallerSQL->id ?></td>
+                        <td><?= $tallerSQL->idCliente ?></td>
+                        <td><?= $tallerSQL->ns ?></td>
+                        <td><?= $tallerSQL->marca ?></td>
+                        <td><?= $tallerSQL->modelo ?></td>
+                        <td><?= $tallerSQL->observaciones ?></td>
+                        <td><?= $tallerSQL->accesorios ?></td>
+                        <td><?= $tallerSQL->estadoEquipo ?></td>
+                        <td><?= $tallerSQL->fechaEntrada ?></td>
+                        <td><?= $tallerSQL->fechaPrometida ?></td>
+                        <?php $idreparacion = $tallerSQL->id;
+                        foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
+                          <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
+                        <?php endforeach; ?>
+                        <!--condicion para ocultar si es secretario-->
+                        <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
+                          <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                            <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
+  
+                          <?php } ?>
+                          <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-eye"></i></a>
+                          </td>
+                      </tr>
                   <?php endforeach;
-                } else {
-                  $pagina_actual = 1;
-                  foreach ($this->modelo->Paginar(0, $registros_por_pagina) as $tallerSQL) : ?>
-                    <tr>
-                      <td><?= $tallerSQL->id ?></td>
-                      <td><?= $tallerSQL->idCliente ?></td>
-                      <td><?= $tallerSQL->ns ?></td>
-                      <td><?= $tallerSQL->marca ?></td>
-                      <td><?= $tallerSQL->modelo ?></td>
-                      <td><?= $tallerSQL->observaciones ?></td>
-                      <td><?= $tallerSQL->accesorios ?></td>
-                      <td><?= $tallerSQL->estadoEquipo ?></td>
-                      <td><?= $tallerSQL->fechaEntrada ?></td>
-                      <td><?= $tallerSQL->fechaPrometida ?></td>
-                      <?php $idreparacion = $tallerSQL->id;
-                      foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
-                        <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
-                      <?php endforeach; ?>
-                      <!--condicion para ocultar si es secretario-->
-                      <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                        <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
-
-                        <?php } ?>
-                        <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-eye"></i></a>
-                        </td>
-                    </tr>
-                <?php endforeach;
+                  }
                 }
+                
 
                 // Calcular el offset
-                $offset = ($pagina_actual - 1) * $registros_por_pagina;
                 ?>
 
 
@@ -176,7 +187,7 @@
           //$num_paginas = 3;
           for ($i = 1; $i <= $num_paginas; $i++) {
             //echo "<a href='?pagina=$i'>$i</a> ";
-            echo "<a href='?c=taller&a=PaginarN&pagina=$i'>$i</a> ";
+            echo "<a class='btn-btn-secondary' type='button' href='?c=taller&a=PaginarN&pagina=$i'>$i</a> ";
           }
           ?>
 
