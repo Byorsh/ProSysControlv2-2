@@ -21,6 +21,17 @@ class TallerControlador{
         require_once "vistas/taller/mostrar_Taller.php";
         require_once "vistas/pie.php";
     }
+    public function MostrarYaEntregados(){
+        require_once "vistas/encabezado.php";
+        if(isset($_GET["filtro"])){
+            if($_GET["filtro"]=="yaentregados"){$_GET["filtro"]="";}
+            else{$_GET["filtro"]="yaentregados";}
+        }
+        else{$_GET["filtro"]="yaentregados";}
+        
+        require_once "vistas/taller/index.php";
+        require_once "vistas/pie.php";
+    }
 
     public function FormCrear(){
         $titulo="Registrar";

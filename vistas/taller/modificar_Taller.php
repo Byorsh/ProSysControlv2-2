@@ -213,13 +213,7 @@
 
                 <div class="form-group">
                   <div class="col-md-8">
-                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual ?>">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-md-8">
-                    <input class="form-control" name="estadoEquipo" type="hidden" value="1">
+                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fechaprom ?>">
                   </div>
                 </div>
 

@@ -148,18 +148,35 @@ class Taller{
 
     public function Listar(){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion;");
+            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE `estadoEquipo` NOT LIKE '10';");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
-
-
+    public function ListarYaEntregados(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE `estadoEquipo`='10';");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
     public function Paginar($limite,$numerodeRegistros){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` LIMIT $limite,$numerodeRegistros;");
+            if(isset($_GET["filtro"])){
+                if($_GET["filtro"]=="yaentregados"){
+                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' LIMIT $limite,$numerodeRegistros;");
+                    echo "se filtro";
+                }
+                else{
+                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' LIMIT $limite,$numerodeRegistros;");
+                }
+            }
+            else{$consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' LIMIT $limite,$numerodeRegistros;");}
+            
             $consulta->execute();
             
 

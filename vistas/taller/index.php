@@ -14,10 +14,13 @@
 
     
     <!--aaaaaaaaa -->
+    
     <form class="form-horizontal" method="POST"
     <?php
+    $url_paginacion="";
                       if(isset($_GET['pagina'])){
                         echo "action='?c=taller&a=BuscaryPaginar&pagina=",$_GET['pagina'],"'";
+                        $url_paginacion ="&a=BuscaryPaginar&pagina=".$_GET['pagina'];
                       }
                       else{
                         
@@ -27,21 +30,30 @@
 
     
     >
+    
     <div class="form-group">
-                    <label class="control-label col-md-3" for="campo" >Buscar</label>
+
                     
                     <div class="col-md-8">
                     <?php if(isset($_GET['q'])){
-                         ?><input class="form-control" name="campo" id="campo" type="text" required value="<?=$_GET['q']?>"><?php
+                         ?><input class="form-control" name="campo" id="campo" type="text" required value="<?=$_GET['q']?>">
+                         <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
+                         <a class="btn btn-warning btn-flat" href="?c=taller<?= $url_paginacion ?>"  id="borrarBusButton">Borrar busqueda</a>
+                         <a class="btn btn-warning btn-flat" href="?c=taller&a=MostrarYaEntregados"  id="borrarBusButton">Mostrar ya entregados</a>
+                         <?php
                       }
                       else{
                         ?>
                         <input class="form-control" name="campo" id="campo" type="text" required>
+                        <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
+                        <a class="btn btn-warning btn-flat" href="?c=taller"  id="borrarBusButton">Borrar busqueda</a>
+                        <a class="btn btn-warning btn-flat" href="?c=taller&a=MostrarYaEntregados"  id="borrarBusButton">Mostrar ya entregados</a>
                         <?php
-                      }?>
+                      }
+                      if(isset($_GET["filtro"])){$valorf=$_GET["filtro"];echo $valorf;}
+                      ?>
                       
-                      <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
-                      <button class="btn btn-warning btn-flat" type="submit" id="borrarBusButton">Borrar busqueda</button>
+                      
                     </div>
                   </div>
                   
@@ -77,14 +89,11 @@
               <tbody>
                 <?php
                 $registros_por_pagina = 10;
-                $porfavor2 = count($this->modelo->Listar());
-                //echo $porfavor2;
-                $total_registros = $porfavor2; //$this->modelo->Paginar(1);
-                //echo $total_registros;
-
+                $total_registros = count($this->modelo->Listar());
+                
                 // Obtener el número de página actual
                 if (isset($_GET['q'])) {
-                 
+                  
                   foreach ($this->modelo->BuscarEnTabla(($_GET['q'])) as $tallerSQL) : ?>
                     <tr>
                       <td><?= $tallerSQL->id ?></td>
@@ -94,7 +103,45 @@
                       <td><?= $tallerSQL->modelo ?></td>
                       <td><?= $tallerSQL->observaciones ?></td>
                       <td><?= $tallerSQL->accesorios ?></td>
-                      <td><?= $tallerSQL->estadoEquipo ?></td>
+                      <td ><?php
+                        switch($tallerSQL->estadoEquipo){
+                          case "1":
+                            echo "Recien entrante";
+                            break;
+                          case "2":
+                            echo "En diagnostico";
+                            break;
+                          case "3":
+                            echo "Diagnosticado";
+                            break;
+                          case "4":
+                            echo "Presupuestado";
+                            break;
+                          case "5":
+                            echo "Presupuesto aceptado";
+                            break;
+                          case "6":
+                            echo "En reparacion";
+                            break;
+                          case "7":
+                            echo "Reparado";
+                            break;
+                          case "8":
+                            echo "No reparado";
+                            break;
+                          case "9":
+                            echo "En espera para entrega";
+                            break;
+                          case "10":
+                            echo "Entregado";
+                            break;
+                          default:
+                            echo "ayuda mami";
+                            break;
+
+                        }
+                          
+                         ?></td>
                       <td><?= $tallerSQL->fechaEntrada ?></td>
                       <td><?= $tallerSQL->fechaPrometida ?></td>
                       <?php $idreparacion = $tallerSQL->id;
@@ -125,7 +172,45 @@
                         <td><?= $tallerSQL->modelo ?></td>
                         <td><?= $tallerSQL->observaciones ?></td>
                         <td><?= $tallerSQL->accesorios ?></td>
-                        <td><?= $tallerSQL->estadoEquipo ?></td>
+                        <td ><?php
+                        switch($tallerSQL->estadoEquipo){
+                          case "1":
+                            echo "Recien entrante";
+                            break;
+                          case "2":
+                            echo "En diagnostico";
+                            break;
+                          case "3":
+                            echo "Diagnosticado";
+                            break;
+                          case "4":
+                            echo "Presupuestado";
+                            break;
+                          case "5":
+                            echo "Presupuesto aceptado";
+                            break;
+                          case "6":
+                            echo "En reparacion";
+                            break;
+                          case "7":
+                            echo "Reparado";
+                            break;
+                          case "8":
+                            echo "No reparado";
+                            break;
+                          case "9":
+                            echo "En espera para entrega";
+                            break;
+                          case "10":
+                            echo "Entregado";
+                            break;
+                          default:
+                            echo "ayuda mami";
+                            break;
+
+                        }
+                          
+                         ?></td>
                         <td><?= $tallerSQL->fechaEntrada ?></td>
                         <td><?= $tallerSQL->fechaPrometida ?></td>
                         <?php $idreparacion = $tallerSQL->id;
@@ -144,6 +229,8 @@
                     <?php endforeach;
                   } else {
                     $pagina_actual = 1;
+                    //CONDICION POR SI EL FILTRO DE YA ENTREGADOS ESTA ACTIVO
+                    if(isset($_GET['q'])){if($_GET['q']=="yaentregados"){$total_registros = count($this->modelo->ListarYaEntregados());}}
                     foreach ($this->modelo->Paginar(0, $registros_por_pagina) as $tallerSQL) : ?>
                       <tr>
                         <td><?= $tallerSQL->id ?></td>
@@ -153,7 +240,45 @@
                         <td><?= $tallerSQL->modelo ?></td>
                         <td><?= $tallerSQL->observaciones ?></td>
                         <td><?= $tallerSQL->accesorios ?></td>
-                        <td><?= $tallerSQL->estadoEquipo ?></td>
+                        <td ><?php
+                        switch($tallerSQL->estadoEquipo){
+                          case "1":
+                            echo "Recien entrante";
+                            break;
+                          case "2":
+                            echo "En diagnostico";
+                            break;
+                          case "3":
+                            echo "Diagnosticado";
+                            break;
+                          case "4":
+                            echo "Presupuestado";
+                            break;
+                          case "5":
+                            echo "Presupuesto aceptado";
+                            break;
+                          case "6":
+                            echo "En reparacion";
+                            break;
+                          case "7":
+                            echo "Reparado";
+                            break;
+                          case "8":
+                            echo "No reparado";
+                            break;
+                          case "9":
+                            echo "En espera para entrega";
+                            break;
+                          case "10":
+                            echo "Entregado";
+                            break;
+                          default:
+                            echo "error";
+                            break;
+
+                        }
+                          
+                         ?></td>
                         <td><?= $tallerSQL->fechaEntrada ?></td>
                         <td><?= $tallerSQL->fechaPrometida ?></td>
                         <?php $idreparacion = $tallerSQL->id;
