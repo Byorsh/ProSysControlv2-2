@@ -77,12 +77,12 @@ function handleBloquearSubmit() {
 function handleCancelar() {
     Swal.fire({
         title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
+        denyButtonText: `Cancelar`,
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '?c=cliente';
+            window.location.href = '?c=catalogo';
         }
     })
 }
