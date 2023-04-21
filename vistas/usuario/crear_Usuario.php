@@ -120,7 +120,7 @@
                   <div class="col-lg-10 col-lg-offset-2">
                     <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
                     <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
-                    <button class="btn btn-default" type="button" onclick="handleCancelar()">Cancelar</button>
+                    <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                   </div>
                 <?php } ?>
           </div>
