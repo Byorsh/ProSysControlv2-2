@@ -15,8 +15,6 @@ function handleSubmit() {
     let telefono = patrones.telefono.test(document.getElementById('telefono').value);
     let correo = patrones.correo.test(document.getElementById('email').value);
 
-    console.log(rfc);
-
     if (document.getElementById('rfc').value != "") {
         rfc ?
             document.getElementById('advertenciaRfc').hidden = true :
