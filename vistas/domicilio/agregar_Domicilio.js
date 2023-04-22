@@ -1,5 +1,5 @@
 let patrones = {
-    problematica: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,100}/
+    problematica: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{5,100}/
 }
 
 //este creo q no se usa

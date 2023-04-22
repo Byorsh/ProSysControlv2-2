@@ -2,7 +2,7 @@ let patrones = {
     ns: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{6,30}/,
     marca: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}/,
     modelo: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,50}/,
-    observaciones: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,100}/,
+    observaciones: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{4,100}/,
 }
 
 function handleSubmit() {
