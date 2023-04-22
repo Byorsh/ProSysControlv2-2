@@ -97,7 +97,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Modelo">Modelo *</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" onchange="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" onchange="handleSubmit()" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 45) || (event.charCode == 47))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaModelo" hidden>
                       No se aceptan caracteres especiales
                     </div>
@@ -106,7 +106,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="TipoEquipo">Tipo de Equipo</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control col-md-8" id="tipoEquipo" name="tipoEquipo" type="text" placeholder="Tipo de equipo" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 45) || (event.charCode == 47))" />
                   </div>
                 </div>
                 <div class="form-group">

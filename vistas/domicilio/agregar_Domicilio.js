@@ -1,5 +1,5 @@
 let patrones = {
-    problematica: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,100}/
+    problematica: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{5,100}/
 }
 
 //este creo q no se usa
@@ -38,9 +38,9 @@ function handleBloquearSubmit() {
 function handleCancelar() {
     Swal.fire({
         title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
+        denyButtonText: `Cancelar`,
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = '?c=domicilio';
