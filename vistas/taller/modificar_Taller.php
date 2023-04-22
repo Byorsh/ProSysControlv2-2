@@ -27,6 +27,8 @@
             $this->modelo->Obtener($tallerSQL->getId());
             $var = $tallerSQL->gettipoEquipo();
             $fechaprom = $tallerSQL->getFechaPrometida();
+            $fechaentrada = $tallerSQL->getFechaEntrada();
+            $horaentrada = $tallerSQL->getHoraEntrada();
             $tecnicoasignadoOriginal = $tallerSQL->gettecnicoAsignado();
             $idclient = $tallerSQL->getIdCliente();
             $datoscliente = $tallerSQL->buscarCliente($idclient);
@@ -200,20 +202,14 @@
                 </div>
 
                 <div class="form-group">
-                  <!--AQUI ES DONDE SE ASIGNAN LOS VALORES DE LA FECHA Y HORA ACTUALES -->
-                  <?php
-                  date_default_timezone_set('America/Mazatlan');
-                  $fecha_actual = date("Y-m-d");
-                  $hora_actual = date("H:i:S");
-                  ?>
                   <div class="col-md-8">
-                    <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fecha_actual ?>">
+                    <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fechaentrada ?>">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div class="col-md-8">
-                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fechaprom ?>">
+                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $horaentrada ?>">
                   </div>
                 </div>
 

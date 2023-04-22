@@ -157,6 +157,7 @@ class Taller{
     }
     public function ListarYaEntregados(){
         try{
+            //SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' ORDER BY `fechaEntrada` ASC LIMIT 10,10;
             $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE `estadoEquipo`='10';");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
@@ -164,18 +165,47 @@ class Taller{
             die($excepcion->getMessage());
         }
     }
-    public function Paginar($limite,$numerodeRegistros){
+    public function Paginar($limite,$numerodeRegistros,$filtroCondicion){
         try{
-            if(isset($_GET["filtro"])){
-                if($_GET["filtro"]=="yaentregados"){
-                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' LIMIT $limite,$numerodeRegistros;");
-                    echo "se filtro";
-                }
-                else{
-                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' LIMIT $limite,$numerodeRegistros;");
+            if(isset($filtroCondicion)){
+                switch($filtroCondicion){
+                    case "fechaasc":
+                        echo "si";
+                        break;
+                    case "fechadec":
+                        echo "si";
+                        break;
+                    case "yaentregado":
+                        echo "si";
+                        break;
+                    case "algonose":
+                        echo "si";
+                        break;
                 }
             }
-            else{$consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' LIMIT $limite,$numerodeRegistros;");}
+            $and="";
+            if(isset($_GET["q"])){
+                $columnas = ['id','idCliente','ns','marca','modelo','tipoEquipo','observaciones','accesorios','fechaEntrada','horaEntrada','fechaPrometida','tecnicoAsignado','estadoEquipo'];
+                $and = "AND (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $and .= $columnas[$i] . " LIKE '%" . $_GET["q"] . "%' OR ";
+                }
+                $and = substr_replace($and, "", -3);
+                $and .= ")";
+            }
+            if(isset($_GET["filtro"])){
+                if($_GET["filtro"]=="yaentregados"){
+                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");
+                    //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
+                }
+                else{
+                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`  NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");
+                    //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`  NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
+                }
+            }
+            else{$consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");}
             
             $consulta->execute();
             
@@ -401,9 +431,10 @@ class Taller{
                 $where = substr_replace($where, "", -3);
                 $where .= ")";
             }
-            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion ".$where.";");
+            $not="NOT LIKE";if(isset($_GET['filtro'])){$not="LIKE";}
+            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
             
-            //PARA VER COMO SALE LA CONSULTA DESCOMENTAR ESTA LINEA echo("SELECT * FROM ordenreparacion ".$where.";");
+             //echo("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){

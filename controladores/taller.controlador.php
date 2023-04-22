@@ -23,12 +23,7 @@ class TallerControlador{
     }
     public function MostrarYaEntregados(){
         require_once "vistas/encabezado.php";
-        if(isset($_GET["filtro"])){
-            if($_GET["filtro"]=="yaentregados"){$_GET["filtro"]="";}
-            else{$_GET["filtro"]="yaentregados";}
-        }
-        else{$_GET["filtro"]="yaentregados";}
-        
+        $_GET["filtro"]="yaentregados";
         require_once "vistas/taller/index.php";
         require_once "vistas/pie.php";
     }
@@ -70,6 +65,11 @@ class TallerControlador{
         require_once "vistas/taller/index.php";
         require_once "vistas/pie.php";
     }
+    public function PaginarNyaentregados(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/taller/index.php";
+        require_once "vistas/pie.php";
+    }
 
     public function Guardar(){
         $tallerSQL = new Taller();
@@ -106,7 +106,11 @@ class TallerControlador{
     public function Buscar(){
 
         require_once "vistas/encabezado.php";
-        $_GET["q"]=$_POST['campo'];
+        $_GET["q"]=$_POST['campo'];/*
+        if(isset($_GET["filtro"])){
+            if($_GET["filtro"]=="yaentregados"){$_GET["filtro"]="";}
+            else{$_GET["filtro"]="yaentregados";}
+        }*/
         require_once "vistas/taller/index.php";
         require_once "vistas/pie.php";
 
