@@ -25,12 +25,12 @@
       $url_filtro="&filtro=yaentregados";
     }}
                       if(isset($_GET['pagina'])){
-                        //echo "action='?c=taller&a=Buscar$url_filtro'";
+                        echo "action='?c=taller&a=Buscar$url_filtro'";
                         $url_paginacion ="&a=BuscaryPaginar&pagina=".$_GET['pagina'];
                       }
                       else{
                         
-                        //echo "action='?c=taller&a=Buscar$url_filtro'";
+                        echo "action='?c=taller&a=Buscar$url_filtro'";
                       }
                       
                       ?>
