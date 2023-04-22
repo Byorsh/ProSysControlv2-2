@@ -41,7 +41,7 @@
                     <label class="control-label col-md-3" for="Rfc">RFC</label>
                     <div class="col-md-8">
                       <input class="form-control" name="rfc" id="rfc" type="text" placeholder="RFC" value="<?= $usuarioSQL->getRfc() ?>" 
-                        onchange="handleSubmit(); mayus(this);" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                        onchange="handleSubmit()" onkeyup="mayus(this)" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
                       <div class="alert alert-danger" role="alert" id="advertenciaRfc" hidden>
                         EL RFC no cumple con un formato valido
                       </div>
@@ -80,7 +80,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3" for="Email">Correo electronico *</label>
                     <div class="col-md-8">
-                      <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?= $usuarioSQL->getEmail() ?>" onchange="handleSubmit()" />
+                      <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?= $usuarioSQL->getEmail() ?>" onchange="handleSubmit()" onkeyup="minus(this)"/>
                       <div class="alert alert-danger" role="alert" id="advertenciaCorreo" hidden>
                         Formato de correo electronico no valido <strong>ejemplo@ejemplo.com</strong>
                       </div>

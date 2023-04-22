@@ -90,3 +90,7 @@ function handleCancelar() {
 function mayus(e) {
     e.value = e.value.toUpperCase();
 }
+
+function minus(e) {
+    e.value = e.value.toLowerCase();
+}
