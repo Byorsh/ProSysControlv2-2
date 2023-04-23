@@ -39,18 +39,14 @@
                   </div>
 
                   <div class="form-group">
-                  <label class="control-label col-md-3" for="ApellidoP">Apellido Paterno *</label>
+                  <label class="control-label col-md-3" for="ApellidosC">Apellidos *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="apellidoP" id="apellidoP" type="text" placeholder="Apellido Paterno" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" value="<?=$clienteSQL->getApellidoP()?>" required="" disabled>
+                    <input class="form-control" name="apellidosC" id="apellidoPaterno" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
+                    <div class="alert alert-danger" role="alert" id="advertenciaApellidoPaterno" hidden>
+                      Los apellidos unicamente pueden contener letras y espacios
+                    </div>
                   </div>
-                  </div>
-
-                  <div class="form-group">
-                  <label class="control-label col-md-3" for="ApellidoM">Apellido Materno *</label>
-                  <div class="col-md-8">
-                    <input class="form-control" name="apellidoM" id="apellidoM" type="text" placeholder="Apellido Materno" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,20}" value="<?=$clienteSQL->getApellidoM()?>" required="" disabled>
-                  </div>
-                  </div>
+                </div>
 
                   <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Nombre de la empresa</label>

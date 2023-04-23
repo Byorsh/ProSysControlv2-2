@@ -6,8 +6,7 @@ class Cliente{
     private $id;
     private $rfc;
     private $nombre;
-    private $apellidoP;
-    private $apellidoM;
+    private $apellidosC;
     private $nombreEmpresa;
     private $telefono;
     private $email;
@@ -41,20 +40,12 @@ class Cliente{
         $this->nombre = $nombre;
     }
 
-    public function getApellidoP() : ? string{
-        return $this->apellidoP;
+    public function getApellidos() : ? string{
+        return $this->apellidosC;
     }
 
-    public function setApellidoP(string $apellidoP){
-        $this->apellidoP = $apellidoP;
-    }
-
-    public function getApellidoM() : ? string{
-        return $this->apellidoM;
-    }
-
-    public function setApellidoM(string $apellidoM){
-        $this->apellidoM = $apellidoM;
+    public function setApellidos(string $apellidosC){
+        $this->apellidosC = $apellidosC;
     }
 
     public function getNombreEmpresa() : ? string{
@@ -122,7 +113,20 @@ class Cliente{
 
     public function Paginar($limite,$numerodeRegistros){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM `clientes` LIMIT $limite,$numerodeRegistros;");
+            $where="";
+            if(isset($_GET["q"])){
+                $columnas = ['idClientes','nombreCliente','apellidosC','nombreEmpresa','telefono','email','domicilio'];
+                $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $_GET["q"] . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            echo "SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;";
+            $consulta = $this->pdo->prepare("SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;");
             $consulta->execute();
             
 
@@ -142,8 +146,7 @@ class Cliente{
             $clienteSQL->setId($reCliente->idClientes);
             $clienteSQL->setRfc($reCliente->rfc);
             $clienteSQL->setNombre($reCliente->nombreCliente);
-            $clienteSQL->setApellidoP($reCliente->apellidoP);
-            $clienteSQL->setApellidoM($reCliente->apellidoM);
+            $clienteSQL->setApellidos($reCliente->apellidosC);
             $clienteSQL->setNombreEmpresa($reCliente->nombreEmpresa);
             $clienteSQL->setTelefono($reCliente->telefono);
             $clienteSQL->setEmail($reCliente->email);
@@ -157,13 +160,12 @@ class Cliente{
 
     public function Insertar(Cliente $clienteSQL){
         try{
-            $consulta = "INSERT INTO clientes(rfc, nombreCliente, apellidoP, apellidoM, nombreEmpresa, telefono, email, domicilio) 
-            VALUES (?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO clientes(rfc, nombreCliente, apellidosC, nombreEmpresa, telefono, email, domicilio) 
+            VALUES (?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 $clienteSQL->getRfc(),
                 $clienteSQL->getNombre(),
-                $clienteSQL->getApellidoP(),
-                $clienteSQL->getApellidoM(),
+                $clienteSQL->getApellidos(),
                 $clienteSQL->getNombreEmpresa(),
                 $clienteSQL->getTelefono(),
                 $clienteSQL->getEmail(),
@@ -179,8 +181,7 @@ class Cliente{
             $consulta = "UPDATE clientes SET
             rfc=?,
             nombreCliente=?,
-            apellidoP=?,
-            apellidoM=?,
+            apellidosC=?,
             nombreEmpresa=?,
             telefono=?,
             email=?,
@@ -189,8 +190,7 @@ class Cliente{
             $this->pdo->prepare($consulta)->execute(array(
                 $clienteSQL->getRfc(),
                 $clienteSQL->getNombre(),
-                $clienteSQL->getApellidoP(),
-                $clienteSQL->getApellidoM(),
+                $clienteSQL->getApellidos(),
                 $clienteSQL->getNombreEmpresa(),
                 $clienteSQL->getTelefono(),
                 $clienteSQL->getEmail(),
@@ -220,4 +220,29 @@ class Cliente{
             die($excepcion->getMessage());
         }
     }
+    public function BuscarEnTabla($busqueda){
+        try{
+            
+            $columnas = ['idClientes','nombreCliente','apellidosC','nombreEmpresa','telefono','email','domicilio'];
+            if ($busqueda != null) {
+                $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $busqueda . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            $consulta = $this->pdo->prepare("SELECT * FROM clientes ".$where.";");
+            
+             //echo("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+
+    }
+    
 }

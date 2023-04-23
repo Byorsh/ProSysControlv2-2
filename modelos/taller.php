@@ -241,7 +241,7 @@ class Taller{
     }
     public function ListarClientes(){
         try{
-            $consulta = $this->pdo->prepare("SELECT idClientes,nombreCliente,apellidoP,apellidoM FROM `clientes`;");
+            $consulta = $this->pdo->prepare("SELECT idClientes,nombreCliente,apellidosC FROM `clientes`;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
@@ -259,7 +259,7 @@ class Taller{
     }
     public function buscarCliente($nombre){
         try{
-            $consulta = $this->pdo->prepare("SELECT nombreCliente,apellidoP,apellidoM,telefono,email,domicilio FROM `clientes`WHERE idClientes =?;");
+            $consulta = $this->pdo->prepare("SELECT nombreCliente,apellidosC,telefono,email,domicilio FROM `clientes`WHERE idClientes =?;");
             $consulta->execute(array($nombre));
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){

@@ -16,6 +16,56 @@ require_once "modelos/database.php";
 
             </div>
         </div>
+
+
+        <form class="form-horizontal" method="POST"
+            <?php
+            $url_busqueda="";
+            $url_paginacion="";
+            if(isset($_GET['q'])){$url_busqueda="&q=".$_GET['q'];}
+                              if(isset($_GET['pagina'])){
+                                echo "action='?c=cliente&a=Buscar'";
+                                $url_paginacion ="&a=BuscaryPaginar&pagina=".$_GET['pagina'];
+                              }
+                              else{
+                                
+                                echo "action='?c=cliente&a=Buscar'";
+                              }
+                              
+                              ?>
+
+            
+            >
+            
+            <div class="form-group">
+
+                            
+                            <div class="col-md-8">
+                            <?php if(isset($_GET['q'])){
+                                ?><input class="form-control" name="campo" id="campo" type="text" required value="<?=$_GET['q']?>">
+                                <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
+                                <a class="btn btn-warning btn-flat" href="?c=cliente<?= $url_paginacion ?>"  id="borrarBusButton">Borrar busqueda</a>
+                                <?php //echo $url_busqueda;
+                              }
+                              else{
+                                ?>
+                                <input class="form-control" name="campo" id="campo" type="text" required>
+                                <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
+                                <a class="btn btn-warning btn-flat" href="?c=cliente"  id="borrarBusButton">Borrar busqueda</a>
+                                <?php
+                              }
+                              ?>
+                              
+                              
+                            </div>
+                          </div>
+                          
+
+            <div>
+        </form>
+
+
+
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -27,7 +77,7 @@ require_once "modelos/database.php";
                         <th>ID</th>
                         <th>RFC</th>
                         <th>Nombre</th>
-                        <th>Apellido Paterno</th>
+                        <th>Apellidos</th>
                         <th>Nombre de la Empresa</th>
                         <th>Telefono</th>
                         <th>Email</th>
@@ -40,21 +90,18 @@ require_once "modelos/database.php";
                     </thead>
                     <tbody>
                     <?php
-                      $registros_por_pagina = 5;
-                      $porfavor2 = count($this->modelo->Listar());
-                      //echo $porfavor2;
-                      $total_registros = $porfavor2;//$this->modelo->Paginar(1);
-                      //echo $total_registros;
+                      $registros_por_pagina = 10;
+                      $total_registros = count($this->modelo->Listar());
 
-                      // Obtener el número de página actual
                       if (isset($_GET['pagina'])) {
                           $pagina_actual = $_GET['pagina'];
+
                           foreach($this->modelo->Paginar(($_GET['pagina']-1)*$registros_por_pagina, $registros_por_pagina) as $clienteSQL):?>
                             <tr>
                                 <td><?=$clienteSQL->idClientes?></td>
                                 <td><?=$clienteSQL->rfc?></td>
                                 <td><?=$clienteSQL->nombreCliente?></td>
-                                <td><?=$clienteSQL->apellidoP?></td>
+                                <td><?=$clienteSQL->apellidosC?></td>
                                 <td><?=$clienteSQL->nombreEmpresa?></td>
                                 <td><?=$clienteSQL->telefono?></td>
                                 <td><?=$clienteSQL->email?></td>
@@ -77,7 +124,7 @@ require_once "modelos/database.php";
                               <td><?=$clienteSQL->idClientes?></td>
                               <td><?=$clienteSQL->rfc?></td>
                               <td><?=$clienteSQL->nombreCliente?></td>
-                              <td><?=$clienteSQL->apellidoP?></td>
+                              <td><?=$clienteSQL->apellidosC?></td>
                               <td><?=$clienteSQL->nombreEmpresa?></td>
                               <td><?=$clienteSQL->telefono?></td>
                               <td><?=$clienteSQL->email?></td>
@@ -96,9 +143,6 @@ require_once "modelos/database.php";
                             </tr>
                             <?php endforeach;
                       }
-
-                      // Calcular el offset
-                      $offset = ($pagina_actual - 1) * $registros_por_pagina;
                       ?>
 
 
@@ -107,12 +151,12 @@ require_once "modelos/database.php";
                   </table>
                 </div>
                 <?php
-                $num_paginas = ceil($total_registros / $registros_por_pagina);
-                //$num_paginas = 3;
-                for ($i=1; $i<=$num_paginas; $i++) {
-                    //echo "<a href='?pagina=$i'>$i</a> ";
-                    echo "<a href='?c=cliente&a=PaginarN&pagina=$i'>$i</a> ";
-                }
+               if(isset($_GET['q'])){$total_registros = count($this->modelo->BuscarEnTabla($_GET['q']));}
+               $num_paginas = ceil($total_registros / $registros_por_pagina);
+               echo "<a class='btn-btn-secondary' type='button'>Paginas  </a> ";
+               for ($i = 1; $i <= $num_paginas; $i++) {
+                echo "<a class='btn-btn-secondary' type='button' href='?c=cliente&a=PaginarN&pagina=$i$url_busqueda'>$i</a> ";
+               }
                 ?>
                     </tbody>
                   </table>

@@ -21,6 +21,25 @@ class ClienteControlador{
         require_once "vistas/cliente/index.php";
         require_once "vistas/pie.php";
     }
+    public function BuscaryPaginar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/clienteindex.php";
+        require_once "vistas/pie.php";
+
+        
+        
+    }
+    public function Buscar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/cliente/index.php";
+        require_once "vistas/pie.php";
+
+        
+    }
 
     public function FormCrear(){
         $titulo="Registrar";
@@ -53,8 +72,8 @@ class ClienteControlador{
         $clienteSQL->setId(intval($_POST['idClientes']));
         $clienteSQL->setRfc($_POST['rfc']);
         $clienteSQL->setNombre($_POST['nombreCliente']);
-        $clienteSQL->setApellidoP($_POST['apellidoP']);
-        $clienteSQL->setApellidoM($_POST['apellidoM']);
+        //AQUI
+        $clienteSQL->setApellidos($_POST['apellidosc']);
         $clienteSQL->setNombreEmpresa($_POST['nombreEmpresa']);
         $clienteSQL->setTelefono($_POST['telefono']);
         $clienteSQL->setEmail($_POST['email']);

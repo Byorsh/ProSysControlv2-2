@@ -259,7 +259,7 @@
             </table>
           </div>
           <?php
-          //CONDICION POR SI EL FILTRO DE YA ENTREGADOS ESTA ACTIVO
+          //CONDICION POR hay busqueda
           if(isset($_GET['q'])){$total_registros = count($this->modelo->BuscarEnTabla($_GET['q']));}
           $num_paginas = ceil($total_registros / $registros_por_pagina);
           //$num_paginas = 3;

@@ -61,7 +61,7 @@
                   <div class="form-group">
                     <label class="control-label col-md-3">Nombre del Cliente</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" placeholder="Nombre del cliente" value="<?= $campo->nombreCliente, " ", $campo->apellidoP, " ", $campo->apellidoM ?>" disabled>
+                      <input class="form-control" type="text" placeholder="Nombre del cliente" value="<?= $campo->nombreCliente, " ", $campo->apellidosC ?>" disabled>
                     </div>
                   </div>
 

@@ -42,7 +42,7 @@
                     <select class="form-control" id="idc" name="idCliente" method="post" type="text" placeholder="Selecciona el nombre del cliente" onmouseup="handleSubmit(); toggleListadeclientes()">
                       <option value disabled>Seleccione un cliente</option>
                       <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
-                        <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidoP . " ", $tallerSQL->apellidoM ?></option>
+                        <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
                       <?php endforeach; ?>
                     </select><br>
                   </div>
