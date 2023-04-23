@@ -18,7 +18,7 @@ function handleSubmit() {
     let usuario = patrones.usuario.test(document.getElementById('usuario').value);
     let password = patrones.password.test(document.getElementById('contraseña').value);
     let nivelprivilegio = document.getElementById('nivelprivilegio').value;
-    console.log(rfc);
+
     if (document.getElementById('rfc').value != "") {
         rfc ?
             document.getElementById('advertenciaRfc').hidden = true :
@@ -100,4 +100,8 @@ function handleCancelar() {
 
 function mayus(e) {
     e.value = e.value.toUpperCase();
+}
+
+function minus(e) {
+    e.value = e.value.toLowerCase();
 }

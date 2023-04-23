@@ -32,7 +32,7 @@
                   <label class="control-label col-md-3" for="Descripcion">Descripcion *</label>
                   <div class="col-md-8">
                     <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" 
-                      onchange="handleSubmit()" maxlength="100" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                      onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="100" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaDescripcion" hidden>
                       Campo obligatorio
                     </div>
@@ -43,7 +43,7 @@
                   <label class="control-label col-md-3" for="Marca">Marca</label>
                   <div class="col-md-8">
                     <input class="form-control" name="marca" id="marca" type="text" placeholder="Agrega la marca del producto" value="<?= $catalogoSQL->getMarca() ?>" 
-                      onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
+                      onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
 
@@ -51,7 +51,7 @@
                   <label class="control-label col-md-3" for="Modelo">Modelo</label>
                   <div class="col-md-8">
                     <input class="form-control" name="modelo" id="modelo" type="text" placeholder="Agrega el modelo del producto" value="<?= $catalogoSQL->getModelo() ?>" 
-                      onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
+                      onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))"/>
                   </div>
                 </div>
 

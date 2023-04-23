@@ -75,3 +75,7 @@ function handleCancelar() {
     }
 })
 }
+
+function mayus(e) {
+  e.value = e.value.toLowerCase();
+}
