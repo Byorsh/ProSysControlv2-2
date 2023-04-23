@@ -83,16 +83,7 @@ function calcularHoras() {
         t2.getMinutes() - t1.getMinutes(),
         t2.getSeconds() - t1.getSeconds()
     );
-
-    //Imprimo el resultado
-    console.log("La diferencia es de: " +
-        (t1.getHours()
-            ? t1.getHours() + (t1.getHours() > 1 ? " horas" : " hora") : "") +
-        (t1.getMinutes()
-            ? ", " + t1.getMinutes() + (t1.getMinutes() > 1 ? " minutos" : " minuto") : "") +
-        (t1.getSeconds()
-            ? (t1.getHours() || t1.getMinutes() ? " y " : "") + t1.getSeconds() + (t1.getSeconds() > 1 ? " segundos" : " segundo") : ""));
-
+    
     //Convirto horas a decimal
     let horasRealizadasDecimal = ((t1.getHours() * 60) + t1.getMinutes()) / 60;
     if (t1.getMinutes() > 0) {
