@@ -145,7 +145,7 @@
                             echo "Entregado";
                             break;
                           default:
-                            echo "ayuda mami";
+                            echo "Error";
                             break;
 
                         }
