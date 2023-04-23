@@ -1,7 +1,7 @@
 <?php
 
 class Domicilio{
-    private $udo;
+    private $pdo;
 
     private $id;
     private $id_Cliente;
@@ -90,11 +90,11 @@ class Domicilio{
         $this->horaFinal = $horaFinal;
     }
 
-    public function getTotalHoras() : ?int{
+    public function getTotalHoras() : ?float{
         return $this->horasRealizadas;
     }
 
-    public function setTotalHoras(int $horasRealizadas){
+    public function setTotalHoras(float $horasRealizadas){
         $this->horasRealizadas = $horasRealizadas;
     }
 
@@ -107,16 +107,6 @@ class Domicilio{
             die($excepcion->getMessage());
         }
     }
-
-    /*public function Total(){
-        try{
-            $consulta = $this->pdo->prepare("SELECT SUM(precio) AS Total FROM videojuegos;");
-            $consulta->execute();
-            return $consulta->fetch(PDO::FETCH_OBJ);
-        }catch(Exception $excepcion){
-            die($excepcion->getMessage());
-        }
-    }*/
 
     public function Listar(){
         try{
@@ -191,10 +181,9 @@ class Domicilio{
 
     public function Insertar(Domicilio $domicilioSQL){
         try{
-            $consulta = "INSERT INTO domicilio(id,id_Cliente, problematica, observaciones, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas) 
-            VALUES (?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO domicilio(id_Cliente, problematica, observaciones, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas) 
+            VALUES (?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
-                $domicilioSQL->NULL,
                 $domicilioSQL->getIdCliente(),
                 $domicilioSQL->getProblematica(),
                 $domicilioSQL->getObservaciones(),
