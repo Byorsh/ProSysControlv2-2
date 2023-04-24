@@ -61,7 +61,7 @@ class DomicilioControlador{
         $domicilioSQL->setCostoTotal(floatval($_POST['costoTotal']));
         $domicilioSQL->setHoraInicio($_POST['horaInicio']);
         $domicilioSQL->setHoraFinal($_POST['horaFinal']);
-        $domicilioSQL->setTotalHoras(intval($_POST['horasRealizadas']));
+        $domicilioSQL->setTotalHoras(floatval($_POST['horasRealizadas']));
 
 
         $domicilioSQL->getId() > 0 ?
