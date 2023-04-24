@@ -131,14 +131,14 @@
                   <label class="control-label col-md-3" for="HorasRealizadas">Horas Realizadas</label>
                   <div class="col-md-8">
                     <input class="form-control" name="horasRealizadas" id="horasRealizadas" type="text" placeholder="Hora realizadas en el servicio" value="<?= $domicilioSQL->getTotalHoras() ?>" onchange="handleSubmit()"
-                    onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" disabled>
+                    onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" >
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="CostoTotal">Costo total</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="costoTotal" id="costoTotal" type="text" placeholder="Costo total" value="<?= $domicilioSQL->getCostoTotal() ?>" onchange="handleSubmit()" disabled>
+                    <input class="form-control" name="costoTotal" id="costoTotal" type="text" placeholder="Costo total" value="<?= $domicilioSQL->getCostoTotal() ?>" onchange="handleSubmit()" >
                   </div>
                 </div>
 
