@@ -194,9 +194,18 @@ class Taller{
                 }
                 $and = substr_replace($and, "", -3);
                 $and .= ")";
+                $busqueda =$_GET["q"];
+                if(substr($busqueda,0,2)=='id' && ($numdigitos=strlen($busqueda)-2)>0){
+                    $numdigitos=strlen($busqueda)-2;
+                    $idbusqueda=(substr($busqueda,-$numdigitos));
+                    $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE tecnicoAsignado = $idbusqueda AND estadoEquipo NOT LIKE '10';");
+                    $consulta->execute();
+                return $consulta->fetchAll(PDO::FETCH_OBJ);
+                }
             }
             if(isset($_GET["filtro"])){
                 if($_GET["filtro"]=="yaentregados"){
+                    
                     $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");
                     //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
                 }
@@ -419,7 +428,15 @@ class Taller{
 
     public function BuscarEnTabla($busqueda){
         try{
-            
+            $not="NOT LIKE";if(isset($_GET['filtro'])){$not="LIKE";}
+            if(substr($busqueda,0,2)=='id' && ($numdigitos=strlen($busqueda)-2)>0){
+                $numdigitos=strlen($busqueda)-2;
+                $idbusqueda=(substr($busqueda,-$numdigitos));
+                $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE tecnicoAsignado = $idbusqueda AND estadoEquipo $not '10';");
+                $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+            }
+
             $columnas = ['id','idCliente','ns','marca','modelo','tipoEquipo','observaciones','accesorios','fechaEntrada','horaEntrada','fechaPrometida','tecnicoAsignado','estadoEquipo'];
             if ($busqueda != null) {
                 $where = "WHERE (";
@@ -431,7 +448,7 @@ class Taller{
                 $where = substr_replace($where, "", -3);
                 $where .= ")";
             }
-            $not="NOT LIKE";if(isset($_GET['filtro'])){$not="LIKE";}
+            
             $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
             
              //echo("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");

@@ -116,16 +116,33 @@ class Usuario{
             die($excepcion->getMessage());
         }
     }
-
-    /*public function Total(){
+    public function CantidadDeEquiposAsignados($idtec){
         try{
-            $consulta = $this->pdo->prepare("SELECT SUM(precio) AS Total FROM videojuegos;");
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadEquipos FROM ordenreparacion WHERE tecnicoAsignado = $idtec;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
-    }*/
+    }
+    public function CantidadServicios(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadServicios FROM domicilio WHERE costoTotal LIKE 0;");
+            $consulta->execute();
+            return $consulta->fetch(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function CantidadEquiposEnEspera(){
+        try{
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadEquiposEnEspera FROM ordenreparacion WHERE estadoEquipo NOT LIKE 10 ;");
+            $consulta->execute();
+            return $consulta->fetch(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
 
     public function Listar(){
         try{

@@ -1,10 +1,17 @@
 <div class="content-wrapper">
+            <?php
+            require_once "modelos/usuario.php";
+            //private $modeloUsuario;
+
+            $nombreUsuario = $_SESSION['usuario'];
+            ?>
         <div class="page-title">
           <div>
             <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-            <p>Esta es la pagina web para ProSysControl</p>
+            <p>Bienvenido <?php echo($nombreUsuario); ?><a href="?c=taller&a=PaginarN&pagina=1&q=id15">Mis Equipos asignados</a> </p>
           </div>
           <div>
+            
             <ul class="breadcrumb">
               <li><i class="fa fa-home fa-lg"></i></li>
               <li><a href="#">Dashboard</a></li>
@@ -19,6 +26,34 @@
                 <h4>Usuarios</h4>
                 <p><b><?php $usuario=$this->modeloUsuario->Cantidad()?>
                 <?=$usuario->CantidadUsuario?></b></p>
+              </div>
+            </div>
+          </div>
+          <a href="?c=taller&a=PaginarN&pagina=1&q=id15">Mis Equipos asignados</a>
+          <div class="col-md-3">
+            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4 href="?c=taller&a=PaginarN&pagina=1&q=id15">Mis Equipos asignados</h4>
+                <p><b><?php $usuario=$this->modeloUsuario->CantidadDeEquiposAsignados($_SESSION['idusuario'])?>
+                <?=$usuario->CantidadEquipos?></b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4>Servicios Pendientes</h4>
+                <p><b><?php $usuario=$this->modeloUsuario->CantidadServicios()?>
+                <?=$usuario->CantidadServicios?></b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4>Equipos en espera</h4>
+                <p><b><?php $usuario=$this->modeloUsuario->CantidadEquiposEnEspera()?>
+                <?=$usuario->CantidadEquiposEnEspera?></b></p>
               </div>
             </div>
           </div>

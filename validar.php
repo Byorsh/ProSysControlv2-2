@@ -16,6 +16,7 @@ $filas=mysqli_num_rows($resultado);
 session_abort();
 session_start();
 $_SESSION['usuario']=$usuario;
+$_SESSION['idusuario']=$arr[0];
 
 
 

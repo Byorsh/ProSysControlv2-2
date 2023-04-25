@@ -11,6 +11,7 @@ class InicioControlador{
 
     public function Inicio(){
         require_once "vistas/encabezado.php";
+        //$_POST['equiposAsignados']=$this->modeloUsuario->CantidadDeEquiposAsignados($_SESSION['id']);
         require_once "vistas/inicio/principal.php";
         require_once "vistas/pie.php";
     }
