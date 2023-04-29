@@ -79,7 +79,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onkeyup="mayus(this)" onchange="handleSubmit()">  <?= $domicilioSQL->getProblematica() ?></textarea>
+                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onkeyup="mayus(this); handleSubmit();">  <?= $domicilioSQL->getProblematica() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio
                     </div>
@@ -89,7 +89,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Observaciones">Observaciones *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" onkeyup="mayus(this)" onchange="handleSubmit()"><?= $domicilioSQL->getObservaciones() ?></textarea>
+                    <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getObservaciones() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaObservaciones" hidden>
                       Campo obligatorio
                     </div>
@@ -99,14 +99,14 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="fechaProgramada" type="date" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="<?= $domicilioSQL->getFechaProgramada() ?>" onchange="handleSubmit()">
+                    <input class="form-control" name="fechaProgramada" type="date" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="<?= $domicilioSQL->getFechaProgramada() ?>" onkeyup="handleSubmit()">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Presupuesto">Presupuesto</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="presupuesto" id="presupuesto" type="text" placeholder="Presupuesto" value="<?= $domicilioSQL->getPresupuesto() ?>" onchange="handleSubmit()"
+                    <input class="form-control" name="presupuesto" id="presupuesto" type="text" placeholder="Presupuesto" value="<?= $domicilioSQL->getPresupuesto() ?>" onkeyup="handleSubmit()"
                     onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
                   </div>
                 </div>

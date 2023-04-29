@@ -44,13 +44,13 @@
                     <div class="form-group">
                       <label class="control-label col-md-3" for="Nombre">Nombre *</label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?= $usuarioSQL->getNombre() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" disabled>
+                        <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?= $usuarioSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" disabled>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-md-3" for="Apellido">Apellido *</label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?= $usuarioSQL->getApellido() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" disabled>
+                        <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?= $usuarioSQL->getApellido() ?>" onkeyup="mayus(this); handleSubmit();" disabled>
                       </div>
                     </div>
                     <div class="form-group">
@@ -62,13 +62,13 @@
                     <div class="form-group">
                       <label class="control-label col-md-3" for="Email">Correo electronico *</label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?= $usuarioSQL->getEmail() ?>" onkeyup="minus(this)" onchange="handleSubmit()" disabled>
+                        <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?= $usuarioSQL->getEmail() ?>" onkeyup="mayus(this); handleSubmit();" disabled>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-md-3" for="User">Usuario *</label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="user" id="usuariou" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" disabled>
+                        <input class="form-control" name="user" id="usuariou" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this); handleSubmit();" disabled>
                       </div>
                     </div>
                     <div class="form-group">
