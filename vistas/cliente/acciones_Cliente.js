@@ -1,8 +1,7 @@
 let patrones = {
     rfc: /^[A-Z]{4}\d{6}[A-Z0-9]{3}$/,
     nombre: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
-    apellidoPaterno: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
-    apellidoMaterno: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
+    apellidos: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{4,30}/,
     telefono: /\+?\(?\d{2,4}\)?[\d\s-]{8,10}/,
     correo: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
 }
@@ -10,8 +9,7 @@ let patrones = {
 function handleSubmit() {
     let rfc = patrones.rfc.test(document.getElementById('rfc').value);
     let nombre = patrones.nombre.test(document.getElementById('nombre').value);
-    let apellidoPaterno = patrones.apellidoPaterno.test(document.getElementById('apellidoPaterno').value);
-    let apellidoMaterno = patrones.apellidoMaterno.test(document.getElementById('apellidoMaterno').value);
+    let apellidos = patrones.apellidos.test(document.getElementById('apellidos').value);
     let telefono = patrones.telefono.test(document.getElementById('telefono').value);
     let correo = patrones.correo.test(document.getElementById('email').value);
 
@@ -31,20 +29,12 @@ function handleSubmit() {
         document.getElementById('advertenciaCliente').hidden = true;
     }
 
-    if (document.getElementById('apellidoPaterno').value != "") {
-        apellidoPaterno ?
-            document.getElementById('advertenciaApellidoPaterno').hidden = true :
-            document.getElementById('advertenciaApellidoPaterno').hidden = false;
+    if (document.getElementById('apellidos').value != "") {
+        apellidos ?
+            document.getElementById('advertenciaApellidos').hidden = true :
+            document.getElementById('advertenciaApellidos').hidden = false;
     } else {
-        document.getElementById('advertenciaApellidoPaterno').hidden = true;
-    }
-
-    if (document.getElementById('apellidoMaterno').value != "") {
-        apellidoMaterno ?
-            document.getElementById('advertenciaApellidoMaterno').hidden = true :
-            document.getElementById('advertenciaApellidoMaterno').hidden = false;
-    } else {
-        document.getElementById('advertenciaApellidoMaterno').hidden = true;
+        document.getElementById('advertenciaApellidos').hidden = true;
     }
 
     if (document.getElementById('telefono').value != "") {
@@ -63,7 +53,7 @@ function handleSubmit() {
         document.getElementById('advertenciaEmail').hidden = true;
     }
 
-    (nombre && apellidoMaterno && apellidoPaterno && telefono && telefono && correo) ?
+    (nombre && apellidos && telefono && telefono && correo) ?
         document.getElementById('submitButton').disabled = false :
         handleBloquearSubmit();
 }
