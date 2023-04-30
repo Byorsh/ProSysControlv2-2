@@ -53,9 +53,16 @@ function handleSubmit() {
         document.getElementById('advertenciaEmail').hidden = true;
     }
 
-    (nombre && apellidos && telefono && telefono && correo) ?
-        document.getElementById('submitButton').disabled = false :
-        handleBloquearSubmit();
+    if (document.getElementById('rfc').value != "") {
+        (nombre && apellidos && telefono && telefono && correo && rfc) ?
+            document.getElementById('submitButton').disabled = false :
+            handleBloquearSubmit();
+    } else {
+        (nombre && apellidos && telefono && telefono && correo) ?
+            document.getElementById('submitButton').disabled = false :
+            handleBloquearSubmit();
+    }
+
 }
 
 function handleBloquearSubmit() {
