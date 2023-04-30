@@ -31,7 +31,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Rfc">RFC </label>
                   <div class="col-md-8">
-                    <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" value="<?= $clienteSQL->getRfc() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))">
+                    <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" value="<?= $clienteSQL->getRfc() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))">
                     <div class="alert alert-danger" role="alert" id="advertenciaRfc" hidden>
                       EL RFC no cumple con un formato valido
                     </div>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreCliente">Nombre *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
+                    <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
                     <div class="alert alert-danger" role="alert" id="advertenciaCliente" hidden>
                       El nombre solo debe contener letras y espacio
                     </div>
@@ -52,8 +52,8 @@
                   <label class="control-label col-md-3" for="ApellidosC">Apellidos *</label>
                   <div class="col-md-8">
 
-                    <input class="form-control" name="apellidosC" id="apellidoPaterno" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
-                    <div class="alert alert-danger" role="alert" id="advertenciaApellidoPaterno" hidden>
+                    <input class="form-control" name="apellidosC" id="apellidos" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onkeyup="handleSubmit(); mayus(this);" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
+                    <div class="alert alert-danger" role="alert" id="advertenciaApellidos" hidden>
                       Los apellidos unicamente pueden contener letras y espacios
                     </div>
                   </div>
@@ -62,14 +62,14 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Nombre de la empresa</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombreEmpresa" id="nombreEmpresa" type="text" placeholder="Nombre de la Empresa" value="<?= $clienteSQL->getNombreEmpresa() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 32 && event.charCode <= 46) )">
+                    <input class="form-control" name="nombreEmpresa" id="nombreEmpresa" type="text" placeholder="Nombre de la Empresa" value="<?= $clienteSQL->getNombreEmpresa() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 32 && event.charCode <= 46) )">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Telefono">Telefono *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?= $clienteSQL->getTelefono() ?>" onchange="handleSubmit()" maxlength="10" min="1" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
+                    <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?= $clienteSQL->getTelefono() ?>" onkeyup="handleSubmit()" maxlength="10" min="1" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
                     <div class="alert alert-danger" role="alert" id="advertenciaTelefono" hidden>
                       Numero de telefono invalido
                     </div>
@@ -79,7 +79,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Email *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="email" id="email" type="text" placeholder="Correo Electronico" value="<?= $clienteSQL->getEmail() ?>" onkeyup="minus(this)" onchange="handleSubmit()">
+                    <input class="form-control" name="email" id="email" type="text" placeholder="Correo Electronico" value="<?= $clienteSQL->getEmail() ?>" onkeyup="minus(this); handleSubmit();">
                     <div class="alert alert-danger" role="alert" id="advertenciaEmail" hidden>
                       Formato de correo electronico no valido <strong>ejemplo@ejemplo.com</strong>
                     </div>
@@ -89,7 +89,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Domicilio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="domicilio" id="domicilio" type="text" placeholder="Domicilio" value="<?= $clienteSQL->getDomicilio() ?>" onkeyup="mayus(this)" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 32 && event.charCode <= 47))">
+                    <input class="form-control" name="domicilio" id="domicilio" type="text" placeholder="Domicilio" value="<?= $clienteSQL->getDomicilio() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 32 && event.charCode <= 47))">
                   </div>
                 </div>
 
