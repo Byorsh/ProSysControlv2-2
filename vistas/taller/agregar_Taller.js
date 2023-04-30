@@ -12,6 +12,13 @@ function handleSubmit() {
     let observaciones = patrones.observaciones.test(document.getElementById('obs').value);
     let tecnicoAsignado = document.getElementById('idtec');
     let fecha = document.getElementById('fecha').value;
+    let idCliente = document.getElementById('idc').value;
+    let telefonoCliente = document.getElementById('listaTc').value;
+    let correoCliente = document.getElementById('listaCc').value;
+
+    console.log(`id cliente: ${idCliente}`);
+    console.log(`telefono cliente: ${telefonoCliente}`);
+    console.log(`correo cliente: ${correoCliente}`);
 
     if (document.getElementById('ns').value != "") {
         ns ?
@@ -46,7 +53,7 @@ function handleSubmit() {
     }
 
     //Si el formulario fue llenado correctamente se activa el boton enviar
-    (ns && marca && modelo && observaciones && (tecnicoAsignado.value >= 0) && (fecha != "")) ?
+    (ns && marca && modelo && observaciones && (tecnicoAsignado.value >= 0) && (fecha != "") && ((idCliente && telefonoCliente && correoCliente) > 0)) ?
         document.getElementById('submitButton').disabled = false :
         handleBloquearSubmit();
 }
