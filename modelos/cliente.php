@@ -115,6 +115,14 @@ class Cliente{
         try{
             $where="";
             if(isset($_GET["q"])){
+                $busqueda = $_GET["q"];
+                if(substr($busqueda,0,3)=='idc' && ($numdigitos=strlen($busqueda)-3)>0){
+                    $numdigitos=strlen($busqueda)-3;
+                    $idbusqueda=(substr($busqueda,-$numdigitos));
+                    $consulta = $this->pdo->prepare("SELECT * FROM clientes WHERE idClientes = $idbusqueda ;");
+                    $consulta->execute();
+                return $consulta->fetchAll(PDO::FETCH_OBJ);}
+
                 $columnas = ['idClientes','nombreCliente','apellidosC','nombreEmpresa','telefono','email','domicilio'];
                 $where = "WHERE (";
             
@@ -125,7 +133,7 @@ class Cliente{
                 $where = substr_replace($where, "", -3);
                 $where .= ")";
             }
-            echo "SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;";
+            //echo "SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;";
             $consulta = $this->pdo->prepare("SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;");
             $consulta->execute();
             
@@ -222,7 +230,13 @@ class Cliente{
     }
     public function BuscarEnTabla($busqueda){
         try{
-            
+            if(substr($busqueda,0,3)=='idc' && ($numdigitos=strlen($busqueda)-3)>0){
+                $numdigitos=strlen($busqueda)-3;
+                $idbusqueda=(substr($busqueda,-$numdigitos));
+                $consulta = $this->pdo->prepare("SELECT * FROM clientes WHERE idClientes = $idbusqueda ;");
+                $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);}
+
             $columnas = ['idClientes','nombreCliente','apellidosC','nombreEmpresa','telefono','email','domicilio'];
             if ($busqueda != null) {
                 $where = "WHERE (";

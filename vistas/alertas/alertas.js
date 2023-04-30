@@ -54,5 +54,14 @@ function alertaLogin(tipoAlerta){//son iguales solo cambia segun el tipo de erro
             dangerMode: true,
         })
     }
+    if(tipoAlerta=="No se encontro ningun resultado"){
+        swal({
+            title:"No hay resultados",
+            text:"No se encontro ningun resultado, prueba realizando otra busqueda",
+            icon:"info",
+            buttons:false,
+            dangerMode: true,
+        })
+    }
     
 }

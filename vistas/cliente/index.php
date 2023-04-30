@@ -82,10 +82,7 @@ require_once "modelos/database.php";
                         <th>Telefono</th>
                         <th>Email</th>
                         <th>Domicilio</th>
-                        <!--condicion para ocultar si es tecnico-->
-                        <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
                         <th>Acciones</th>
-                        <?php }?>
                       </tr>
                     </thead>
                     <tbody>
@@ -109,8 +106,8 @@ require_once "modelos/database.php";
                                 <?php $idc = $clienteSQL->idClientes ?>
                         
                               <!--condicion para ocultar si es secretario-->
-                              <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
-                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$idc?>"><i class="fa fa-lg fa-refresh"></i></a>
+                              <td><?php if($_SESSION['tipoUsuario']!='Secretario'){?>
+                              <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$idc?>"><i class="fa fa-lg fa-refresh"></i></a>
                                   <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idc?>"><i class="fa fa-lg fa-trash"></i></a>
                                   
                               <?php } ?>
@@ -134,8 +131,8 @@ require_once "modelos/database.php";
                         
 
                               <!--condicion para ocultar si es secretario-->
-                              <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
-                              <td><a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$idc?>"><i class="fa fa-lg fa-refresh"></i></a>
+                              <td><?php if($_SESSION['tipoUsuario']!='Secretario'){?>
+                              <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$idc?>"><i class="fa fa-lg fa-refresh"></i></a>
                                   <a class="btn btn-warning btn-flat" onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?=$idc?>"><i class="fa fa-lg fa-trash"></i></a>
                                   
                               <?php } ?>
@@ -150,14 +147,20 @@ require_once "modelos/database.php";
                     </tbody>
                   </table>
                 </div>
+                <div class="dataTables_paginate paging_simple_numbers">
                 <?php
                if(isset($_GET['q'])){$total_registros = count($this->modelo->BuscarEnTabla($_GET['q']));}
                $num_paginas = ceil($total_registros / $registros_por_pagina);
+               if($num_paginas == 0){
+                $regex = new Regex;
+                $regex->sweet_alerts("No se encontro ningun resultado");
+               }
                echo "<a class='btn-btn-secondary' type='button'>Paginas  </a> ";
                for ($i = 1; $i <= $num_paginas; $i++) {
-                echo "<a class='btn-btn-secondary' type='button' href='?c=cliente&a=PaginarN&pagina=$i$url_busqueda'>$i</a> ";
+                echo "<a class='page-link' href='?c=cliente&a=PaginarN&pagina=$i$url_busqueda'>$i</a> ";
                }
                 ?>
+                </div>
                     </tbody>
                   </table>
                 </div>

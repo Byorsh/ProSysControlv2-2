@@ -118,7 +118,7 @@ class Usuario{
     }
     public function CantidadDeEquiposAsignados($idtec){
         try{
-            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadEquipos FROM ordenreparacion WHERE tecnicoAsignado = $idtec;");
+            $consulta = $this->pdo->prepare("SELECT COUNT(id) AS CantidadEquipos FROM ordenreparacion WHERE tecnicoAsignado = $idtec AND estadoEquipo NOT LIKE 10;");
             $consulta->execute();
             return $consulta->fetch(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){

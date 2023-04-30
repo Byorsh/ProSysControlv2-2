@@ -4,11 +4,12 @@
             //private $modeloUsuario;
 
             $nombreUsuario = $_SESSION['usuario'];
+            $urlRevisarEquiposAsignados = "?c=taller&a=PaginarN&pagina=1&q=idt".$_SESSION['idusuario'];
             ?>
         <div class="page-title">
           <div>
             <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-            <p>Bienvenido <?php echo($nombreUsuario); ?><a href="?c=taller&a=PaginarN&pagina=1&q=id15">Mis Equipos asignados</a> </p>
+            <p><h1>Bienvenido <?php echo($nombreUsuario); ?> </h1></p>
           </div>
           <div>
             
@@ -20,8 +21,8 @@
         </div>
         <!-- En esta parte irian los reportes-->
         <div class="row">
-          <div class="col-md-3">
-            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+          <div class="col-md-3 col-lg-3" id="reporte" onclick="clickReporteDireccionHref('?c=usuario')">
+            <div class="widget-small info"><i class="icon fa fa-users fa-3x"></i>
               <div class="info">
                 <h4>Usuarios</h4>
                 <p><b><?php $usuario=$this->modeloUsuario->Cantidad()?>
@@ -29,18 +30,22 @@
               </div>
             </div>
           </div>
-          <a href="?c=taller&a=PaginarN&pagina=1&q=id15">Mis Equipos asignados</a>
-          <div class="col-md-3">
-            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+
+          <!--condicion para ocultar si es secretario-->
+          <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
+          <div class="col-md-3" onclick="clickReporteDireccionHref('<?php echo($urlRevisarEquiposAsignados); ?>')">
+            <div class="widget-small primary"><i class="icon fa fa-gears fa-3x"></i>
               <div class="info">
-                <h4 href="?c=taller&a=PaginarN&pagina=1&q=id15">Mis Equipos asignados</h4>
+              <h4>Mis Equipos Asignados</h4>
                 <p><b><?php $usuario=$this->modeloUsuario->CantidadDeEquiposAsignados($_SESSION['idusuario'])?>
                 <?=$usuario->CantidadEquipos?></b></p>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+            <?php } ?>
+
+          <div class="col-md-3" onclick="clickReporteDireccionHref('?c=domicilio')">
+            <div class="widget-small danger"><i class="icon fa fa-truck fa-3x"></i>
               <div class="info">
                 <h4>Servicios Pendientes</h4>
                 <p><b><?php $usuario=$this->modeloUsuario->CantidadServicios()?>
@@ -48,8 +53,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+          <div class="col-md-3" onclick="clickReporteDireccionHref('?c=taller')">
+            <div class="widget-small warning"><i class="icon fa fa-clock-o fa-3x"></i>
               <div class="info">
                 <h4>Equipos en espera</h4>
                 <p><b><?php $usuario=$this->modeloUsuario->CantidadEquiposEnEspera()?>
@@ -77,3 +82,10 @@
         </div>
       </div>
     </div>
+    <script>
+      var controlador = document.getElementById("reporte");
+      controlador.addEventListener("mouseover",function(){this.style.cursor = "hand";})
+      function clickReporteDireccionHref(url){
+        location.href = url;
+      }
+    </script>

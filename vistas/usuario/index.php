@@ -37,9 +37,7 @@
                         <!--<th>Contraseña</th>-->
                         <th>Privilegio</th>
                         <!--condicion para ocultar si es secretario-->
-                        <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
                         <th>Acciones</th>
-                        <?php }?>
                       </tr>
                     </thead>
                     <tbody>
@@ -55,8 +53,8 @@
                         <!--<td><?=$u->contrasenia?></td>-->
                         <td><?=$u->privilegio?></td>
                         <!--condicion para ocultar si es secretario-->
-                        <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
-                        <td><a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?=$u->id?>"><i class="fa fa-lg fa-refresh"></i></a> 
+                        <td><?php if($_SESSION['tipoUsuario']!='Secretario'){?>
+                        <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?=$u->id?>"><i class="fa fa-lg fa-refresh"></i></a> 
                             <a class="btn btn-warning btn-flat"   onclick = "return confirm('¿Realmente desea eliminar?')" href="?c=usuario&a=Borrar&id=<?=$u->id?>" ><i class="fa fa-lg fa-trash"></i></a>
                             
                         <?php }?>

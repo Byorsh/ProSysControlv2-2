@@ -157,9 +157,9 @@
                         foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
                           <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
                         <?php endforeach; ?>
-                        <!--condicion para ocultar si es secretario-->
+                        <td><!--condicion para ocultar si es secretario-->
                         <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                          <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                          <a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
                             <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
   
                           <?php } ?>
@@ -226,8 +226,8 @@
                           <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
                         <?php endforeach; ?>
                         <!--condicion para ocultar si es secretario-->
-                        <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                          <td><a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                        <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
+                          <a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
                             <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
   
                           <?php } ?>
@@ -262,6 +262,10 @@
           //CONDICION POR hay busqueda
           if(isset($_GET['q'])){$total_registros = count($this->modelo->BuscarEnTabla($_GET['q']));}
           $num_paginas = ceil($total_registros / $registros_por_pagina);
+          if($num_paginas == 0){
+            $regex = new Regex;
+            $regex->sweet_alerts("No se encontro ningun resultado");
+           }
           //$num_paginas = 3;
           echo "<a class='btn-btn-secondary' type='button'>Paginas  </a> ";
           for ($i = 1; $i <= $num_paginas; $i++) {
@@ -276,7 +280,7 @@
             }
             else{echo "<a class='btn-btn-secondary' type='button' href='?c=taller&a=PaginarN&pagina=$i$url_busqueda'>$i</a> ";}
           }
-          //if(isset($_GET['filtro'])){if($_GET['filtro']=="yaentregados"){echo "c mamut";}else if($_GET['filtro']==""){echo "no vale";}}else{echo "no";}
+          //if(isset($_GET['filtro'])){if($_GET['filtro']=="yaentregados"){echo "filtroactivo";}else if($_GET['filtro']==""){echo "definido pero no puesto";}}else{echo "no";}
           ?>
 
         </div>

@@ -71,9 +71,9 @@
           </div>
           <!-- Sidebar Menu-->
           <ul class="sidebar-menu">
-            <li class="active"><a href="home.php"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+            <li class="active"><a href="home.php"><i class="fa fa-dashboard"></i><span>inicio</span></a></li>
 
-            <li class="treeview"><a href="#"><i class="fa fa-user"></i><span>Cliente</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fa fa-user"></i><span>Clientes</span><i class="fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
               
                 <li><a href="?c=cliente&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar Cliente</a></li>
@@ -104,7 +104,7 @@
             <?php }?>
             <!--condicion para ocultar si es tecnico-->
             <?php if($_SESSION['tipoUsuario']!='Tecnico'){?>
-            <li class="treeview"><a href="#"><i class="fa fa-user-secret"></i><span>Usuario</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fa fa-user-secret"></i><span>Usuarios</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <!--condicion para ocultar si es secretario-->
                 <?php if($_SESSION['tipoUsuario']!='Secretario'){?>

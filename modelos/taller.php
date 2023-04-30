@@ -167,7 +167,7 @@ class Taller{
     }
     public function Paginar($limite,$numerodeRegistros,$filtroCondicion){
         try{
-            if(isset($filtroCondicion)){
+            /*if(isset($filtroCondicion)){
                 switch($filtroCondicion){
                     case "fechaasc":
                         echo "si";
@@ -182,7 +182,7 @@ class Taller{
                         echo "si";
                         break;
                 }
-            }
+            }*/
             $and="";
             if(isset($_GET["q"])){
                 $columnas = ['id','idCliente','ns','marca','modelo','tipoEquipo','observaciones','accesorios','fechaEntrada','horaEntrada','fechaPrometida','tecnicoAsignado','estadoEquipo'];
@@ -195,10 +195,17 @@ class Taller{
                 $and = substr_replace($and, "", -3);
                 $and .= ")";
                 $busqueda =$_GET["q"];
-                if(substr($busqueda,0,2)=='id' && ($numdigitos=strlen($busqueda)-2)>0){
-                    $numdigitos=strlen($busqueda)-2;
+                if(substr($busqueda,0,3)=='idt' && ($numdigitos=strlen($busqueda)-3)>0){
+                    $numdigitos=strlen($busqueda)-3;
                     $idbusqueda=(substr($busqueda,-$numdigitos));
-                    $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE tecnicoAsignado = $idbusqueda AND estadoEquipo NOT LIKE '10';");
+                    $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE tecnicoAsignado = $idbusqueda AND estadoEquipo NOT LIKE '10' LIMIT $limite,$numerodeRegistros;");
+                    $consulta->execute();
+                return $consulta->fetchAll(PDO::FETCH_OBJ);
+                }
+                if(substr($busqueda,0,3)=='idc' && ($numdigitos=strlen($busqueda)-3)>0){
+                    $numdigitos=strlen($busqueda)-3;
+                    $idbusqueda=(substr($busqueda,-$numdigitos));
+                    $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE idCliente = $idbusqueda ORDER BY estadoEquipo LIMIT $limite,$numerodeRegistros;");
                     $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_OBJ);
                 }
@@ -429,10 +436,17 @@ class Taller{
     public function BuscarEnTabla($busqueda){
         try{
             $not="NOT LIKE";if(isset($_GET['filtro'])){$not="LIKE";}
-            if(substr($busqueda,0,2)=='id' && ($numdigitos=strlen($busqueda)-2)>0){
-                $numdigitos=strlen($busqueda)-2;
+            if(substr($busqueda,0,3)=='idt' && ($numdigitos=strlen($busqueda)-3)>0){
+                $numdigitos=strlen($busqueda)-3;
                 $idbusqueda=(substr($busqueda,-$numdigitos));
                 $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE tecnicoAsignado = $idbusqueda AND estadoEquipo $not '10';");
+                $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+            }
+            if(substr($busqueda,0,3)=='idc' && ($numdigitos=strlen($busqueda)-3)>0){
+                $numdigitos=strlen($busqueda)-3;
+                $idbusqueda=(substr($busqueda,-$numdigitos));
+                $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE idCliente = $idbusqueda ORDER BY estadoEquipo;");
                 $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
             }
