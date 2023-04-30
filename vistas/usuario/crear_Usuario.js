@@ -19,6 +19,8 @@ function handleSubmit() {
     let password = patrones.password.test(document.getElementById('contraseña').value);
     let nivelprivilegio = document.getElementById('nivelprivilegio').value;
 
+    console.log(contraseña);
+
     if (document.getElementById('rfc').value != "") {
         rfc ?
             document.getElementById('advertenciaRfc').hidden = true :
@@ -76,9 +78,15 @@ function handleSubmit() {
     }
 
     //Si el formulario fue llenado correctamente se activa el boton enviar
-    (nombre && apellido && telefono && correo && usuario && contraseña && nivelprivilegio) ?
-        document.getElementById('submitButton').disabled = false :
-        handleBloquearSubmit();
+    if (document.getElementById('rfc').value != "") {
+        (nombre && apellido && telefono && correo && usuario && password && nivelprivilegio && rfc) ?
+            document.getElementById('submitButton').disabled = false :
+            handleBloquearSubmit();
+    } else {
+        (nombre && apellido && telefono && correo && usuario && password && nivelprivilegio) ?
+            document.getElementById('submitButton').disabled = false :
+            handleBloquearSubmit();
+    }
 }
 
 function handleBloquearSubmit() {
