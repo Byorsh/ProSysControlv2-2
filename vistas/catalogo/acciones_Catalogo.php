@@ -20,7 +20,7 @@
           <div class="well bs-component">
             <form class="form-horizontal" method="POST" onsubmit="handleSubmit()" action="?c=catalogo&a=Guardar">
               <fieldset>
-                <legend>Registrar Articulo</legend>
+                <legend class="control-label">Registrar Articulo</legend>
 
                 <div class="form-group">
                   <div class="col-lg-10">

@@ -8,7 +8,7 @@
             ?>
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+            <h1><i class="fa fa-home"></i> Dashboard</h1>
             <p><h1>Bienvenido <?php echo($nombreUsuario); ?> </h1></p>
           </div>
           <div>
