@@ -39,7 +39,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="IdCliente">Nombre del Cliente *</label>
                   <div class="col-md-8">
-                    <input class="form-control" id="idc" name="idCliente" method="post" type="text" value="" placeholder="Selecciona el nombre del cliente" onmouseup="handleSubmit(); toggleListadeclientes()" list="listaclientes">
+                    <input class="form-control" id="idc" name="idCliente" method="post" type="text" value="" placeholder="Selecciona el nombre del cliente" onchange="handleSubmit(); toggleListadeclientes()" list="listaclientes">
                   </div>
                 </div>
                 <datalist id="listaclientes">
