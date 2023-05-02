@@ -16,9 +16,7 @@ function handleSubmit() {
     let telefono = patrones.telefono.test(document.getElementById('telefono').value);
     let correo = patrones.correo.test(document.getElementById('correo').value);
     let usuario = patrones.usuario.test(document.getElementById('usuario').value);
-    let password = patrones.password.test(document.getElementById('contraseña').value);
     let nivelprivilegio = document.getElementById('nivelprivilegio').value;
-
 
     if (document.getElementById('rfc').value != "") {
         rfc ?
@@ -68,21 +66,13 @@ function handleSubmit() {
         document.getElementById('advertenciaUsuario').hidden = true;
     }
 
-    if (document.getElementById('contraseña').value != "") {
-        password ?
-            document.getElementById('advertenciaContraseña').hidden = true :
-            document.getElementById('advertenciaContraseña').hidden = false;
-    } else {
-        document.getElementById('advertenciaContraseña').hidden = true;
-    }
-
     //Si el formulario fue llenado correctamente se activa el boton enviar
     if (document.getElementById('rfc').value != "") {
-        (nombre && apellido && telefono && correo && usuario && password && nivelprivilegio && rfc) ?
+        (nombre && apellido && telefono && correo && usuario && nivelprivilegio && rfc) ?
             document.getElementById('submitButton').disabled = false :
             handleBloquearSubmit();
     } else {
-        (nombre && apellido && telefono && correo && usuario && password && nivelprivilegio) ?
+        (nombre && apellido && telefono && correo && usuario && nivelprivilegio) ?
             document.getElementById('submitButton').disabled = false :
             handleBloquearSubmit();
     }
@@ -101,6 +91,18 @@ function handleCancelar() {
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = '?c=usuario';
+        }
+    })
+}
+function handleCambiarContraseña(idusuario) {
+    Swal.fire({
+        title: '¿Deseas dirigirte al cambio de contraseña?',
+        showDenyButton: true,
+        confirmButtonText: 'Confirmar',
+        denyButtonText: `Cancelar`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '?c=usuario&a=FormCambiarcontraseña&id='+idusuario;
         }
     })
 }

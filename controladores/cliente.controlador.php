@@ -73,7 +73,7 @@ class ClienteControlador{
         $clienteSQL->setRfc($_POST['rfc']);
         $clienteSQL->setNombre($_POST['nombreCliente']);
         //AQUI
-        $clienteSQL->setApellidos($_POST['apellidosc']);
+        $clienteSQL->setApellidos($_POST['apellidosC']);
         $clienteSQL->setNombreEmpresa($_POST['nombreEmpresa']);
         $clienteSQL->setTelefono($_POST['telefono']);
         $clienteSQL->setEmail($_POST['email']);

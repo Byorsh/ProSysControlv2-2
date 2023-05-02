@@ -16,6 +16,7 @@
             <!--condicion para ocultar si es secretario-->
             <?php if($_SESSION['tipoUsuario']!='Secretario'){?>
             <a class="btn btn-primary btn-flat" href="?c=usuario&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a>
+            
             <?php }?>
             </div>
         </div>

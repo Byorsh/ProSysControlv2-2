@@ -20,7 +20,9 @@
           </div>
         </div>
         <!-- En esta parte irian los reportes-->
+        
         <div class="row">
+        <?php if ($_SESSION['tipoUsuario'] == 'Admin') { ?>
           <div class="col-md-3 col-lg-3" id="reporte" onclick="clickReporteDireccionHref('?c=usuario')">
             <div class="widget-small info"><i class="icon fa fa-users fa-3x"></i>
               <div class="info">
@@ -30,6 +32,7 @@
               </div>
             </div>
           </div>
+        <?php } ?>
 
           <!--condicion para ocultar si es secretario-->
           <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
@@ -59,6 +62,14 @@
                 <h4>Equipos en espera</h4>
                 <p><b><?php $usuario=$this->modeloUsuario->CantidadEquiposEnEspera()?>
                 <?=$usuario->CantidadEquiposEnEspera?></b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3" onclick="clickReporteDireccionHref('?c=usuario&a=FormCambiarcontraseña')">
+            <div class="widget-small warning"><i class="icon fa fa-clock-o fa-3x"></i>
+              <div class="info">
+                <h4>Cambiar mi contraseña</h4>
+                <p><b></b></p>
               </div>
             </div>
           </div>

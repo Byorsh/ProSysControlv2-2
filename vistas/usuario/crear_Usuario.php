@@ -22,6 +22,7 @@
             <?php
             require_once 'modelos/regex.php';
             $regex = new Regex;
+            $actualizandoBandera = ($usuarioSQL->getId())!=null ;
             if ($_SESSION['tipoUsuario'] != 'Admin' || !isset($_SESSION['tipoUsuario'])) {
               include("page-error.php");
 
@@ -91,6 +92,8 @@
                     </div>
                   </div>
                 </div>
+                <?php if(!$actualizandoBandera ){ 
+                  $_GET?>
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
                   <div class="col-md-8">
@@ -100,6 +103,7 @@
                     </div>
                   </div>
                 </div>
+                <?php } ?>
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio *</label>
                   <div class="col-md-8">
@@ -116,10 +120,14 @@
                   <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
+                  <?php if($actualizandoBandera){ ?>
+                  <button class="btn btn-primary" type="button" onclick="handleCambiarContraseña('<?= $usuarioSQL->getId() ?>')">Cambiar contraseña</button>
+                  <?php } ?>
                 </div>
               <?php } ?>
           </div>
         </div>
       </div>
     </div>
-    <script src="vistas/usuario/crear_Usuario.js"></script>
+    <?php if($actualizandoBandera){ ?> <script src="vistas/usuario/actualizar_Usuario.js"></script> <?php }else{ ?> <script src="vistas/usuario/crear_Usuario.js"></script> <?php } ?>
+    

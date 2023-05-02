@@ -8,34 +8,42 @@ $regex = new Regex;
 $usuario=$regex->limpiarCampo($usuario);
 $password=$regex->limpiarCampo($password);
 
-$consulta = "SELECT * FROM usuario WHERE user = '$usuario' and contrasenia ='$password'";
-$resultado=mysqli_query($conexion, $consulta);
-$arr = mysqli_fetch_array($resultado);//arreglo de los atributos del usuario
+$consultaNombreDeUsuario = "SELECT contrasenia FROM usuario WHERE user = '$usuario';";
+$resultado=mysqli_query($conexion, $consultaNombreDeUsuario);
+$arregloContraseña = mysqli_fetch_array($resultado);
 
-$filas=mysqli_num_rows($resultado);
-session_abort();
-session_start();
-$_SESSION['usuario']=$usuario;
-$_SESSION['idusuario']=$arr[0];
+$verificacionContraseña=password_verify($password,$arregloContraseña[0]);
+if($verificacionContraseña){
+    echo"amin";
+    $consulta = "SELECT * FROM usuario WHERE user = '$usuario'";
+    $resultado=mysqli_query($conexion, $consulta);
+    $arr = mysqli_fetch_array($resultado);//arreglo de los atributos del usuario
+
+    $filas=mysqli_num_rows($resultado);
+    session_abort();
+    session_start();
+    $_SESSION['usuario']=$usuario;
+    $_SESSION['idusuario']=$arr[0];
 
 
 
-if($filas){//verdadero si los datos coinciden
-    switch($arr[8]){
-        case 1:
-            $_SESSION['tipoUsuario']='Admin';//se guarda en el valor de la sesion
-            break;
-        case 3:
-            $_SESSION['tipoUsuario']='Secretario';
-            break;
-        case 2:
-            $_SESSION['tipoUsuario']='Tecnico';
-            break;
+    if($filas){//verdadero si los datos coinciden
+        switch($arr[8]){
+            case 1:
+                $_SESSION['tipoUsuario']='Admin';//se guarda en el valor de la sesion
+                break;
+            case 3:
+                $_SESSION['tipoUsuario']='Secretario';
+                break;
+            case 2:
+                $_SESSION['tipoUsuario']='Tecnico';
+                break;
 
-    
+        
+        }
+        $_SESSION;    
+        header("location:home.php");
     }
-    $_SESSION;    
-    header("location:home.php");
 }
 //en el caso que no encuentra
 else{

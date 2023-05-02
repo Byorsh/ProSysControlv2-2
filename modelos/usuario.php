@@ -205,7 +205,6 @@ class Usuario{
             telefono=?,
             email=?,
             user=?,
-            contrasenia=?,
             privilegio=?
             WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
@@ -215,8 +214,20 @@ class Usuario{
                 $usuarioSQL->getTelefono(),
                 $usuarioSQL->getEmail(),
                 $usuarioSQL->getUser(),
-                $usuarioSQL->getContrasenia(),
                 $usuarioSQL->getPrivilegio(),
+                $usuarioSQL->getId()
+            ));
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+    public function Actualizarcontraseña(Usuario $usuarioSQL){
+        try{
+            $consulta = "UPDATE usuario SET
+            contrasenia=?
+            WHERE id=?;";
+            $this->pdo->prepare($consulta)->execute(array(
+                $usuarioSQL->getContrasenia(),
                 $usuarioSQL->getId()
             ));
         }catch(Exception $excepcion){

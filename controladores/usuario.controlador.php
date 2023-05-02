@@ -30,6 +30,20 @@ class UsuarioControlador{
         require_once "vistas/usuario/crear_Usuario.php";
         require_once "vistas/pie.php";
     }
+    public function FormCambiarContraseña(){
+        $titulo="Cambiarcontraseña";
+        $usuarioSQL = new Usuario();
+        if(isset($_GET['id'])){
+            $usuarioSQL=$this->modeloUsuario->Obtener($_GET['id']);
+        }
+        else if(isset(($_SESSION['idusuario']))){
+            $usuarioSQL=$this->modeloUsuario->Obtener(($_SESSION['idusuario']));
+        }
+
+        require_once "vistas/encabezado.php";
+        require_once "vistas/usuario/cambiarcontraseña.php";
+        require_once "vistas/pie.php";
+    }
 
     public function FormConsultar(){
         $titulo="Consultar";
@@ -45,6 +59,7 @@ class UsuarioControlador{
 
     public function Guardar(){
         $usuarioSQL = new Usuario();
+        $contraseñaEncriptada = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
 
         $usuarioSQL->setId(intval($_POST['id']));
         $usuarioSQL->setRfc($_POST['rfc']);
@@ -53,7 +68,7 @@ class UsuarioControlador{
         $usuarioSQL->setTelefono($_POST['telefono']);
         $usuarioSQL->setEmail($_POST['email']);
         $usuarioSQL->setUser($_POST['user']);
-        $usuarioSQL->setContrasenia($_POST['contrasenia']);
+        $usuarioSQL->setContrasenia($contraseñaEncriptada);
         $usuarioSQL->setPrivilegio(intval($_POST['privilegio']));
 
         if($usuarioSQL->verificarAtributos($usuarioSQL)){
@@ -70,6 +85,17 @@ class UsuarioControlador{
         else {
             header("location:?c=usuario&a=FormCrear");
         }
+
+    }
+    public function Guardarcontraseña(){
+        $usuarioSQL = new Usuario();
+        $usuarioSQL->setId(intval($_POST['id']));
+        $contraseñaEncriptada = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
+        $usuarioSQL->setContrasenia($contraseñaEncriptada);
+
+        $this->modeloUsuario->Actualizarcontraseña($usuarioSQL);
+        
+        header("location:?c=usuario");
 
     }
     
