@@ -27,7 +27,7 @@
             ?>
             <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
               <fieldset>
-                <legend>Registro del Equipo en Taller</legend>
+                <legend class="control-label">Registro del Equipo en Taller</legend>
                 <div class="col-lg-10">
                   <h4>Datos del Cliente</h4>
                 </div>

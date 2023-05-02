@@ -20,8 +20,8 @@
           <div class="well bs-component">
             <form class="form-horizontal" method="POST" action="?c=cliente&a=Guardar">
               <fieldset>
-                <legend>Registro del Cliente</legend>
-
+                <h3 class="control-label">Registro del Cliente</h3>
+                <hr/>
                 <div class="form-group">
                   <div class="col-lg-10">
                     <input class="form-control" name="idClientes" type="hidden" value="<?= $clienteSQL->getId() ?>">

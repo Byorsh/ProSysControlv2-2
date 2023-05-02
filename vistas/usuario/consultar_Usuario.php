@@ -30,7 +30,7 @@
               <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" action="?c=usuario&a=Guardar">
                 <fieldset>
-                  <legend><?= $titulo ?> Usuario</legend>
+                  <legend class="control-label"><?= $titulo ?> Usuario</legend>
                   <div class="form-group">
                     <div class="col-lg-10">
                       <input class="form-control" name="id" type="hidden" value="<?= $usuarioSQL->getId() ?>" disabled>
