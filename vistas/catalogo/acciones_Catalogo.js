@@ -14,9 +14,6 @@ function handleSubmit() {
     let precioDeVenta = patrones.precioDeVenta.test(document.getElementById('precioventatxt').value);
     let porcentajeGanancia = patrones.porcentajeGanancia.test(document.getElementById('porcentajeGanancia').value);
 
-    let iva = document.getElementById('impuestolista').value;
-    console.log('iva ' + iva );
-
     if (document.getElementById('descripcion').value != "") {
         descripcion != "" ?
             document.getElementById('advertenciaDescripcion').hidden = true :
@@ -51,29 +48,68 @@ function handleSubmit() {
 
     if (document.getElementById('porcentajeGanancia').value != "") {
         porcentajeGanancia ?
-            document.getElementById('advertenciaPorcentajeCompra').hidden = true :
-            document.getElementById('advertenciaPorcentajeCompra').hidden = false;
+            document.getElementById('advertenciaPorcentajeGanancia').hidden = true :
+            document.getElementById('advertenciaPorcentajeGanancia').hidden = false;
     } else {
-        document.getElementById('advertenciaPorcentajeCompra').hidden = true;
+        document.getElementById('advertenciaPorcentajeGanancia').hidden = true;
     }
 
-    calcularPrecioVenta();
+    let precioValido = calcularPrecioVenta();
 
     //Si el formulario fue llenado correctamente se activa el boton enviar
-    (descripcion && cantidad && precioDeCompra && precioDeVenta && porcentajeGanancia) ?
+    (descripcion && cantidad && precioDeCompra && precioDeVenta && porcentajeGanancia && precioValido) ?
         document.getElementById('submitButton').disabled = false :
         handleBloquearSubmit();
 }
 
-function calcularPrecioVenta(){
+function calcularPrecioVenta() {
     let precioDeCompra = document.getElementById('preciocompratxt').value;
     let precioDeVenta = document.getElementById('precioventatxt');
     let porcentajeGanancia = document.getElementById('porcentajeGanancia').value;
     let iva = document.getElementById('impuestolista').value;
 
-    let nuevoPrecioVenta = ((precioDeCompra / (100-porcentajeGanancia)) * 100).toFixed(2);
+    if (porcentajeGanancia.length != 0) {
 
-    precioDeVenta.value = (nuevoPrecioVenta * ((iva / 100) + 1)).toFixed(2);
+        if (porcentajeGanancia <= 19) {
+            porcentajeGanancia.value = "";
+            document.getElementById('advertenciaPorcentajeGanancia').hidden = false;
+            document.getElementById('advertenciaPorcentajeGanancia').innerHTML = `<p>Porcentaje no puede ser menor a 20%</p>`;
+            precioDeVenta.value = "";
+            document.getElementById('precioSugerido').hidden = true;
+        } else if (porcentajeGanancia >= 100) {
+            porcentajeGanancia.value = "";
+            document.getElementById('advertenciaPorcentajeGanancia').hidden = false;
+            document.getElementById('advertenciaPorcentajeGanancia').innerHTML = `<p>Porcentaje no puede ser mayor o igual a 100%</p>`;
+            precioDeVenta.value = "";
+            document.getElementById('precioSugerido').hidden = true;
+        } else {
+
+            let nuevoPrecioVentaSinIva = ((precioDeCompra / (100 - porcentajeGanancia)) * 100).toFixed(2);
+            let nuevoPrecioVentaConIva = (nuevoPrecioVentaSinIva * ((iva / 100) + 1)).toFixed(2);
+
+            //Si el precio de venta es menor al precio con el 20% de ganancia
+            let precioCompraAlt = precioDeCompra;
+            let nuevoPrecioVentaSinIvaAlt = ((precioCompraAlt / (100 - 20)) * 100).toFixed(2);
+            let nuevoPrecioVentaConIvaAlt = (nuevoPrecioVentaSinIvaAlt * ((iva / 100) + 1)).toFixed(2);
+
+            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta.value == "") {
+                document.getElementById('precioSugerido').hidden = false;
+                document.getElementById('precioSugerido').innerHTML = `<p>Precio Sugerido: ${nuevoPrecioVentaConIva}</p>`;
+            }
+
+            if (precioDeVenta.value != "" && precioDeVenta.value <= nuevoPrecioVentaConIvaAlt - 1) {
+                document.getElementById('precioSugerido').hidden = true;
+                document.getElementById('advertenciaPrecioVenta').hidden = false;
+                document.getElementById('advertenciaPrecioVenta').innerHTML = `<p>Precio no puede ser menor a: ${nuevoPrecioVentaConIvaAlt}</p>`;
+                return false;
+            }
+
+            if (precioDeVenta.value > nuevoPrecioVentaConIvaAlt-1) {
+                 return true;
+            }
+        }
+    }
+
 }
 
 function handleBloquearSubmit() {
