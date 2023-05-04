@@ -103,11 +103,11 @@
                       <!--<td><?= $usuarioSQL->contrasenia ?></td>-->
                       <td><?= $usuarioSQL->privilegio ?></td>
                       <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                          <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?= $id ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=usuario&a=Borrar&id=<?= $id ?>"><i class="fa fa-lg fa-trash"></i></a>
+                          <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?= $usuarioSQL->id ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=usuario&a=Borrar&id=<?= $usuarioSQL->id ?>"><i class="fa fa-lg fa-trash"></i></a>
 
                         <?php } ?>
-                        <a class="btn btn-success btn-flat" href="?c=usuario&a=FormConsultar&id=<?= $id ?>"><i class="fa fa-lg fa-eye"></i></a>
+                        <a class="btn btn-success btn-flat" href="?c=usuario&a=FormConsultar&id=<?= $usuarioSQL->id ?>"><i class="fa fa-lg fa-eye"></i></a>
                       </td>
                     </tr>
                   <?php endforeach;
@@ -125,11 +125,11 @@
                       <!--<td><?= $usuarioSQL->contrasenia ?></td>-->
                       <td><?= $usuarioSQL->privilegio ?></td>
                       <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                          <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?= $id ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=usuario&a=Borrar&id=<?= $id ?>"><i class="fa fa-lg fa-trash"></i></a>
+                          <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?= $usuarioSQL->id ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=usuario&a=Borrar&id=<?= $usuarioSQL->id ?>"><i class="fa fa-lg fa-trash"></i></a>
 
                         <?php } ?>
-                        <a class="btn btn-success btn-flat" href="?c=usuario&a=FormConsultar&id=<?= $id ?>"><i class="fa fa-lg fa-eye"></i></a>
+                        <a class="btn btn-success btn-flat" href="?c=usuario&a=FormConsultar&id=<?= $usuarioSQL->id ?>"><i class="fa fa-lg fa-eye"></i></a>
                       </td>
                     </tr>
                   <?php endforeach;

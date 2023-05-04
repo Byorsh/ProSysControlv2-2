@@ -92,13 +92,12 @@
                       <td><?= $catalogoSQL->cantidad ?></td>
                       <td><?= $catalogoSQL->precioCompra ?></td>
                       <td><?= $catalogoSQL->precioVenta ?></td>
-                      <?php $idp = $catalogoSQL->idProducto ?>
 
-                      <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
+                      <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { $idp = $catalogoSQL->idProducto?>
                       <td><a class="btn btn-info btn-flat" href="?c=catalogo&a=FormCrear&id=<?= $idp ?>"><i class="fa fa-lg fa-refresh"></i></a>
                         <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=catalogo&a=Borrar&id=<?= $idp ?>"><i class="fa fa-lg fa-trash"></i></a>
                       <?php } ?>
-                      <a class="btn btn-success btn-flat" href="?c=catalogo&a=FormConsultar&id=<?= $idc ?>"><i class="fa fa-lg fa-eye"></i></a>
+                      <a class="btn btn-success btn-flat" href="?c=catalogo&a=FormConsultar&id=<?= $idp ?>"><i class="fa fa-lg fa-eye"></i></a>
                       </td>
                     </tr>
                     </tr>
@@ -114,14 +113,13 @@
                       <td><?= $catalogoSQL->cantidad ?></td>
                       <td><?= $catalogoSQL->precioCompra ?></td>
                       <td><?= $catalogoSQL->precioVenta ?></td>
-                      <?php $idp = $catalogoSQL->idProducto ?>
 
-                      <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
-                          <a class="btn btn-info btn-flat" href="?c=catalogo&a=FormCrear&id=<?= $idc ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=catalogo&a=Borrar&id=<?= $idc ?>"><i class="fa fa-lg fa-trash"></i></a>
+                      <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') {  $idp = $catalogoSQL->idProducto ?>
+                          <a class="btn btn-info btn-flat" href="?c=catalogo&a=FormCrear&id=<?= $idp ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=catalogo&a=Borrar&id=<?= $idp ?>"><i class="fa fa-lg fa-trash"></i></a>
 
                         <?php } ?>
-                        <a class="btn btn-success btn-flat" href="?c=catalogo&a=FormConsultar&id=<?= $idc ?>"><i class="fa fa-lg fa-eye"></i></a>
+                        <a class="btn btn-success btn-flat" href="?c=catalogo&a=FormConsultar&id=<?= $idp ?>"><i class="fa fa-lg fa-eye"></i></a>
                       </td>
                     </tr>
                 <?php endforeach;
