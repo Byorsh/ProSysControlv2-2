@@ -35,9 +35,22 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="id_Cliente">Nombre del Cliente *</label>
+                  <label class="control-label col-md-3" for="IdCliente">Busqueda del Cliente *</label>
                   <div class="col-md-8">
-                    <select class="form-control" id="idc" name="id_Cliente" method="post" type="text" placeholder="Selecciona el nombre del cliente" onchange="handleSubmit();toggleListadeclientes()">
+                    <input class="form-control" id="idc" name="idCliente" method="post" type="text" value="" placeholder="Selecciona el nombre del cliente" onchange="handleSubmit(); toggleListadeclientes()" list="listaclientes">
+                  </div>
+                </div>
+                <datalist id="listaclientes">
+                <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
+                        <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
+                      <?php endforeach; ?>
+                </datalist>
+
+
+                <div class="form-group">
+                  <label class="control-label col-md-3" >Nombre del Cliente *</label>
+                  <div class="col-md-8">
+                    <select class="form-control" id="listaTc" type="text" disabled>
                       <option value disabled>Seleccione un cliente</option>
                       <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
