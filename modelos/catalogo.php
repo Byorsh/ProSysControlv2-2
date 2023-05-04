@@ -111,6 +111,40 @@ class Catalogo{
         }
     }
 
+    public function Paginar($limite,$numerodeRegistros){
+        try{
+            $where="";
+            if(isset($_GET["q"])){
+                $busqueda = $_GET["q"];
+                if(substr($busqueda,0,3)=='idp' && ($numdigitos=strlen($busqueda)-3)>0){
+                    $numdigitos=strlen($busqueda)-3;
+                    $idbusqueda=(substr($busqueda,-$numdigitos));
+                    $consulta = $this->pdo->prepare("SELECT * FROM catalogo WHERE idProducto = $idbusqueda ;");
+                    $consulta->execute();
+                return $consulta->fetchAll(PDO::FETCH_OBJ);}
+
+                $columnas = ['idProducto','descripcion','marca','modelo','cantidad','preciocompra','precioventa'];
+                $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $_GET["q"] . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            //echo "SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;";
+            $consulta = $this->pdo->prepare("SELECT * FROM `catalogo` $where LIMIT $limite,$numerodeRegistros;");
+            $consulta->execute();
+            
+
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+
+
     public function Obtener($nombre){
         try{
             $consulta = $this ->pdo ->prepare("SELECT * FROM catalogo WHERE idProducto=?;");
@@ -184,5 +218,36 @@ class Catalogo{
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
+    }
+
+    public function BuscarEnTabla($busqueda){
+        try{
+            if(substr($busqueda,0,3)=='idp' && ($numdigitos=strlen($busqueda)-3)>0){
+                $numdigitos=strlen($busqueda)-3;
+                $idbusqueda=(substr($busqueda,-$numdigitos));
+                $consulta = $this->pdo->prepare("SELECT * FROM catalogo WHERE idProducto = $idbusqueda ;");
+                $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);}
+
+            $columnas = ['idProducto','descripcion','marca','modelo','cantidad','preciocompra','precioventa'];
+            if ($busqueda != null) {
+            $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $busqueda . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            $consulta = $this->pdo->prepare("SELECT * FROM catalogo ".$where.";");
+            
+             //echo("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+
     }
 }
