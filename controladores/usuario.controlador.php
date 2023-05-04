@@ -6,10 +6,10 @@ require_once 'modelos/regex.php';
 
 class UsuarioControlador{
     
-    private $modeloUsuario;
+    private $modelo;
 
     public function __CONSTRUCT(){
-        $this->modeloUsuario = new Usuario;
+        $this->modelo = new Usuario;
     }
 
     public function Inicio(){
@@ -18,11 +18,36 @@ class UsuarioControlador{
         require_once "vistas/pie.php";
     }
 
+    public function PaginarN(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/usuario/index.php";
+        require_once "vistas/pie.php";
+    }
+    public function BuscaryPaginar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/usuarioindex.php";
+        require_once "vistas/pie.php";
+
+        
+        
+    }
+    public function Buscar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/usuario/index.php";
+        require_once "vistas/pie.php";
+
+        
+    }
+
     public function FormCrear(){
         $titulo="Registrar";
         $usuarioSQL = new Usuario();
         if(isset($_GET['id'])){
-            $usuarioSQL=$this->modeloUsuario->Obtener($_GET['id']);
+            $usuarioSQL=$this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
@@ -34,10 +59,10 @@ class UsuarioControlador{
         $titulo="Cambiarcontraseña";
         $usuarioSQL = new Usuario();
         if(isset($_GET['id'])){
-            $usuarioSQL=$this->modeloUsuario->Obtener($_GET['id']);
+            $usuarioSQL=$this->modelo->Obtener($_GET['id']);
         }
         else if(isset(($_SESSION['idusuario']))){
-            $usuarioSQL=$this->modeloUsuario->Obtener(($_SESSION['idusuario']));
+            $usuarioSQL=$this->modelo->Obtener(($_SESSION['idusuario']));
         }
 
         require_once "vistas/encabezado.php";
@@ -49,7 +74,7 @@ class UsuarioControlador{
         $titulo="Consultar";
         $usuarioSQL = new Usuario();
         if(isset($_GET['id'])){
-            $usuarioSQL=$this->modeloUsuario->Obtener($_GET['id']);
+            $usuarioSQL=$this->modelo->Obtener($_GET['id']);
         }
 
         require_once "vistas/encabezado.php";
@@ -74,9 +99,9 @@ class UsuarioControlador{
         if($usuarioSQL->verificarAtributos($usuarioSQL)){
             
             if($usuarioSQL->getId() > 0){
-                $this->modeloUsuario->Actualizar($usuarioSQL);
+                $this->modelo->Actualizar($usuarioSQL);
             }
-            else{$this->modeloUsuario->Insertar($usuarioSQL);}
+            else{$this->modelo->Insertar($usuarioSQL);}
             //$usuarioSQL->getId() > 0 ?
             
             header("location:?c=usuario");
@@ -93,14 +118,14 @@ class UsuarioControlador{
         $contraseñaEncriptada = password_hash($_POST['contrasenia'], PASSWORD_DEFAULT);
         $usuarioSQL->setContrasenia($contraseñaEncriptada);
 
-        $this->modeloUsuario->Actualizarcontraseña($usuarioSQL);
+        $this->modelo->Actualizarcontraseña($usuarioSQL);
         
         header("location:?c=usuario");
 
     }
     
     public function Borrar(){
-        $this->modeloUsuario->Eliminar($_GET["id"]);
+        $this->modelo->Eliminar($_GET["id"]);
         header("location:?c=usuario");
     }
 

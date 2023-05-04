@@ -89,11 +89,11 @@ class Usuario{
     public function setPrivilegio(int $privilegio){
         $this->privilegio = $privilegio;
     }
-    public function verificarAtributos(Usuario $usuarioSQL){
+   public function verificarAtributos(Usuario $usuarioSQL){
         /*Como estaba
         if($usuarioSQL->getPrivilegio()==null){return true;}
-        if($usuarioSQL->getNombre()==null){return true;}*/
-        //$valorBoleano = false;
+        if($usuarioSQL->getNombre()==null){return true;}
+        //$valorBoleano = false;*/
 
         //if($usuarioSQL->getPrivilegio()==null){return true;}
         if($usuarioSQL->getNombre()!=null||$usuarioSQL->getPrivilegio()!=null||
@@ -148,6 +148,39 @@ class Usuario{
         try{
             $consulta = $this->pdo->prepare("SELECT * FROM usuario;");
             $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+    }
+
+    public function Paginar($limite,$numerodeRegistros){
+        try{
+            $where="";
+            if(isset($_GET["q"])){
+                $busqueda = $_GET["q"];
+                if(substr($busqueda,0,3)=='idu' && ($numdigitos=strlen($busqueda)-3)>0){
+                    $numdigitos=strlen($busqueda)-3;
+                    $idbusqueda=(substr($busqueda,-$numdigitos));
+                    $consulta = $this->pdo->prepare("SELECT * FROM usuario WHERE id = $idbusqueda ;");
+                    $consulta->execute();
+                return $consulta->fetchAll(PDO::FETCH_OBJ);}
+
+                $columnas = ['id','nombre','apellido','rfc','telefono','privilegio','user'];
+                $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $_GET["q"] . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            //echo "SELECT * FROM `clientes` $where LIMIT $limite,$numerodeRegistros;";
+            $consulta = $this->pdo->prepare("SELECT * FROM `usuario` $where LIMIT $limite,$numerodeRegistros;");
+            $consulta->execute();
+            
+
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
@@ -242,5 +275,36 @@ class Usuario{
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
+    }
+
+    public function BuscarEnTabla($busqueda){
+        try{
+            if(substr($busqueda,0,3)=='idu' && ($numdigitos=strlen($busqueda)-3)>0){
+                $numdigitos=strlen($busqueda)-3;
+                $idbusqueda=(substr($busqueda,-$numdigitos));
+                $consulta = $this->pdo->prepare("SELECT * FROM usuario WHERE id = $idbusqueda ;");
+                $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);}
+
+            $columnas = ['id','nombre','apellido','rfc','telefono','privilegio','user'];
+            if ($busqueda != null) {    
+            $where = "WHERE (";
+            
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $busqueda . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+            $consulta = $this->pdo->prepare("SELECT * FROM usuario ".$where.";");
+            
+             //echo("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcion){
+            die($excepcion->getMessage());
+        }
+
     }
 }

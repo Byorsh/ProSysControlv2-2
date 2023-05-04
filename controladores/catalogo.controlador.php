@@ -16,6 +16,31 @@ class CatalogoControlador{
         require_once "vistas/pie.php";
     }
 
+    public function PaginarN(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/catalogo/index.php";
+        require_once "vistas/pie.php";
+    }
+    public function BuscaryPaginar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/catalogoindex.php";
+        require_once "vistas/pie.php";
+
+        
+        
+    }
+    public function Buscar(){
+
+        require_once "vistas/encabezado.php";
+        $_GET["q"]=$_POST['campo'];
+        require_once "vistas/catalogo/index.php";
+        require_once "vistas/pie.php";
+
+        
+    }
+
     public function FormCrear(){
         $titulo="Registrar";
         $catalogoSQL = new Catalogo();
