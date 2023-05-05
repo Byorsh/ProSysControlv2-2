@@ -36,7 +36,7 @@
         <!-- Navbar Right Menu-->
         <div class="navbar-custom-menu">
           <ul class="top-nav">
-            <!--Notification Menu-->
+            <!--Notification Menu
             <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
               <ul class="dropdown-menu">
                 <li class="not-head">You have 4 new notifications.</li>
@@ -51,13 +51,15 @@
                   </a></li>
                 <li class="not-footer"><a href="#">See all notifications.</a></li>
               </ul>
-            </li>
+            </li>-->
             <!-- User Menu-->
             <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
               <ul class="dropdown-menu settings-menu">
-                <li><a href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-                <li><a href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                <li><a href="?c=inicio&a=Salir"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                <?php if ($_SESSION['tipoUsuario'] == 'Admin') { ?>
+                <li><a href="?c=inicio&a=res"><i class="fa fa-cog fa-lg"></i> Respaldo</a></li>
+                <?php } ?>
+                <!--<li><a href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>-->
+                <li><a href="?c=inicio&a=Salir"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
               </ul>
             </li>
           </ul>
