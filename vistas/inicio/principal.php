@@ -73,6 +73,7 @@
               </div>
             </div>
           </div>
+          
           <!--<div class="col-md-6">
             <div class="card">
               <h3 class="card-title">Getting Started</h3>
