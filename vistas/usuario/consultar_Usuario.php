@@ -71,12 +71,6 @@
                         <input class="form-control" name="user" id="usuariou" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this); handleSubmit();" disabled>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
-                      <div class="col-lg-10">
-                        <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" value="<?= $usuarioSQL->getContrasenia() ?>" onchange="handleSubmit()" disabled>
-                      </div>
-                    </div>
 
                     <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio</label>
                     <div class="col-lg-10">

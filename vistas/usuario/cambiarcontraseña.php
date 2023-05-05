@@ -24,13 +24,14 @@
             $regex = new Regex;
 
             if(isset($_GET['id']) && $_SESSION['tipoUsuario'] != 'Admin'){
-                echo "Error que se que puede ocurrir pero aun no arreglo";
+              include("page-error.php");
             }
+            else{
             
             ?>
               <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" id="formcontraseña" action="?c=usuario&a=Guardarcontraseña">
-                <legend><?= $usuarioSQL->getId() ?> Cambio de contraseña</legend>
+                <legend>Cambio de contraseña</legend>
                 <div class="form-group">
                   <div class="col-md-8">
                     <input class="form-control" name="id" type="hidden" value="<?= $usuarioSQL->getId() ?>">
@@ -66,3 +67,4 @@
       </div>
     </div>
      <script src="vistas/usuario/cambiar_Contraseña.js"></script>
+     <?php  } ?>
