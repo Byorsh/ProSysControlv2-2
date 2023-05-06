@@ -41,7 +41,7 @@
                   <div class="form-group">
                   <label class="control-label col-md-3" for="ApellidosC">Apellidos *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="apellidosC" id="apellidoPaterno" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
+                    <input class="form-control" name="apellidosC" id="apellidoPaterno" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onchange="handleSubmit()" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))" disabled>
                     <div class="alert alert-danger" role="alert" id="advertenciaApellidoPaterno" hidden>
                       Los apellidos unicamente pueden contener letras y espacios
                     </div>

@@ -101,7 +101,7 @@
           </li>
           <!--condicion para ocultar si es tecnico-->
           <?php if ($_SESSION['tipoUsuario'] != 'Tecnico') { ?>
-            <li><a href="#"><i class="fa fa-shopping-cart"></i><span>Punto de venta</span></a></li>
+            <!--<li><a href="#"><i class="fa fa-shopping-cart"></i><span>Punto de venta</span></a></li>-->
 
             <li class="treeview"><a href="#"><i class="fa fa-solid fa-bars"></i><span>Catalogo</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
@@ -121,7 +121,7 @@
                 <li><a href="?c=usuario"><i class="fa fa-list"></i> Lista de Usuarios</a></li>
               </ul>
             </li>
-            <li><a href="?c=herramientas"><i class="fa fa-shopping-cart"></i><span>Correos</span></a></li>
+            <!--<li><a href="?c=herramientas"><i class="fa fa-shopping-cart"></i><span>Correos</span></a></li>-->
           <?php } ?>
           <!--<li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">

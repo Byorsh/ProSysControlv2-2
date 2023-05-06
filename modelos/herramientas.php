@@ -124,9 +124,9 @@ class Correo{
             $mail->Body = $correo->getMessage();
             $mail->AltBody = $correo->getMessage();
 
-            echo "<script>console.log('Enviando el correo'); </script>";
+            echo "Enviando el correo";
             $mail->send();
-            echo "<script>console.log('El mensaje se ha enviado correctamente'); </script>";
+            echo "El mensaje se ha enviado correctamente";
 
         } catch (Exception $e){
             echo "Ha ocurrido un error al enviar el mensaje: {$mail->ErrorInfo}";
