@@ -85,8 +85,6 @@
                   <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
                   <div class="col-md-8">
                     <input class="form-control" name="precioVenta" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" maxlength="12" min="1" onchange="handleSubmit()" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
-                    <div class="alert alert-danger" role="alert" id="advertenciaPrecioVenta" hidden>
-                    </div>
                     <div class="alert alert-success" role="alert" id="precioSugerido" hidden> 
                     </div>
                   </div>
