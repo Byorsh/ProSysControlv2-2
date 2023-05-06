@@ -31,6 +31,7 @@ require_once "modelos/database.php";
 
                                                 echo "action='?c=cliente&a=Buscar'";
                                               }
+                                              
 
                                               ?>>
 
@@ -170,3 +171,9 @@ require_once "modelos/database.php";
 </div>
 </div>
 </div>
+<?php
+if(isset($_GET['guardado'])){if($_GET['guardado']=='v'){
+  $regex = new Regex();
+  $regex->sweet_alerts("Registro");
+}}
+?>

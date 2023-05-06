@@ -7,6 +7,7 @@ let patrones = {
     usuario: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}/,
     password: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}/
 }
+const formulario= document.getElementById('form');
 
 function handleSubmit() {
     //validar datos ingresados
@@ -105,6 +106,24 @@ function handleCambiarContraseña(idusuario) {
             window.location.href = '?c=usuario&a=FormCambiarcontraseña&id='+idusuario;
         }
     })
+}
+function Guardar() {
+    Swal.fire({
+        title: "¿Estás seguro de enviar los cambios?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, enviar cambios",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          console.log("si");
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
 }
 
 function mayus(e) {

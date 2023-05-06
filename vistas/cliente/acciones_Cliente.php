@@ -18,7 +18,7 @@
         <div class="row">
 
           <div class="well bs-component">
-            <form class="form-horizontal" method="POST" action="?c=cliente&a=Guardar">
+            <form class="form-horizontal"  id="formcliente" method="POST" action="?c=cliente&a=Guardar">
               <fieldset>
                 <h3 class="control-label">Registro del Cliente</h3>
                 <hr/>
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Rfc">RFC </label>
+                  <label class="control-label col-md-3" for="Rfc" >RFC </label>
                   <div class="col-md-8">
                     <input class="form-control" name="rfc" id="rfc" type="text" placeholder="Introduce el rfc del cliente" value="<?= $clienteSQL->getRfc() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="13" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))">
                     <div class="alert alert-danger" role="alert" id="advertenciaRfc" hidden>
@@ -95,11 +95,12 @@
 
                 <div>
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                    <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()"disabled>Enviar</button>
                     <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                     <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                   </div>
                 </div>
+            </form>
           </div>
         </div>
       </div>

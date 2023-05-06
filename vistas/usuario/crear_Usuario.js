@@ -7,6 +7,7 @@ let patrones = {
     usuario: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}/,
     password: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}/
 }
+const formulario= document.getElementById('form');
 
 function handleSubmit() {
     //validar datos ingresados
@@ -103,6 +104,23 @@ function handleCancelar() {
             window.location.href = '?c=usuario';
         }
     })
+}
+function Guardar() {
+    Swal.fire({
+        title: "¿Son los datos correctos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, guardar registro",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
 }
 
 function mayus(e) {

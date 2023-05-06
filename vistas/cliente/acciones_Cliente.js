@@ -5,6 +5,7 @@ let patrones = {
     telefono: /\+?\(?\d{2,4}\)?[\d\s-]{8,10}/,
     correo: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
 }
+const formulario= document.getElementById('formcliente');
 
 function handleSubmit() {
     let rfc = patrones.rfc.test(document.getElementById('rfc').value);
@@ -81,6 +82,45 @@ function handleCancelar() {
         }
     })
 }
+
+function Guardar() {
+    Swal.fire({
+        title: "¿Son los datos correctos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, guardar registro",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          console.log("si");
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
+}
+function Actualizar() {
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¿Quieres enviar los cambios?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, enviar cambios",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          console.log("si");
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
+}
+
 
 function mayus(e) {
     e.value = e.value.toUpperCase();
