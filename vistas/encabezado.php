@@ -56,7 +56,7 @@
             <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
               <ul class="dropdown-menu settings-menu">
                 <?php if ($_SESSION['tipoUsuario'] == 'Admin') { ?>
-                <li><a href="?c=inicio&a=res"><i class="fa fa-cog fa-lg"></i> Respaldo</a></li>
+                <li><a href="?c=inicio&a=res"><i class="fa fa-upload fa-lg"></i> Respaldo</a></li>
                 <?php } ?>
                 <!--<li><a href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>-->
                 <li><a href="?c=inicio&a=Salir"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
@@ -100,15 +100,15 @@
             </ul>
           </li>
           <!--condicion para ocultar si es tecnico-->
-          <?php if ($_SESSION['tipoUsuario'] != 'Tecnico') { ?>
-            <!--<li><a href="#"><i class="fa fa-shopping-cart"></i><span>Punto de venta</span></a></li>-->
+          <!--<?php if ($_SESSION['tipoUsuario'] != 'Tecnico') { ?>
+            <li><a href="#"><i class="fa fa-shopping-cart"></i><span>Punto de venta</span></a></li>
 
             <li class="treeview"><a href="#"><i class="fa fa-solid fa-bars"></i><span>Catalogo</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="?c=catalogo&a=FormCrear"><i class="fa fa-plus-square"></i> Agregar Articulos</a></li>
                 <li><a href="?c=catalogo"><i class="fa fa-list"></i> Lista de Articulos</a></li>
               </ul>
-            </li>
+            </li>-->
           <?php } ?>
           <!--condicion para ocultar si es tecnico-->
           <?php if ($_SESSION['tipoUsuario'] != 'Tecnico') { ?>

@@ -63,5 +63,49 @@ function alertaLogin(tipoAlerta){//son iguales solo cambia segun el tipo de erro
             dangerMode: true,
         })
     }
+    if(tipoAlerta=="Registro realizado"){
+        swal({
+            icon: 'success',
+            title: 'Registro Exitoso',
+            text: '¡El usuario ha sido registrado exitosamente!',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Aquí puedes redirigir al usuario a una página específica, si es necesario
+            }
+          })
+    }
+    if(tipoAlerta=="Base respaldada"){
+        swal({
+            icon: 'success',
+            title: 'Respaldo Exitoso',
+            text: '¡El respaldo se a subido y descargado exitosamente!',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Aquí puedes redirigir al usuario a una página específica, si es necesario
+            }
+          })
+    }
+    if(tipoAlerta=="Entrada"){
+        swal({
+            icon: 'success',
+            title: 'Inicio de sesion exitoso'
+          })
+    }if(tipoAlerta=="Registro"){
+        swal({
+            icon: 'success',
+            title: 'Registro Exitoso',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Aquí puedes redirigir al usuario a una página específica, si es necesario
+            }
+          })
+    }
+      
     
 }

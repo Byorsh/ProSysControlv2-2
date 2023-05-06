@@ -66,13 +66,14 @@
             </div>
           </div>
           <div class="col-md-3" onclick="clickReporteDireccionHref('?c=usuario&a=FormCambiarcontraseña')">
-            <div class="widget-small warning"><i class="icon fa fa-clock-o fa-3x"></i>
+            <div class="widget-small warning"><i class="icon fa fa-lock fa-3x"></i>
               <div class="info">
                 <h4>Cambiar mi contraseña</h4>
                 <p><b></b></p>
               </div>
             </div>
           </div>
+
           
           <!--<div class="col-md-6">
             <div class="card">
@@ -95,9 +96,12 @@
       </div>
     </div>
     <script>
-      var controlador = document.getElementById("reporte");
-      controlador.addEventListener("mouseover",function(){this.style.cursor = "hand";})
       function clickReporteDireccionHref(url){
         location.href = url;
       }
     </script>
+    <script src="vistas/alertas/alertas.js"></script>
+    <?php /*
+$regex = new Regex;
+$regex->sweet_alerts("Base respaldada");
+*/ ?>

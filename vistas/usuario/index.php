@@ -150,7 +150,7 @@
             }
             echo "<a class='btn-btn-secondary' type='button'>Paginas  </a> ";
             for ($i = 1; $i <= $num_paginas; $i++) {
-              echo "<a class='page-link' href='?c=usuarioe&a=PaginarN&pagina=$i$url_busqueda'>$i</a> ";
+              echo "<a class='page-link' href='?c=usuario&a=PaginarN&pagina=$i$url_busqueda'>$i</a> ";
             }
             ?>
           </div>
@@ -162,8 +162,9 @@
   </div>
 </div>
 </div>
-<script>
-  function toggleButtonagregarTaller() {
-
-  }
-</script>
+<?php
+if(isset($_GET['guardado'])){if($_GET['guardado']=='v'){
+  $regex = new Regex();
+  $regex->sweet_alerts("Registro");
+}}
+?>

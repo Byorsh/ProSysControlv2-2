@@ -52,6 +52,7 @@ class ClienteControlador{
         require_once "vistas/encabezado.php";
         require_once "vistas/cliente/acciones_Cliente.php";
         require_once "vistas/pie.php";
+        
     }
 
     public function FormConsultar(){
@@ -82,12 +83,15 @@ class ClienteControlador{
         $clienteSQL->getId() > 0 ?
         $this->modelo->Actualizar($clienteSQL) :
         $this->modelo->Insertar($clienteSQL);
-        header("location:?c=cliente");
+        header("location:?c=cliente&guardado=v");
+        
+
     }
     
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
         header("location:?c=cliente");
     }
+    
 
 }

@@ -86,10 +86,8 @@ class InicioControlador{
                             header('Pragma: public');
                             header('Content-Length: ' . filesize(BACKUP_PATH.$DataBASE));
                             readfile(BACKUP_PATH.$DataBASE);
-                            exit;
                         }
                         echo 'Copia de seguridad realizada con éxito';
-                        $bandera_respaldo=true;
                     }else{
                         echo 'Ocurrio un error inesperado al crear la copia de seguridad';
                     }
@@ -99,19 +97,11 @@ class InicioControlador{
             }
             mysqli_free_result($result);
         }
-        if($bandera_respaldo){
-            require_once "vistas/encabezado.php";
-            require_once "vistas/inicio/principal.php";
-            require_once "vistas/pie.php";
-        }
-
-
-
-        
     }
 
     public function Salir(){
         require_once "vistas/login/salir.php";
         
     }
+
 }

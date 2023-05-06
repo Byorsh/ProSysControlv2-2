@@ -31,7 +31,7 @@
               $tipoUsuarioDefecto = $usuarioSQL->getPrivilegio();
             ?>
               <!--variable de php para verificar si faltan campos por llenar-->
-              <form class="form-horizontal" method="POST" action="?c=usuario&a=Guardar">
+              <form class="form-horizontal" method="POST" id="form" action="?c=usuario&a=Guardar">
                 <legend class="control-label"><?= $titulo ?> Usuario</legend>
                 <div class="form-group">
                   <div class="col-md-8">
@@ -117,13 +117,14 @@
                   </div>
                 </div>
                 <div class="col-lg-10 col-lg-offset-2">
-                  <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                  <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                   <?php if($actualizandoBandera){ ?>
                   <button class="btn btn-primary" type="button" onclick="handleCambiarContraseña('<?= $usuarioSQL->getId() ?>')">Cambiar contraseña</button>
                   <?php } ?>
                 </div>
+              </form>
               <?php } ?>
           </div>
         </div>

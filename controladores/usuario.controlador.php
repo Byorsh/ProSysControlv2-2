@@ -104,7 +104,7 @@ class UsuarioControlador{
             else{$this->modelo->Insertar($usuarioSQL);}
             //$usuarioSQL->getId() > 0 ?
             
-            header("location:?c=usuario");
+            header("location:?c=usuario&guardado=v");
 
         }
         else {
