@@ -31,7 +31,7 @@
             ?>
               <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" id="formcontraseña" action="?c=usuario&a=Guardarcontraseña">
-                <legend>Cambio de contraseña</legend>
+                <legend class="control-label">Cambio de contraseña</legend>
                 <div class="form-group">
                   <div class="col-md-8">
                     <input class="form-control" name="id" type="hidden" value="<?= $usuarioSQL->getId() ?>">
@@ -43,7 +43,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" value="" onkeyup="handleSubmit()">
                     <div class="alert alert-danger" role="alert" id="advertenciaContraseña" hidden>
-                      Contraseña muy corta
+                      Minimo de 7 caracteres requerido
                     </div>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="contrasenia validada" id="contraseña2" type="password" placeholder="Contraseña" value="" onkeyup="handleSubmit()">
                     <div class="alert alert-danger" role="alert" id="advertenciaContraseña2" hidden>
-                      No es igual a la nueva contraseña
+                      Contraseña no coincide
                     </div>
                   </div>
                 </div>
