@@ -33,7 +33,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="100" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaDescripcion" hidden>
-                      Campo obligatorio
+                      Campo obligatorio, Mínimo de 3 caracteres
                     </div>
                   </div>
                 </div>

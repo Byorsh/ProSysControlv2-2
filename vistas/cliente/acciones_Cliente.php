@@ -43,7 +43,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
                     <div class="alert alert-danger" role="alert" id="advertenciaCliente" hidden>
-                      El nombre solo debe contener letras y espacio
+                      El nombre solo debe contener letras y espacio, Mínimo de 4 caracteres
                     </div>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
 
                     <input class="form-control" name="apellidosC" id="apellidos" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onkeyup="handleSubmit(); mayus(this);" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
                     <div class="alert alert-danger" role="alert" id="advertenciaApellidos" hidden>
-                      Los apellidos unicamente pueden contener letras y espacios
+                      Los apellidos unicamente pueden contener letras y espacios, Mínimo de 4 caracteres
                     </div>
                   </div>
                 </div>

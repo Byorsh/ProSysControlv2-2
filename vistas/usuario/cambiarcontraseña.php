@@ -2,8 +2,8 @@
 <div class="content-wrapper">
   <div class="page-title">
     <div>
-      <h1><i class="fa fa-edit"></i><?= $titulo ?> Usuario</h1>
-      <p>Modulo para <?= $titulo ?> usuarios</p>
+      <h1><i class="fa fa-edit"></i>Cambiar Contraseña Usuario</h1>
+      <p>Modulo para cambiar contraseña a usuarios</p>
     </div>
     <div>
       <ul class="breadcrumb">
@@ -23,11 +23,10 @@
             require_once 'modelos/regex.php';
             $regex = new Regex;
 
-            if(isset($_GET['id']) && $_SESSION['tipoUsuario'] != 'Admin'){
+            if (isset($_GET['id']) && $_SESSION['tipoUsuario'] != 'Admin') {
               include("page-error.php");
-            }
-            else{
-            
+            } else {
+
             ?>
               <!--variable de php para verificar si faltan campos por llenar-->
               <form class="form-horizontal" method="POST" id="formcontraseña" action="?c=usuario&a=Guardarcontraseña">
@@ -37,7 +36,7 @@
                     <input class="form-control" name="id" type="hidden" value="<?= $usuarioSQL->getId() ?>">
                   </div>
                 </div>
-                
+
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Contrasenia">Nueva Contraseña *</label>
                   <div class="col-md-8">
@@ -66,5 +65,5 @@
         </div>
       </div>
     </div>
-     <script src="vistas/usuario/cambiar_Contraseña.js"></script>
-     <?php  } ?>
+    <script src="vistas/usuario/cambiar_Contraseña.js"></script>
+  <?php  } ?>

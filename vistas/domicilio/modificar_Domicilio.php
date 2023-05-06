@@ -91,7 +91,7 @@
                   <div class="col-md-8">
                     <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getObservaciones() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaObservaciones" hidden>
-                      Campo obligatorio
+                      Campo obligatorio, Mínimo de 5 caracteres
                     </div>
                   </div>
                 </div>
@@ -106,39 +106,35 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Presupuesto">Presupuesto</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="presupuesto" id="presupuesto" type="text" placeholder="Presupuesto" value="<?= $domicilioSQL->getPresupuesto() ?>" onkeyup="handleSubmit()"
-                    onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
+                    <input class="form-control" name="presupuesto" id="presupuesto" type="text" placeholder="Presupuesto" value="<?= $domicilioSQL->getPresupuesto() ?>" onkeyup="handleSubmit()" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraInicio">Hora de Inicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaInicio" id="horaInicio" type="text" placeholder="Hora de inicio del servicio" value="<?= $domicilioSQL->getHoraInicio() ?>" onchange="handleSubmit()"
-                    maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))">
+                    <input class="form-control" name="horaInicio" id="horaInicio" type="text" placeholder="Hora de inicio del servicio" value="<?= $domicilioSQL->getHoraInicio() ?>" onchange="handleSubmit()" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraFinal">Hora de Finalizacion</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaFinal" id="horaFinal" type="text" placeholder="Hora de terminacion del servicio" value="<?= $domicilioSQL->getHoraFinal() ?>" onchange="handleSubmit()"
-                    maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))">
+                    <input class="form-control" name="horaFinal" id="horaFinal" type="text" placeholder="Hora de terminacion del servicio" value="<?= $domicilioSQL->getHoraFinal() ?>" onchange="handleSubmit()" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HorasRealizadas">Horas Realizadas</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horasRealizadas" id="horasRealizadas" type="text" placeholder="Hora realizadas en el servicio" value="<?= $domicilioSQL->getTotalHoras() ?>" onchange="handleSubmit()"
-                    onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" >
+                    <input class="form-control" name="horasRealizadas" id="horasRealizadas" type="text" placeholder="Hora realizadas en el servicio" value="<?= $domicilioSQL->getTotalHoras() ?>" onchange="handleSubmit()" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="CostoTotal">Costo total</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="costoTotal" id="costoTotal" type="text" placeholder="Costo total" value="<?= $domicilioSQL->getCostoTotal() ?>" onchange="handleSubmit()" >
+                    <input class="form-control" name="costoTotal" id="costoTotal" type="text" placeholder="Costo total" value="<?= $domicilioSQL->getCostoTotal() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 
