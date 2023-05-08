@@ -36,32 +36,8 @@
                         echo "action='?c=taller&a=Buscar$url_filtro'";
                       }
                       
-                      ?>
+                      ?> >
 
-
-  <!--aaaaaaaaa -->
-
-  <form class="form-horizontal" method="POST" <?php
-                                              $url_busqueda = "";
-                                              $url_paginacion = "";
-                                              $url_filtro = "";
-                                              if (isset($_GET['q'])) {
-                                                $url_busqueda = "&q=" . $_GET['q'];
-                                              }
-                                              if (isset($_GET['filtro'])) {
-                                                if ($_GET['filtro'] == "yaentregados") {
-                                                  $url_filtro = "&filtro=yaentregados";
-                                                }
-                                              }
-                                              if (isset($_GET['pagina'])) {
-                                                echo "action='?c=taller&a=Buscar$url_filtro'";
-                                                $url_paginacion = "&a=BuscaryPaginar&pagina=" . $_GET['pagina'];
-                                              } else {
-
-                                                echo "action='?c=taller&a=Buscar$url_filtro'";
-                                              }
-
-                                              ?>>
 
     <div class="form-group">
 
@@ -86,12 +62,14 @@
 
       </div>
     </div>
-
-
-    <div>
   </form>
-
-
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+        <table class="table table-hover table-bordered" role="grid" id="sampleTable">
+        <thead>
                 <tr>
                   <th>ID </th>
                   <th>Id del Cliente</th>
@@ -267,22 +245,8 @@
                           </td>
                       </tr>
                   <?php 
-                  
-                  /*$arreglo[$posicionX][$posicionY]=$posicionX+$posicionY;
-                  $posicionX++; $posicionY++;*/
                 endforeach;
-                /* CODIGO QUE PODRIA OPTIMIZAR TODO
-		              $posicionX=0; $posicionY=0;
-                  foreach ($arreglo as $algo) :
-                    
-                    echo $arreglo[$posicionX][$posicionX];
-                    $posicionX++;
-                  endforeach;*/
               }
-
-
-
-              // Calcular el offset
               ?>
 
 
