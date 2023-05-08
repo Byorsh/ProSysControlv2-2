@@ -1,8 +1,8 @@
 <div class="content-wrapper">
-        <div class="page-title">
-          <div>
-            <h1>Lista de Servicios a Domicilio</h1>
-            <!--<ul class="breadcrumb side">
+  <div class="page-title">
+    <div>
+      <h1>Lista de Servicios a Domicilio</h1>
+      <!--<ul class="breadcrumb side">
               <li><i class="fa fa-home fa-lg"></i></li>
               <li>Tables</li>
               <li class="active"><a href="#">Data Table</a></li>
@@ -102,7 +102,7 @@
                           <tr>
                             <td><?=$domicilioSQL->id?></td>
                             <td><?=$domicilioSQL->id_Cliente?></td>
-                            <td><?=$domicilioSQL->problematica?></td>
+                            <td><?= limitar_cadena($domicilioSQL->problematica, 30, "...") ?></td>
                             <td><?=$domicilioSQL->estado?></td>
                             <td><?=$domicilioSQL->cobrado?></td>
                             <td <?php
@@ -130,7 +130,7 @@
                           <tr>
                             <td><?=$domicilioSQL->id?></td>
                               <td><?=$domicilioSQL->id_Cliente?></td>
-                              <td><?=$domicilioSQL->problematica?></td>
+                              <td><?= limitar_cadena($domicilioSQL->problematica, 30, "...") ?></td>
                               <td><?=$domicilioSQL->estado?></td>
                               <td><?=$domicilioSQL->cobrado?></td>
                               <td <?php
@@ -205,3 +205,16 @@ if(isset($_GET['guardado'])){if($_GET['guardado']=='v'){
         }
 
 </script>
+<?php
+                function limitar_cadena($cadena, $limite, $sufijo)
+                {
+                  // Si la longitud es mayor que el límite...
+                  if (strlen($cadena) > $limite) {
+                    // Entonces corta la cadena y ponle el sufijo
+                    return substr($cadena, 0, $limite) . $sufijo;
+                  }
+
+                  // Si no, entonces devuelve la cadena normal
+                  return $cadena;
+                }
+                ?>
