@@ -84,7 +84,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getProblematica() ?></textarea>
+                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" maxlength="199" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getProblematica() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio
                     </div>
@@ -94,7 +94,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Observaciones">Observaciones *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getObservaciones() ?></textarea>
+                    <textarea class="form-control" name="observaciones" rows="4" id="observaciones" placeholder="Observaciones" maxlength="199" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getObservaciones() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaObservaciones" hidden>
                       Campo obligatorio, Mínimo de 5 caracteres
                     </div>
