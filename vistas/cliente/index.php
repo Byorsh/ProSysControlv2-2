@@ -105,7 +105,7 @@ require_once "modelos/database.php";
                       <!--condicion para ocultar si es secretario-->
                       <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
                           <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?= $idc ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?= $idc ?>"><i class="fa fa-lg fa-trash"></i></a>
+                          <a class="btn btn-warning btn-flat" onclick="Eliminar('?c=cliente&a=Borrar&id=<?= $idc ?>')"><i class="fa fa-lg fa-trash"></i></a>
 
                         <?php } ?>
                         <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?= $idc ?>"><i class="fa fa-lg fa-eye"></i></a>
@@ -131,7 +131,7 @@ require_once "modelos/database.php";
                       <!--condicion para ocultar si es secretario-->
                       <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
                           <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?= $idc ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                          <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=cliente&a=Borrar&id=<?= $idc ?>"><i class="fa fa-lg fa-trash"></i></a>
+                          <a class="btn btn-warning btn-flat" onclick="Eliminar('?c=cliente&a=Borrar&id=<?= $idc ?>')" ><i class="fa fa-lg fa-trash"></i></a>
 
                         <?php } ?>
                         <a class="btn btn-success btn-flat" href="?c=cliente&a=FormConsultar&id=<?= $idc ?>"><i class="fa fa-lg fa-eye"></i></a>
@@ -177,3 +177,18 @@ if(isset($_GET['guardado'])){if($_GET['guardado']=='v'){
   $regex->sweet_alerts("Registro");
 }}
 ?>
+<script>
+      function Eliminar(url) {
+            Swal.fire({
+                title: '¿Deseas ELIMINAR el registro?',
+                showDenyButton: true,
+                confirmButtonText: 'Confirmar',
+                denyButtonText: `Cancelar`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        }
+
+</script>

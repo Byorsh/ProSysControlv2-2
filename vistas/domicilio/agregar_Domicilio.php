@@ -32,6 +32,13 @@
                 <div class="form-group">
                   <div class="col-lg-10">
                     <input class="form-control" name="id" type="hidden">
+                    <input class="form-control" name="estado" type="hidden" value="Sin editar">
+                    <input class="form-control" name="cobrado" type="hidden" value="No">
+                    <input class="form-control" name="observaciones" type="hidden">
+                    <input class="form-control" name="presupuesto" type="hidden">
+                    <input class="form-control" name="costoTotal" type="hidden">
+                    <input class="form-control" name="observaciones" type="hidden">
+                    <input class="form-control" name="horaInicio" type="hidden" placeholder="Hora" value="00:00:00">
                   </div>
                 </div>
                 <div class="form-group">
@@ -106,24 +113,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- Todo esto es necesario? -->
-                <div class="form-group">
-                  <div>
-                    <input class="form-control" name="observaciones" type="hidden">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div>
-                    <input class="form-control" name="presupuesto" type="hidden">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div>
-                    <input class="form-control" name="costoTotal" type="hidden">
-                  </div>
-                </div>
                 <?php
                 date_default_timezone_set('America/Mazatlan');
                 $fecha_actual = date("Y-m-d");
@@ -131,7 +120,7 @@
                 ?>
                 <div>
                   <div>
-                    <input class="form-control" name="horaInicio" type="hidden" placeholder="Hora" value="<?= $hora_actual ?>">
+                    
                   </div>
                 </div>
 
@@ -162,18 +151,12 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <div class="col-md-8">
-                    <input class="form-control" name="estadoEquipo" type="hidden" value="1">
-                  </div>
-                </div>
-
                 <div class="col-lg-10 col-lg-offset-2">
                   <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>
-
+                      </form>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 let patrones = {
     problematica: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{5,100}/
 }
+const formulario = document.getElementById('form');
 
 //este creo q no se usa
 function handleSubmit() {
@@ -46,6 +47,24 @@ function handleCancelar() {
             window.location.href = '?c=domicilio';
         }
     })
+}
+
+function Guardar() {
+    Swal.fire({
+        title: "¿Son los datos correctos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, guardar registro",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
 }
 
 function mayus(e) {

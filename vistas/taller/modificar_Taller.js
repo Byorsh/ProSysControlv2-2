@@ -1,9 +1,10 @@
 let patrones = {
-  ns: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{6,30}/,
+  ns: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{2,30}/,
   marca: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{1,50}/,
   modelo: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{1,50}/,
   observaciones: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{2,100}/,
 }
+const formulario = document.getElementById('form');
 
 function handleSubmit() {
   let ns = patrones.ns.test(document.getElementById('ns').value);
@@ -49,7 +50,7 @@ function handleSubmit() {
   (ns && marca && modelo && observaciones && (tecnicoAsignado.value >= 0) && (fecha != "")) ?
     document.getElementById('submitButton').disabled = false :
     handleBloquearSubmit();
-
+  
 
 }
 
@@ -74,6 +75,24 @@ function handleCancelar() {
         window.location.href = '?c=taller';
     }
 })
+}
+
+function Guardar() {
+  Swal.fire({
+      title: "¿Estás seguro de enviar los cambios?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, enviar cambios",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // El usuario hizo clic en "Aceptar", envía los cambios
+        formulario.submit();
+      } else {
+        // El usuario hizo clic en "Cancelar", no envía los cambios
+        return false;
+      }
+    });
 }
 
 function mayus(e) {

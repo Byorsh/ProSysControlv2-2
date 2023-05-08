@@ -5,6 +5,7 @@ let patrones = {
     precioDeVenta: /[0-9.]{1,12}/,
     porcentajeGanancia: /[0-9.]{1,12}/
 }
+const formulario= document.getElementById('form');
 
 function handleSubmit() {
     //validar datos ingresados
@@ -98,6 +99,42 @@ function handleCancelar() {
             window.location.href = '?c=catalogo';
         }
     })
+}
+
+function Guardar() {
+    Swal.fire({
+        title: "¿Son los datos correctos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, guardar registro",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
+}
+function Actualizar() {
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¿Quieres enviar los cambios?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, enviar cambios",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
 }
 
 function mayus(e) {

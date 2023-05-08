@@ -25,7 +25,7 @@
             $regex = new Regex;
             $camposporllenar = true;
             ?>
-            <form class="form-horizontal" method="POST" action="?c=taller&a=Guardar">
+            <form class="form-horizontal" id="form" method="POST" action="?c=taller&a=Guardar">
               <fieldset>
                 <legend class="control-label">Registro del Equipo en Taller</legend>
                 <div class="col-lg-10">
@@ -34,6 +34,7 @@
                 <div class="form-group">
                   <div class="col-lg-10">
                     <input class="form-control" name="id" type="hidden">
+                    <input class="form-control" name="cobrado" type="hidden" value="No">
                   </div>
                 </div>
                 <div class="form-group">
@@ -95,7 +96,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeyup="mayus(this); handleSubmit();" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaSerie" hidden>
-                      Mínimo de 6 caracteres
+                      Mínimo de 2 caracteres
                     </div>
                   </div>
                 </div>
@@ -201,7 +202,7 @@
                 </div>
 
                 <div class="col-lg-10 col-lg-offset-2">
-                  <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                  <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>

@@ -1,9 +1,10 @@
 let patrones = {
-    ns: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{6,30}/,
+    ns: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{2,30}/,
     marca: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{1,50}/,
     modelo: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{1,50}/,
     observaciones: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{4,100}/,
 }
+const formulario = document.getElementById('form');
 
 function handleSubmit() {
     let ns = patrones.ns.test(document.getElementById('ns').value);
@@ -15,11 +16,11 @@ function handleSubmit() {
     let idCliente = document.getElementById('idc').value;
     let telefonoCliente = document.getElementById('listaTc').value;
     let correoCliente = document.getElementById('listaCc').value;
-
+    /*
     console.log(`id cliente: ${idCliente}`);
     console.log(`telefono cliente: ${telefonoCliente}`);
     console.log(`correo cliente: ${correoCliente}`);
-
+    */
     if (document.getElementById('ns').value != "") {
         ns ?
             document.getElementById('advertenciaSerie').hidden = true :
@@ -79,6 +80,23 @@ function handleCancelar() {
             window.location.href = '?c=taller';
         }
     })
+}
+function Guardar() {
+    Swal.fire({
+        title: "¿Son los datos correctos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, guardar registro",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
 }
 
 function mayus(e) {

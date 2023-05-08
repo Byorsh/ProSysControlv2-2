@@ -18,6 +18,7 @@ class Taller
     private $fechaPrometida;
     private $tecnicoAsignado;
     private $estadoEquipo;
+    private $cobrado;
 
     public function __CONSTRUCT()
     {
@@ -153,6 +154,13 @@ class Taller
     {
         $this->estadoEquipo = $estadoEquipo;
     }
+    public function getCobrado() : ?string{
+        return $this->cobrado;
+    }
+
+    public function setCobrado(string $cobrado){
+        $this->cobrado = $cobrado;
+    }
 
     public function Cantidad()
     {
@@ -189,7 +197,7 @@ class Taller
     {
         try {
             //SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' ORDER BY `fechaEntrada` ASC LIMIT 10,10;
-            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE `estadoEquipo`='10';");
+            $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE `estadoEquipo`='10' AND `cobrado`='Si' ;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $excepcion) {
@@ -217,7 +225,7 @@ class Taller
             }*/
             $and = "";
             if (isset($_GET["q"])) {
-                $columnas = ['id', 'idCliente', 'ns', 'marca', 'modelo', 'tipoEquipo', 'observaciones', 'accesorios', 'fechaEntrada', 'horaEntrada', 'fechaPrometida', 'tecnicoAsignado', 'estadoEquipo'];
+                $columnas = ['id', 'idCliente', 'ns', 'marca', 'modelo', 'tipoEquipo', 'observaciones', 'accesorios', 'fechaEntrada', 'horaEntrada', 'fechaPrometida', 'tecnicoAsignado', 'estadoEquipo', 'cobrado'];
                 $and = "AND (";
 
                 $cont = count($columnas);
@@ -237,7 +245,7 @@ class Taller
                 if (substr($busqueda, 0, 3) == 'idc' && ($numdigitos = strlen($busqueda) - 3) > 0) {
                     $numdigitos = strlen($busqueda) - 3;
                     $idbusqueda = (substr($busqueda, -$numdigitos));
-                    $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE idCliente = $idbusqueda ORDER BY estadoEquipo LIMIT $limite,$numerodeRegistros;");
+                    $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE idCliente = $idbusqueda ORDER BY fechaPrometida, estadoEquipo, fechaEntrada LIMIT $limite,$numerodeRegistros;");
                     $consulta->execute();
                     return $consulta->fetchAll(PDO::FETCH_OBJ);
                 }
@@ -245,14 +253,14 @@ class Taller
             if (isset($_GET["filtro"])) {
                 if ($_GET["filtro"] == "yaentregados") {
 
-                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");
+                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' AND `cobrado`='Si' $and ORDER BY fechaPrometida, estadoEquipo, fechaEntrada LIMIT $limite,$numerodeRegistros;");
                     //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
                 } else {
-                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`  NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");
+                    $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`  NOT LIKE '10' $and ORDER BY fechaPrometida, estadoEquipo, fechaEntrada LIMIT $limite,$numerodeRegistros;");
                     //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`  NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
                 }
             } else {
-                $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;");
+                $consulta = $this->pdo->prepare("SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' $and ORDER BY fechaPrometida, estadoEquipo, fechaEntrada LIMIT $limite,$numerodeRegistros;");
             }
 
             $consulta->execute();
@@ -351,6 +359,7 @@ class Taller
             $tallerSQL->setFechaPrometida($reTaller->fechaPrometida);
             $tallerSQL->settecnicoAsignado($reTaller->tecnicoAsignado);
             $tallerSQL->setestadoEquipo($reTaller->estadoEquipo);
+            $tallerSQL->setCobrado($reTaller->cobrado);
 
             return $tallerSQL;
         } catch (Exception $excepcion) {
@@ -362,8 +371,8 @@ class Taller
     public function Insertar(Taller $tallerSQL)
     {
         try {
-            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO ordenreparacion(idCliente, ns, marca, modelo, tipoEquipo, observaciones, accesorios, fechaEntrada, horaEntrada, fechaPrometida, tecnicoAsignado, estadoEquipo,cobrado) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 //$tallerSQL->NULL,
                 $tallerSQL->getIdCliente(),
@@ -377,7 +386,9 @@ class Taller
                 $tallerSQL->getHoraEntrada(),
                 $tallerSQL->getFechaPrometida(),
                 $tallerSQL->gettecnicoAsignado(),
-                $tallerSQL->getestadoEquipo()
+                $tallerSQL->getestadoEquipo(),
+                $tallerSQL->getCobrado()
+
             ));
 
             try{
@@ -492,7 +503,8 @@ class Taller
             horaEntrada=?,
             fechaPrometida=?,
             tecnicoAsignado=?,
-            estadoEquipo=?
+            estadoEquipo=?,
+            cobrado=?
             WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
                 $tallerSQL->getIdCliente(),
@@ -507,6 +519,7 @@ class Taller
                 $tallerSQL->getFechaPrometida(),
                 $tallerSQL->gettecnicoAsignado(),
                 $tallerSQL->getestadoEquipo(),
+                $tallerSQL->getCobrado(),
                 $tallerSQL->getId()
             ));
         } catch (Exception $excepcion) {
@@ -531,12 +544,12 @@ class Taller
             if (substr($busqueda, 0, 3) == 'idc' && ($numdigitos = strlen($busqueda) - 3) > 0) {
                 $numdigitos = strlen($busqueda) - 3;
                 $idbusqueda = (substr($busqueda, -$numdigitos));
-                $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE idCliente = $idbusqueda ORDER BY estadoEquipo;");
+                $consulta = $this->pdo->prepare("SELECT * FROM ordenreparacion WHERE idCliente = $idbusqueda ORDER BY fechaPrometida, estadoEquipo, fechaEntrada;");
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_OBJ);
             }
 
-            $columnas = ['id', 'idCliente', 'ns', 'marca', 'modelo', 'tipoEquipo', 'observaciones', 'accesorios', 'fechaEntrada', 'horaEntrada', 'fechaPrometida', 'tecnicoAsignado', 'estadoEquipo'];
+            $columnas = ['id', 'idCliente', 'ns', 'marca', 'modelo', 'tipoEquipo', 'observaciones', 'accesorios', 'fechaEntrada', 'horaEntrada', 'fechaPrometida', 'tecnicoAsignado', 'estadoEquipo', 'cobrado'];
             if ($busqueda != null) {
                 $where = "WHERE (";
 
@@ -567,4 +580,6 @@ class Taller
             die($excepcion->getMessage());
         }
     }
+    
+
 }

@@ -13,6 +13,8 @@ class Domicilio{
     private $horaInicio;
     private $horaFinal;
     private $horasRealizadas;
+    private $estado;
+    private $cobrado;
 
     public function __CONSTRUCT(){
         $this->pdo = Database::Conectar();
@@ -97,6 +99,20 @@ class Domicilio{
     public function setTotalHoras(float $horasRealizadas){
         $this->horasRealizadas = $horasRealizadas;
     }
+    public function getEstado() : ?string{
+        return $this->estado;
+    }
+
+    public function setEstado(string $estado){
+        $this->estado = $estado;
+    }
+    public function getCobrado() : ?string{
+        return $this->cobrado;
+    }
+
+    public function setCobrado(string $cobrado){
+        $this->cobrado = $cobrado;
+    }
 
     public function Cantidad(){
         try{
@@ -110,13 +126,25 @@ class Domicilio{
 
     public function Listar(){
         try{
-            $consulta = $this->pdo->prepare("SELECT * FROM domicilio;");
+            $consulta = $this->pdo->prepare("SELECT * FROM domicilio WHERE NOT(estado LIKE 'Finalizado' AND cobrado LIKE 'Si');");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
         }
     }
+    public function ListarYaEntregados()
+    {
+        try {
+            //SELECT * FROM `ordenreparacion` WHERE `estadoEquipo` NOT LIKE '10' ORDER BY `fechaEntrada` ASC LIMIT 10,10;
+            $consulta = $this->pdo->prepare("SELECT * FROM domicilio WHERE estado LIKE 'Finalizado' AND cobrado LIKE 'Si' ;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $excepcion) {
+            die($excepcion->getMessage());
+        }
+    }
+
     public function ListarClientes(){
         try{
             $consulta = $this->pdo->prepare("SELECT idClientes,nombreCliente,apellidosC FROM `clientes`;");
@@ -171,6 +199,9 @@ class Domicilio{
             $domicilioSQL->setHoraInicio($reDomicilio->horaInicio);
             $domicilioSQL->setHoraFinal($reDomicilio->horaFinal);
             $domicilioSQL->setTotalHoras($reDomicilio->horasRealizadas);
+            $domicilioSQL->setEstado($reDomicilio->estado);
+            $domicilioSQL->setCobrado($reDomicilio->cobrado);
+
 
             return $domicilioSQL;
         }catch(Exception $excepcion){
@@ -181,8 +212,8 @@ class Domicilio{
 
     public function Insertar(Domicilio $domicilioSQL){
         try{
-            $consulta = "INSERT INTO domicilio(id_Cliente, problematica, observaciones, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas) 
-            VALUES (?,?,?,?,?,?,?,?,?)";
+            $consulta = "INSERT INTO domicilio(id_Cliente, problematica, observaciones, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas,estado,cobrado) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 $domicilioSQL->getIdCliente(),
                 $domicilioSQL->getProblematica(),
@@ -192,7 +223,9 @@ class Domicilio{
                 $domicilioSQL->getCostoTotal(),
                 $domicilioSQL->getHoraInicio(),
                 $domicilioSQL->getHoraFinal(),
-                $domicilioSQL->getTotalHoras()
+                $domicilioSQL->getTotalHoras(),
+                $domicilioSQL->getEstado(),
+                $domicilioSQL->getCobrado()
             ));
         }catch(Exception $excepcion){
             die($excepcion->getMessage());
@@ -210,7 +243,9 @@ class Domicilio{
             costoTotal=?,
             horaInicio=?,
             horaFinal=?,
-            horasRealizadas=?
+            horasRealizadas=?,
+            estado=?,
+            cobrado=?
             WHERE id=?;";
             $this->pdo->prepare($consulta)->execute(array(
                 $domicilioSQL->getIdCliente(),
@@ -222,6 +257,8 @@ class Domicilio{
                 $domicilioSQL->getHoraInicio(),
                 $domicilioSQL->getHoraFinal(),
                 $domicilioSQL->getTotalHoras(),
+                $domicilioSQL->getEstado(),
+                $domicilioSQL->getCobrado(),
                 $domicilioSQL->getId()
             ));
         }catch(Exception $excepcion){
@@ -237,4 +274,106 @@ class Domicilio{
             die($excepcion->getMessage());
         }
     }
+    //PAGINAR Y BUSCAR
+    public function BuscarEnTabla($busqueda)
+    {
+        try {
+            $not = "AND NOT(estado LIKE 'Finalizado' AND cobrado LIKE 'Si')";
+            if (isset($_GET['filtro'])) {
+                $not = "AND estado LIKE 'Finalizado' AND cobrado LIKE 'Si'";
+            }
+            if (substr($busqueda, 0, 3) == 'idc' && ($numdigitos = strlen($busqueda) - 3) > 0) {
+                $numdigitos = strlen($busqueda) - 3;
+                $idbusqueda = (substr($busqueda, -$numdigitos));
+                $consulta = $this->pdo->prepare("SELECT * FROM domicilio WHERE id_Cliente = $idbusqueda ORDER BY fechaProgramada;");
+                $consulta->execute();
+                return $consulta->fetchAll(PDO::FETCH_OBJ);
+            }
+
+            $columnas = ['id', 'id_Cliente', 'problematica', 'observaciones', 'fechaProgramada', 'presupuesto', 'costoTotal', 'horaInicio', 'horaFinal', 'horasRealizadas', 'estado','cobrado'];
+            if ($busqueda != null) {
+                $where = "WHERE (";
+
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $where .= $columnas[$i] . " LIKE '%" . $busqueda . "%' OR ";
+                }
+                $where = substr_replace($where, "", -3);
+                $where .= ")";
+            }
+
+            $consulta = $this->pdo->prepare("SELECT * FROM domicilio " . $where . " $not;");
+
+            //echo("SELECT * FROM ordenreparacion ".$where." AND estadoEquipo $not '10';");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $excepcion) {
+            die($excepcion->getMessage());
+        }
+    }
+
+
+
+
+    public function Paginar($limite, $numerodeRegistros, $filtroCondicion)
+    {
+        try {
+            /*if(isset($filtroCondicion)){
+                switch($filtroCondicion){
+                    case "fechaasc":
+                        echo "si";
+                        break;
+                    case "fechadec":
+                        echo "si";
+                        break;
+                    case "yaentregado":
+                        echo "si";
+                        break;
+                    case "algonose":
+                        echo "si";
+                        break;
+                }
+            }*/
+            $and = "";
+            if (isset($_GET["q"])) {
+                $columnas = ['id', 'id_Cliente', 'problematica', 'observaciones', 'fechaProgramada', 'presupuesto', 'costoTotal', 'horaInicio', 'horaFinal', 'horasRealizadas', 'estado','cobrado'];
+                $and = "AND (";
+
+                $cont = count($columnas);
+                for ($i = 0; $i < $cont; $i++) {
+                    $and .= $columnas[$i] . " LIKE '%" . $_GET["q"] . "%' OR ";
+                }
+                $and = substr_replace($and, "", -3);
+                $and .= ")";
+                $busqueda = $_GET["q"];
+                if (substr($busqueda, 0, 3) == 'idc' && ($numdigitos = strlen($busqueda) - 3) > 0) {
+                    $numdigitos = strlen($busqueda) - 3;
+                    $idbusqueda = (substr($busqueda, -$numdigitos));
+                    $consulta = $this->pdo->prepare("SELECT * FROM domicilio WHERE id_Cliente = $idbusqueda ORDER BY fechaProgramada LIMIT $limite,$numerodeRegistros;");
+                    $consulta->execute();
+                    return $consulta->fetchAll(PDO::FETCH_OBJ);
+                }
+            }
+            if (isset($_GET["filtro"])) {
+                if ($_GET["filtro"] == "yaentregados") {
+
+                    $consulta = $this->pdo->prepare("SELECT * FROM `domicilio` WHERE estado LIKE 'Finalizado' AND cobrado LIKE 'Si' $and ORDER BY `fechaProgramada` LIMIT $limite,$numerodeRegistros;");
+                    //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`='10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
+                } else {
+                    $consulta = $this->pdo->prepare("SELECT * FROM `domicilio` WHERE NOT(estado LIKE 'Finalizado' AND cobrado LIKE 'Si') $and ORDER BY `fechaProgramada` LIMIT $limite,$numerodeRegistros;");
+                    //echo "SELECT * FROM `ordenreparacion` WHERE `estadoEquipo`  NOT LIKE '10' $and ORDER BY `fechaEntrada` LIMIT $limite,$numerodeRegistros;";
+                }
+            } else {
+                $consulta = $this->pdo->prepare("SELECT * FROM `domicilio` WHERE NOT(estado LIKE 'Finalizado' AND cobrado LIKE 'Si') $and ORDER BY `fechaProgramada` LIMIT $limite,$numerodeRegistros;");
+            }
+
+            $consulta->execute();
+
+
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $excepcion) {
+            die($excepcion->getMessage());
+        }
+    }
+
 }

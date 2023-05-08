@@ -87,12 +87,13 @@ class TallerControlador{
         $tallerSQL->setFechaPrometida($_POST['fechaPrometida']);
         $tallerSQL->settecnicoAsignado(intval($_POST['tecnicoAsignado']));
         $tallerSQL->setestadoEquipo($_POST['estadoEquipo']);
+        $tallerSQL->setCobrado($_POST['cobrado']);
 
 
         $tallerSQL->getId() > 0 ?
         $this->modelo->Actualizar($tallerSQL) :
         $this->modelo->Insertar($tallerSQL);
-        header("location:?c=taller");
+        header("location:?c=taller&guardado=v");
     }
 
     public function Cancelar(){

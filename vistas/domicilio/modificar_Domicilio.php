@@ -29,7 +29,7 @@
           ?>
 
           <div class="well bs-component">
-            <form class="form-horizontal" method="POST" action="?c=domicilio&a=Guardar">
+            <form class="form-horizontal" method="POST" id="form" action="?c=domicilio&a=Guardar">
               <fieldset>
                 <legend class="control-label">Servicio a domicilio</legend>
                 <div class="col-lg-10">
@@ -39,6 +39,11 @@
                 <div class="form-group">
                   <div class="col-lg-10">
                     <input class="form-control" name="id" type="hidden" value="<?= $domicilioSQL->getId() ?>">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-8">
+                    <input class="form-control" name="id_Cliente" type="hidden" placeholder="Introduce el id del cliente" value="<?= $idclient ?>">
                   </div>
                 </div>
 
@@ -79,7 +84,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onkeyup="mayus(this); handleSubmit();">  <?= $domicilioSQL->getProblematica() ?></textarea>
+                    <textarea class="form-control" name="problematica" rows="4" id="problematica" placeholder="Problematica para el servicio" onkeyup="mayus(this); handleSubmit();"><?= $domicilioSQL->getProblematica() ?></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio
                     </div>
@@ -99,7 +104,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="fechaProgramada" type="date" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="<?= $domicilioSQL->getFechaProgramada() ?>" onkeyup="handleSubmit()">
+                    <input class="form-control" name="fechaProgramada" type="date" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="<?= $domicilioSQL->getFechaProgramada() ?>" onchange="handleSubmit()">
                   </div>
                 </div>
 
@@ -138,6 +143,36 @@
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <label class="control-label col-md-3" >Estado del Servicio</label>
+                  <div class="col-md-8">
+                    <select class="form-control"  id="estadoEquipo" name="estado"  value selected="<?= $domicilioSQL->getEstado() ?>" onchange="handleSubmit()">
+                      <option value disabled>Seleccione una opcion</option>
+                      <option value="<?= $domicilioSQL->getEstado() ?>"><?= $domicilioSQL->getEstado() ?></option>
+                      <option value="Atendiendo">Atendiendo</option>
+                      <option value="En sitio">En sitio</option>
+                      <option value="Pendiente de repuesto">Pendiente de repuesto</option>
+                      <option value="finalizado">Finalizado</option>
+
+
+                    </select>
+                    <br>
+                  </div>
+                </div>
+                <div class="form-group">
+                <label class="control-label col-md-3" >Cobrado</label>
+                  <div class="col-md-8">
+                <?php  if(($domicilioSQL->getCobrado())=="Si"){
+                  ?>
+                    <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()" checked>Si</label>
+                    <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()">No</label>
+                  <?php } else {?>
+                    <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()">Si</label>
+                    <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()" checked>No</label>
+                    <?php } ?>
+                  </div>
+                </div>
+
                 <?php
                 date_default_timezone_set('America/Mazatlan');
                 $fecha_actual = date("Y-m-d");
@@ -146,10 +181,11 @@
                 </br>
 
                 <div class="col-lg-10 col-lg-offset-2">
-                  <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                  <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>
+              </form>
           </div>
         </div>
       </div>

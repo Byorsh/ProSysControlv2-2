@@ -1,6 +1,7 @@
 let patrones = {
     problematica: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,100}/,
 };
+const formulario = document.getElementById('form');
 
 function handleSubmit() {
     let problematica = patrones.problematica.test(
@@ -98,6 +99,24 @@ function calcularHoras() {
 
 
 }
+
+function Guardar() {
+    Swal.fire({
+        title: "¿Estás seguro de enviar los cambios?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, enviar cambios",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // El usuario hizo clic en "Aceptar", envía los cambios
+          formulario.submit();
+        } else {
+          // El usuario hizo clic en "Cancelar", no envía los cambios
+          return false;
+        }
+      });
+  }
 
 function mayus(e) {
     e.value = e.value.toLowerCase();

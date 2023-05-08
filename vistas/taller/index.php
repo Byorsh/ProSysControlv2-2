@@ -17,6 +17,10 @@
     
     <form class="form-horizontal" method="POST"
     <?php
+     date_default_timezone_set('America/Mazatlan');
+     $banderayaterminados = true;
+     $fecha_actual = date("Y-m-d");
+     $fecha1 = new DateTime($fecha_actual);
     $url_busqueda="";
     $url_paginacion="";
     $url_filtro="";
@@ -86,6 +90,7 @@
                   <th>Observaciones</th>
                   <th>Accesorios</th>
                   <th>Estado</th>
+                  <th>Cobrado</th>
                   <th>Fecha de Entrada </th>
                   <th>Fecha Prometida </th>
                   <th>Tecnico Asignado</th>
@@ -102,7 +107,7 @@
                 
                   if (isset($_GET['pagina'])) {
                     $pagina_actual = $_GET['pagina'];
-                    if(isset($_GET['filtro'])){if($_GET['filtro']=="yaentregados"){$total_registros = count($this->modelo->ListarYaEntregados());}}
+                    if(isset($_GET['filtro'])){if($_GET['filtro']=="yaentregados"){$total_registros = count($this->modelo->ListarYaEntregados());$banderayaterminados = false;}}
                     foreach ($this->modelo->Paginar(($_GET['pagina'] - 1) * $registros_por_pagina, $registros_por_pagina,"nada") as $tallerSQL) : ?>
                       <tr>
                         <td><?= $tallerSQL->id ?></td>
@@ -151,8 +156,17 @@
                         }
                           
                          ?></td>
+                         <td><?= $tallerSQL->cobrado ?></td>
                         <td><?= $tallerSQL->fechaEntrada ?></td>
-                        <td><?= $tallerSQL->fechaPrometida ?></td>
+                        <td <?php
+                                  $fecha2 = new DateTime($tallerSQL->fechaPrometida);
+                                  $dias = ($fecha1->diff($fecha2))->days;
+                                  if(($dias == 0 || $fecha1 > $fecha2) && $banderayaterminados){
+                                    ?> style="background-color: rgb(255, 109, 96);" <?php 
+                                  }else if(($dias <= 5) && $banderayaterminados){
+                                    ?> style="background-color: rgb(243, 233, 159);" <?php
+                                  }
+                              ?>><?=$tallerSQL->fechaPrometida?></td></td>
                         <?php $idreparacion = $tallerSQL->id;
                         foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
                           <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
@@ -160,7 +174,7 @@
                         <td><!--condicion para ocultar si es secretario-->
                         <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
                           <a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                            <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
+                            <a class="btn btn-warning btn-flat" onclick="Eliminar('?c=taller&a=Borrar&id=<?= $idreparacion ?>')"><i class="fa fa-lg fa-trash"></i></a>
   
                           <?php } ?>
                           <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-eye"></i></a>
@@ -170,7 +184,7 @@
                   } /*CASO CUANDO ESTA POR DEFECTO*/else {
                     $pagina_actual = 1;
                     //CONDICION POR SI EL FILTRO DE YA ENTREGADOS ESTA ACTIVO
-                    if(isset($_GET['filtro'])){if($_GET['filtro']=="yaentregados"){$total_registros = count($this->modelo->ListarYaEntregados());}}
+                    if(isset($_GET['filtro'])){if($_GET['filtro']=="yaentregados"){$total_registros = count($this->modelo->ListarYaEntregados());$banderayaterminados = false;}}
                     foreach ($this->modelo->Paginar(0, $registros_por_pagina,"nada") as $tallerSQL) : ?>
                       <tr>
                         <td><?= $tallerSQL->id ?></td>
@@ -219,8 +233,17 @@
                         }
                           
                          ?></td>
+                         <td><?= $tallerSQL->cobrado ?></td>
                         <td><?= $tallerSQL->fechaEntrada ?></td>
-                        <td><?= $tallerSQL->fechaPrometida ?></td>
+                        <td <?php
+                                  $fecha2 = new DateTime($tallerSQL->fechaPrometida);
+                                  $dias = ($fecha1->diff($fecha2))->days;
+                                  if(($dias == 0 || $fecha1 > $fecha2) && $banderayaterminados){
+                                    ?> style="background-color: rgb(255, 109, 96);" <?php 
+                                  }else if(($dias <= 5) && $banderayaterminados){
+                                    ?> style="background-color: rgb(243, 233, 159);" <?php
+                                  }
+                              ?>><?=$tallerSQL->fechaPrometida?></td>
                         <?php $idreparacion = $tallerSQL->id;
                         foreach ($this->modelo->buscarTecnicoAsignado($tallerSQL->tecnicoAsignado) as $tallerSQL) :  ?>
                           <td><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></td>
@@ -228,7 +251,7 @@
                         <!--condicion para ocultar si es secretario-->
                         <td><?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
                           <a class="btn btn-info btn-flat" href="?c=taller&a=FormModificar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                            <a class="btn btn-warning btn-flat" onclick="return confirm('¿Realmente desea eliminar?')" href="?c=taller&a=Borrar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-trash"></i></a>
+                            <a class="btn btn-warning btn-flat" onclick="Eliminar('?c=taller&a=Borrar&id=<?= $idreparacion ?>')"><i class="fa fa-lg fa-trash"></i></a>
   
                           <?php } ?>
                           <a class="btn btn-success btn-flat" href="?c=taller&a=FormConsultar&id=<?= $idreparacion ?>"><i class="fa fa-lg fa-eye"></i></a>
@@ -288,3 +311,24 @@
     </div>
   </div>
 </div>
+<?php
+if(isset($_GET['guardado'])){if($_GET['guardado']=='v'){
+  $regex = new Regex();
+  $regex->sweet_alerts("Registro");
+}}
+?>
+<script>
+      function Eliminar(url) {
+            Swal.fire({
+                title: '¿Deseas ELIMINAR el registro?',
+                showDenyButton: true,
+                confirmButtonText: 'Confirmar',
+                denyButtonText: `Cancelar`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        }
+
+</script>
