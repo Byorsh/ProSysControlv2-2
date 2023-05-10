@@ -81,7 +81,7 @@ class CatalogoControlador{
         $catalogoSQL->getId() > 0 ?
         $this->modelo->Actualizar($catalogoSQL) :
         $this->modelo->Insertar($catalogoSQL);
-        header("location:?c=catalogo");
+        header("location:?c=catalogo&guardado=v");
     }
     
     public function Borrar(){

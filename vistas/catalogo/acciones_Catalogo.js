@@ -102,6 +102,7 @@ function handleCancelar() {
 }
 
 function Guardar() {
+    const formulario= document.getElementById('formcatalogo');
     Swal.fire({
         title: "¿Son los datos correctos?",
         icon: "warning",

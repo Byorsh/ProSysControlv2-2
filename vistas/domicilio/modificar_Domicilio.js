@@ -95,7 +95,7 @@ function calcularHoras() {
     
     //Calculo costo total
     let calcularCostoTotal = presupuesto * document.getElementById("horasRealizadas").value;
-    costoTotal.value = calcularCostoTotal;
+    costoTotal.value = calcularCostoTotal.toFixed(2);
 
 
 }

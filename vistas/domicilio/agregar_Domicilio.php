@@ -48,21 +48,22 @@
                   </div>
                 </div>
                 <datalist id="listaclientes">
-                <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
-                        <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
-                      <?php endforeach; ?>
+                  <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
+                    <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
+                  <?php endforeach; ?>
                 </datalist>
 
+                <br />
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" >Nombre del Cliente *</label>
+                  <label class="control-label col-md-3">Nombre del Cliente *</label>
                   <div class="col-md-8">
                     <select class="form-control" id="listaTc" type="text" disabled>
                       <option value disabled>Seleccione un cliente</option>
                       <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
 
@@ -74,7 +75,7 @@
                       <?php foreach ($this->modelo->ListarTelefonoYCorreo() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->telefono ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -85,7 +86,7 @@
                       <?php foreach ($this->modelo->ListarTelefonoYCorreo() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->email ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -96,18 +97,19 @@
                       <?php foreach ($this->modelo->ListarDomicilios() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->domicilio ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
+                <br>
                 <div class="col-lg-10">
                   <h4>Informacion del servicio</h4>
                 </div>
-
+                <hr />
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica para el servicio *</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" id="obs" name="problematica" rows="4" placeholder="Problematica para el servicio" onkeyup="mayus(this); handleSubmit();"></textarea>
+                    <textarea class="form-control" id="obs" name="problematica" rows="4" placeholder="Problematica para el servicio" maxlength="199" onkeyup="mayus(this); handleSubmit();"></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>
                       Campo obligatorio, Mínimo de 5 caracteres
                     </div>
@@ -118,23 +120,10 @@
                 $fecha_actual = date("Y-m-d");
                 $hora_actual = date("H:i:S");
                 ?>
-                <div>
-                  <div>
-                    
-                  </div>
-                </div>
 
-                <div class="form-group">
-                  <div>
-                    <input class="form-control" name="horaFinal" type="hidden">
-                  </div>
-                </div>
 
-                <div class="form-group">
-                  <div>
-                    <input class="form-control" name="horasRealizadas" type="hidden" placeholder="horas realizadas">
-                  </div>
-                </div>
+                <input class="form-control" name="horaFinal" type="hidden">
+                <input class="form-control" name="horasRealizadas" type="hidden" placeholder="horas realizadas">
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="FechaProgramada">Fecha solicitud de servicio</label>
@@ -142,21 +131,17 @@
                     <input class="form-control" id="fecha" name="fechaProgramada" type="date" min="<?= $fechadiadeHOY ?>" max="2030-01-01" placeholder="Fecha de solicitud de servicio" value="" onchange="handleSubmit()">
                   </div>
                 </div>
-                <div>
-                  <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $fecha_actual ?>">
-                </div>
-                <div class="form-group">
-                  <div>
-                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $hora_actual ?>">
-                  </div>
-                </div>
 
-                <div class="col-lg-10 col-lg-offset-2">
+                <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $fecha_actual ?>">
+                <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha Programada" value="<?= $hora_actual ?>">
+
+
+                <div class="control-label">
                   <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>
-                      </form>
+            </form>
           </div>
         </div>
       </div>
