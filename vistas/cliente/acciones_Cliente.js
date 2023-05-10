@@ -5,7 +5,6 @@ let patrones = {
     telefono: /\+?\(?\d{2,4}\)?[\d\s-]{8,10}/,
     correo: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
 }
-const formulario= document.getElementById('formcliente');
 
 function handleSubmit() {
     let rfc = patrones.rfc.test(document.getElementById('rfc').value);
@@ -84,6 +83,7 @@ function handleCancelar() {
 }
 
 function Guardar() {
+    const formulario= document.getElementById('formcliente');
     Swal.fire({
         title: "¿Son los datos correctos?",
         icon: "warning",
@@ -112,7 +112,6 @@ function Actualizar() {
       }).then((result) => {
         if (result.isConfirmed) {
           // El usuario hizo clic en "Aceptar", envía los cambios
-          console.log("si");
           formulario.submit();
         } else {
           // El usuario hizo clic en "Cancelar", no envía los cambios

@@ -44,21 +44,21 @@
                   </div>
                 </div>
                 <datalist id="listaclientes">
-                <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
-                        <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
-                      <?php endforeach; ?>
+                  <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
+                    <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
+                  <?php endforeach; ?>
                 </datalist>
 
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" >Nombre del Cliente *</label>
+                  <label class="control-label col-md-3">Nombre del Cliente *</label>
                   <div class="col-md-8">
                     <select class="form-control" id="listaTc" type="text" disabled>
                       <option value disabled>Seleccione un cliente</option>
                       <?php foreach ($this->modelo->ListarClientes() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
 
@@ -71,7 +71,7 @@
                       <?php foreach ($this->modelo->ListarTelefonoYCorreo() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->telefono ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -82,14 +82,15 @@
                       <?php foreach ($this->modelo->ListarTelefonoYCorreo() as $tallerSQL) : ?>
                         <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->email ?></option>
                       <?php endforeach; ?>
-                    </select><br>
+                    </select>
                   </div>
                 </div>
-
+                <br>
                 <!-- Seccion de datos del equipo -->
                 <div class="col-lg-10">
                   <h4>Datos del Equipo</h4>
                 </div>
+                <hr>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
@@ -144,6 +145,7 @@
                 <div class="col-lg-10">
                   <h4>Registrar Orden</h4>
                 </div>
+                <hr>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="TecnicoAsignado">Tecnico Asignado *</label>
@@ -177,31 +179,19 @@
 
                 </div>
 
-                <div class="form-group">
-                  <!--AQUI ES DONDE SE ASIGNAN LOS VALORES DE LA FECHA Y HORA ACTUALES -->
-                  <?php
-                  date_default_timezone_set('America/Mazatlan');
-                  $fecha_actual = date("Y-m-d");
-                  $hora_actual = date("H:i:S");
-                  ?>
-                  <div class="col-md-8">
-                    <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fecha_actual ?>">
-                  </div>
-                </div>
-                <div class="form-group">
 
-                  <div class="col-md-8">
-                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual ?>">
-                  </div>
-                </div>
+                <?php
+                date_default_timezone_set('America/Mazatlan');
+                $fecha_actual = date("Y-m-d");
+                $hora_actual = date("H:i:S");
+                ?>
 
-                <div class="form-group">
-                  <div class="col-md-8">
-                    <input class="form-control" name="estadoEquipo" type="hidden" value="1">
-                  </div>
-                </div>
+                <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fecha_actual ?>">
+                <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $hora_actual ?>">
+                <input class="form-control" name="estadoEquipo" type="hidden" value="1">
 
-                <div class="col-lg-10 col-lg-offset-2">
+
+                <div class="control-label">
                   <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>

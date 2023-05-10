@@ -18,7 +18,7 @@
         <div class="row">
 
           <div class="well bs-component">
-            <form class="form-horizontal" method="POST" onsubmit="handleSubmit()" action="?c=catalogo&a=Guardar">
+            <form class="form-horizontal" id="formcatalogo" method="POST" action="?c=catalogo&a=Guardar">
               <fieldset>
                 <legend class="control-label">Registrar Articulo</legend>
 
@@ -103,8 +103,8 @@
                   </div>
                 </div>
 
-                <div class="col-lg-10 col-lg-offset-2">
-                  <button class="btn btn-primary" type="submit" id="submitButton" disabled>Enviar</button>
+                <div class="control-label">
+                  <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>

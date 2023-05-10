@@ -41,11 +41,7 @@
                   <h4>Datos del Cliente</h4>
                 </div>
 
-                <div class="form-group">
-                  <div class="col-lg-10">
-                    <input class="form-control" name="id" type="hidden">
-                  </div>
-                </div>
+                <input class="form-control" name="id" type="hidden">
 
                 <div class="col-lg-10">
                   <input class="form-control" name="id" type="hidden" value="<?= $tallerSQL->getId() ?>">
@@ -87,9 +83,11 @@
                   </div>
                 <?php endforeach; ?>
 
+                <br>
                 <div class="col-lg-10">
                   <h4>Datos del Equipo</h4>
                 </div>
+                <hr>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
@@ -168,22 +166,24 @@
                 </div>
 
                 <div class="form-group">
-                <label class="control-label col-md-3" >Cobrado</label>
+                  <label class="control-label col-md-3">Cobrado</label>
                   <div class="col-md-8">
-                <?php  if(($tallerSQL->getCobrado())=="Si"){
-                  ?>
-                    <label><input type="radio" id="radioC" name="cobrado" value="Si" checked onchange="handleSubmit()">Si</label>
-                    <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()">No</label>
-                  <?php } else {?>
-                    <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()">Si</label>
-                    <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()" checked>No</label>
+                    <?php if (($tallerSQL->getCobrado()) == "Si") {
+                    ?>
+                      <label><input type="radio" id="radioC" name="cobrado" value="Si" checked onchange="handleSubmit()">Si</label>
+                      <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()">No</label>
+                    <?php } else { ?>
+                      <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()">Si</label>
+                      <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()" checked>No</label>
                     <?php } ?>
                   </div>
                 </div>
+                <br>
 
                 <div class="col-lg-10">
                   <h4>Registrar Orden</h4>
                 </div>
+                <hr>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="TecnicoAsignado">Tecnico Asignado *</label>
@@ -201,7 +201,7 @@
                           <option value="<?= $tallerSQL->id ?>" <?php if ($tecnicoasignadoOriginal == $tallerSQL->id) { ?> selected="true" <?php } ?>><?= $tallerSQL->nombre, " ", $tallerSQL->apellido ?></option>
                         <?php endforeach; ?>
 
-                    </select><br>
+                    </select>
                   </div>
                 </div>
 
@@ -212,19 +212,10 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <div class="col-md-8">
-                    <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fechaentrada ?>">
-                  </div>
-                </div>
+                <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fechaentrada ?>">
+                <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $horaentrada ?>">
 
-                <div class="form-group">
-                  <div class="col-md-8">
-                    <input class="form-control" name="horaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $horaentrada ?>">
-                  </div>
-                </div>
-
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="control-label">
                   <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>

@@ -22,7 +22,7 @@
             <?php
             require_once 'modelos/regex.php';
             $regex = new Regex;
-            $actualizandoBandera = ($usuarioSQL->getId())!=null ;
+            $actualizandoBandera = ($usuarioSQL->getId()) != null;
             if ($_SESSION['tipoUsuario'] != 'Admin' || !isset($_SESSION['tipoUsuario'])) {
               include("page-error.php");
 
@@ -92,17 +92,17 @@
                     </div>
                   </div>
                 </div>
-                <?php if(!$actualizandoBandera ){ 
-                  $_GET?>
-                <div class="form-group">
-                  <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
-                  <div class="col-md-8">
-                    <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" maxlength="70" value="<?= $usuarioSQL->getContrasenia() ?>" onkeyup="handleSubmit()">
-                    <div class="alert alert-danger" role="alert" id="advertenciaContraseña" hidden>
-                      Contraseña muy corta
+                <?php if (!$actualizandoBandera) {
+                  $_GET ?>
+                  <div class="form-group">
+                    <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
+                    <div class="col-md-8">
+                      <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" maxlength="70" value="<?= $usuarioSQL->getContrasenia() ?>" onkeyup="handleSubmit()">
+                      <div class="alert alert-danger" role="alert" id="advertenciaContraseña" hidden>
+                        Contraseña muy corta
+                      </div>
                     </div>
                   </div>
-                </div>
                 <?php } ?>
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio *</label>
@@ -116,19 +116,18 @@
                     <br>
                   </div>
                 </div>
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="control-label">
                   <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
-                  <?php if($actualizandoBandera){ ?>
-                  <button class="btn btn-primary" type="button" onclick="handleCambiarContraseña('<?= $usuarioSQL->getId() ?>')">Cambiar contraseña</button>
+                  <?php if ($actualizandoBandera) { ?>
+                    <button class="btn btn-primary" type="button" onclick="handleCambiarContraseña('<?= $usuarioSQL->getId() ?>')">Cambiar contraseña</button>
                   <?php } ?>
                 </div>
               </form>
-              <?php } ?>
+            <?php } ?>
           </div>
         </div>
       </div>
     </div>
-    <?php if($actualizandoBandera){ ?> <script src="vistas/usuario/actualizar_Usuario.js"></script> <?php }else{ ?> <script src="vistas/usuario/crear_Usuario.js"></script> <?php } ?>
-    
+    <?php if ($actualizandoBandera) { ?> <script src="vistas/usuario/actualizar_Usuario.js"></script> <?php } else { ?> <script src="vistas/usuario/crear_Usuario.js"></script> <?php } ?>

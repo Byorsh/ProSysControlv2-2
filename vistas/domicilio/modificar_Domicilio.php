@@ -75,11 +75,13 @@
                       <input class="form-control" type="text" placeholder="Domicilio del cliente" value="<?= $campo->domicilio ?>" disabled>
                     </div>
                   </div>
-
                 <?php endforeach; ?>
+                <br>
+                
                 <div class="col-lg-10">
                   <h4>Informacion del Servicio</h4>
                 </div>
+                <hr/>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica del servicio *</label>
@@ -118,14 +120,14 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraInicio">Hora de Inicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaInicio" id="horaInicio" type="text" placeholder="Hora de inicio del servicio" value="<?= $domicilioSQL->getHoraInicio() ?>" onchange="handleSubmit()" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))">
+                    <input class="form-control" name="horaInicio" id="horaInicio" type="time" onchange="handleSubmit()" value="<?= $domicilioSQL->getHoraInicio() ?>" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))"/>  
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraFinal">Hora de Finalizacion</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaFinal" id="horaFinal" type="text" placeholder="Hora de terminacion del servicio" value="<?= $domicilioSQL->getHoraFinal() ?>" onchange="handleSubmit()" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))">
+                    <input class="form-control" name="horaFinal" id="horaFinal" type="time" onchange="handleSubmit()" value="<?= $domicilioSQL->getHoraFinal() ?>" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))"/>
                   </div>
                 </div>
 
@@ -180,7 +182,7 @@
                 ?>
                 </br>
 
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="control-label">
                   <button class="btn btn-primary" type="button" id="submitButton" onclick="Guardar()" disabled>Enviar</button>
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
