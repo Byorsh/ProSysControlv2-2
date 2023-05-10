@@ -152,6 +152,12 @@
   </div>
 </div>
 </div>
+<?php
+if(isset($_GET['guardado'])){if($_GET['guardado']=='v'){
+  $regex = new Regex();
+  $regex->sweet_alerts("Registro");
+}}
+?>
 <script>
       function Eliminar(url) {
             Swal.fire({
