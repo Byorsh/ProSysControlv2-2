@@ -183,7 +183,7 @@
                 <?php
                 date_default_timezone_set('America/Mazatlan');
                 $fecha_actual = date("Y-m-d");
-                $hora_actual = date("H:i:S");
+                $hora_actual = date("H:i:s");
                 ?>
 
                 <input class="form-control" name="fechaEntrada" type="hidden" placeholder="Fecha prometida" value="<?= $fecha_actual ?>">

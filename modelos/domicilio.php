@@ -213,7 +213,7 @@ class Domicilio{
     public function Insertar(Domicilio $domicilioSQL){
         try{
             $consulta = "INSERT INTO domicilio(id_Cliente, problematica, observaciones, fechaProgramada, presupuesto, costoTotal, horaInicio, horaFinal, horasRealizadas,estado,cobrado) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            VALUES (?,?,?,?,?,?,?, STR_TO_DATE(?, '%m-%d-%Y %H:%i:%s'),?,?,?)";
             $this->pdo->prepare($consulta)->execute(array(
                 $domicilioSQL->getIdCliente(),
                 $domicilioSQL->getProblematica(),
