@@ -119,5 +119,5 @@ function Guardar() {
   }
 
 function mayus(e) {
-    e.value = e.value.toLowerCase();
+    e.value = e.value.toUpperCase();
 }
