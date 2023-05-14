@@ -1,5 +1,5 @@
 patrones = {
-    usuario: /^[a-zA-Z0-9]{7,20}$/,
+    usuario: /^[a-zA-Z0-9]{3,20}$/,
     password: /^[a-zA-Z0-9]+$/
 }
 

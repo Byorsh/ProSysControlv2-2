@@ -35,7 +35,7 @@
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Inicio de sesion</h3>
         <p>Usuario: <input type="text" placeholder="Ingrese el usuario" name="usuario" id="usuario" onkeyup="handleSubmit()" maxlength="35" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57))"> * </p>
         <p class="alert-danger" id="advertenciaUsuario" style="float: left;" hidden>
-          Minimo de 7 caracteres, solo se aceptan letras y espacios
+          Minimo de 3 caracteres, solo se aceptan letras y espacios
         </p>
         <p>Contraseña: <input type="password" placeholder="Ingrese su contraseña" id="password" onkeyup="handleSubmit()" maxlength="70" min="1" name="contraseña" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57))"> * </p>
         <button type="submit" value="Ingresar" id="submitButton" disabled>Ingresar</button>
