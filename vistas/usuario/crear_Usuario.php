@@ -88,7 +88,7 @@
                   <div class="col-md-8">
                     <input class="form-control" name="user" id="usuario" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="35" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaUsuario" hidden>
-                      El usuario unicamente puede contener letras y espacios, minimo 7 caracteres
+                      El usuario unicamente puede contener letras y espacios, minimo 3 caracteres
                     </div>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ let patrones = {
     apellido: /[a-zA-ZáéíóúÁÉÍÓÚñÑ. ]{2,30}/,
     telefono: /\+?\(?\d{2,4}\)?[\d\s-]{8,10}/,
     correo: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
-    usuario: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{7,20}/,
+    usuario: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ. ]{3,20}/,
     password: /[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,#\- ]{7,20}/
 }
 const formulario= document.getElementById('form');
