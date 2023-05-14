@@ -68,6 +68,9 @@ function calcularHoras() {
     let horaFinal = document.getElementById("horaFinal").value;
     let horasRealizadas = document.getElementById("horasRealizadas");
     let costoTotal = document.getElementById("costoTotal");
+    console.log('pasa?');
+    console.log(`hora inicio: ${horaInicio}`);
+    console.log(`hora final: ${horaFinal}`);
 
     //Calcular costo total
     var hora1 = horaInicio.split(":"),
@@ -75,14 +78,13 @@ function calcularHoras() {
         t1 = new Date(),
         t2 = new Date();
 
-    t1.setHours(hora1[0], hora1[1], hora1[2]);
-    t2.setHours(hora2[0], hora2[1], hora2[2]);
+    t1.setHours(hora1[0], hora1[1]);
+    t2.setHours(hora2[0], hora2[1]);
 
     //Aquí hago la resta
     t1.setHours(
         t2.getHours() - t1.getHours(),
-        t2.getMinutes() - t1.getMinutes(),
-        t2.getSeconds() - t1.getSeconds()
+        t2.getMinutes() - t1.getMinutes()
     );
     
     //Convirto horas a decimal

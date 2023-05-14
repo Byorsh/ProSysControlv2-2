@@ -104,7 +104,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Marca">Marca *</label>
                   <div class="col-md-8">
-                    <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" onkeyup="mayus(this); handleSubmit();" maxlength="20" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" onkeyup="mayus(this); handleSubmit();" maxlength="20" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaMarca" hidden>
                       No se aceptan caracteres especiales
                     </div>
