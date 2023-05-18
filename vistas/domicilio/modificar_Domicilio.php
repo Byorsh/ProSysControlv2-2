@@ -78,12 +78,12 @@
                   </div>
                 <?php endforeach; ?>
                 <br>
-                
+
                 <div class="col-lg-10">
                   <h4>Informacion del Servicio</h4>
                 </div>
                 <br>
-                <hr/>
+                <hr />
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica del servicio <p style="color: red;display: inline;">*</p></label>
@@ -122,14 +122,14 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraInicio">Hora de Inicio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaInicio" id="horaInicio" type="time" onchange="handleSubmit()" value="<?= $domicilioSQL->getHoraInicio() ?>" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))"/>  
+                    <input class="form-control" name="horaInicio" id="horaInicio" type="time" onchange="handleSubmit()" value="<?= $domicilioSQL->getHoraInicio() ?>" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))" />
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="HoraFinal">Hora de Finalizacion</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="horaFinal" id="horaFinal" type="time" onchange="handleSubmit()" value="<?= $domicilioSQL->getHoraFinal() ?>" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))"/>
+                    <input class="form-control" name="horaFinal" id="horaFinal" type="time" onchange="handleSubmit()" value="<?= $domicilioSQL->getHoraFinal() ?>" maxlength="8" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 58))" />
                   </div>
                 </div>
 
@@ -148,9 +148,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" >Estado del Servicio</label>
+                  <label class="control-label col-md-3">Estado del Servicio</label>
                   <div class="col-md-8">
-                    <select class="form-control"  id="estadoEquipo" name="estado"  value selected="<?= $domicilioSQL->getEstado() ?>" onchange="handleSubmit()">
+                    <select class="form-control" id="estadoEquipo" name="estado" value selected="<?= $domicilioSQL->getEstado() ?>" onchange="handleSubmit()">
                       <option value disabled>Seleccione una opcion</option>
                       <option value="<?= $domicilioSQL->getEstado() ?>"><?= $domicilioSQL->getEstado() ?></option>
                       <option value="Atendiendo">Atendiendo</option>
@@ -164,15 +164,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                <label class="control-label col-md-3" >Cobrado</label>
+                  <label class="control-label col-md-3">Cobrado</label>
                   <div class="col-md-8">
-                <?php  if(($domicilioSQL->getCobrado())=="Si"){
-                  ?>
-                    <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()" checked>Si</label>
-                    <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()">No</label>
-                  <?php } else {?>
-                    <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()">Si</label>
-                    <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()" checked>No</label>
+                    <?php if (($domicilioSQL->getCobrado()) == "Si") {
+                    ?>
+                      <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()" checked>Si</label>
+                      <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()">No</label>
+                    <?php } else { ?>
+                      <label><input type="radio" id="radioC" name="cobrado" value="Si" onchange="handleSubmit()">Si</label>
+                      <label><input type="radio" id="radioC" name="cobrado" value="No" onchange="handleSubmit()" checked>No</label>
                     <?php } ?>
                   </div>
                 </div>
@@ -189,7 +189,7 @@
                   <button class="btn btn-default" type="reset" onclick="handleBloquearSubmit()">Limpiar</button>
                   <button class="btn btn-danger" type="button" onclick="handleCancelar()">Cancelar</button>
                 </div>
-              </form>
+            </form>
           </div>
         </div>
       </div>
