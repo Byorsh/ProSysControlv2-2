@@ -57,25 +57,25 @@ function handleSubmit() {
 
 function calcularPrecioVenta() {
     let precioDeCompra = document.getElementById('preciocompratxt').value;
-    let precioDeVenta = document.getElementById('precioventatxt');
+    let precioDeVenta = document.getElementById('precioventatxt').value;
     let porcentajeGanancia = document.getElementById('porcentajeGanancia').value;
     let iva = document.getElementById('impuestolista').value;
 
     if (porcentajeGanancia.length != 0 && precioDeCompra != "") {
 
-            let nuevoPrecioVentaSinIva = ((precioDeCompra / (100 - porcentajeGanancia)) * 100).toFixed(2);
-            let nuevoPrecioVentaConIva = (nuevoPrecioVentaSinIva * ((iva / 100) + 1)).toFixed(2);
+            let suma = Number(precioDeCompra) + (Number(precioDeCompra) * (Number(porcentajeGanancia) / 100))
+            let nuevoPrecioVenta = ( suma * ((iva / 100) + 1)).toFixed(2);
 
-            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta.value == "") {
+            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta == "") {
                 document.getElementById('precioSugerido').hidden = false;
-                document.getElementById('precioSugerido').innerHTML = `<p>Precio Sugerido: ${nuevoPrecioVentaConIva}</p>`;
+                document.getElementById('precioSugerido').innerHTML = `<p>Precio Sugerido: ${nuevoPrecioVenta}</p>`;
             }
 
-            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta.value != "") {
+            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta != "") {
                 document.getElementById('precioSugerido').hidden = true;
             }
 
-            if (precioDeCompra != "" && precioDeVenta.value != "" && porcentajeGanancia!= "") {
+            if (precioDeCompra != "" && precioDeVenta != "" && porcentajeGanancia!= "") {
                 return true;
             }
     } else {
