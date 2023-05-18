@@ -9,7 +9,7 @@
             </ul>-->
     </div>
     <div>
-      <a class="btn btn-primary btn-flat" href="?c=catalogo&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a>
+      <a class="btn btn-primary btn-flat" href="?c=catalogo&a=FormCrear">Añadir Articulo <i class="fa fa-lg fa-plus"></i></a>
 
     </div>
   </div>
@@ -37,14 +37,14 @@
       <div class="col-md-8">
         <?php if (isset($_GET['q'])) {
         ?><input class="form-control" name="campo" id="campo" type="text" required value="<?= $_GET['q'] ?>">
-          <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
-          <a class="btn btn-warning btn-flat" href="?c=catalogo<?= $url_paginacion ?>" id="borrarBusButton">Borrar busqueda</a>
+          <button class="btn btn-primary" type="submit" id="submitButton"><i class="fa fa-lg fa-search"></i> Buscar</button>
+          <a class="btn btn-warning btn-flat" href="?c=catalogo<?= $url_paginacion ?>" id="borrarBusButton"><i class="fa fa-lg fa-eraser"></i> Borrar busqueda</a>
         <?php //echo $url_busqueda;
         } else {
         ?>
           <input class="form-control" name="campo" id="campo" type="text" required>
-          <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
-          <a class="btn btn-warning btn-flat" href="?c=catalogo" id="borrarBusButton">Borrar busqueda</a>
+          <button class="btn btn-primary" type="submit" id="submitButton"><i class="fa fa-lg fa-search"></i> Buscar</button>
+          <a class="btn btn-warning btn-flat" href="?c=catalogo" id="borrarBusButton"><i class="fa fa-lg fa-eraser"></i> Borrar busqueda</a>
         <?php
         }
         ?>

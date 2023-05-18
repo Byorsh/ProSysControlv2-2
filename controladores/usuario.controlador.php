@@ -119,10 +119,14 @@ class UsuarioControlador{
         $usuarioSQL->setContrasenia($contraseñaEncriptada);
 
         $this->modelo->Actualizarcontraseña($usuarioSQL);
-        
-        header("location:?c=usuario");
-
+        if ($_SESSION['tipoUsuario'] == 'Admin') {
+            header("location:?c=usuario");
+        }
+        else{
+            header("location:home.php");
+        }
     }
+        
     
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);

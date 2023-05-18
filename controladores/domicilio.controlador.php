@@ -60,6 +60,7 @@ class DomicilioControlador{
         $domicilioSQL->setPresupuesto(floatval($_POST['presupuesto']));
         $domicilioSQL->setCostoTotal(floatval($_POST['costoTotal']));
         $domicilioSQL->setHoraInicio($_POST['horaInicio']);
+        echo $_POST['horaFinal']." a";
         $domicilioSQL->setHoraFinal($_POST['horaFinal']);
         $domicilioSQL->setTotalHoras(floatval($_POST['horasRealizadas']));
         $domicilioSQL->setEstado(($_POST['estado']));

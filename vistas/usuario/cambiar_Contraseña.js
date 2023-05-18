@@ -57,7 +57,6 @@ function Guardar() {
     }).then((result) => {
         if (result.isConfirmed) {
             // El usuario hizo clic en "Aceptar", envía los cambios
-            console.log("si");
             formulario.submit();
         } else {
             // El usuario hizo clic en "Cancelar", no envía los cambios

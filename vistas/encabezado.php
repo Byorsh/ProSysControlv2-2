@@ -53,14 +53,15 @@
               </ul>
             </li>-->
             <!-- User Menu-->
-            <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
-              <ul class="dropdown-menu settings-menu">
-                <?php if ($_SESSION['tipoUsuario'] == 'Admin') { ?>
+            <?php if ($_SESSION['tipoUsuario'] == 'Admin') { ?>
                 <li><a href="?c=inicio&a=res"><i class="fa fa-upload fa-lg"></i> Respaldo</a></li>
                 <?php } ?>
                 <!--<li><a href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>-->
-                <li><a href="?c=inicio&a=Salir"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
-              </ul>
+            <li><a href="?c=inicio&a=Salir"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
+            <!--<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+              <ul class="dropdown-menu settings-menu">
+                
+              </ul>-->
             </li>
           </ul>
         </div>
@@ -112,7 +113,7 @@
           <?php } ?>
           <!--condicion para ocultar si es tecnico-->
           <?php if ($_SESSION['tipoUsuario'] != 'Tecnico') { ?>
-            <li class="treeview"><a href="#"><i class="fa fa-id-card"></i><span>Usuarios</span><i class="fa fa-angle-right"></i></a>
+            <li class="treeview"><a href="#"><i class="fa fa-address-book"></i><span>Usuarios</span><i class="fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <!--condicion para ocultar si es secretario-->
                 <?php if ($_SESSION['tipoUsuario'] != 'Secretario') { ?>
