@@ -5,8 +5,8 @@
       <p>Modulo para <?=$titulo?> clientes</p>
     </div>
     <div>
-    <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
-    <a class="btn btn-warning btn-flat" href="?c=cliente"><i class="fa fa-lg fa-reply"></i></a>
+    <a class="btn btn-info btn-flat" href="?c=cliente&a=FormCrear&id=<?=$clienteSQL->getId()?>">Actualizar <i class="fa fa-lg fa-refresh"></i></a> 
+    <a class="btn btn-warning btn-flat" href="?c=cliente">Retroceder <i class="fa fa-lg fa-reply"></i></a>
     </div>
   </div>
   <div class="row">

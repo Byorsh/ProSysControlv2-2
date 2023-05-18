@@ -94,16 +94,32 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-    Swal.fire({
-        title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showDenyButton: true,
-        confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '?c=usuario';
-        }
-    })
+    let rfc = (document.getElementById('rfc').value);
+    let nombre = (document.getElementById('nombre').value);
+    let apellido = (document.getElementById('apellido').value);
+    let telefono = (document.getElementById('telefono').value);
+    let correo = (document.getElementById('correo').value);
+    let usuario = (document.getElementById('usuario').value);
+    let password = (document.getElementById('contraseña').value);
+    let nivelprivilegio = document.getElementById('nivelprivilegio').value;
+    if(((rfc || nombre || apellido || telefono || correo || usuario || password) != "")  ){
+        Swal.fire({
+            title: '¿Deseas regresar a la lista y deshacer el registro?',
+            showDenyButton: true,
+            confirmButtonText: 'Confirmar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '?c=usuario';
+            }
+        })
+    }
+    else{
+        window.location.href = '?c=usuario';
+    }
+
+
+    
 }
 function Guardar() {
     Swal.fire({

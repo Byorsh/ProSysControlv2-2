@@ -8,15 +8,12 @@
             ?>
         <div class="page-title">
           <div>
-            <h1><i class="fa fa-home"></i> Dashboard</h1>
-            <p><h1>Bienvenido <?php echo($nombreUsuario); ?> </h1></p>
+            <p><h1><i class="fa fa-home"></i> Inicio  </h1>
+            <h1>Bienvenido <?php echo($nombreUsuario); ?> </h1></p>
           </div>
           <div>
             
-            <ul class="breadcrumb">
-              <li><i class="fa fa-home fa-lg"></i></li>
-              <li><a href="#">Dashboard</a></li>
-            </ul>
+            
           </div>
         </div>
         <!-- En esta parte irian los reportes-->

@@ -5,8 +5,8 @@
       <p>Modulo para <?=$titulo?> Servicio a domicilio</p>
     </div>
     <div>
-    <a class="btn btn-info btn-flat" href="?c=domicilio&a=FormModificar&id=<?=$domicilioSQL->getId()?>"><i class="fa fa-lg fa-refresh"></i></a> 
-    <a class="btn btn-warning btn-flat" href="?c=domicilio"><i class="fa fa-lg fa-reply"></i></a> 
+    <a class="btn btn-info btn-flat" href="?c=domicilio&a=FormModificar&id=<?=$domicilioSQL->getId()?>">Actualizar <i class="fa fa-lg fa-refresh"></i></a> 
+    <a class="btn btn-warning btn-flat" href="?c=domicilio">Retroceder <i class="fa fa-lg fa-reply"></i></a> 
     </div>
   </div>
   <div class="row">

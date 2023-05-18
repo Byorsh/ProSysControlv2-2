@@ -9,6 +9,7 @@
         <li><i class="fa fa-home fa-lg"></i></li>
         <li>Articulo</li>
         <li><a href="#"><?= $titulo ?> Articulo</a></li>
+        <button class="btn btn-danger" type="button" onclick="handleCancelar()">Retroceder <i class="fa fa-lg fa-reply"></i></button>
       </ul>
     </div>
   </div>

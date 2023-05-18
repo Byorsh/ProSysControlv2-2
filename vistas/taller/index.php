@@ -8,7 +8,7 @@
               <li class="active"><a href="#">Data Table</a></li>
             </ul>-->
     </div>
-    <div><a class="btn btn-primary btn-flat" href="?c=taller&a=FormCrear"><i class="fa fa-lg fa-plus"></i></a></div>
+    <div><a class="btn btn-primary btn-flat" href="?c=taller&a=FormCrear">Agregar al taller <i class="fa fa-lg fa-plus"></i></a></div>
   </div>
 
     
@@ -45,16 +45,16 @@
       <div class="col-md-8">
         <?php if (isset($_GET['q'])) {
         ?><input class="form-control" name="campo" id="campo" type="text" required value="<?= $_GET['q'] ?>">
-          <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
-          <a class="btn btn-warning btn-flat" href="?c=taller<?= $url_paginacion ?>" id="borrarBusButton">Borrar busqueda</a>
-          <a class="btn btn-danger btn-flat" href="?c=taller&a=MostrarYaEntregados" id="borrarBusButton">Mostrar ya entregados</a>
+          <button class="btn btn-primary" type="submit" id="submitButton"><i class="fa fa-lg fa-search"></i> Buscar</button>
+          <a class="btn btn-warning btn-flat" href="?c=taller<?= $url_paginacion ?>" id="borrarBusButton"><i class="fa fa-lg fa-eraser"></i> Borrar busqueda</a>
+          <a class="btn btn-danger btn-flat" href="?c=taller&a=MostrarYaEntregados" id="borrarBusButton"><i class="fa fa-lg fa-filter"></i>entregados y cobrados</a>
         <?php //echo $url_busqueda;
         } else {
         ?>
           <input class="form-control" name="campo" id="campo" type="text" required>
-          <button class="btn btn-primary" type="submit" id="submitButton">Buscar</button>
-          <a class="btn btn-warning btn-flat" href="?c=taller" id="borrarBusButton">Borrar busqueda</a>
-          <a class="btn btn-danger btn-flat" href="?c=taller&a=MostrarYaEntregados" id="borrarBusButton">Mostrar ya entregados</a>
+          <button class="btn btn-primary" type="submit" id="submitButton"><i class="fa fa-lg fa-search"></i> Buscar</button>
+          <a class="btn btn-warning btn-flat" href="?c=taller" id="borrarBusButton"><i class="fa fa-lg fa-eraser"></i> Borrar busqueda</a>
+          <a class="btn btn-danger btn-flat" href="?c=taller&a=MostrarYaEntregados" id="borrarBusButton"><i class="fa fa-lg fa-filter"></i>entregados y cobrados</a>
         <?php
         }
         ?>

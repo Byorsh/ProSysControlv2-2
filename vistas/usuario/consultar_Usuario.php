@@ -6,8 +6,8 @@
       <p>Modulo para <?= $titulo ?> usuarios</p>
     </div>
     <div>
-      <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?= $usuarioSQL->getId() ?>"><i class="fa fa-lg fa-refresh"></i></a>
-      <a class="btn btn-warning btn-flat" href="?c=usuario"><i class="fa fa-lg fa-reply"></i></a>
+      <a class="btn btn-info btn-flat" href="?c=usuario&a=FormCrear&id=<?= $usuarioSQL->getId() ?>">Actualizar <i class="fa fa-lg fa-refresh"></i></a>
+      <a class="btn btn-warning btn-flat" href="?c=usuario">Retroceder <i class="fa fa-lg fa-reply"></i></a>
     </div>
   </div>
   <div class="row">
