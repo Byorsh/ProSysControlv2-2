@@ -42,7 +42,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Id_Cliente">Busqueda del Cliente *</label>
+                  <label class="control-label col-md-3" for="Id_Cliente">Busqueda del Cliente <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" id="idc" name="id_Cliente" method="post" type="text" value="" placeholder="Selecciona el nombre del cliente" onchange="handleSubmit(); toggleListadeclientes()" list="listaclientes">
                   </div>
@@ -56,7 +56,7 @@
                 <br />
 
                 <div class="form-group">
-                  <label class="control-label col-md-3">Nombre del Cliente *</label>
+                  <label class="control-label col-md-3">Nombre del Cliente <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <select class="form-control" id="listaTc" type="text" disabled>
                       <option value disabled>Seleccione un cliente</option>
@@ -107,7 +107,7 @@
                 <hr />
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Problematica">Problematica para el servicio *</label>
+                  <label class="control-label col-md-3" for="Problematica">Problematica para el servicio <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <textarea class="form-control" id="obs" name="problematica" rows="4" placeholder="Problematica para el servicio" maxlength="199" onkeyup="mayus(this); handleSubmit();"></textarea>
                     <div class="alert alert-danger" role="alert" id="advertenciaProblematica" hidden>

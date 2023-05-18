@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Contrasenia">Nueva Contraseña *</label>
+                  <label class="control-label col-md-3" for="Contrasenia">Nueva Contraseña <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" value="" onkeyup="handleSubmit()">
                     <div class="alert alert-danger" role="alert" id="advertenciaContraseña" hidden>
@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Contrasenia">Repite la Contraseña *</label>
+                  <label class="control-label col-md-3" for="Contrasenia">Repite la Contraseña <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="contrasenia validada" id="contraseña2" type="password" placeholder="Contraseña" value="" onkeyup="handleSubmit()">
                     <div class="alert alert-danger" role="alert" id="advertenciaContraseña2" hidden>

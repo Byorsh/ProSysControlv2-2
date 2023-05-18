@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Descripcion">Descripcion *</label>
+                  <label class="control-label col-md-3" for="Descripcion">Descripcion <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Introduce la descripcion del producto" value="<?= $catalogoSQL->getDescripcion() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="100" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaDescripcion" hidden>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Cantidad">Cantidad *</label>
+                  <label class="control-label col-md-3" for="Cantidad">Cantidad <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="cantidad" id="cantidad" type="text" placeholder="Agrega la cantidad" value="<?= $catalogoSQL->getCantidad() ?>" onchange="handleSubmit()" maxlength="10" min="1" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaCantidad" hidden>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="PrecioCompra">Precio de compra *</label>
+                  <label class="control-label col-md-3" for="PrecioCompra">Precio de compra <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="precioCompra" id="preciocompratxt" type="text" placeholder="Agrega el precio de compra" value="<?= $catalogoSQL->getPrecioCompra() ?>" onchange="handleSubmit()" maxlength="12" min="1" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaPrecioCompra" hidden>
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3">Porcentaje de ganancia *</label>
+                  <label class="control-label col-md-3">Porcentaje de ganancia <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" id="porcentajeGanancia" type="text" placeholder="Porcentaje de ganancia" onchange="handleSubmit()" maxlength="12" min="1" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" />
                     <div class="alert alert-danger" role="alert" id="advertenciaPorcentajeGanancia" hidden>
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="PrecioVenta">Precio de venta *</label>
+                  <label class="control-label col-md-3" for="PrecioVenta">Precio de venta <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="precioVenta" id="precioventatxt" type="text" placeholder="Agrega el precio de venta" value="<?= $catalogoSQL->getPrecioVenta() ?>" maxlength="12" min="1" onchange="handleSubmit()" onkeypress="return ((event.charCode == 46) || (event.charCode == 44) || (event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-success" role="alert" id="precioSugerido" hidden> 

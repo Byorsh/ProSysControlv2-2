@@ -48,7 +48,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Nombre">Nombre *</label>
+                  <label class="control-label col-md-3" for="Nombre">Nombre <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?= $usuarioSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaNombre" hidden>
@@ -57,7 +57,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Apellido">Apellido *</label>
+                  <label class="control-label col-md-3" for="Apellido">Apellido <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?= $usuarioSQL->getApellido() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaApellido" hidden>
@@ -66,7 +66,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Telefono">Telefono *</label>
+                  <label class="control-label col-md-3" for="Telefono">Telefono <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="telefono" id="telefono" type="text" placeholder="Telefono" value="<?= $usuarioSQL->getTelefono() ?>" onkeyup="handleSubmit()" maxlength="10" min="1" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaTelefono" hidden>
@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Email">Correo electronico *</label>
+                  <label class="control-label col-md-3" for="Email">Correo electronico <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="email" id="correo" type="text" placeholder="email" value="<?= $usuarioSQL->getEmail() ?>" maxlength="70" onkeyup="minus(this); handleSubmit();" />
                     <div class="alert alert-danger" role="alert" id="advertenciaCorreo" hidden>
@@ -84,7 +84,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="User">Usuario *</label>
+                  <label class="control-label col-md-3" for="User">Usuario <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="user" id="usuario" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="35" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaUsuario" hidden>
@@ -95,7 +95,7 @@
                 <?php if (!$actualizandoBandera) {
                   $_GET ?>
                   <div class="form-group">
-                    <label class="control-label col-md-3" for="Contrasenia">Contraseña *</label>
+                    <label class="control-label col-md-3" for="Contrasenia">Contraseña <p style="color: red;display: inline;">*</p></label>
                     <div class="col-md-8">
                       <input class="form-control" name="contrasenia" id="contraseña" type="password" placeholder="Contraseña" maxlength="70" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57))" value="<?= $usuarioSQL->getContrasenia() ?>" onkeyup="handleSubmit()">
                       <div class="alert alert-danger" role="alert" id="advertenciaContraseña" hidden>
@@ -105,7 +105,7 @@
                   </div>
                 <?php } ?>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio *</label>
+                  <label class="control-label col-md-3" for="Privilegio">Nivel de privilegio <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <select class="form-control" name="privilegio" id="nivelprivilegio" onchange="handleSubmit()">
                       <option value selected disabled>Seleccione una opcion</option>

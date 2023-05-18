@@ -38,7 +38,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="IdCliente">Busqueda del Cliente *</label>
+                  <label class="control-label col-md-3" for="IdCliente">Busqueda del Cliente <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" id="idc" name="idCliente" method="post" type="text" value="" placeholder="Selecciona el nombre del cliente" onchange="handleSubmit(); toggleListadeclientes()" list="listaclientes">
                   </div>
@@ -48,10 +48,11 @@
                     <option id="<?= $tallerSQL->idClientes ?>" value="<?= $tallerSQL->idClientes ?>"><?= $tallerSQL->nombreCliente, " ", $tallerSQL->apellidosC ?></option>
                   <?php endforeach; ?>
                 </datalist>
+                <br>
 
 
                 <div class="form-group">
-                  <label class="control-label col-md-3">Nombre del Cliente *</label>
+                  <label class="control-label col-md-3">Nombre del Cliente <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <select class="form-control" id="listaTc" type="text" disabled>
                       <option value disabled>Seleccione un cliente</option>
@@ -90,10 +91,11 @@
                 <div class="col-lg-10">
                   <h4>Datos del Equipo</h4>
                 </div>
+                <br>
                 <hr>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Ns">Numero de Serie *</label>
+                  <label class="control-label col-md-3" for="Ns">Numero de Serie <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" name="ns" id="ns" type="text" placeholder="Introduce el numero de serie del equipo" onkeyup="mayus(this); handleSubmit();" maxlength="24" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaSerie" hidden>
@@ -102,7 +104,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Marca">Marca *</label>
+                  <label class="control-label col-md-3" for="Marca">Marca <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control col-md-8" id="marca" name="marca" type="text" placeholder="Marca del equipo" onkeyup="mayus(this); handleSubmit();" maxlength="20" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaMarca" hidden>
@@ -111,7 +113,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Modelo">Modelo *</label>
+                  <label class="control-label col-md-3" for="Modelo">Modelo <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control col-md-8" id="modelo" name="modelo" type="text" placeholder="Modelo del equipo" onkeyup="mayus(this); handleSubmit();" maxlength="30" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 45) || (event.charCode == 47) || (event.charCode == 32))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaModelo" hidden>
@@ -126,7 +128,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="Observaciones">Problematica del equipo *</label>
+                  <label class="control-label col-md-3" for="Observaciones">Problematica del equipo <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <!--Por alguna razon no agarra la validacion para el minimo de caracteres-->
                     <textarea class="form-control" id="obs" name="observaciones" type="text" rows="4" placeholder="Problema del equipo" maxlength="400" onkeyup="mayus(this); handleSubmit();"></textarea>
@@ -145,10 +147,11 @@
                 <div class="col-lg-10">
                   <h4>Registrar Orden</h4>
                 </div>
+                <br>
                 <hr>
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="TecnicoAsignado">Tecnico Asignado *</label>
+                  <label class="control-label col-md-3" for="TecnicoAsignado">Tecnico Asignado <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <select class="form-control" id="idtec" name="tecnicoAsignado" type="text" placeholder="Id del Tecnico asignado" onchange="handleSubmit()">
                       <option value disabled>Seleccione un técnico o administrador</option>
@@ -169,7 +172,7 @@
 
 
                 <div class="form-group">
-                  <label class="control-label col-md-3" for="FechaPrometida">Fecha Prometida *</label>
+                  <label class="control-label col-md-3" for="FechaPrometida">Fecha Prometida <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
                     <input class="form-control" type="date" min="<?= $fechadiadeHOY ?>" max="2030-01-01" id="fecha" name="fechaPrometida" placeholder="Fecha prometida" onchange="handleSubmit()">
                   </div>
