@@ -82,6 +82,7 @@
                 <div class="col-lg-10">
                   <h4>Informacion del Servicio</h4>
                 </div>
+                <br>
                 <hr/>
 
                 <div class="form-group">

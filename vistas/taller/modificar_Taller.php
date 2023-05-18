@@ -88,6 +88,7 @@
                 <div class="col-lg-10">
                   <h4>Datos del Equipo</h4>
                 </div>
+                <br>
                 <hr>
 
                 <div class="form-group">
@@ -184,6 +185,7 @@
                 <div class="col-lg-10">
                   <h4>Registrar Orden</h4>
                 </div>
+                <br>
                 <hr>
 
                 <div class="form-group">

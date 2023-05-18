@@ -105,6 +105,7 @@
                 <div class="col-lg-10">
                   <h4>Informacion del servicio</h4>
                 </div>
+                <br>
                 <hr />
 
                 <div class="form-group">
