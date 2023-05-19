@@ -404,6 +404,37 @@ h3,
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
+.login-group{
+  margin-bottom: 5px;
+  display: block;
+}
+
+.login-group label{
+  display: block;
+	margin-bottom: 10px;
+}
+
+.login-group input{
+  width: 100%;
+	padding: 8px;
+	font-size: 16px;
+}
+
+.login-group button{
+  margin-top: 10px;
+  width: 100%;
+	padding: 8px;
+	font-size: 16px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+}
+
+.login-head label{
+  color: white;
+}
+
 h1 small,
 h1 .small,
 .h1 small,
@@ -13509,7 +13540,7 @@ a.fc-more:hover {
   z-index: -1;
 }
 .material-half-bg .cover {
-  background-color: rgb(227, 30, 36);
+  background-color: rgb(5, 120, 185);
   height: 50vh;
 }
 .m-loader {

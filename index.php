@@ -30,15 +30,15 @@
     </div>
     <div class="login-box">
       <!-- Redirecciona a la validacion del login validar.php -->
-      <br>
+      <br><br>
       <form class="login-form" action="validar.php" method="post">
-        <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Inicio de sesion</h3>
-        <p>Usuario: <input type="text" placeholder="Ingrese el usuario" name="usuario" id="usuario" onkeyup="handleSubmit()" maxlength="40" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))"> * </p>
+        <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i> <label>Inicio de sesion</label></h3><br><br>
+        <div class="login-group"> <label>Usuario: </label> <input type="text" placeholder="Ingrese el usuario" name="usuario" id="usuario" onkeyup="handleSubmit()" maxlength="40" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))"></div>
         <p class="alert-danger" id="advertenciaUsuario" style="float: left;" hidden>
-          Minimo de 3 caracteres, solo se aceptan letras y espacios
+          Min. de 3 caracteres, solo letras y espacios
         </p>
-        <p>Contraseña: <input type="password" placeholder="Ingrese su contraseña" id="password" onkeyup="handleSubmit()" maxlength="70" min="1" name="contraseña" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57))"> * </p>
-        <button type="submit" value="Ingresar" id="submitButton" disabled>Ingresar</button>
+        <div class="login-group"><label>Contraseña:</label> <input type="password" placeholder="Ingrese su contraseña" id="password" onkeyup="handleSubmit()" maxlength="70" min="1" name="contraseña" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57))"> </div>
+        <p class="login-group"><button type="submit" value="Ingresar" id="submitButton" disabled>Ingresar</button></p>
       </form>
 
     </div>
