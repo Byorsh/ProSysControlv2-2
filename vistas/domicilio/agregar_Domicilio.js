@@ -37,16 +37,23 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-    Swal.fire({
-        title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showDenyButton: true,
-        confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
+    let obs = document.getElementById('obs').value;
+
+    if (obs == "") {
             window.location.href = '?c=domicilio';
-        }
-    })
+    } else {
+        Swal.fire({
+            title: '¿Deseas regresar a la lista y deshacer el registro?',
+            showDenyButton: true,
+            confirmButtonText: 'Confirmar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '?c=domicilio';
+            }
+        })
+    }
+    
 }
 
 function Guardar() {

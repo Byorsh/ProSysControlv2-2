@@ -50,7 +50,7 @@ function handleSubmit() {
   (ns && marca && modelo && observaciones && (tecnicoAsignado.value >= 0) && (fecha != "")) ?
     document.getElementById('submitButton').disabled = false :
     handleBloquearSubmit();
-  
+
 
 }
 
@@ -65,34 +65,49 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-  Swal.fire({
-    title: '¿Deseas regresar a la lista y deshacer el registro?',
-    showDenyButton: true,
-    confirmButtonText: 'Confirmar',
-    denyButtonText: `Cancelar`,
-}).then((result) => {
-    if (result.isConfirmed) {
+  let ns = document.getElementById('ns').value;
+  let marca = document.getElementById('marca').value;
+  let modelo = document.getElementById('modelo').value;
+  let tipoEquipo = document.getElementById('tipoEquipo').value;
+  let observaciones = document.getElementById('obs').value;
+  let accesorios = document.getElementById('accesorios').value;
+  let fecha = document.getElementById('fecha').value;
+
+  if (ns == "" && marca == "" && modelo == "" && tipoEquipo == "" && observaciones == ""
+    && accesorios == "" && fecha == "") {
+    window.location.href = '?c=taller';
+  } else {
+    Swal.fire({
+      title: '¿Deseas regresar a la lista y deshacer el registro?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
         window.location.href = '?c=taller';
-    }
-})
+      }
+    })
+  }
 }
+
+
 
 function Guardar() {
   Swal.fire({
-      title: "¿Estás seguro de enviar los cambios?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Sí, enviar cambios",
-      cancelButtonText: "Cancelar"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // El usuario hizo clic en "Aceptar", envía los cambios
-        formulario.submit();
-      } else {
-        // El usuario hizo clic en "Cancelar", no envía los cambios
-        return false;
-      }
-    });
+    title: "¿Estás seguro de enviar los cambios?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Sí, enviar cambios",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // El usuario hizo clic en "Aceptar", envía los cambios
+      formulario.submit();
+    } else {
+      // El usuario hizo clic en "Cancelar", no envía los cambios
+      return false;
+    }
+  });
 }
 
 function mayus(e) {

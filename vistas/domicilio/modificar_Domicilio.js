@@ -4,12 +4,8 @@ let patrones = {
 const formulario = document.getElementById('form');
 
 function handleSubmit() {
-    let problematica = patrones.problematica.test(
-        document.getElementById("problematica").value
-    );
-    let observaciones = patrones.problematica.test(
-        document.getElementById("observaciones").value
-    );
+    let problematica = patrones.problematica.test(document.getElementById("problematica").value);
+    let observaciones = patrones.problematica.test(document.getElementById("observaciones").value);
 
     if (document.getElementById("problematica").value != "") {
         problematica
@@ -49,16 +45,25 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-    Swal.fire({
-        title: "¿Deseas regresar a la lista y deshacer el registro?",
-        showDenyButton: true,
-        confirmButtonText: "Confirmar",
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "?c=domicilio";
-        }
-    });
+    let problematica = document.getElementById("problematica").value;
+    let observaciones = document.getElementById("observaciones").value;
+    let presupuesto = document.getElementById('presupuesto').value;
+    
+
+    if (problematica == "" && presupuesto == "" && observaciones == "") {
+        window.location.href = "?c=domicilio";
+    } else {
+        Swal.fire({
+            title: "¿Deseas regresar a la lista y deshacer el registro?",
+            showDenyButton: true,
+            confirmButtonText: "Confirmar",
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "?c=domicilio";
+            }
+        });
+    }
 }
 
 function calcularHoras() {
@@ -86,15 +91,15 @@ function calcularHoras() {
         t2.getHours() - t1.getHours(),
         t2.getMinutes() - t1.getMinutes()
     );
-    
+
     //Convirto horas a decimal
     let horasRealizadasDecimal = ((t1.getHours() * 60) + t1.getMinutes()) / 60;
     if (t1.getMinutes() > 0) {
-        horasRealizadas.value = horasRealizadasDecimal.toFixed(2);    
+        horasRealizadas.value = horasRealizadasDecimal.toFixed(2);
     } else {
         horasRealizadas.value = horasRealizadasDecimal;
     }
-    
+
     //Calculo costo total
     let calcularCostoTotal = presupuesto * document.getElementById("horasRealizadas").value;
     costoTotal.value = calcularCostoTotal.toFixed(2);
@@ -109,16 +114,16 @@ function Guardar() {
         showCancelButton: true,
         confirmButtonText: "Sí, enviar cambios",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          // El usuario hizo clic en "Aceptar", envía los cambios
-          formulario.submit();
+            // El usuario hizo clic en "Aceptar", envía los cambios
+            formulario.submit();
         } else {
-          // El usuario hizo clic en "Cancelar", no envía los cambios
-          return false;
+            // El usuario hizo clic en "Cancelar", no envía los cambios
+            return false;
         }
-      });
-  }
+    });
+}
 
 function mayus(e) {
     e.value = e.value.toUpperCase();

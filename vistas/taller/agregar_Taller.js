@@ -70,17 +70,31 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-    Swal.fire({
-        title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showDenyButton: true,
-        confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '?c=taller';
-        }
-    })
+    let ns = document.getElementById('ns').value;
+    let marca = document.getElementById('marca').value;
+    let modelo = document.getElementById('modelo').value;
+    let tipoEquipo = document.getElementById('tipoEquipo').value;
+    let observaciones = document.getElementById('obs').value;
+    let accesorios = document.getElementById('accesorios').value;
+    let fecha = document.getElementById('fecha').value;
+
+    if (ns == "" && marca == "" && modelo == "" && tipoEquipo == "" && observaciones == ""
+        && accesorios == "" && fecha == "") {
+        window.location.href = '?c=taller';
+    } else {
+        Swal.fire({
+            title: '¿Deseas regresar a la lista y deshacer el registro?',
+            showDenyButton: true,
+            confirmButtonText: 'Confirmar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '?c=taller';
+            }
+        })
+    }
 }
+
 function Guardar() {
     Swal.fire({
         title: "¿Son los datos correctos?",
@@ -88,15 +102,15 @@ function Guardar() {
         showCancelButton: true,
         confirmButtonText: "Sí, guardar registro",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          // El usuario hizo clic en "Aceptar", envía los cambios
-          formulario.submit();
+            // El usuario hizo clic en "Aceptar", envía los cambios
+            formulario.submit();
         } else {
-          // El usuario hizo clic en "Cancelar", no envía los cambios
-          return false;
+            // El usuario hizo clic en "Cancelar", no envía los cambios
+            return false;
         }
-      });
+    });
 }
 
 function mayus(e) {

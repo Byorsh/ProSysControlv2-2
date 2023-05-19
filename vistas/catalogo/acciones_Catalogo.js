@@ -5,7 +5,7 @@ let patrones = {
     precioDeVenta: /[0-9.]{1,12}/,
     porcentajeGanancia: /[0-9.]{1,12}/
 }
-const formulario= document.getElementById('form');
+const formulario = document.getElementById('form');
 
 function handleSubmit() {
     //validar datos ingresados
@@ -63,21 +63,21 @@ function calcularPrecioVenta() {
 
     if (porcentajeGanancia.length != 0 && precioDeCompra != "") {
 
-            let suma = Number(precioDeCompra) + (Number(precioDeCompra) * (Number(porcentajeGanancia) / 100))
-            let nuevoPrecioVenta = ( suma * ((iva / 100) + 1)).toFixed(2);
+        let suma = Number(precioDeCompra) + (Number(precioDeCompra) * (Number(porcentajeGanancia) / 100))
+        let nuevoPrecioVenta = (suma * ((iva / 100) + 1)).toFixed(2);
 
-            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta == "") {
-                document.getElementById('precioSugerido').hidden = false;
-                document.getElementById('precioSugerido').innerHTML = `<p>Precio Sugerido: ${nuevoPrecioVenta}</p>`;
-            }
+        if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta == "") {
+            document.getElementById('precioSugerido').hidden = false;
+            document.getElementById('precioSugerido').innerHTML = `<p>Precio Sugerido: ${nuevoPrecioVenta}</p>`;
+        }
 
-            if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta != "") {
-                document.getElementById('precioSugerido').hidden = true;
-            }
+        if (precioDeCompra != "" && porcentajeGanancia != "" && precioDeVenta != "") {
+            document.getElementById('precioSugerido').hidden = true;
+        }
 
-            if (precioDeCompra != "" && precioDeVenta != "" && porcentajeGanancia!= "") {
-                return true;
-            }
+        if (precioDeCompra != "" && precioDeVenta != "" && porcentajeGanancia != "") {
+            return true;
+        }
     } else {
         document.getElementById('precioSugerido').hidden = true;
     }
@@ -89,35 +89,49 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-    Swal.fire({
-        title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showDenyButton: true,
-        confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '?c=catalogo';
-        }
-    })
+    let descripcion = document.getElementById('descripcion').value;
+    let marca = document.getElementById('marca').value;
+    let modelo = document.getElementById('modelo').value;
+    let cantidad = document.getElementById('cantidad').value;
+    let precioDeCompra = document.getElementById('preciocompratxt').value;
+    let porcentajeGanancia = document.getElementById('porcentajeGanancia').value;
+    let precioDeVenta = document.getElementById('precioventatxt').value;
+    
+
+    if (descripcion == "" && marca == "" && modelo == "" && cantidad == "" && precioDeCompra == ""
+        && porcentajeGanancia == "" && precioDeVenta == "") {
+        window.location.href = '?c=catalogo';
+    } else {
+        Swal.fire({
+            title: '¿Deseas regresar a la lista y deshacer el registro?',
+            showDenyButton: true,
+            confirmButtonText: 'Confirmar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '?c=catalogo';
+            }
+        })
+    }
 }
 
 function Guardar() {
-    const formulario= document.getElementById('formcatalogo');
+    const formulario = document.getElementById('formcatalogo');
     Swal.fire({
         title: "¿Son los datos correctos?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Sí, guardar registro",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          // El usuario hizo clic en "Aceptar", envía los cambios
-          formulario.submit();
+            // El usuario hizo clic en "Aceptar", envía los cambios
+            formulario.submit();
         } else {
-          // El usuario hizo clic en "Cancelar", no envía los cambios
-          return false;
+            // El usuario hizo clic en "Cancelar", no envía los cambios
+            return false;
         }
-      });
+    });
 }
 function Actualizar() {
     Swal.fire({
@@ -127,15 +141,15 @@ function Actualizar() {
         showCancelButton: true,
         confirmButtonText: "Sí, enviar cambios",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          // El usuario hizo clic en "Aceptar", envía los cambios
-          formulario.submit();
+            // El usuario hizo clic en "Aceptar", envía los cambios
+            formulario.submit();
         } else {
-          // El usuario hizo clic en "Cancelar", no envía los cambios
-          return false;
+            // El usuario hizo clic en "Cancelar", no envía los cambios
+            return false;
         }
-      });
+    });
 }
 
 function mayus(e) {

@@ -142,7 +142,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Accesorios">Accesorios</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" name="accesorios" rows="4" placeholder="Accesorios del equipo" maxlength="400" onkeyup="mayus(this); handleSubmit();"></textarea>
+                    <textarea class="form-control" name="accesorios" id="accesorios" rows="4" placeholder="Accesorios del equipo" maxlength="400" onkeyup="mayus(this); handleSubmit();"></textarea>
                   </div>
                 </div>
 

@@ -70,37 +70,51 @@ function handleBloquearSubmit() {
 }
 
 function handleCancelar() {
-    Swal.fire({
-        title: '¿Deseas regresar a la lista y deshacer el registro?',
-        showDenyButton: true,
-        confirmButtonText: 'Confirmar',
-        denyButtonText: `Cancelar`,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '?c=cliente';
-        }
-    })
+    let rfc = document.getElementById('rfc').value;
+    let nombre = document.getElementById('nombre').value;
+    let apellidos = document.getElementById('apellidos').value;
+    let nombreEmpresa = document.getElementById('nombreEmpresa').value;
+    let telefono = document.getElementById('telefono').value;
+    let correo = document.getElementById('email').value;
+    let domicilio = document.getElementById('domicilio').value;
+
+    if (rfc == "" && nombre == "" && apellidos == "" && nombreEmpresa == "" && telefono == ""
+        && correo == "" && domicilio == "") {
+        window.location.href = '?c=cliente';
+    } else {
+        Swal.fire({
+            title: '¿Deseas regresar a la lista y deshacer el registro?',
+            showDenyButton: true,
+            confirmButtonText: 'Confirmar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '?c=cliente';
+            }
+        })
+    }
 }
 
 function Guardar() {
-    const formulario= document.getElementById('formcliente');
+    const formulario = document.getElementById('formcliente');
     Swal.fire({
         title: "¿Son los datos correctos?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Sí, guardar registro",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          // El usuario hizo clic en "Aceptar", envía los cambios
-          console.log("si");
-          formulario.submit();
+            // El usuario hizo clic en "Aceptar", envía los cambios
+            console.log("si");
+            formulario.submit();
         } else {
-          // El usuario hizo clic en "Cancelar", no envía los cambios
-          return false;
+            // El usuario hizo clic en "Cancelar", no envía los cambios
+            return false;
         }
-      });
+    });
 }
+
 function Actualizar() {
     Swal.fire({
         title: "¿Estás seguro?",
@@ -109,15 +123,15 @@ function Actualizar() {
         showCancelButton: true,
         confirmButtonText: "Sí, enviar cambios",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          // El usuario hizo clic en "Aceptar", envía los cambios
-          formulario.submit();
+            // El usuario hizo clic en "Aceptar", envía los cambios
+            formulario.submit();
         } else {
-          // El usuario hizo clic en "Cancelar", no envía los cambios
-          return false;
+            // El usuario hizo clic en "Cancelar", no envía los cambios
+            return false;
         }
-      });
+    });
 }
 
 
