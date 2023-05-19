@@ -29,7 +29,7 @@
             <form class="form-horizontal" id="form" method="POST" action="?c=taller&a=Guardar">
               <fieldset>
                 <legend class="control-label">Registro del Equipo en Taller</legend>
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Datos del Cliente</h4>
                 </div>
                 <div class="form-group">
@@ -89,9 +89,10 @@
                 </div>
                 <br>
                 <!-- Seccion de datos del equipo -->
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Datos del Equipo</h4>
                 </div>
+                <br>
                 <br>
                 <hr>
 
@@ -145,9 +146,10 @@
                   </div>
                 </div>
 
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Registrar Orden</h4>
                 </div>
+                <br>
                 <br>
                 <hr>
 

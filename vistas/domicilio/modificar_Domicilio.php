@@ -33,7 +33,7 @@
             <form class="form-horizontal" method="POST" id="form" action="?c=domicilio&a=Guardar">
               <fieldset>
                 <legend class="control-label">Servicio a domicilio</legend>
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Datos del Cliente</h4>
                 </div>
 
@@ -79,9 +79,10 @@
                 <?php endforeach; ?>
                 <br>
 
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Informacion del Servicio</h4>
                 </div>
+                <br>
                 <br>
                 <hr />
 

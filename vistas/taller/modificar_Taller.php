@@ -38,7 +38,7 @@
             <form class="form-horizontal" id="form" method="POST" action="?c=taller&a=Guardar">
               <fieldset>
                 <legend class="control-label">Equipo en Taller</legend>
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Datos del Cliente</h4>
                 </div>
 
@@ -85,9 +85,10 @@
                 <?php endforeach; ?>
 
                 <br>
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Datos del Equipo</h4>
                 </div>
+                <br>
                 <br>
                 <hr>
 
@@ -182,9 +183,10 @@
                 </div>
                 <br>
 
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Registrar Orden</h4>
                 </div>
+                <br>
                 <br>
                 <hr>
 

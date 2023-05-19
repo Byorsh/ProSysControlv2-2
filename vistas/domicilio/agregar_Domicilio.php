@@ -27,7 +27,7 @@
             <form class="form-horizontal" method="POST" action="?c=domicilio&a=Guardar">
               <fieldset>
                 <legend class="control-label">Servicio a domicilio</legend>
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Datos del Cliente</h4>
                 </div>
                 <div class="form-group">
@@ -102,11 +102,12 @@
                   </div>
                 </div>
                 <br>
-                <div class="col-lg-10">
+                <div class="control-label col-md-3">
                   <h4>Informacion del servicio</h4>
                 </div>
                 <br>
-                <hr />
+                <br>
+                <hr/>
 
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Problematica">Problematica para el servicio <p style="color: red;display: inline;">*</p></label>
