@@ -33,7 +33,7 @@
       <br><br>
       <form class="login-form" action="validar.php" method="post">
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i> <label>Inicio de sesion</label></h3><br><br>
-        <div class="login-group"> <label>Usuario: </label> <input type="text" placeholder="Ingrese el usuario" name="usuario" id="usuario" onkeyup="handleSubmit()" maxlength="40" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))"></div>
+        <div class="login-group"> <label>Usuario: </label> <input type="text" placeholder="Ingrese el usuario" name="usuario" id="usuario" onkeyup="handleSubmit()" maxlength="40" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))"></div>
         <p class="alert-danger" id="advertenciaUsuario" style="float: left;" hidden>
           Min. de 3 caracteres, solo letras y espacios
         </p>

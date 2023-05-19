@@ -1,5 +1,5 @@
 let patrones = {
-    descripcion: /[a-zA-Z0-9]{3,100}/,
+    descripcion: /[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9]{3,100}/,
     cantidad: /[0-9]{1,6}/,
     precioDeCompra: /[0-9.]{1,12}/,
     precioDeVenta: /[0-9.]{1,12}/,

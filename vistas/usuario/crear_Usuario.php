@@ -51,7 +51,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Nombre">Nombre <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?= $usuarioSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" value="<?= $usuarioSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122)
+                     || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaNombre" hidden>
                       El nombre solo debe contener letras y espacio
                     </div>
@@ -60,7 +61,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="Apellido">Apellido <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
-                    <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?= $usuarioSQL->getApellido() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control" name="apellido" id="apellido" type="text" placeholder="Apellido" value="<?= $usuarioSQL->getApellido() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="50" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122)
+                     || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaApellido" hidden>
                       El usuario unicamente puede contener letras y espacios
                     </div>
@@ -87,7 +89,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="User">Usuario <p style="color: red;display: inline;">*</p></label>
                   <div class="col-md-8">
-                    <input class="form-control" name="user" id="usuario" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="35" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122))" />
+                    <input class="form-control" name="user" id="usuario" type="text" placeholder="Usuario" value="<?= $usuarioSQL->getUser() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="35" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode == 32) || (event.charCode >= 97 && event.charCode <= 122)
+                     || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))" />
                     <div class="alert alert-danger" role="alert" id="advertenciaUsuario" hidden>
                       El usuario unicamente puede contener letras y espacios, minimo 3 caracteres
                     </div>

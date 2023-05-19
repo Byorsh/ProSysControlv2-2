@@ -42,7 +42,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreCliente">Nombre *</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="49" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
+                    <input class="form-control" name="nombreCliente" id="nombre" type="text" placeholder="Nombre" value="<?= $clienteSQL->getNombre() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="49" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32)
+                     || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))">
                     <div class="alert alert-danger" role="alert" id="advertenciaCliente" hidden>
                       El nombre solo debe contener letras y espacio, Mínimo de 4 caracteres
                     </div>
@@ -53,7 +54,8 @@
                   <label class="control-label col-md-3" for="ApellidosC">Apellidos *</label>
                   <div class="col-md-8">
 
-                    <input class="form-control" name="apellidosC" id="apellidos" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onkeyup="handleSubmit(); mayus(this);" maxlength="49" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))">
+                    <input class="form-control" name="apellidosC" id="apellidos" type="text" placeholder="Apellidos" value="<?= $clienteSQL->getApellidos() ?>" onkeyup="handleSubmit(); mayus(this);" maxlength="49" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32)
+                     || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))">
                     <div class="alert alert-danger" role="alert" id="advertenciaApellidos" hidden>
                       Los apellidos unicamente pueden contener letras y espacios, Mínimo de 4 caracteres
                     </div>
@@ -63,7 +65,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Nombre de la empresa</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="nombreEmpresa" id="nombreEmpresa" type="text" placeholder="Nombre de la Empresa" value="<?= $clienteSQL->getNombreEmpresa() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="70" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32) || (event.charCode == 46) || (event.charCode >= 48 && event.charCode <= 57))">
+                    <input class="form-control" name="nombreEmpresa" id="nombreEmpresa" type="text" placeholder="Nombre de la Empresa" value="<?= $clienteSQL->getNombreEmpresa() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="70" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32) 
+                    || (event.charCode == 46) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))">
                   </div>
                 </div>
 
@@ -90,7 +93,8 @@
                 <div class="form-group">
                   <label class="control-label col-md-3" for="NombreEmpresa">Domicilio</label>
                   <div class="col-md-8">
-                    <input class="form-control" name="domicilio" id="domicilio" type="text" placeholder="Domicilio" value="<?= $clienteSQL->getDomicilio() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="149" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 46) || (event.charCode == 32) || (event.charCode == 35))">
+                    <input class="form-control" name="domicilio" id="domicilio" type="text" placeholder="Domicilio" value="<?= $clienteSQL->getDomicilio() ?>" onkeyup="mayus(this); handleSubmit();" maxlength="149" min="1" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) 
+                    || (event.charCode == 46) || (event.charCode == 32) || (event.charCode == 35) || (event.charCode >= 160 && event.charCode <= 165) || (event.charCode == 224) || (event.charCode == 181) || (event.charCode == 130) || (event.charCode == 233) || (event.charCode == 144) || (event.charCode == 214))">
                   </div>
                 </div>
 
