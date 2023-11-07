@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 04:33:12
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 08-11-2023 a las 00:21:23
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `catalogo` (
   `precioCompra` float(10,2) NOT NULL,
   `precioVenta` float(10,2) NOT NULL,
   `iva` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `catalogo`
@@ -66,7 +66,7 @@ CREATE TABLE `clientes` (
   `telefono` varchar(10) NOT NULL,
   `email` varchar(70) NOT NULL,
   `domicilio` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -126,7 +126,7 @@ CREATE TABLE `domicilio` (
   `horasRealizadas` int(11) NOT NULL,
   `estado` varchar(50) DEFAULT NULL,
   `cobrado` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `domicilio`
@@ -164,7 +164,7 @@ CREATE TABLE `ordenreparacion` (
   `tecnicoAsignado` int(11) NOT NULL,
   `estadoEquipo` varchar(2) NOT NULL,
   `cobrado` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ordenreparacion`
@@ -225,7 +225,7 @@ CREATE TABLE `usuario` (
   `user` varchar(35) NOT NULL,
   `contrasenia` varchar(70) NOT NULL,
   `privilegio` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
