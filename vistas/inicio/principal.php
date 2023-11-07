@@ -69,8 +69,11 @@
                 <p><b></b></p>
               </div>
             </div>
+            
           </div>
+          
 
+          
           
           <!--<div class="col-md-6">
             <div class="card">
@@ -90,8 +93,11 @@
             </div>
           </div>-->
         </div>
+        <!--<div class="logo-empresa"><img src="assets/css/logo.png" alt="Logo"></div>-->
       </div>
+      
     </div>
+    
     <script>
       function clickReporteDireccionHref(url){
         location.href = url;

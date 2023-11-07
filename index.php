@@ -33,7 +33,7 @@
       </p>
       <input type="password" placeholder="Contraseña" id="password" onkeyup="handleSubmit()" maxlength="70" min="1" name="contraseña" 
       onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57))"/>
-      <button type="submit" value="Ingresar" id="submitButton">Ingresar</button>
+      <button type="submit" value="Ingresar" id="submitButton" disabled>Ingresar</button>
     </form>
   </div>
   <script>
