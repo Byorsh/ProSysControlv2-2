@@ -53,6 +53,7 @@
               </ul>
             </li>-->
             <!-- User Menu-->
+            <li><a href="https://www.youtube.com/watch?v=0dCa3m91flU&ab_channel=ReggaetonCity" target="_blank"><i class="fa fa-question-circle fa-lg"></i> Ayuda</a></li>
             <?php if ($_SESSION['tipoUsuario'] == 'Admin') { ?>
                 <li><a href="?c=inicio&a=res"><i class="fa fa-upload fa-lg"></i> Respaldo</a></li>
                 <?php } ?>
